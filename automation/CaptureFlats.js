@@ -23,7 +23,6 @@ var filterNames = ["Luminance", "Red", "Green", "Blue", "SII", "Ha", "OIII" ];
 ///////////////////////////////////////////////////////////////////////////
 // How many images do I want? How much space in arcseconds between them
 //////////////////////////////////////////////////////////////////////////////////////////  \/ \/ \/ USRER INPUT HERE 
-var ditherStepSizeArcSeconds = 5.0;    // Amount of dither between exposures in arcseconds
 var numImages = 1;                    // Number of Images to take with each filter
 var firstFilter = LUM;
 var lastFilter = OIII;
@@ -33,6 +32,12 @@ var decPlus = 1.0;
 
 // Each filter can have its own exposure length.
 var exposureTimes = new Array(7);
+
+// I got these by running the flats calibration wizard in SGP
+// first column is always zero.  Other "columns" are binning.  So the time
+// to expose red for a 2x2 bin is 5.19 seconds.  
+// If it matters, I have my flat frames autosave set to :i_:e_:b_:f_:c_:q
+// 
 exposureTimes[LUM]   = [0,    6.18,  1.34,  0.54,  0.25 ];
 exposureTimes[RED]   = [0,   21.34,  5.19,  2.07,  1.10 ];
 exposureTimes[GREEN] = [0,   32.57,  7.87,  3.55,  1.74 ];
@@ -64,9 +69,8 @@ if(TextFile.createNew("FlatsLog"))
 // Okay, start taking images
 RunJavaScriptOutput.writeLine("Starting flats run.");
 
-var out = "Dither Step size = ";
-out += ditherStepSizeArcSeconds;
-out += " arcseconds\r\n";
+var out = "";
+
 RunJavaScriptOutput.writeLine(out);
 TextFile.write(out);
 
@@ -74,6 +78,9 @@ for (var bin = 1; bin <=4 ; bin++)
 {    
     if (flatBinningControl[bin])
     {
+        Imager.BinX = bin;
+        Imager.BinY = bin;
+        
         for (var filter = firstFilter; filter <= lastFilter; filter++)
         {
             Imager.FilterIndexZeroBased = filter;
