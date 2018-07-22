@@ -28,8 +28,6 @@ var SII     = 4;
 var HA      = 5;
 var OIII    = 6;
 
-var BINNING = 4;
-
 var filterNames = ["Luminance", "Red", "Green", "Blue", "SII", "Ha", "OIII" ];
 ///////////////////////////////////////////////////////////////////////////
 
@@ -38,7 +36,7 @@ var filterNames = ["Luminance", "Red", "Green", "Blue", "SII", "Ha", "OIII" ];
 // How many images do I want? How much space in arcseconds between them
 //////////////////////////////////////////////////////////////////////////////////////////  \/ \/ \/ USRER INPUT HERE 
 var ditherStepSizeArcSeconds = 5.0;    // Amount of dither between exposures in arcseconds
-var numImages = 30;                    // Number of Images to take with each filter
+var numImages = 1;                    // Number of Images to take with each filter
 var firstFilter = LUM;
 var lastFilter = OIII;
 var delay = 0;                         // Delay between exposures. Give adequate settle time
@@ -47,13 +45,21 @@ var decPlus = 1.0;
 
 // Each filter can have its own exposure length.
 var exposureTimes = new Array(7);
-exposureTimes[LUM]   = 0.25;
-exposureTimes[RED]   = 1.10;
-exposureTimes[GREEN] = 1.74;
-exposureTimes[BLUE]  = 0.70;
-exposureTimes[SII]   = 10.49;
-exposureTimes[HA]    = 15.97;
-exposureTimes[OIII]  = 15.36;
+exposureTimes[LUM]   = [0,    6.18,  1.34,  0.54,  0.25 ];
+exposureTimes[RED]   = [0,   21.34,  5.19,  2.07,  1.10 ];
+exposureTimes[GREEN] = [0,   32.57,  7.87,  3.55,  1.74 ];
+exposureTimes[BLUE]  = [0,   14.15,  3.51,  1.34,  0.70 ];
+exposureTimes[SII]   = [0,  174.24, 42.86, 18.86, 10.49 ];
+exposureTimes[HA]    = [0,  263.30, 64.65, 28.64, 15.97 ];
+exposureTimes[OIII]  = [0,  257.32, 62.77, 27.65, 15.36 ];
+
+var flatBinningControl = [
+    false,   // ignore
+    false,    // 1x1 binning
+    true,    // 2x2 binning
+    true,    // 3x3 binning
+    true     // 4x4 binning    
+]
 ///////////////////////////////////////////////////////////////////////////////////////////////////^^^ END USER INPUT
 ///////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////
@@ -63,46 +69,18 @@ Imager.Autoguider = 0;
 Imager.Connect();
 Imager.Asynchronous = 0;
 Imager.Autosave = 1;
-Imager.BinX = BINNING;
-Imager.BinY = BINNING;
 
 Imager.Frame = 4; // Can't get enum to work ccdsoftCamera::ccdsoftImageFrame.cdFlat;
 
-
-// Get current position of the telescope
-sky6RASCOMTele.Connect();
-sky6RASCOMTele.GetRaDec();
-var startRA = sky6RASCOMTele.dRa;
-var startDEC = sky6RASCOMTele.dDec;
-
-// Get step size in degrees
-var ditherStepDegrees = ditherStepSizeArcSeconds / 3600.0;
-    
-// I want to wait for the scope to finish the slew before doing anything else
-sky6RASCOMTele.Asynchronous = false;
-
-// The track will trace a series of ever increasing circles around the target
-// the radius of the first circle is the dither step size. Each circle is one
-// more ditherStepDegree's out.
-var currRadius = ditherStepDegrees;
-
-var iImageCount = 0;               // How many images we have taken so far
-var angle = 7.0;                   //    Past 2 PI to trip the first update
-var steps = 4.0;                   // Number of steps around the circle doubles each time
-
-var currFilter = firstFilter;      // Start first filter
-
-
 // Open a text file for writing or reading
 //
-if(TextFile.createNew("UnguidedFilteredLog"))
+if(TextFile.createNew("FlatsLog"))
 {
     RunJavaScriptOutput.writeLine("Could not open log file!\r\n");
-}
- 
+} 
 
 // Okay, start taking images
-RunJavaScriptOutput.writeLine("Starting unguided, dithered image run.");
+RunJavaScriptOutput.writeLine("Starting flats run.");
 
 var out = "Dither Step size = ";
 out += ditherStepSizeArcSeconds;
@@ -110,32 +88,38 @@ out += " arcseconds\r\n";
 RunJavaScriptOutput.writeLine(out);
 TextFile.write(out);
 
-for (var filter = firstFilter; filter <= lastFilter; filter++)
-{
-    Imager.FilterIndexZeroBased = filter;
-    for (var image = 0; image < numImages; image++)
+for (var bin = 1; bin <=4 ; bin++)
+{    
+    if (flatBinningControl[bin])
     {
-        // Take one photo at the current position
-        //
-        var status = "Exposing for (";
-        status += exposureTimes[filter];
-        status += " seconds) on filter ";
-        status += filterNames[filter];
-        status += " (";
-        status += image
-        status += " of ";
-        status += numImages;
-        status += ") bin: " + BINNING;
+        for (var filter = firstFilter; filter <= lastFilter; filter++)
+        {
+            Imager.FilterIndexZeroBased = filter;
+            for (var image = 0; image < numImages; image++)
+            {
+                // Take one photo at the current position
+                //
+                var status = "Exposing for (";
+                status += exposureTimes[filter];
+                status += " seconds) on filter ";
+                status += filterNames[filter];
+                status += " (";
+                status += image
+                status += " of ";
+                status += numImages;
+                status += ") bin: " + bin + "x" + bin;
 
-        RunJavaScriptOutput.writeLine(status);
-        Imager.ExposureTime = exposureTimes[filter];
-        Imager.Delay = delay;
-        Imager.TakeImage();
+                RunJavaScriptOutput.writeLine(status);
+                Imager.ExposureTime = exposureTimes[filter][bin];
+                Imager.Delay = delay;
+                Imager.TakeImage();
 
-        // Write to log file only once image is completed.
-        //
-        status += " *Completed\r\n";
-        TextFile.write(status);
+                // Write to log file only once image is completed.
+                //
+                status += " *Completed\r\n";
+                TextFile.write(status);
+            }
+        }    
     }
 }
 
