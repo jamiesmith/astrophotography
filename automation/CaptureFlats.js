@@ -1,23 +1,11 @@
-// UnguidedDitherWFilters.js
-// Dither with ProTrack - Enhanced Version
-// Richard S. Wright Jr.
-// Software Bisque
-// Assumptions: ProTrack is on and enabled (or your exposures are short enough you don't 
-//            need ProTrack.
-//                     You have slewed to the target and framed up things the way you want
-//                     The camera dialog is set for the binning, saving, etc.
-//                     You are already connected to both scope and camera
-//            The AutoSave is turned on, and configured for the target of choice
-//                     Color filters are setup in LRGB order. Ha, OIII, SII
-//                     Reording of the variables should be straightforward, even for the 
-//            non programmer... I hope ;-)
-//
-// The dither operation takes place only when the filters have completed
-// one cycle. 
-// Eash filter can have it's own exposure time.
-// This is a round robin approach... if your filters are not parfocal, you may
-// need to setup filter focuser offsets in TheSkyX.
 
+var flatBinningControl = [
+    false,   // ignore
+    false,    // 1x1 binning
+    true,    // 2x2 binning
+    true,    // 3x3 binning
+    true     // 4x4 binning    
+]
 
 ///////////////////////////////////////////////////////////////////////////
 var LUM     = 0;        // Just makes it easier to not screw up when it's late at night
@@ -53,13 +41,7 @@ exposureTimes[SII]   = [0,  174.24, 42.86, 18.86, 10.49 ];
 exposureTimes[HA]    = [0,  263.30, 64.65, 28.64, 15.97 ];
 exposureTimes[OIII]  = [0,  257.32, 62.77, 27.65, 15.36 ];
 
-var flatBinningControl = [
-    false,   // ignore
-    false,    // 1x1 binning
-    true,    // 2x2 binning
-    true,    // 3x3 binning
-    true     // 4x4 binning    
-]
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////^^^ END USER INPUT
 ///////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////
