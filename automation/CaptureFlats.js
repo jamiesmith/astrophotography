@@ -23,7 +23,7 @@ var filterNames = ["Luminance", "Red", "Green", "Blue", "SII", "Ha", "OIII" ];
 ///////////////////////////////////////////////////////////////////////////
 // How many images do I want? How much space in arcseconds between them
 //////////////////////////////////////////////////////////////////////////////////////////  \/ \/ \/ USRER INPUT HERE 
-var numImages = 1;                    // Number of Images to take with each filter
+var numImages = 30;                    // Number of Images to take with each filter
 var firstFilter = LUM;
 var lastFilter = OIII;
 var delay = 0;                         // Delay between exposures. Give adequate settle time
