@@ -28,6 +28,8 @@ var SII     = 4;
 var HA      = 5;
 var OIII    = 6;
 
+var BINNING = 4;
+
 var filterNames = ["Luminance", "Red", "Green", "Blue", "SII", "Ha", "OIII" ];
 ///////////////////////////////////////////////////////////////////////////
 
@@ -61,6 +63,11 @@ Imager.Autoguider = 0;
 Imager.Connect();
 Imager.Asynchronous = 0;
 Imager.Autosave = 1;
+Imager.BinX = BINNING;
+Imager.BinY = BINNING;
+
+Imager.Frame = 4; // Can't get enum to work ccdsoftCamera::ccdsoftImageFrame.cdFlat;
+
 
 // Get current position of the telescope
 sky6RASCOMTele.Connect();
@@ -118,7 +125,7 @@ for (var filter = firstFilter; filter <= lastFilter; filter++)
         status += image
         status += " of ";
         status += numImages;
-        status += ")";
+        status += ") bin: " + BINNING;
 
         RunJavaScriptOutput.writeLine(status);
         Imager.ExposureTime = exposureTimes[filter];
