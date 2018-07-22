@@ -22,10 +22,10 @@
 ///////////////////////////////////////////////////////////////////////////
 var LUM     = 0;        // Just makes it easier to not screw up when it's late at night
 var RED     = 1;    // change if necessary to match your filer configuration
-var GREEN    = 2;
+var GREEN   = 2;
 var BLUE    = 3;
-var SII        = 4;
-var HA        = 5;
+var SII     = 4;
+var HA      = 5;
 var OIII    = 6;
 
 var filterNames = ["Luminance", "Red", "Green", "Blue", "SII", "Ha", "OIII" ];
@@ -36,22 +36,22 @@ var filterNames = ["Luminance", "Red", "Green", "Blue", "SII", "Ha", "OIII" ];
 // How many images do I want? How much space in arcseconds between them
 //////////////////////////////////////////////////////////////////////////////////////////  \/ \/ \/ USRER INPUT HERE 
 var ditherStepSizeArcSeconds = 5.0;    // Amount of dither between exposures in arcseconds
-var numImages = 96;                    // Number of Images to take (TOTAL including all filters)
-var firstFilter = RED;                // Start with Lum
-var lastFilter = BLUE;                // Stop with Blue
-var delay = 5;                        // Delay between exposures. Give adequate settle time
+var numImages = 30;                    // Number of Images to take with each filter
+var firstFilter = LUM;
+var lastFilter = OIII;
+var delay = 0;                         // Delay between exposures. Give adequate settle time
 var decMinus = 1.0;                    // Set one of these to zero to limit dec movements to one direction
 var decPlus = 1.0;
 
 // Each filter can have its own exposure length.
 var exposureTimes = new Array(7);
-exposureTimes[LUM]   = 300;
-exposureTimes[RED]   = 120;
-exposureTimes[GREEN] = 120;
-exposureTimes[BLUE]  = 120;
-exposureTimes[SII]   = 900;
-exposureTimes[HA]    = 900;
-exposureTimes[OIII]  = 900;
+exposureTimes[LUM]   = 0.25;
+exposureTimes[RED]   = 1.10;
+exposureTimes[GREEN] = 1.74;
+exposureTimes[BLUE]  = 0.70;
+exposureTimes[SII]   = 10.49;
+exposureTimes[HA]    = 15.97;
+exposureTimes[OIII]  = 15.36;
 ///////////////////////////////////////////////////////////////////////////////////////////////////^^^ END USER INPUT
 ///////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////
@@ -79,11 +79,11 @@ sky6RASCOMTele.Asynchronous = false;
 // more ditherStepDegree's out.
 var currRadius = ditherStepDegrees;
 
-var iImageCount = 0;            // How many images we have taken so far
-var angle = 7.0;                //    Past 2 PI to trip the first update
-var steps = 4.0;                // Number of steps around the circle doubles each time
-                                        // First ring will actually be 8
-var currFilter = firstFilter;            // Start first filter
+var iImageCount = 0;               // How many images we have taken so far
+var angle = 7.0;                   //    Past 2 PI to trip the first update
+var steps = 4.0;                   // Number of steps around the circle doubles each time
+
+var currFilter = firstFilter;      // Start first filter
 
 
 // Open a text file for writing or reading
@@ -103,73 +103,37 @@ out += " arcseconds\r\n";
 RunJavaScriptOutput.writeLine(out);
 TextFile.write(out);
 
-while(iImageCount < numImages)
+for (var filter = firstFilter; filter <= lastFilter; filter++)
 {
-    Imager.FilterIndexZeroBased = currFilter;
-
-    // Take one photo at the current position
-    //
-    var status = "Exposing for (";
-        + exposureTimes[currFilter];
-        + " seconds) on filter ";
-        + filterNames[currFilter];
-        + " (";
-        + Math.floor(iImageCount / ((lastFilter - firstFilter) + 1))+1;
-        + " of ";
-        + numImages / ((lastFilter - firstFilter)+1);
-        + ")";
-
-    RunJavaScriptOutput.writeLine(status);
-    Imager.ExposureTime = exposureTimes[currFilter];
-    Imager.Delay = delay;
-    Imager.TakeImage();
-
-    // Write to log file only once image is completed.
-    //
-    status += " *Completed\r\n";
-    TextFile.write(status);
-    
-    // Change Filters
-    currFilter++;
-    if(currFilter > lastFilter) 
+    Imager.FilterIndexZeroBased = filter;
+    for (var image = 0; image < numImages; image++)
     {
-        currFilter = firstFilter;    // Back to first, now do dither.
-        
-        // Time for the next circle?
-        if(angle > 2*3.14159265) 
-        {
-            angle = 0.0;                                // Reset rotation
-            steps *= 2.0;                            // Double steps on circle
-            currRadius += ditherStepDegrees;    // Increment radius of circle by dither space
-        }
-        else
-        {
-            angle += ((3.14159265 * 2.0) / steps);    // Next sample along ring
-        }
-
-        // Compute next dither location
+        // Take one photo at the current position
         //
-        var deltaRA  = Math.cos(angle) * currRadius/15.0;
-        var deltaDEC = Math.sin(angle) * currRadius;
+        var status = "Exposing for (";
+        status += exposureTimes[filter];
+        status += " seconds) on filter ";
+        status += filterNames[filter];
+        status += " (";
+        status += image
+        status += " of ";
+        status += numImages;
+        status += ")";
 
-        // Limit dec direction changes?
+        RunJavaScriptOutput.writeLine(status);
+        Imager.ExposureTime = exposureTimes[filter];
+        Imager.Delay = delay;
+        Imager.TakeImage();
+
+        // Write to log file only once image is completed.
         //
-        if(deltaDEC > 0) deltaDEC *= decPlus;
-        if(deltaDEC < 0) deltaDEC *= decMinus;
-
-        // Slew to next location
-        //
-        RunJavaScriptOutput.writeLine("Moving OTA\r");
-        sky6RASCOMTele.SlewToRaDec(startRA + deltaRA, startDEC + deltaDEC,"");
-
-    }                        
-
-    // Another image taken, next...
-    iImageCount++;
+        status += " *Completed\r\n";
+        TextFile.write(status);
+    }
 }
 
 // Old Style output
-out = "Dithered run complete\r\n";
+out = "run complete\r\n";
 
 TextFile.write(out);
 TextFile.close();
