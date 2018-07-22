@@ -26,9 +26,7 @@ var filterNames = ["Luminance", "Red", "Green", "Blue", "SII", "Ha", "OIII" ];
 var numImages = 30;                    // Number of Images to take with each filter
 var firstFilter = LUM;
 var lastFilter = OIII;
-var delay = 0;                         // Delay between exposures. Give adequate settle time
-var decMinus = 1.0;                    // Set one of these to zero to limit dec movements to one direction
-var decPlus = 1.0;
+var delay = 5;                         // Delay between exposures. Give adequate settle time
 
 // Each filter can have its own exposure length.
 var exposureTimes = new Array(7);
@@ -36,7 +34,7 @@ var exposureTimes = new Array(7);
 // I got these by running the flats calibration wizard in SGP
 // first column is always zero.  Other "columns" are binning.  So the time
 // to expose red for a 2x2 bin is 5.19 seconds.  
-// If it matters, I have my flat frames autosave set to :i_:e_:b_:f_:c_:q
+// If it matters, I have my flat frames autosave set to :it_:e_:b_:f_:c_:q
 // 
 exposureTimes[LUM]   = [0,    6.18,  1.34,  0.54,  0.25 ];
 exposureTimes[RED]   = [0,   21.34,  5.19,  2.07,  1.10 ];
@@ -78,18 +76,22 @@ for (var bin = 1; bin <=4 ; bin++)
 {    
     if (flatBinningControl[bin])
     {
+        RunJavaScriptOutput.writeLine("processing " + bin + "x" + bin);
+        
         Imager.BinX = bin;
         Imager.BinY = bin;
         
         for (var filter = firstFilter; filter <= lastFilter; filter++)
         {
+            RunJavaScriptOutput.writeLine("processing " + filterNames[filter]);
+            
             Imager.FilterIndexZeroBased = filter;
             for (var image = 0; image < numImages; image++)
             {
                 // Take one photo at the current position
                 //
                 var status = "Exposing for (";
-                status += exposureTimes[filter];
+                status += exposureTimes[filter][bin];
                 status += " seconds) on filter ";
                 status += filterNames[filter];
                 status += " (";
