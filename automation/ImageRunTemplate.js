@@ -20,15 +20,15 @@
 
 
 ///////////////////////////////////////////////////////////////////////////
-var LUM     = 0;        // Just makes it easier to not screw up when it's late at night
-var RED     = 1;    // change if necessary to match your filer configuration
-var GREEN   = 2;
-var BLUE    = 3;
-var SII     = 4;
-var HA      = 5;
-var OIII    = 6;
+const LUM   = 0;        // Just makes it easier to not screw up when it's late at night
+const RED   = 1;        // change if necessary to match your filer configuration
+const GREEN = 2;
+const BLUE  = 3;
+const SII   = 4;
+const HA    = 5;
+const OIII  = 6;
 
-var filterNames = ["Luminance", "Red", "Green", "Blue", "SII", "Ha", "OIII" ];
+const filterNames = ["Luminance", "Red", "Green", "Blue", "Sii5nm", "Ha5nm", "Oiii5nm" ];
 ///////////////////////////////////////////////////////////////////////////
 
 
