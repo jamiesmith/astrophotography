@@ -34,7 +34,7 @@ function isSimulator(imager)
 {
     // If the width is 1000 then it's probably the simulator
     //
-    return (imager.WidthInPixels == 1000);
+    return ((imager.WidthInPixels * imager.BinX) == 1000);
 }
 
 // Pass in a connected imager object
@@ -62,6 +62,14 @@ function getFilterNameArray(imager)
     return filterNames;
 }
 
+function autofocusWithFilter(imager, filterNum, exposureTime, binning)
+{
+    var saveFilter = imager.FilterIndexZeroBased;
+    autofocus(imager, exposureTime, binning)
+    
+    imager.FilterIndexZeroBased = saveFilter;
+}
+
 function autofocus(imager, exposureTime, binning)
 {
     if (isSimulator(imager))
@@ -80,7 +88,7 @@ function autofocus(imager, exposureTime, binning)
         imager.BinX = binning;
         imager.BinY = binning;
         imager.Delay = 0;
-        imager.ExposureTime = focusExposureTimePerFilter[currFilter];   
+        imager.ExposureTime = exposureTime;
         imager.AtFocus3(3, true);    // Three samples per position, full-auto on subframe selection
         
         imager.BinX = saveBinX;
@@ -139,7 +147,6 @@ Date.prototype.addSeconds = function(seconds)
     this.setSeconds(this.getSeconds() + seconds);
     return this;
 };
-
 
 // ###################################################################################################
 // Lines that precede this come from the CommonUtils.js file - don't edit here, edit there then import

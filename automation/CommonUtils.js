@@ -12,7 +12,7 @@ function isSimulator(imager)
 {
     // If the width is 1000 then it's probably the simulator
     //
-    return (imager.WidthInPixels == 1000);
+    return ((imager.WidthInPixels * imager.BinX) == 1000);
 }
 
 // Pass in a connected imager object
@@ -66,7 +66,7 @@ function autofocus(imager, exposureTime, binning)
         imager.BinX = binning;
         imager.BinY = binning;
         imager.Delay = 0;
-        imager.ExposureTime = focusExposureTimePerFilter[currFilter];   
+        imager.ExposureTime = exposureTime;
         imager.AtFocus3(3, true);    // Three samples per position, full-auto on subframe selection
         
         imager.BinX = saveBinX;

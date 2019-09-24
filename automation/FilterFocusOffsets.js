@@ -7,9 +7,7 @@
 // ###################################################################################################
 // Lines that follow this come from the CommonUtils.js file - don't edit here, edit there then import
 // ###################################################################################################
-
 // This file contains the things that most of the other things include.  Can't figure out if/how I can include
-
 const LUM   = 0;        // Just makes it easier to not screw up when it's late at night
 const RED   = 1;        // change if necessary to match your filer configuration
 const GREEN = 2;
@@ -23,7 +21,7 @@ function isSimulator(imager)
 {
     // If the width is 1000 then it's probably the simulator
     //
-    return (imager.WidthInPixels == 1000);
+    return ((imager.WidthInPixels * imager.BinX) == 1000);
 }
 
 // Pass in a connected imager object
@@ -54,10 +52,7 @@ function getFilterNameArray(imager)
 function autofocusWithFilter(imager, filterNum, exposureTime, binning)
 {
     var saveFilter = imager.FilterIndexZeroBased;
-    
-    imager.FilterIndexZeroBased = filterNum;
-    
-    autofocus(imager, exposureTime, binning);
+    autofocus(imager, exposureTime, binning)
     
     imager.FilterIndexZeroBased = saveFilter;
 }
@@ -80,7 +75,7 @@ function autofocus(imager, exposureTime, binning)
         imager.BinX = binning;
         imager.BinY = binning;
         imager.Delay = 0;
-        imager.ExposureTime = focusExposureTimePerFilter[currFilter];   
+        imager.ExposureTime = exposureTime;
         imager.AtFocus3(3, true);    // Three samples per position, full-auto on subframe selection
         
         imager.BinX = saveBinX;
@@ -144,6 +139,7 @@ Date.prototype.addSeconds = function(seconds)
 // Lines that precede this come from the CommonUtils.js file - don't edit here, edit there then import
 // ###################################################################################################
 
+const FOCUS_BINNING = 2;
 var times = new Array(7);
 times[LUM  ] = 3.0; 
 times[RED  ] = 4.0; 
@@ -156,7 +152,7 @@ times[OIII ] = 5.0;
 const MAX_TEMPERATURE_DEVIATION = 3.0;
 
 var nNumSamples = 3;       // How many samples for each filter
-var filters = array();     // Which filters to test
+var filters = Array();     // Which filters to test
 
 filters.push(LUM);         // comment out any you don't want done
 filters.push(RED);         // comment out any you don't want done
@@ -213,7 +209,7 @@ try
     {        
         for (iFilter = 0; iFilter < numFilters; iFilter++) 
         {
-            autofocusWithFilter(imager, iFilter, times[iFilter], 2)
+            autofocusWithFilter(ccdsoftCamera, iFilter, times[iFilter], FOCUS_BINNING)
 
             focusValues[iFilter] += ccdsoftCamera.focPosition;
             out = ccdsoftCamera.szFilterName(filters[iFilter]);
