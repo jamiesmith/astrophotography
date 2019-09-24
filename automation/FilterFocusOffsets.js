@@ -9,6 +9,7 @@
 // ###################################################################################################
 
 // This file contains the things that most of the other things include.  Can't figure out if/how I can include
+
 const LUM   = 0;        // Just makes it easier to not screw up when it's late at night
 const RED   = 1;        // change if necessary to match your filer configuration
 const GREEN = 2;
@@ -48,6 +49,14 @@ function getFilterNameArray(imager)
     logOutput(msg);
 
     return filterNames;
+}
+
+function autofocusWithFilter(imager, filterNum, exposureTime, binning)
+{
+    var saveFilter = imager.FilterIndexZeroBased;
+    autofocus(imager, exposureTime, binning)
+    
+    imager.FilterIndexZeroBased = saveFilter;
 }
 
 function autofocus(imager, exposureTime, binning)
@@ -197,28 +206,21 @@ for (i = 0; i < numFilters; i++)
 
 try 
 {
-    for (iFilter = 0; iFilter < numFilters; iFilter++) 
-    {
-        ccdsoftCamera.FilterIndexZeroBased  = filters[iFilter];
-        ccdsoftCamera.FocusExposureTime = times[iFilter];
-
-        // Run @focus3
-        for (samp = 0; samp < nNumSamples; samp++) 
+    for (samp = 0; samp < nNumSamples; samp++) 
+    {        
+        for (iFilter = 0; iFilter < numFilters; iFilter++) 
         {
-            // Params:
-            // nAveraging    is the number of samples acquired at each focus position. Supported values are 1, 2, 3.
-            // bFullAuto     when true (a non zero value), means one sample per focus position, automatically determines exposure time and optimal subframe. bFullAuto will take one full frame photo and determine what the best subframe should be from that.
-            ccdsoftCamera.AtFocus3(1, true);
+            autofocusWithFilter(imager, iFilter, times[iFilter], 2)
 
-            // Get the focus position for this filter
             focusValues[iFilter] += ccdsoftCamera.focPosition;
             out = ccdsoftCamera.szFilterName(filters[iFilter]);
             out += " Focus position: ";
             out += ccdsoftCamera.focPosition;
-            logOutput(out);
+            logOutput(out);            
         }
-
+        
         // Let's see if the temperature is wandering too much
+        //
         endTemp = ccdsoftCamera.focTemperature;
         if (Math.abs(endTemp - startTemp) > MAX_TEMPERATURE_DEVIATION)
         {

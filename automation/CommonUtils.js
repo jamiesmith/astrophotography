@@ -40,6 +40,14 @@ function getFilterNameArray(imager)
     return filterNames;
 }
 
+function autofocusWithFilter(imager, filterNum, exposureTime, binning)
+{
+    var saveFilter = imager.FilterIndexZeroBased;
+    autofocus(imager, exposureTime, binning)
+    
+    imager.FilterIndexZeroBased = saveFilter;
+}
+
 function autofocus(imager, exposureTime, binning)
 {
     if (isSimulator(imager))

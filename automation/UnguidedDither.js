@@ -152,7 +152,7 @@ Date.prototype.addSeconds = function(seconds)
 var ditherStepSizeArcSeconds = 5.0;  // Amount of dither between exposures in arcseconds
 var FIRST_FILTER = LUM;              // Filter to start with
 var LAST_FILTER = BLUE;              // Filter to end with
-var NUM_IMAGES = 96;                 // Number of Images to take (TOTAL including all filters)
+var NUM_IMAGES = 192;                 // Number of Images to take (TOTAL including all filters)
 var DELAY = 5;                       // Delay between exposures. Give adequate settle time
 var decMinus = 1.0;                  // Set one of these to zero to limit dec movements to one direction
 var decPlus = 1.0;
@@ -162,19 +162,19 @@ var vDOWNLOAD_TIME = 0;              // This will be calculated and averaged
 
 // Each filter can have its own exposure length.
 var exposureTimePerFilter = new Array(7);
-exposureTimePerFilter[LUM  ] = 1; // 300;
-exposureTimePerFilter[RED  ] = 1; // 120;
-exposureTimePerFilter[GREEN] = 1; // 120;
-exposureTimePerFilter[BLUE ] = 1; // 120;
-exposureTimePerFilter[SII  ] = 1; // 900;
-exposureTimePerFilter[HA   ] = 1; // 900;
-exposureTimePerFilter[OIII ] = 1; // 900;
+exposureTimePerFilter[LUM  ] = 60;
+exposureTimePerFilter[RED  ] = 600;
+exposureTimePerFilter[GREEN] = 600;
+exposureTimePerFilter[BLUE ] = 600;
+exposureTimePerFilter[SII  ] = 900;
+exposureTimePerFilter[HA   ] = 900;
+exposureTimePerFilter[OIII ] = 900;
 
 var focusExposureTimePerFilter = new Array(7);
-focusExposureTimePerFilter[LUM  ] = 5;
-focusExposureTimePerFilter[RED  ] = 5;
-focusExposureTimePerFilter[GREEN] = 5;
-focusExposureTimePerFilter[BLUE ] = 5;
+focusExposureTimePerFilter[LUM  ] = 10;
+focusExposureTimePerFilter[RED  ] = 10;
+focusExposureTimePerFilter[GREEN] = 10;
+focusExposureTimePerFilter[BLUE ] = 10;
 focusExposureTimePerFilter[SII  ] = 10;
 focusExposureTimePerFilter[HA   ] = 10;
 focusExposureTimePerFilter[OIII ] = 10;
@@ -262,7 +262,8 @@ while (iImageCount < NUM_IMAGES)
     var discreteEndTime = new Date();
     vFILTER_CHANGE_TIME = Math.floor((discreteEndTime - discreetStartTime) / 1000);
     
-    if ((iImageCount > 0 ) && (iImageCount % FOCUS_EVERY_X_IMAGES) == 0) 
+    // if ((iImageCount > 0 ) && (iImageCount % FOCUS_EVERY_X_IMAGES) == 0)
+    if (currFilter == FIRST_FILTER) 
     {
         autofocus(Imager, focusExposureTimePerFilter[currFilter], 2)
     }
