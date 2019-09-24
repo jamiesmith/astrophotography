@@ -54,7 +54,10 @@ function getFilterNameArray(imager)
 function autofocusWithFilter(imager, filterNum, exposureTime, binning)
 {
     var saveFilter = imager.FilterIndexZeroBased;
-    autofocus(imager, exposureTime, binning)
+    
+    imager.FilterIndexZeroBased = filterNum;
+    
+    autofocus(imager, exposureTime, binning);
     
     imager.FilterIndexZeroBased = saveFilter;
 }
