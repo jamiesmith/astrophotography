@@ -52,6 +52,8 @@ function getFilterNameArray(imager)
 function autofocusWithFilter(imager, filterNum, exposureTime, binning)
 {
     var saveFilter = imager.FilterIndexZeroBased;
+    imager.FilterIndexZeroBased = filterNum;
+    
     autofocus(imager, exposureTime, binning)
     
     imager.FilterIndexZeroBased = saveFilter;
@@ -65,8 +67,6 @@ function autofocus(imager, exposureTime, binning)
     }
     else
     {    
-        logOutput("Running @focus3");
-        
         var saveBinX = imager.BinX
         var saveBinY = imager.BinY
         var saveDelay = imager.Delay
