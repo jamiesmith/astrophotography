@@ -178,13 +178,13 @@ exposureTimePerFilter[HA   ] = 900;
 exposureTimePerFilter[OIII ] = 900;
 
 var focusExposureTimePerFilter = new Array(7);
-focusExposureTimePerFilter[LUM  ] = 10;
-focusExposureTimePerFilter[RED  ] = 10;
-focusExposureTimePerFilter[GREEN] = 10;
-focusExposureTimePerFilter[BLUE ] = 10;
-focusExposureTimePerFilter[SII  ] = 10;
-focusExposureTimePerFilter[HA   ] = 10;
-focusExposureTimePerFilter[OIII ] = 10;
+focusExposureTimePerFilter[LUM  ] = .01;
+focusExposureTimePerFilter[RED  ] = 1;
+focusExposureTimePerFilter[GREEN] = 1;
+focusExposureTimePerFilter[BLUE ] = 1;
+focusExposureTimePerFilter[SII  ] = 8;
+focusExposureTimePerFilter[HA   ] = 8;
+focusExposureTimePerFilter[OIII ] = 8;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////^^^ END USER INPUT
 
