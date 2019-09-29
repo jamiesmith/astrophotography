@@ -169,16 +169,16 @@ var vDOWNLOAD_TIME = 0;              // This will be calculated and averaged
 
 // Each filter can have its own exposure length.
 var exposureTimePerFilter = new Array(7);
-exposureTimePerFilter[LUM  ] = 60;
-exposureTimePerFilter[RED  ] = 600;
-exposureTimePerFilter[GREEN] = 600;
-exposureTimePerFilter[BLUE ] = 600;
-exposureTimePerFilter[SII  ] = 900;
-exposureTimePerFilter[HA   ] = 900;
-exposureTimePerFilter[OIII ] = 900;
+exposureTimePerFilter[LUM  ] = 300;
+exposureTimePerFilter[RED  ] = 300;
+exposureTimePerFilter[GREEN] = 300;
+exposureTimePerFilter[BLUE ] = 300;
+exposureTimePerFilter[SII  ] = 300;
+exposureTimePerFilter[HA   ] = 300;
+exposureTimePerFilter[OIII ] = 300;
 
 var focusExposureTimePerFilter = new Array(7);
-focusExposureTimePerFilter[LUM  ] = .01;
+focusExposureTimePerFilter[LUM  ] = 1;
 focusExposureTimePerFilter[RED  ] = 1;
 focusExposureTimePerFilter[GREEN] = 1;
 focusExposureTimePerFilter[BLUE ] = 1;
@@ -269,8 +269,8 @@ while (iImageCount < NUM_IMAGES)
     var discreteEndTime = new Date();
     vFILTER_CHANGE_TIME = Math.floor((discreteEndTime - discreetStartTime) / 1000);
     
-    // if ((iImageCount > 0 ) && (iImageCount % FOCUS_EVERY_X_IMAGES) == 0)
-    if (currFilter == FIRST_FILTER) 
+    // if (currFilter == FIRST_FILTER)
+    if ((iImageCount > 0 ) && (iImageCount % FOCUS_EVERY_X_IMAGES) == 0)
     {
         autofocus(Imager, focusExposureTimePerFilter[currFilter], 2)
     }
