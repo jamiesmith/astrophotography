@@ -1,7 +1,5 @@
 // UnguidedDitherWFilters.js
-// Dither with ProTrack - Enhanced Version
-// Richard S. Wright Jr.
-// Software Bisque
+// Based on Dither with ProTrack - Enhanced Version by Richard S. Wright Jr. @ Software Bisque
 // Assumptions: ProTrack is on and enabled (or your exposures are short enough you don't 
 //            need ProTrack.
 //                     You have slewed to the target and framed up things the way you want
@@ -23,7 +21,7 @@
 // ########## Things you will probably change often  ##########
 // ############################################################
 //
-var NUMBER_OF_IMAGES_PER_FILTER = 60;   // Number of Images per filter
+var NUMBER_OF_IMAGES_PER_FILTER = 60;  // Number of Images per filter
 var DELAY                       = 5;   // Delay between exposures. Give adequate settle time
 
 // Focus every x- you can use any of the conditions.  Each is reset when focusing
@@ -33,9 +31,10 @@ var FOCUS_EVERY_X_DEGREES       = 0.5; // Refocus when the temperature changes m
 var FOCUS_EVERY_X_MINUTES       = 30;  // Refocus after elapsed time (just make arbitrarily large to skip)
 
 // Each filter can have its own exposure length.
+// If the binning for the exposure length is 0 that filter will be skipped when imaging!!
 //
 var exposureTimePerFilter = new Array(NUMBER_OF_FILTERS);
-exposureTimePerFilter[LUM  ] = 3;
+exposureTimePerFilter[LUM  ] = 0;
 exposureTimePerFilter[RED  ] = 3;
 exposureTimePerFilter[GREEN] = 3;
 exposureTimePerFilter[BLUE ] = 3;
@@ -44,13 +43,12 @@ exposureTimePerFilter[HA   ] = 3;
 exposureTimePerFilter[OIII ] = 3;
 
 // Each filter can have its own binning.
-// If the binning for the filter is 0 that filter will be skipped when imaging!!
 //
 var binningPerFilter = new Array(NUMBER_OF_FILTERS);
 binningPerFilter[LUM  ] = 1;
-binningPerFilter[RED  ] = 0;
-binningPerFilter[GREEN] = 0;
-binningPerFilter[BLUE ] = 0;
+binningPerFilter[RED  ] = 2;
+binningPerFilter[GREEN] = 2;
+binningPerFilter[BLUE ] = 2;
 binningPerFilter[SII  ] = 1;
 binningPerFilter[HA   ] = 1;
 binningPerFilter[OIII ] = 1;
@@ -74,7 +72,7 @@ focusExposureTimePerFilter[OIII ] = 1;
 // ############################################################
 // 
 var NUMBER_OF_FILTERS           = 7;
-var FILTER_CHANGE_TIME          = 5;
+var FILTER_CHANGE_TIME          = 5;     // A guess is fine here, it will be calculated
 var TIME_IT_TAKES_TO_FOCUS      = 60;    // This will vary and gets calculated when focusing
 
 const LUM   = 0;        // Just makes it easier to not screw up when it's late at night
@@ -87,14 +85,15 @@ const OIII  = 6;
 
 // Image Download Times
 //
-var imageDownloadTime = new Array();
-imageDownloadTime.push(23);  // download for 1x1 binning
-imageDownloadTime.push(7);   // download for 2x2 binning
-imageDownloadTime.push(3);   // download for 3x3 binning
-imageDownloadTime.push(2);   // download for 4x4 binning
-// imageDownloadTime.push(2);   // download for 5x5 binning
-// imageDownloadTime.push(2);   // download for 6x6 binning
-// imageDownloadTime.push(2);   // download for 7x7 binning (and so on)
+var imageDownloadTimePerBinning = new Array(5);  // one more slot than binning available on your camera
+imageDownloadTimePerBinning[0] = 0;   // Make it easy and make this array st
+imageDownloadTimePerBinning[1] = 23;  // download for 1x1 binning
+imageDownloadTimePerBinning[2] = 7;   // download for 2x2 binning
+imageDownloadTimePerBinning[3] = 3;   // download for 3x3 binning
+imageDownloadTimePerBinning[4] = 2;   // download for 4x4 binning
+// imageDownloadTimePerBinning[5];   // download for 5x5 binning
+// imageDownloadTimePerBinning[6];   // download for 6x6 binning
+// imageDownloadTimePerBinning[7];   // download for 7x7 binning (and so on)
 
 // ############################################################
 // ########### Things you likely won't change ever  ###########
@@ -182,7 +181,7 @@ function autofocus(imager, exposureTime, binning)
     
     var discreteEndTime = new Date();
     
-    TIME_IT_TAKES_TO_FOCUS = Math.floor((discreteEndTime - discreetStartTime) / 1000);
+    TIME_IT_TAKES_TO_FOCUS = Math.floor((discreteEndTime - discretStartTime) / 1000);
     
     LAST_FOCUS_TIME =  new Date();
     LAST_FOCUS_TEMPERATURE = Imager.focTemperature;
@@ -241,15 +240,19 @@ Date.prototype.addSeconds = function(seconds)
     return this;
 };
 
-function totalTime(imageCountArray)
+function timeRemaining(imageCountArray)
 {
     var secondsRemaining = 0;
 
     for (var i = 0; i < NUMBER_OF_FILTERS; i++) 
     {    
-        if (binningPerFilter[i] > 0)
+        if (exposureTimePerFilter[i] > 0)
         {
-            secondsRemaining += (exposureTimePerFilter[i] + imageDownloadTime[binningPerFilter[i]] + FILTER_CHANGE_TIME) * imageCountArray[i];
+            secondsRemaining += (exposureTimePerFilter[i] 
+                + imageDownloadTimePerBinning[binningPerFilter[i]]
+                + DELAY
+                + FILTER_CHANGE_TIME) 
+                * imageCountArray[i];
         }
     }    
     return secondsRemaining;
@@ -319,6 +322,20 @@ function getCurrentObjectName()
     }    
 }
 
+function calculateFilterChangeTime(imager)
+{
+    imager.FilterIndexZeroBased = 0;
+    var discretStartTime = new Date();
+
+    imager.FilterIndexZeroBased = NUMBER_OF_FILTERS - 1;
+
+    var discreteEndTime = new Date();
+    
+    // Use half of what is likely the longest filter change time as the change time
+    //
+    FILTER_CHANGE_TIME = Math.floor( (discreteEndTime - discretStartTime) / 1000 / 2 );
+}
+
 ///////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////
 
@@ -336,7 +353,13 @@ Imager.Connect();
 Imager.Asynchronous = false;
 Imager.Autosave = true;
 
+// Set the save prefix to the current object, when we dither it gets lost
+//
+Imager.AutoSavePrefix = getCurrentObjectName() + "-";
+
 var filterNames = getFilterNameArray(Imager);
+
+calculateFilterChangeTime(Imager);
 
 var LAST_FOCUS_TIME =  new Date();
 var LAST_FOCUS_TEMPERATURE = Imager.focTemperature;
@@ -367,43 +390,49 @@ var steps = 4.0;         // Number of steps around the circle doubles each time
                          // First ring will actually be 8
 var currentFilter = 0;   // Start first filter
 
-var startTime = new Date();
-var currentTime;
+var currentTime = new Date();
 
 var discreteStartTime = new Date();
 var discreteEndTime = new Date();
 
 // Start taking images
 //
-logOutput("Starting unguided, dithered image run.");
-var out = "Dither Step size = ";
-out += ditherStepSizeArcSeconds;
-out += " arcseconds\r\n";
-logOutput(out);
+logOutput("Starting unguided, dithered image run of " + getCurrentObjectName());
+var status = "Dither Step size = ";
+status += ditherStepSizeArcSeconds;
+status += " arcseconds\r\n";
+logOutput(status);
 
 // how many images are we taking?
+//
 NUMBER_OF_IMAGES = 0;
+
 for (var i = 0; i < NUMBER_OF_FILTERS; i++) 
 {    
-    if (binningPerFilter[i] > 0)
+    if (exposureTimePerFilter[i] > 0)
     {
         NUMBER_OF_IMAGES += NUMBER_OF_IMAGES_PER_FILTER;
         IMAGES_REMAINING_PER_FILTER[i] = NUMBER_OF_IMAGES_PER_FILTER;
     }
 }
 
-logOutput("we are taking " + NUMBER_OF_IMAGES + " images.  " + "Looks like it will take " + totalTime(IMAGES_REMAINING_PER_FILTER) + " seconds to run");
+var timeLeft = timeRemaining(IMAGES_REMAINING_PER_FILTER);
 
-// Set the save prefix to the current object, when we dither it gets lost
-//
-Imager.AutoSavePrefix = getCurrentObjectName() + "-";
+status = "";
+status += "we are taking " + NUMBER_OF_IMAGES + " images.  ";
+status += "Looks like it will take ";
+status += timeLeft;
+status += " seconds to run";
+status += " Estimated Completion [" + currentTime.addSeconds(timeLeft).toLocaleTimeString() + "] ";
+logOutput(status);
+
+
+var startTime = new Date();
 
 while (imageCount < NUMBER_OF_IMAGES)
 {    
-    var discreetStartTime = new Date();
-    var discreteEndTime = new Date();
-    
-    if (binningPerFilter[currentFilter] == 0)
+
+    if (exposureTimePerFilter[currentFilter] == 0)
     {
         // logOutput("Skipping filter: " + filterNames[currentFilter]);
         currentFilter++;
@@ -425,16 +454,19 @@ while (imageCount < NUMBER_OF_IMAGES)
     //    
     currentTime = new Date();
     var elapsed = (currentTime - startTime) / 1000;
-    var secondsRemaining = totalTime(IMAGES_REMAINING_PER_FILTER);
+    var secondsRemaining = timeRemaining(IMAGES_REMAINING_PER_FILTER);
 
-    // Take one photo at the current position
-    //
-    var status = "";
+    Imager.FilterIndexZeroBased = currentFilter;
     
+    // Take the photo
+    //
+    status = "";    
     status += "Elapsed time on <" + getCurrentObjectName() + ">: [" + prettyFormatSeconds(elapsed) + "] ";
-    status += "Exposing for (";
-    status += exposureTimePerFilter[currentFilter];
-    status += " seconds) on ";
+    status += "Exposing for ";
+    status += padString(exposureTimePerFilter[currentFilter], 5);
+    status += " seconds ";
+    status += binningPerFilter[currentFilter] + "x" + binningPerFilter[currentFilter];
+    status += " on ";
     status += padString(filterNames[currentFilter], 10);
     status += " (";
     status += NUMBER_OF_IMAGES_PER_FILTER - IMAGES_REMAINING_PER_FILTER[currentFilter];
@@ -450,14 +482,23 @@ while (imageCount < NUMBER_OF_IMAGES)
     Imager.BinX = binningPerFilter[currentFilter];
     Imager.BinY = binningPerFilter[currentFilter];    
 
-    discreetStartTime = new Date();
+    var imageStartTime = new Date();
     Imager.ExposureTime = exposureTimePerFilter[currentFilter];
     Imager.Delay = DELAY;
     Imager.TakeImage();
-    discreteEndTime = new Date();
+    var imageEndTIme = new Date();
     
     IMAGES_REMAINING_PER_FILTER[currentFilter] -= 1;
 
+    // Calculate a better image download time (it doesn't include filterwheel change...)
+    //        
+    var tmp = Math.ceil((imageEndTIme - imageStartTime) / 1000) - exposureTimePerFilter[currentFilter] - DELAY;
+    if (imageDownloadTimePerBinning[binningPerFilter[currentFilter]] != tmp)
+    {
+        imageDownloadTimePerBinning[binningPerFilter[currentFilter]] = tmp;
+        // logOutput("Adjusting download time for " + binningPerFilter[currentFilter] + "x" + binningPerFilter[currentFilter] + " images to " + tmp + " seconds");
+    }
+    
     // change the filter
     //    
     currentFilter++;
