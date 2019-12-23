@@ -31,7 +31,7 @@ var FOCUS_EVERY_X_DEGREES       = 0.5; // Refocus when the temperature changes m
 var FOCUS_EVERY_X_MINUTES       = 30;  // Refocus after elapsed time (just make arbitrarily large to skip)
 
 // Each filter can have its own exposure length.
-// If the binning for the exposure length is 0 that filter will be skipped when imaging!!
+// If the exposure length is 0 that filter will be skipped when imaging!!
 //
 var exposureTimePerFilter = new Array(NUMBER_OF_FILTERS);
 exposureTimePerFilter[LUM  ] = 0;
