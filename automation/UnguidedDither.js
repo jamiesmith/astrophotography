@@ -71,21 +71,28 @@ focusExposureTimePerFilter[OIII ] = 1;
 // ################ things you will set once  ################$
 // ############################################################
 // 
-var NUMBER_OF_FILTERS           = 7;
+const NUMBER_OF_FILTERS         = getFilterCount(ccdsoftCamera);  // If this doesn't get the right value then set it manually
 var FILTER_CHANGE_TIME          = 5;     // A guess is fine here, it will be calculated
 var TIME_IT_TAKES_TO_FOCUS      = 60;    // This will vary and gets calculated when focusing
-
 
 // The values of these will be calculated from the filter wheel object
 // they ASSUME that the first character of your filter names matche one of L/R/G/B/H/S/O
 // It's case insensitive, so luminance, lum, Lum
-const LUM;
-const RED;
-const GREEN;
-const BLUE;
-const SII;
-const HA;
-const OIII;
+const LUM = findFilterIndexFor(ccdsoftCamera,    "L");
+const RED = findFilterIndexFor(ccdsoftCamera,    "R");
+const GREEN = findFilterIndexFor(ccdsoftCamera,  "G");
+const BLUE = findFilterIndexFor(ccdsoftCamera,   "B");
+const SII = findFilterIndexFor(ccdsoftCamera,    "S");
+const HA = findFilterIndexFor(ccdsoftCamera,     "H");
+const OIII = findFilterIndexFor(ccdsoftCamera,   "O");
+
+logOutput("Calculated LUM" + " at position " + LUM);
+logOutput("Calculated RED" + " at position " + RED);
+logOutput("Calculated GREEN" + " at position " + GREEN);
+logOutput("Calculated BLUE" + " at position " + BLUE);
+logOutput("Calculated SII" + " at position " + SII);
+logOutput("Calculated HA" + " at position " + HA);
+logOutput("Calculated OIII" + " at position " + OIII);
 
 // Image Download Times
 //
@@ -116,6 +123,60 @@ function isSimulator(imager)
     return ((imager.WidthInPixels * imager.BinX) == 1000);
 }
 
+function getFilterCount(imager)
+{
+    // there may not be a filter wheel
+    //
+    if (imager.filterWheelIsConnected())
+    {
+        var i = 0;
+        while (i < imager.lNumberFilters)
+        {
+            var name = imager.szFilterName(i);
+            if (name.substr(0, 6).toUpperCase() == "FILTER")
+            {
+                logOutput("It looks like there are " + i + " filters. If that's not right, hardcode it")
+                return i;
+            }
+                
+            i++;
+        }
+    }
+    
+    return 0;
+}
+
+
+function findFilterIndexFor(imager, filter)
+{
+    // there may not be a filter wheel
+    //
+    if (imager.filterWheelIsConnected())
+    {
+        var i = 0;
+        while (i < imager.lNumberFilters)
+        {
+            var name = imager.szFilterName(i);
+            
+            if (name.substr(0, 1).toUpperCase() == filter.substr(0, 1).toUpperCase())
+            {
+                return i;
+            }
+            
+            i++;
+        }
+    }
+    else
+    {
+        logOutput("ERROR: filterwheel is not connected")
+    }
+    
+    // Getting here is a bad thing
+    // 
+    logOutput("ERROR: could not find filter for " + filter)
+    return -1;
+}
+
 // Pass in a connected imager object
 function getFilterNameArray(imager)
 {
@@ -131,41 +192,7 @@ function getFilterNameArray(imager)
         {
             name = imager.szFilterName(idx);
             filterNames.push(name)
-            var firstChar = name.substr(0, 1).toUpperCase();
-            
-            switch(firstChar) {
-                case "L":
-                    LUM = idx;
-                    break;
-                case "R":
-                    iRED = idx;
-                    break;
-                case "G":
-                    iGREEN = idx;
-                    break;
-                case "B":
-                    iBLUE = idx;
-                    break;
-                case "S":
-                    iSII = idx;
-                    break;
-                case "H":
-                    iHA = idx;
-                    break;
-                case "O":
-                    iOIII = idx;
-                    break;
-              default:
-                  logOutput("ERROR CALCULATING FILTER INDICES: " + idx + " " + name);
-            }
         }
-        logOutput("Calculated LUM" + " as " + iLUM);
-        logOutput("Calculated RED" + " as " + iRED);
-        logOutput("Calculated GREEN" + " as " + iGREEN);
-        logOutput("Calculated BLUE" + " as " + iBLUE);
-        logOutput("Calculated SII" + " as " + iSII);
-        logOutput("Calculated HA" + " as " + iHA);
-        logOutput("Calculated OIII" + " as " + iOIII);
     }
     else 
     {
@@ -173,7 +200,7 @@ function getFilterNameArray(imager)
     }
 
     logOutput(msg);
-exit
+
     return filterNames;
 }
 
@@ -471,7 +498,6 @@ var startTime = new Date();
 
 while (imageCount < NUMBER_OF_IMAGES)
 {    
-
     if (exposureTimePerFilter[currentFilter] == 0)
     {
         // logOutput("Skipping filter: " + filterNames[currentFilter]);
