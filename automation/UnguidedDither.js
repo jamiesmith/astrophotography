@@ -75,13 +75,17 @@ var NUMBER_OF_FILTERS           = 7;
 var FILTER_CHANGE_TIME          = 5;     // A guess is fine here, it will be calculated
 var TIME_IT_TAKES_TO_FOCUS      = 60;    // This will vary and gets calculated when focusing
 
-const LUM   = 0;        // Just makes it easier to not screw up when it's late at night
-const RED   = 1;        // change if necessary to match your filer configuration
-const GREEN = 2;
-const BLUE  = 3;
-const SII   = 4;
-const HA    = 5;
-const OIII  = 6;
+
+// The values of these will be calculated from the filter wheel object
+// they ASSUME that the first character of your filter names matche one of L/R/G/B/H/S/O
+// It's case insensitive, so luminance, lum, Lum
+const LUM;
+const RED;
+const GREEN;
+const BLUE;
+const SII;
+const HA;
+const OIII;
 
 // Image Download Times
 //
@@ -118,14 +122,50 @@ function getFilterNameArray(imager)
     var filterNames = new Array();
     var idx;
     var msg = "";
-
+    var name = "";
+    
     // there may not be a filter wheel
-    if (imager.filterWheelIsConnected()) 
+    if (imager.filterWheelIsConnected())
     {
-        for (idx = 0; idx < imager.lNumberFilters; idx++) 
+        for (idx = 0; idx < NUMBER_OF_FILTERS; idx++) 
         {
-            filterNames.push(imager.szFilterName(idx))
+            name = imager.szFilterName(idx);
+            filterNames.push(name)
+            var firstChar = name.substr(0, 1).toUpperCase();
+            
+            switch(firstChar) {
+                case "L":
+                    LUM = idx;
+                    break;
+                case "R":
+                    iRED = idx;
+                    break;
+                case "G":
+                    iGREEN = idx;
+                    break;
+                case "B":
+                    iBLUE = idx;
+                    break;
+                case "S":
+                    iSII = idx;
+                    break;
+                case "H":
+                    iHA = idx;
+                    break;
+                case "O":
+                    iOIII = idx;
+                    break;
+              default:
+                  logOutput("ERROR CALCULATING FILTER INDICES: " + idx + " " + name);
+            }
         }
+        logOutput("Calculated LUM" + " as " + iLUM);
+        logOutput("Calculated RED" + " as " + iRED);
+        logOutput("Calculated GREEN" + " as " + iGREEN);
+        logOutput("Calculated BLUE" + " as " + iBLUE);
+        logOutput("Calculated SII" + " as " + iSII);
+        logOutput("Calculated HA" + " as " + iHA);
+        logOutput("Calculated OIII" + " as " + iOIII);
     }
     else 
     {
@@ -133,7 +173,7 @@ function getFilterNameArray(imager)
     }
 
     logOutput(msg);
-
+exit
     return filterNames;
 }
 
