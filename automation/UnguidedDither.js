@@ -18,10 +18,29 @@
 //////////////////////////////////////////////////////////////////////////////////////////  \/ \/ \/ USER INPUT HERE 
 
 // ############################################################
+// ###### Things that _should_ just work.  If not you'll ######
+// ###### have to hardcode them                          ######
+// ############################################################
+//
+
+// This should get calculated.  If it doesn't work then do it manually
+// The values of these will be calculated from the filter wheel object
+// they ASSUME that the first character of your filter names matche one of L/R/G/B/H/S/O
+// It's case insensitive, so luminance, lum, Lum
+const NUMBER_OF_FILTERS = getFilterCount(ccdsoftCamera);  
+const LUM               = findFilterIndexFor(ccdsoftCamera, "L");
+const RED               = findFilterIndexFor(ccdsoftCamera, "R");
+const GREEN             = findFilterIndexFor(ccdsoftCamera, "G");
+const BLUE              = findFilterIndexFor(ccdsoftCamera, "B");
+const SII               = findFilterIndexFor(ccdsoftCamera, "S");
+const HA                = findFilterIndexFor(ccdsoftCamera, "H");
+const OIII              = findFilterIndexFor(ccdsoftCamera, "O");
+
+// ############################################################
 // ########## Things you will probably change often  ##########
 // ############################################################
 //
-var NUMBER_OF_IMAGES_PER_FILTER = 60;  // Number of Images per filter
+var NUMBER_OF_IMAGES_PER_FILTER = 10;  // Number of Images per filter
 var DELAY                       = 5;   // Delay between exposures. Give adequate settle time
 
 // Focus every x- you can use any of the conditions.  Each is reset when focusing
@@ -35,27 +54,27 @@ var FOCUS_EVERY_X_MINUTES       = 30;  // Refocus after elapsed time (just make 
 //
 var exposureTimePerFilter = new Array(NUMBER_OF_FILTERS);
 exposureTimePerFilter[LUM  ] = 0;
-exposureTimePerFilter[RED  ] = 3;
-exposureTimePerFilter[GREEN] = 3;
-exposureTimePerFilter[BLUE ] = 3;
-exposureTimePerFilter[SII  ] = 3;
-exposureTimePerFilter[HA   ] = 3;
-exposureTimePerFilter[OIII ] = 3;
+exposureTimePerFilter[RED  ] = 2;
+exposureTimePerFilter[GREEN] = 2;
+exposureTimePerFilter[BLUE ] = 2;
+exposureTimePerFilter[SII  ] = 0;
+exposureTimePerFilter[HA   ] = 0;
+exposureTimePerFilter[OIII ] = 0;
 
 // Each filter can have its own binning.
 //
 var binningPerFilter = new Array(NUMBER_OF_FILTERS);
 binningPerFilter[LUM  ] = 1;
-binningPerFilter[RED  ] = 2;
-binningPerFilter[GREEN] = 2;
-binningPerFilter[BLUE ] = 2;
+binningPerFilter[RED  ] = 1;
+binningPerFilter[GREEN] = 1;
+binningPerFilter[BLUE ] = 1;
 binningPerFilter[SII  ] = 1;
 binningPerFilter[HA   ] = 1;
 binningPerFilter[OIII ] = 1;
 
 // How to focus?
 //
-var FOCUS_WITH_FILTER = BLUE;
+var FOCUS_WITH_FILTER = RED;
 var FOCUS_BINNING     = 2;
 
 var focusExposureTimePerFilter = new Array(NUMBER_OF_FILTERS);
@@ -71,20 +90,8 @@ focusExposureTimePerFilter[OIII ] = 1;
 // ################ things you will set once  ################$
 // ############################################################
 // 
-const NUMBER_OF_FILTERS         = getFilterCount(ccdsoftCamera);  // If this doesn't get the right value then set it manually
 var FILTER_CHANGE_TIME          = 5;     // A guess is fine here, it will be calculated
 var TIME_IT_TAKES_TO_FOCUS      = 60;    // This will vary and gets calculated when focusing
-
-// The values of these will be calculated from the filter wheel object
-// they ASSUME that the first character of your filter names matche one of L/R/G/B/H/S/O
-// It's case insensitive, so luminance, lum, Lum
-const LUM = findFilterIndexFor(ccdsoftCamera,    "L");
-const RED = findFilterIndexFor(ccdsoftCamera,    "R");
-const GREEN = findFilterIndexFor(ccdsoftCamera,  "G");
-const BLUE = findFilterIndexFor(ccdsoftCamera,   "B");
-const SII = findFilterIndexFor(ccdsoftCamera,    "S");
-const HA = findFilterIndexFor(ccdsoftCamera,     "H");
-const OIII = findFilterIndexFor(ccdsoftCamera,   "O");
 
 logOutput("Calculated LUM" + " at position " + LUM);
 logOutput("Calculated RED" + " at position " + RED);
@@ -98,7 +105,7 @@ logOutput("Calculated OIII" + " at position " + OIII);
 //
 var imageDownloadTimePerBinning = new Array(5);  // one more slot than binning available on your camera
 imageDownloadTimePerBinning[0] = 0;   // Make it easy and make this array st
-imageDownloadTimePerBinning[1] = 23;  // download for 1x1 binning
+imageDownloadTimePerBinning[1] = 13;  // download for 1x1 binning
 imageDownloadTimePerBinning[2] = 7;   // download for 2x2 binning
 imageDownloadTimePerBinning[3] = 3;   // download for 3x3 binning
 imageDownloadTimePerBinning[4] = 2;   // download for 4x4 binning
@@ -137,8 +144,7 @@ function getFilterCount(imager)
             {
                 logOutput("It looks like there are " + i + " filters. If that's not right, hardcode it")
                 return i;
-            }
-                
+            }                
             i++;
         }
     }
@@ -428,21 +434,25 @@ var filterNames = getFilterNameArray(Imager);
 
 calculateFilterChangeTime(Imager);
 
+// Script assumes that you have focused right before execution
+//
 var LAST_FOCUS_TIME =  new Date();
 var LAST_FOCUS_TEMPERATURE = Imager.focTemperature;
 var IMAGES_SINCE_LAST_FOCUS = 0;
 
-
 // Get current position of the telescope
+//
 sky6RASCOMTele.Connect();
 sky6RASCOMTele.GetRaDec();
 var startRA = sky6RASCOMTele.dRa;
 var startDEC = sky6RASCOMTele.dDec;
 
 // Get step size in degrees
+//
 var ditherStepDegrees = ditherStepSizeArcSeconds / 3600.0;
     
-// I want to wait for the scope to finish the slew before doing anything else
+// Wait for the scope to finish the slew before doing anything else
+//
 sky6RASCOMTele.Asynchronous = false;
 
 // The track will trace a series of ever increasing circles around the target
@@ -472,12 +482,13 @@ logOutput(status);
 
 // how many images are we taking?
 //
-NUMBER_OF_IMAGES = 0;
-
+var NUMBER_OF_IMAGES = 0;
+logOutput("debug for greg: Checking time for " + NUMBER_OF_FILTERS + " filters" )
 for (var i = 0; i < NUMBER_OF_FILTERS; i++) 
 {    
     if (exposureTimePerFilter[i] > 0)
     {
+        logOutput("debug for greg: " + filterNames[i] + " expose for " + exposureTimePerFilter[i] + " seconds");
         NUMBER_OF_IMAGES += NUMBER_OF_IMAGES_PER_FILTER;
         IMAGES_REMAINING_PER_FILTER[i] = NUMBER_OF_IMAGES_PER_FILTER;
     }
