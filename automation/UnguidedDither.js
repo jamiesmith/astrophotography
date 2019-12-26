@@ -1,4 +1,4 @@
-// UnguidedDitherWFilters.js
+// UnguidedDither.js
 // Based on Dither with ProTrack - Enhanced Version by Richard S. Wright Jr. @ Software Bisque
 // Assumptions: ProTrack is on and enabled (or your exposures are short enough you don't 
 //            need ProTrack.
@@ -509,71 +509,67 @@ var startTime = new Date();
 
 while (imageCount < NUMBER_OF_IMAGES)
 {    
-    if (exposureTimePerFilter[currentFilter] == 0)
+    if (exposureTimePerFilter[currentFilter] > 0)
     {
-        // logOutput("Skipping filter: " + filterNames[currentFilter]);
-        currentFilter++;
-        if (currentFilter >= NUMBER_OF_FILTERS) 
+        // maybe focus
+        //
+        if (shouldFocus(imageCount))
         {
-            currentFilter = 0;    // Back to first, now do dither.
+            autofocusWithFilter(Imager, FOCUS_WITH_FILTER, focusExposureTimePerFilter[FOCUS_WITH_FILTER], FOCUS_BINNING);
         }
-        continue;        
+    
+        // take a picture
+        //    
+        currentTime = new Date();
+        var elapsed = (currentTime - startTime) / 1000;
+        var secondsRemaining = timeRemaining(IMAGES_REMAINING_PER_FILTER);
+
+        Imager.FilterIndexZeroBased = currentFilter;
+    
+        // Take the photo
+        //
+        status = "";    
+        status += "Elapsed time on <" + getCurrentObjectName() + ">: [" + prettyFormatSeconds(elapsed) + "] ";
+        status += "Exposing for ";
+        status += padString(exposureTimePerFilter[currentFilter], 5);
+        status += " seconds ";
+        status += binningPerFilter[currentFilter] + "x" + binningPerFilter[currentFilter];
+        status += " on ";
+        status += padString(filterNames[currentFilter], 10);
+        status += " (";
+        status += NUMBER_OF_IMAGES_PER_FILTER - IMAGES_REMAINING_PER_FILTER[currentFilter] + 1;
+        status += " of ";
+        status += NUMBER_OF_IMAGES_PER_FILTER;
+        status += ")";
+        status += " Remaining [" + prettyFormatSeconds(secondsRemaining) + "] ";
+        status += " Estimated Completion [" + currentTime.addSeconds(secondsRemaining).toLocaleTimeString() + "] ";
+        status += " at " + Imager.focTemperature + " degrees";
+
+        logOutput(status);
+
+        Imager.BinX = binningPerFilter[currentFilter];
+        Imager.BinY = binningPerFilter[currentFilter];    
+
+        var imageStartTime = new Date();
+        Imager.ExposureTime = exposureTimePerFilter[currentFilter];
+        Imager.Delay = DELAY;
+        Imager.TakeImage();
+        var imageEndTIme = new Date();
+    
+        IMAGES_REMAINING_PER_FILTER[currentFilter] -= 1;
+
+        // Calculate a better image download time (it doesn't include filterwheel change...)
+        //        
+        var tmp = Math.ceil((imageEndTIme - imageStartTime) / 1000) - exposureTimePerFilter[currentFilter] - DELAY;
+        if (imageDownloadTimePerBinning[binningPerFilter[currentFilter]] != tmp)
+        {
+            imageDownloadTimePerBinning[binningPerFilter[currentFilter]] = tmp;
+            // logOutput("Adjusting download time for " + binningPerFilter[currentFilter] + "x" + binningPerFilter[currentFilter] + " images to " + tmp + " seconds");
+        }
     }
-    
-    // maybe focus
-    //
-    if (shouldFocus(imageCount))
+    else
     {
-        autofocusWithFilter(Imager, FOCUS_WITH_FILTER, focusExposureTimePerFilter[FOCUS_WITH_FILTER], FOCUS_BINNING);
-    }
-    
-    // take a picture
-    //    
-    currentTime = new Date();
-    var elapsed = (currentTime - startTime) / 1000;
-    var secondsRemaining = timeRemaining(IMAGES_REMAINING_PER_FILTER);
-
-    Imager.FilterIndexZeroBased = currentFilter;
-    
-    // Take the photo
-    //
-    status = "";    
-    status += "Elapsed time on <" + getCurrentObjectName() + ">: [" + prettyFormatSeconds(elapsed) + "] ";
-    status += "Exposing for ";
-    status += padString(exposureTimePerFilter[currentFilter], 5);
-    status += " seconds ";
-    status += binningPerFilter[currentFilter] + "x" + binningPerFilter[currentFilter];
-    status += " on ";
-    status += padString(filterNames[currentFilter], 10);
-    status += " (";
-    status += NUMBER_OF_IMAGES_PER_FILTER - IMAGES_REMAINING_PER_FILTER[currentFilter];
-    status += " of ";
-    status += IMAGES_REMAINING_PER_FILTER[currentFilter];
-    status += ")";
-    status += " Remaining [" + prettyFormatSeconds(secondsRemaining) + "] ";
-    status += " Estimated Completion [" + currentTime.addSeconds(secondsRemaining).toLocaleTimeString() + "] ";
-    status += " at " + Imager.focTemperature + "°";
-
-    logOutput(status);
-
-    Imager.BinX = binningPerFilter[currentFilter];
-    Imager.BinY = binningPerFilter[currentFilter];    
-
-    var imageStartTime = new Date();
-    Imager.ExposureTime = exposureTimePerFilter[currentFilter];
-    Imager.Delay = DELAY;
-    Imager.TakeImage();
-    var imageEndTIme = new Date();
-    
-    IMAGES_REMAINING_PER_FILTER[currentFilter] -= 1;
-
-    // Calculate a better image download time (it doesn't include filterwheel change...)
-    //        
-    var tmp = Math.ceil((imageEndTIme - imageStartTime) / 1000) - exposureTimePerFilter[currentFilter] - DELAY;
-    if (imageDownloadTimePerBinning[binningPerFilter[currentFilter]] != tmp)
-    {
-        imageDownloadTimePerBinning[binningPerFilter[currentFilter]] = tmp;
-        // logOutput("Adjusting download time for " + binningPerFilter[currentFilter] + "x" + binningPerFilter[currentFilter] + " images to " + tmp + " seconds");
+        // logOutput("Skipping filter: " + filterNames[currentFilter]);        
     }
     
     // change the filter
@@ -606,8 +602,6 @@ while (imageCount < NUMBER_OF_IMAGES)
         //
         logOutput("\n==== Dithering OTA ====\n");
         sky6RASCOMTele.SlewToRaDec(startRA + deltaRA, startDEC + deltaDEC,"");
-
-        // Done.        
     }
     
     imageCount++;    
