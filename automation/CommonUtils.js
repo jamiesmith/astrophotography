@@ -1,3 +1,8 @@
+// ############################################################
+// ###### as of right now this is pretty out of date ######
+// ############################################################
+//
+
 // This file contains the things that most of the other things include.  Can't figure out if/how I can include
 const LUM   = 0;        // Just makes it easier to not screw up when it's late at night
 const RED   = 1;        // change if necessary to match your filer configuration
@@ -6,7 +11,6 @@ const BLUE  = 3;
 const SII   = 4;
 const HA    = 5;
 const OIII  = 6;
-
 
 function isSimulator(imager)
 {

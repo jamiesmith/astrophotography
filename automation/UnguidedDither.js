@@ -40,14 +40,12 @@ const OIII              = findFilterIndexFor(ccdsoftCamera, "O");
 // ########## Things you will probably change often  ##########
 // ############################################################
 //
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// ~~~~~~~~~~ IMAGING Paremeters                     ~~~~~~~~~~
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//
 var NUMBER_OF_IMAGES_PER_FILTER = 10;  // Number of Images per filter
 var DELAY                       = 5;   // Delay between exposures. Give adequate settle time
-
-// Focus every x- you can use any of the conditions.  Each is reset when focusing
-//
-var FOCUS_EVERY_X_IMAGES        = 3;  // Refocus every so many frames (just make arbitrarily large to skip)
-var FOCUS_EVERY_X_DEGREES       = 0.5; // Refocus when the temperature changes more than x (just make arbitrarily large to skip)
-var FOCUS_EVERY_X_MINUTES       = 30;  // Refocus after elapsed time (just make arbitrarily large to skip)
 
 // Each filter can have its own exposure length.
 // If the exposure length is 0 that filter will be skipped when imaging!!
@@ -72,13 +70,24 @@ binningPerFilter[SII  ] = 1;
 binningPerFilter[HA   ] = 1;
 binningPerFilter[OIII ] = 1;
 
-// How to focus?
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// ~~~~~~~~~~ FOCUSING Paremeters                    ~~~~~~~~~~
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //
 var FOCUS_WITH_FILTER = RED;
 var FOCUS_BINNING     = 2;
 
+// Focus every x- you can use any of the conditions.  
+// If ANY of these conditions are met it will focus.  It won't ever interrupt an image to focus.
+// Set to arbitrarily large values to skip/omit any conditions
+// Each is reset when focusing, so if it focuses for any condition then they all start over
+//
+var FOCUS_EVERY_X_IMAGES        = 7;   // Refocus every so many frames (just make arbitrarily large to skip)
+var FOCUS_EVERY_X_DEGREES       = 0.5; // Refocus when the temperature changes more than x (just make arbitrarily large to skip)
+var FOCUS_EVERY_X_MINUTES       = 30;  // Refocus after elapsed time (just make arbitrarily large to skip)
+
 var focusExposureTimePerFilter = new Array(NUMBER_OF_FILTERS);
-focusExposureTimePerFilter[LUM  ] = 1;   // Yeah. these are tied to binning.  
+focusExposureTimePerFilter[LUM  ] = 1;   // Yeah. these are tied to binning.  Most folks just focus @ 2x2
 focusExposureTimePerFilter[RED  ] = 1;
 focusExposureTimePerFilter[GREEN] = 1;
 focusExposureTimePerFilter[BLUE ] = 1;
@@ -91,15 +100,15 @@ focusExposureTimePerFilter[OIII ] = 1;
 // ############################################################
 // 
 var FILTER_CHANGE_TIME          = 5;     // A guess is fine here, it will be calculated
-var TIME_IT_TAKES_TO_FOCUS      = 60;    // This will vary and gets calculated when focusing
+var TIME_IT_TAKES_TO_FOCUS      = 60;    // This will vary and gets calculated when focusing, this is an initial guess
 
-logOutput("Calculated LUM" + " at position " + LUM);
-logOutput("Calculated RED" + " at position " + RED);
+logOutput("Calculated LUM"   + " at position " + LUM);
+logOutput("Calculated RED"   + " at position " + RED);
 logOutput("Calculated GREEN" + " at position " + GREEN);
-logOutput("Calculated BLUE" + " at position " + BLUE);
-logOutput("Calculated SII" + " at position " + SII);
-logOutput("Calculated HA" + " at position " + HA);
-logOutput("Calculated OIII" + " at position " + OIII);
+logOutput("Calculated BLUE"  + " at position " + BLUE);
+logOutput("Calculated SII"   + " at position " + SII);
+logOutput("Calculated HA"    + " at position " + HA);
+logOutput("Calculated OIII"  + " at position " + OIII);
 
 // Image Download Times
 //
@@ -114,7 +123,7 @@ imageDownloadTimePerBinning[4] = 2;   // download for 4x4 binning
 // imageDownloadTimePerBinning[7];   // download for 7x7 binning (and so on)
 
 // ############################################################
-// ########### Things you likely won't change ever  ###########
+// ########### Things you MIGHT change once         ###########
 // ############################################################
 //
 var ditherStepSizeArcSeconds = 5.0;      // Amount of dither between exposures in arcseconds
@@ -151,7 +160,6 @@ function getFilterCount(imager)
     
     return 0;
 }
-
 
 function findFilterIndexFor(imager, filter)
 {
@@ -225,7 +233,7 @@ function autofocus(imager, exposureTime, binning)
 {    
     var discreteStartTime = new Date();
     
-    logOutput("Attempting to focus with " + filterNames[imager.FilterIndexZeroBased] + " bin:" + binning + "x" + binning + " @ " + focusExposureTimePerFilter[imager.FilterIndexZeroBased] + " second(s)")
+    logOutput("Attempting to focus with " + filterNames[imager.FilterIndexZeroBased] + "  " + binning + "x" + binning + " @ " + focusExposureTimePerFilter[imager.FilterIndexZeroBased] + " second(s)")
     if (isSimulator(imager))
     {
         logOutput("Skipping @focus3, running with the simulator")
@@ -249,18 +257,17 @@ function autofocus(imager, exposureTime, binning)
         imager.BinY = saveBinY;
         imager.Delay = saveDelay;
         imager.ExposureTime = saveExposureTime;        
-        
     }
     
     var discreteEndTime = new Date();
     
     TIME_IT_TAKES_TO_FOCUS = Math.floor((discreteEndTime - discretStartTime) / 1000);
     
+    // Reset the last focus variables so we don't focus too soon
+    //
     LAST_FOCUS_TIME =  new Date();
     LAST_FOCUS_TEMPERATURE = Imager.focTemperature;
     IMAGES_SINCE_LAST_FOCUS = 0;
-    
-    
 }
 
 function prettyFormatSeconds(seconds)
@@ -500,10 +507,9 @@ status = "";
 status += "we are taking " + NUMBER_OF_IMAGES + " images.  ";
 status += "Looks like it will take ";
 status += timeLeft;
-status += " seconds to run";
-status += " Estimated Completion [" + currentTime.addSeconds(timeLeft).toLocaleTimeString() + "] ";
+status += " seconds to run; ";
+status += " estimated completion time [" + currentTime.addSeconds(timeLeft).toLocaleTimeString() + "] ";
 logOutput(status);
-
 
 var startTime = new Date();
 
@@ -558,7 +564,7 @@ while (imageCount < NUMBER_OF_IMAGES)
     
         IMAGES_REMAINING_PER_FILTER[currentFilter] -= 1;
 
-        // Calculate a better image download time (it doesn't include filterwheel change...)
+        // Calculate a better image download time (this doesn't include filterwheel change...)
         //        
         var tmp = Math.ceil((imageEndTIme - imageStartTime) / 1000) - exposureTimePerFilter[currentFilter] - DELAY;
         if (imageDownloadTimePerBinning[binningPerFilter[currentFilter]] != tmp)
@@ -600,7 +606,7 @@ while (imageCount < NUMBER_OF_IMAGES)
 
         // Slew to next location
         //
-        logOutput("\n==== Dithering OTA ====\n");
+        logOutput("\n==== Dithering ====\n");
         sky6RASCOMTele.SlewToRaDec(startRA + deltaRA, startDEC + deltaDEC,"");
     }
     
@@ -609,8 +615,6 @@ while (imageCount < NUMBER_OF_IMAGES)
 
 // sky6RASCOMTele.Park();
 
-// Old Style output
-out = "Dithered run complete\r\n";
-
-logOutput(out);
-
+logOutput("###############################################");
+logOutput("############ Dithered run complete ############");
+logOutput("###############################################");
