@@ -13,8 +13,7 @@ function dirsync
 #
 while [ 1 ]
 do
+    dirsync "/Volumes/AstroImages/" "/Users/jamie/AstroMirror"
+    dirsync "/Volumes/AstroImages/" "/Volumes/MIRRORIMAGE"
     sleep 10
-    dirsync "/Volumes/AstroImages" "/Volumes/AstroMirror"
-    dirsync "/Volumes/AstroImages" "/Volumes/MIRRORIMAGE"
-    
 done
