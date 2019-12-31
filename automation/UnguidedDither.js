@@ -52,14 +52,14 @@ var DELAY                       = 5;   // Delay between exposures. Give adequate
 //
 var exposureTimePerFilter = new Array(NUMBER_OF_FILTERS);
 exposureTimePerFilter[LUM  ] = 0;
-exposureTimePerFilter[RED  ] = 300;
-exposureTimePerFilter[GREEN] = 300;
-exposureTimePerFilter[BLUE ] = 300;
+exposureTimePerFilter[RED  ] = 3;
+exposureTimePerFilter[GREEN] = 3;
+exposureTimePerFilter[BLUE ] = 3;
 exposureTimePerFilter[SII  ] = 0;
 exposureTimePerFilter[HA   ] = 0;
 exposureTimePerFilter[OIII ] = 0;
 
-// Each filter can have its own binning.
+// Each filter can have its own binning during imaging runs.
 //
 var binningPerFilter = new Array(NUMBER_OF_FILTERS);
 binningPerFilter[LUM  ] = 1;
@@ -76,6 +76,7 @@ binningPerFilter[OIII ] = 1;
 //
 var FOCUS_WITH_FILTER = SII;
 var FOCUS_BINNING     = 2;
+var FOCUS_EXPOSURE_TIME = 0.2;
 
 // Focus every x- you can use any of the conditions.  
 // If ANY of these conditions are met it will focus.  It won't ever interrupt an image to focus.
@@ -86,15 +87,6 @@ var FOCUS_EVERY_X_IMAGES        = 3;   // Refocus every so many frames (just mak
 var FOCUS_EVERY_X_DEGREES       = 0.5; // Refocus when the temperature changes more than x (just make arbitrarily large to skip)
 var FOCUS_EVERY_X_MINUTES       = 30;  // Refocus after elapsed time (just make arbitrarily large to skip)
 
-var focusExposureTimePerFilter = new Array(NUMBER_OF_FILTERS);
-focusExposureTimePerFilter[LUM  ] = 1;   // Yeah. these are tied to binning.  Most folks just focus @ 2x2
-focusExposureTimePerFilter[RED  ] = 1;
-focusExposureTimePerFilter[GREEN] = 1;
-focusExposureTimePerFilter[BLUE ] = 1;
-focusExposureTimePerFilter[SII  ] = .2;
-focusExposureTimePerFilter[HA   ] = 1;
-focusExposureTimePerFilter[OIII ] = 1;
-
 // ############################################################
 // ################ things you will set once  ################$
 // ############################################################
@@ -102,13 +94,13 @@ focusExposureTimePerFilter[OIII ] = 1;
 var FILTER_CHANGE_TIME          = 5;     // A guess is fine here, it will be calculated
 var TIME_IT_TAKES_TO_FOCUS      = 60;    // This will vary and gets calculated when focusing, this is an initial guess
 
-logOutput("Calculated LUM"   + " at position " + LUM);
-logOutput("Calculated RED"   + " at position " + RED);
-logOutput("Calculated GREEN" + " at position " + GREEN);
-logOutput("Calculated BLUE"  + " at position " + BLUE);
-logOutput("Calculated SII"   + " at position " + SII);
-logOutput("Calculated HA"    + " at position " + HA);
-logOutput("Calculated OIII"  + " at position " + OIII);
+logOutput("LUM position:   " + LUM);
+logOutput("RED position:   " + RED);
+logOutput("GREEN position: " + GREEN);
+logOutput("BLUE position:  " + BLUE);
+logOutput("SII position:   " + SII);
+logOutput("HA position:    " + HA);
+logOutput("OIII position:  " + OIII);
 
 // Image Download Times
 //
@@ -233,7 +225,7 @@ function autofocus(imager, exposureTime, binning)
 {    
     var discreteStartTime = new Date();
     
-    logOutput("Attempting to focus with " + filterNames[imager.FilterIndexZeroBased] + "  " + binning + "x" + binning + " @ " + focusExposureTimePerFilter[imager.FilterIndexZeroBased] + " second(s)")
+    logOutput("Attempting to focus with " + filterNames[imager.FilterIndexZeroBased] + "  " + binning + "x" + binning + " @ " + FOCUS_EXPOSURE_TIME + " second(s)")
     if (isSimulator(imager))
     {
         logOutput("Skipping @focus3, running with the simulator")
@@ -482,7 +474,9 @@ var discreteEndTime = new Date();
 // Start taking images
 //
 logOutput("Starting unguided, dithered image run of " + getCurrentObjectName());
-var status = "Dither Step size = ";
+var status = "";
+
+status = "Dither Step size = ";
 status += ditherStepSizeArcSeconds;
 status += " arcseconds\r\n";
 logOutput(status);
@@ -490,12 +484,11 @@ logOutput(status);
 // how many images are we taking?
 //
 var NUMBER_OF_IMAGES = 0;
-logOutput("debug for greg: Checking time for " + NUMBER_OF_FILTERS + " filters" )
+
 for (var i = 0; i < NUMBER_OF_FILTERS; i++) 
 {    
     if (exposureTimePerFilter[i] > 0)
     {
-        logOutput("debug for greg: " + filterNames[i] + " expose for " + exposureTimePerFilter[i] + " seconds");
         NUMBER_OF_IMAGES += NUMBER_OF_IMAGES_PER_FILTER;
         IMAGES_REMAINING_PER_FILTER[i] = NUMBER_OF_IMAGES_PER_FILTER;
     }
@@ -505,7 +498,7 @@ var timeLeft = timeRemaining(IMAGES_REMAINING_PER_FILTER);
 
 status = "";
 status += "we are taking " + NUMBER_OF_IMAGES + " images.  ";
-status += "Looks like it will take ";
+status += "Which will take approximately ";
 status += timeLeft;
 status += " seconds to run; ";
 status += " estimated completion time [" + currentTime.addSeconds(timeLeft).toLocaleTimeString() + "] ";
@@ -521,7 +514,7 @@ while (imageCount < NUMBER_OF_IMAGES)
         //
         if (shouldFocus(imageCount))
         {
-            autofocusWithFilter(Imager, FOCUS_WITH_FILTER, focusExposureTimePerFilter[FOCUS_WITH_FILTER], FOCUS_BINNING);
+            autofocusWithFilter(Imager, FOCUS_WITH_FILTER, FOCUS_EXPOSURE_TIME, FOCUS_BINNING);
         }
     
         // take a picture
