@@ -44,7 +44,7 @@ const OIII              = findFilterIndexFor(ccdsoftCamera, "O");
 // ~~~~~~~~~~ IMAGING Paremeters                     ~~~~~~~~~~
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //
-var NUMBER_OF_IMAGES_PER_FILTER = 15;  // Number of Images per filter
+var NUMBER_OF_IMAGES_PER_FILTER = 20;   // Number of Images per filter
 var DELAY                       = 5;   // Delay between exposures. Give adequate settle time
 
 // Each filter can have its own exposure length.
@@ -574,7 +574,7 @@ while (imageCount < NUMBER_OF_IMAGES)
         }
 		
 		IMAGES_SINCE_LAST_FOCUS++;
-        imageCount++;           
+        imageCount++;       
     }
     else
     {
