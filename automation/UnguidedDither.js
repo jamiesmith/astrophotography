@@ -52,9 +52,9 @@ var DELAY                       = 5;   // Delay between exposures. Give adequate
 //
 var exposureTimePerFilter = new Array(NUMBER_OF_FILTERS);
 exposureTimePerFilter[LUM  ] = 0;
-exposureTimePerFilter[RED  ] = 3;
-exposureTimePerFilter[GREEN] = 3;
-exposureTimePerFilter[BLUE ] = 3;
+exposureTimePerFilter[RED  ] = 300;
+exposureTimePerFilter[GREEN] = 300;
+exposureTimePerFilter[BLUE ] = 300;
 exposureTimePerFilter[SII  ] = 0;
 exposureTimePerFilter[HA   ] = 0;
 exposureTimePerFilter[OIII ] = 0;
@@ -74,9 +74,9 @@ binningPerFilter[OIII ] = 1;
 // ~~~~~~~~~~ FOCUSING Paremeters                    ~~~~~~~~~~
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //
-var FOCUS_WITH_FILTER = SII;
+var FOCUS_WITH_FILTER = BLUE;
 var FOCUS_BINNING     = 2;
-var FOCUS_EXPOSURE_TIME = 0.2;
+var FOCUS_EXPOSURE_TIME = 0.5;
 
 // Focus every x- you can use any of the conditions.  
 // If ANY of these conditions are met it will focus.  It won't ever interrupt an image to focus.
