@@ -27,6 +27,7 @@
 // The values of these will be calculated from the filter wheel object
 // they ASSUME that the first character of your filter names matche one of L/R/G/B/H/S/O
 // It's case insensitive, so luminance, lum, Lum
+//
 const NUMBER_OF_FILTERS = getFilterCount(ccdsoftCamera);  
 const LUM               = findFilterIndexFor(ccdsoftCamera, "L");
 const RED               = findFilterIndexFor(ccdsoftCamera, "R");
@@ -44,20 +45,32 @@ const OIII              = findFilterIndexFor(ccdsoftCamera, "O");
 // ~~~~~~~~~~ IMAGING Paremeters                     ~~~~~~~~~~
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //
-var NUMBER_OF_IMAGES_PER_FILTER = 20;   // Number of Images per filter
 var DELAY                       = 5;   // Delay between exposures. Give adequate settle time
 
 // Each filter can have its own exposure length.
-// If the exposure length is 0 that filter will be skipped when imaging!!
+// If the exposure length or count is 0 that filter will be skipped when imaging!!
 //
 var exposureTimePerFilter = new Array(NUMBER_OF_FILTERS);
-exposureTimePerFilter[LUM  ] = 0;
-exposureTimePerFilter[RED  ] = 300;
-exposureTimePerFilter[GREEN] = 300;
-exposureTimePerFilter[BLUE ] = 300;
-exposureTimePerFilter[SII  ] = 0;
-exposureTimePerFilter[HA   ] = 0;
-exposureTimePerFilter[OIII ] = 0;
+exposureTimePerFilter[LUM  ] = 300;
+exposureTimePerFilter[RED  ] = 500;
+exposureTimePerFilter[GREEN] = 500;
+exposureTimePerFilter[BLUE ] = 500;
+exposureTimePerFilter[SII  ] = 600;
+exposureTimePerFilter[HA   ] = 600;
+exposureTimePerFilter[OIII ] = 600;
+
+// Each filter can have its own number of exposures
+// If the exposure length or count is 0 that filter will be skipped when imaging!!
+//
+var numberOfExposuresPerFilter = new Array(NUMBER_OF_FILTERS);
+numberOfExposuresPerFilter[LUM  ] = 20;
+numberOfExposuresPerFilter[RED  ] = 20;
+numberOfExposuresPerFilter[GREEN] = 20;
+numberOfExposuresPerFilter[BLUE ] = 20;
+numberOfExposuresPerFilter[SII  ] = 20;
+numberOfExposuresPerFilter[HA   ] = 20;
+numberOfExposuresPerFilter[OIII ] = 20;
+
 
 // Each filter can have its own binning during imaging runs.
 //
@@ -118,9 +131,9 @@ imageDownloadTimePerBinning[4] = 2;   // download for 4x4 binning
 // ########### Things you MIGHT change once         ###########
 // ############################################################
 //
-var ditherStepSizeArcSeconds = 5.0;      // Amount of dither between exposures in arcseconds
+var ditherStepSizeArcSeconds = 13.0;     // Amount of dither between exposures in arcseconds
 var decMinus = 1.0;                      // Set one of these to zero to limit dec movements to one direction
-var decPlus = 1.0;
+var decPlus  = 1.0;
 
 var IMAGES_REMAINING_PER_FILTER = new Array();
 
@@ -237,13 +250,13 @@ function autofocus(imager, exposureTime, binning)
         var saveBinX = imager.BinX
         var saveBinY = imager.BinY        
         var saveDelay = imager.Delay
-        var saveExposureTime = imager.ExposureTime
+        var saveExposureTime = imager.ExposureTime  
         
         imager.BinX = binning;
         imager.BinY = binning;
         imager.Delay = 0;
-        imager.ExposureTime = exposureTime;
-        imager.AtFocus3(3, true);    // Three samples per position, full-auto on subframe selection
+        imager.ExposureTime = exposureTime;  // Not convinced that this does anything
+        imager.AtFocus3(3, true);            // Three samples per position, full-auto on subframe selection
         
         imager.BinX = saveBinX;
         imager.BinY = saveBinY;
@@ -489,8 +502,8 @@ for (var i = 0; i < NUMBER_OF_FILTERS; i++)
 {    
     if (exposureTimePerFilter[i] > 0)
     {
-        NUMBER_OF_IMAGES += NUMBER_OF_IMAGES_PER_FILTER;
-        IMAGES_REMAINING_PER_FILTER[i] = NUMBER_OF_IMAGES_PER_FILTER;
+        NUMBER_OF_IMAGES += numberOfExposuresPerFilter[i];
+        IMAGES_REMAINING_PER_FILTER[i] = numberOfExposuresPerFilter[i];
     }
 }
 
@@ -508,7 +521,7 @@ var startTime = new Date();
 
 while (imageCount < NUMBER_OF_IMAGES)
 {    
-    if (exposureTimePerFilter[currentFilter] > 0)
+    if (exposureTimePerFilter[currentFilter] > 0 && IMAGES_REMAINING_PER_FILTER[currentFilter] > 0)
     {
         // maybe focus
         //
@@ -536,9 +549,9 @@ while (imageCount < NUMBER_OF_IMAGES)
         status += " on ";
         status += padString(filterNames[currentFilter], 10);
         status += " (";
-        status += NUMBER_OF_IMAGES_PER_FILTER - IMAGES_REMAINING_PER_FILTER[currentFilter] + 1;
+        status += numberOfExposuresPerFilter[currentFilter] - IMAGES_REMAINING_PER_FILTER[currentFilter] + 1;
         status += " of ";
-        status += NUMBER_OF_IMAGES_PER_FILTER;
+        status += numberOfExposuresPerFilter[currentFilter];
         status += ")";
         status += " Remaining [" + prettyFormatSeconds(secondsRemaining) + "] ";
         status += " Estimated Completion [" + currentTime.addSeconds(secondsRemaining).toLocaleTimeString() + "] ";
