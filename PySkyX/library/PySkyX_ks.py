@@ -2740,7 +2740,7 @@ def takeDark(exposure, numFrames):
     timeStamp("Finished.")
 
 
-def takeFlat(filterNum, numFlats, takeDarks):
+def takeFlat(filterNum, startingExposure, numFlats, takeDarks):
 #
 # This function takes a an appropriately exposed flat.
 #
@@ -2783,7 +2783,7 @@ def takeFlat(filterNum, numFlats, takeDarks):
         brightness = avgPixelValue / fullWell
 
         units = brightness / float(exposure)
-        goalExposure = 0.40 / units
+        goalExposure = 0.50 / units
         imgPath=TSXSend("ccdsoftCameraImage.Path")
         if os.path.exists(imgPath):
             writeNote("Removing test image.")
@@ -2807,7 +2807,7 @@ def takeFlat(filterNum, numFlats, takeDarks):
     timeStamp("Taking flat frames.")
     print("     PLAN: " + numFlats + " flat frame(s).")
 
-    exposure = 1 
+    exposure = startingExposure
 
     if TSXSend("SelectedHardware.filterWheelModel") != "<No Filter Wheel Selected>":
         TSXSend("ccdsoftCamera.filterWheelConnect()")	
