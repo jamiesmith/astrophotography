@@ -291,5 +291,8 @@ if str(TSXSend('ccdsoftCamera.PropStr("m_csObserver")')) ==  "Ken Sturrock":
 		writeNote("Setting QSI Camera to faster download mode.")	
 
 timeStamp("Finished Calibration Run.")
+myFMPanel.Light("OFF")
+myFMPanel.Disconnect()
+
 
 done = input("Press enter to exit")
