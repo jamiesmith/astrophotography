@@ -25,9 +25,9 @@ timeStamp("Starting Calibration Run.")
 
 print("")
 
-filStart = input("With which filter slot should we start? The first slot is 0 (Zero). ")
-numFilters = input("How many filters to calibrate? ")
-numFrames = input("How many frames per filter? ")
+filStart = promptForValueWithDefault("With which filter slot should we start? The first slot is 0 (Zero). ", 0)
+numFilters = promptForValueWithDefault("How many filters to calibrate? ", 1)
+numFrames = promptForValueWithDefault("How many frames per filter? ", 5 )
 
 print("")
 
@@ -41,37 +41,43 @@ filCounter = int(filStart)
 target = numFilters + filCounter
 
 while (filCounter < target):
-    expUsed.append(takeFlat(str(filCounter), str(numFrames), "No"))
+    expUsed.append(takeProperFlat(filterNum = str(filCounter), 
+                    startingExposure = 1, 
+                    targetPercentage = 40 , 
+                    numFlats = str(numFrames), 
+                    binning = 2,
+                    takeDarks = "No"))
     filCounter = filCounter + 1
 
 TSXSend('ccdsoftCamera.setPropStr("m_csCustomFileNameFlat", "' + oldASFormula + '")')
 
 
-print("")
-timeStamp("Taking matching dark frames.")
-print("")
-writeNote("If prompted, please cover OTA or turn off flat panel light.")
-print("")
-
-
-oldASFormula = TSXSend('ccdsoftCamera.PropStr("m_csCustomFileNameDark")')
-TSXSend('ccdsoftCamera.setPropStr("m_csCustomFileNameDark", "_:i_:f_:e_")')
-
-numFilters = int(numFilters)
-filCounter = int(filStart)
-arrayCounter = 0
-
-target = numFilters + filCounter
-
-while (filCounter < target):
-    TSXSend("ccdsoftCamera.FilterIndexZeroBased = " + str(filCounter))
-    takeDark(expUsed[arrayCounter], numFrames)
-    filCounter = filCounter + 1
-    arrayCounter = arrayCounter + 1
-
-TSXSend('ccdsoftCamera.setPropStr("m_csCustomFileNameDark", "' + oldASFormula + '")')
-
-print("")
+# print("")
+# timeStamp("Taking matching dark frames.")
+# print("")
+# writeNote("If prompted, please cover OTA or turn off flat panel light.")
+# print("")
+#
+#
+# oldASFormula = TSXSend('ccdsoftCamera.PropStr("m_csCustomFileNameDark")')
+# TSXSend('ccdsoftCamera.setPropStr("m_csCustomFileNameDark", "_:i_:f_:e_")')
+#
+# numFilters = int(numFilters)
+# filCounter = int(filStart)
+# arrayCounter = 0
+#
+# target = numFilters + filCounter
+#
+# while (filCounter < target):
+#     TSXSend("ccdsoftCamera.FilterIndexZeroBased = " + str(filCounter))
+#     takeDark(expUsed[arrayCounter], numFrames)
+#     filCounter = filCounter + 1
+#     arrayCounter = arrayCounter + 1
+#
+# TSXSend('ccdsoftCamera.setPropStr("m_csCustomFileNameDark", "' + oldASFormula + '")')
+#
+# print("")
 
 timeStamp("Finished Calibration Run.")
 
+done = input("Press enter to exit")

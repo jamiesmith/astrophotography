@@ -45,7 +45,9 @@ const OIII              = findFilterIndexFor(ccdsoftCamera, "O");
 // ~~~~~~~~~~ IMAGING Paremeters                     ~~~~~~~~~~
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //
-var DELAY                       = 5;   // Delay between exposures. Give adequate settle time
+var DELAY            = 5;        // Delay between exposures. Give adequate settle time
+var FOCUS_AT_START   = true;     // If true then the first thing it does is a focus routine.
+var TARGET_NAME      = "M 39";   // Placeholder for when I add closed-loop slew
 
 // Each filter can have its own exposure length.
 // If the exposure length or count is 0 that filter will be skipped when imaging!!
@@ -421,6 +423,37 @@ function calculateFilterChangeTime(imager)
     FILTER_CHANGE_TIME = Math.floor( (discreteEndTime - discretStartTime) / 1000 / 2 );
 }
 
+function closedLoopSlew(imager, targetName)
+{
+    var status = 0;
+    
+    logOutput("");
+    logOutput("Performing a Closed Loop Slew to " + targetName);
+    
+    sky6StarChart.Find(targetName);
+    TheSkyXAction.execute("LOOK_UP");
+    
+    try 
+    {
+        // Turn on camera autosave
+        //
+        imager.Connect();
+        imager.AutoSaveOn = 1;
+    
+        status = ClosedLoopSlew.exec();
+    }
+    catch(e) 
+    {
+    	logOutput("");
+        logOutput("Closed Loop Slew error: " + e);
+    	logOutput("");
+        return -999;
+    }    
+    
+    return status;    
+}
+
+
 ///////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////
 
@@ -437,10 +470,6 @@ Imager.Autoguider = false;
 Imager.Connect();
 Imager.Asynchronous = false;
 Imager.Autosave = true;
-
-// Set the save prefix to the current object, when we dither it gets lost
-//
-Imager.AutoSavePrefix = getCurrentObjectName() + "-";
 
 var filterNames = getFilterNameArray(Imager);
 
@@ -518,6 +547,33 @@ status += " estimated completion time [" + currentTime.addSeconds(timeLeft).toLo
 logOutput(status);
 
 var startTime = new Date();
+
+if (FOCUS_AT_START)
+{
+    autofocusWithFilter(Imager, FOCUS_WITH_FILTER, FOCUS_EXPOSURE_TIME, FOCUS_BINNING);
+}
+
+if (TARGET_NAME != "")
+{
+    var ret = closedLoopSlew(Imager, TARGET_NAME);
+    
+    logOutput("CLS returned [" + ret + "]") 
+
+    if (ret != 0)
+    {
+        // Not sure how to abort...
+        //
+        exit;
+    }
+    
+    // Set the save prefix to the current object, when we dither it gets lost
+    //
+    Imager.AutoSavePrefix = TARGET_NAME + "-";
+}
+else
+{
+    Imager.AutoSavePrefix = getCurrentObjectName() + "-";    
+}
 
 while (imageCount < NUMBER_OF_IMAGES)
 {    
