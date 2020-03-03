@@ -470,6 +470,7 @@ Imager.Autoguider = false;
 Imager.Connect();
 Imager.Asynchronous = false;
 Imager.Autosave = true;
+Imager.Frame = 1;  // Light frames
 
 var filterNames = getFilterNameArray(Imager);
 
