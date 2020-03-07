@@ -39,180 +39,43 @@ import time
 import sys
 import os
 import glob
-import serial
 
 from library.PySkyX_ks import *
-from library.flatman_ctl import *
+from library.PySkyX_jrs import *
 
-LUM	   = 0
-RED	   = 1
+# JRS import serial
+# JRS from library.flatman_ctl import *
+
+LUM       = 0
+RED       = 1
 GREEN  = 2
 BLUE   = 3
-SII	   = 4
-HA	   = 5
+SII       = 4
+HA       = 5
 OIII   = 6
 
-def getStartingExposureTime(filterNum, binning):
-	
-	print("	 ----")
-	writeNote("Getting the starting exposure for filter: " + str(filCounter))
-	print("	 ----")
-	exposure = 0
-
-	if filCounter == LUM:
-		# .56, .44, .87, .42
-		exposure = .56
-
-	if filCounter == RED:
-		# 1.33, .87, .55, .36
-		exposure = 1.33
-		
-	if filCounter == GREEN:
-		# 1, .58, .46, .46
-		exposure = 1.0
-
-	if filCounter == BLUE:
-		# .64, .36, .28, .28
-		exposure = 0.64
-
-	if filCounter == SII:
-		# 23, 5.56, 2.5, 1.2
-		exposure = 23.0
-
-	if filCounter == HA:
-		# 5.4, 1.16, .63, .61	
-		exposure = 5.4
-	 
-	if filCounter == OIII:
-		# 1.33, .87, .55, .36
-		exposure = 1.33
-	
-	writeNote("using starting exposure time of " + str(exposure))
-	return exposure
-
-def FPAdjust():
-	print("	 ----")
-	writeNote("Adjusting the panel for filter: " + str(filCounter))
-	print("	 ----")
-
-	if str(TSXSend('ccdsoftCamera.PropStr("m_csObserver")')) ==  "Ken Sturrock":
-		#
-		# The following two sections are customized for my cameras
-		#
-		if str(TSXSend("SelectedHardware.cameraModel")) == "ASICamera": 
-			writeNote("Setting Panel for Ken's ASI-183")
-
-			if filCounter == LUM:
-				writeNote("Setting panel to 40.")
-				myFMPanel.Brightness(40)
-	
-			if filCounter == RED:
-				writeNote("Setting panel to 200.")
-				myFMPanel.Brightness(200)
-	
-			if filCounter == GREEN:
-				writeNote("Setting panel to 50.")
-				myFMPanel.Brightness(50)
-		
-			if filCounter == BLUE:
-				writeNote("Setting panel to 50.")
-				myFMPanel.Brightness(50)
-		
-			if filCounter == SII:
-				writeNote("Setting panel to 50.")
-				myFMPanel.Brightness(50)
-
-			if filCounter == HA:
-				writeNote("Setting panel to 50.")
-				myFMPanel.Brightness(50)
-			 
-			if filCounter == OIII:
-				writeNote("Setting panel to 50.")
-				myFMPanel.Brightness(50)
-
-		if TSXSend("SelectedHardware.cameraModel") == "QSI Camera  ":
-			writeNote("Setting panel for Ken's QSI-690")
-
-
-			if filCounter == 0:
-				writeNote("Setting panel to 40.")
-				myFMPanel.Brightness(40)
-	
-			if filCounter == 1:
-				writeNote("Setting panel to 50.")
-				myFMPanel.Brightness(50)
-	
-			if filCounter == 2:
-				writeNote("Setting panel to 50.")
-				myFMPanel.Brightness(50)
-		
-			if filCounter == 3:
-				writeNote("Setting panel to 50.")
-				myFMPanel.Brightness(50)
-		
-			if filCounter == 4:
-				writeNote("Setting panel to 250.")
-				myFMPanel.Brightness(250)
-		
-			if filCounter == 5:
-				writeNote("Setting panel to 200.")
-				myFMPanel.Brightness(200)
-		
-			if filCounter == 6:
-				writeNote("Setting panel to 250.")
-				myFMPanel.Brightness(250)
-		
-			if filCounter == 7:
-				writeNote("Setting panel to 250.")
-				myFMPanel.Brightness(250)
-
-	else:
-		print("Camera detected as " + str(TSXSend("SelectedHardware.cameraModel")))
-	
-		if filCounter == LUM:
-			# 30, 15, 8, 8
-			writeNote("Setting panel to 30.")
-			myFMPanel.Brightness(30)
-
-		if filCounter == RED:
-			# 255, 55, 38, 32
-			writeNote("Setting panel to 255.")
-			myFMPanel.Brightness(255)
-
-		if filCounter == GREEN:
-			# 60, 30, 20, 15
-			writeNote("Setting panel to 60.")
-			myFMPanel.Brightness(60)
-	
-		if filCounter == BLUE:
-			# 60, 30, 20, 15
-			writeNote("Setting panel to 60.")
-			myFMPanel.Brightness(60)
-	
-		if filCounter == SII:
-			# 255, 255, 255, 255
-			writeNote("Setting panel to 255.")
-			myFMPanel.Brightness(255)
-
-		if filCounter == HA:
-			# 255, 255, 255, 255
-			writeNote("Setting panel to 255.")
-			myFMPanel.Brightness(255)
-		 
-		if filCounter == OIII:
-			# 255, 255, 150, 65
-			writeNote("Setting panel to 255.")
-			myFMPanel.Brightness(255)		 
-
-expUsed = []
+def setFlatPanel(filterNum, binning):
+    print("     ----")
+    writeNote(f"Adjusting the panel for filter: {getFilterAtSlot(filCounter)} @ {binning}x{binning}")
+    print("     ----")
+    
+    brightness = getBrightnessForFilter(filterNum, binning)
+    # JRS myFMPanel.Brightness(brightness)
+    
 
 timeStamp("Starting Calibration run.")
 
 print("")
 
-filStart = input("	INPUT: Starting filter number (first slot is 0 (zero))? ")
-numFilters = input("	INPUT: How many filters to calibrate? ")
-numFrames = input("	INPUT: How many frames per filter? ")
+# ------------------------------------------------------------
+# Get some settings
+# ------------------------------------------------------------
+#
+
+filStart = promptForValueWithDefault("With which filter slot should we start? The first slot is 0 (" + getFilterAtSlot(0) + "). ", 0)
+numFilters = promptForValueWithDefault("How many filters to calibrate? ", 1)
+numFrames = promptForValueWithDefault("How many frames per filter? ", 5 )
+takeFlatDarks = promptForValueWithDefault("Take Flat Darks? ", "Y")
 
 print("")
 
@@ -220,79 +83,85 @@ FMSerialPort = "COM10"
 
 # Setting up the panel
 
-myFMPanel = FlatMan(FMSerialPort, False, model=FLIPFLAP)
+# JRS myFMPanel = FlatMan(FMSerialPort, False, model=FLIPFLAP)
 
 print("")
 writeNote("Attempting to connect to: " + FMSerialPort)
 
-myFMPanel.Connect()
-myFMPanel.Close()
+# JRS myFMPanel.Connect()
+# JRS myFMPanel.Close()
 
 writeNote("Switching panel on.")
 
-myFMPanel.Light("ON")
+# JRS myFMPanel.Light("ON")
 
 # Moving on to the real calibration section
 
 writeNote("Calibrating " + numFilters + " filters.")
 
-
-oldASFormula = TSXSend('ccdsoftCamera.PropStr("m_csCustomFileNameFlat")')
-writeNote("Changing the flat Autosave name formula from " + oldASFormula + " to :i_:f_:e_ ")
-TSXSend('ccdsoftCamera.setPropStr("m_csCustomFileNameFlat", ":i_:f_:e_")')
-
 numFilters = int(numFilters)
 filCounter = int(filStart)
 target = numFilters + filCounter
+
+# ------------------------------------------------------------
+# Take the flats
+# ------------------------------------------------------------
+#
+binning = 1
 while (filCounter < target):
-	
-	FPAdjust()
-	expUsed.append(takeFlat(str(filCounter), getStartingExposureTime(filCounter, 1), str(numFrames), "No"))
-	filCounter = filCounter + 1
+    setFlatPanel(filCounter, binning)
+    flatExposure = getFlatExposureForFilter(filCounter, binning)
+    takeFlats(filterNum = str(filCounter), 
+                    exposure = flatExposure, 
+                    numFlats = str(numFrames), 
+                    binning = binning,
+                    takeDarks = "No",
+                    targetBrightness = .45, 
+                    tolerance = .1)
+                        
+    filCounter = filCounter + 1
 
-writeNote("Restoring previous flat Autosave name formula.")
-TSXSend('ccdsoftCamera.setPropStr("m_csCustomFileNameFlat", "' + oldASFormula + '")')
-
+# ------------------------------------------------------------
+# Turn off the panel
+# ------------------------------------------------------------
+#
 
 writeNote("Turning off Flatman panel.")
-myFMPanel.Light("OFF")
-myFMPanel.Disconnect()
-print("")
-timeStamp("	 NOTE: Taking matching dark frames.")
-print("")
-writeNote("If prompted, please cover OTA or turn off flat panel light.")
-print("")
+# JRS myFMPanel.Light("OFF")
+# JRS myFMPanel.Disconnect()
 
+# ------------------------------------------------------------
+# See if we need dark flats
+# ------------------------------------------------------------
+#
 
-oldASFormula = TSXSend('ccdsoftCamera.PropStr("m_csCustomFileNameDark")')
-writeNote("Changing the dark Autosave name formula from " + oldASFormula + " to :i_:f_:e_ ")
-TSXSend('ccdsoftCamera.setPropStr("m_csCustomFileNameDark", ":i_:f_:e_")')
+if takeFlatDarks.upper() == "DARKS" or takeFlatDarks.upper() == "Y":
+    TSXSend("ccdsoftCamera.Frame = 3")
+    
+    filCounter = int(filStart)
+    target = numFilters + filCounter
 
-numFilters = int(numFilters)
-filCounter = int(filStart)
-arrayCounter = 0
+    # ------------------------------------------------------------
+    # Take the darks
+    # ------------------------------------------------------------
+    #
+    binning = 1
+    flatDarksTaken = {}
+    
+    while (filCounter < target):
+        flatExposure = getFlatExposureForFilter(filCounter, binning)
 
-target = numFilters + filCounter
+        if (str(round(flatExposure, 3)) in flatDarksTaken):
+            writeNote("skipping flats of " + str(flatExposure) + ", already done")
+        else:
+            writeNote("Taking flats for " + str(flatExposure) + ", not yet done")
+            takeDark(str(flatExposure), numFrames)
+            flatDarksTaken[str(round(flatExposure, 3))] = "yes"
+        
+        filCounter += 1
+else:
+    writeNote("No automatic darks requested.")
 
-while (filCounter < target):
-	TSXSend("ccdsoftCamera.FilterIndexZeroBased = " + str(filCounter))
-	takeDark(expUsed[arrayCounter], numFrames)
-	filCounter = filCounter + 1
-	arrayCounter = arrayCounter + 1
-
-writeNote("Restoring previous dark Autosave name formula.")
-TSXSend('ccdsoftCamera.setPropStr("m_csCustomFileNameDark", "' + oldASFormula + '")')
-
-print("")
-
-if str(TSXSend('ccdsoftCamera.PropStr("m_csObserver")')) ==  "Ken Sturrock":
-	if TSXSend("SelectedHardware.cameraModel") == "QSI Camera  ":
-		TSXSend('ccdsoftCamera.setPropStr("m_csExCameraMode", "Faster Image Downloads")')
-		writeNote("Setting QSI Camera to faster download mode.")	
 
 timeStamp("Finished Calibration Run.")
-myFMPanel.Light("OFF")
-myFMPanel.Disconnect()
-
-
 done = input("Press enter to exit")

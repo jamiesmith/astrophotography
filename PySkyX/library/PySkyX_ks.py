@@ -1542,8 +1542,8 @@ def nameFilters(where):
 
             if TSXSend("SelectedHardware.filterWheelModel") == "Filter Wheel Simulator":
                 writeNote("Simulated filter wheel detected.")
-                print("           Reporting first eight filters instead of all 125.")
-                allFilNames = allFilNames[0:8]
+                print("           Reporting first seven filters instead of all 125.")
+                allFilNames = allFilNames[0:7]
         
             else:
                 timeStamp("Found " + str(counter) + " filter slots in the wheel.")
@@ -2739,158 +2739,10 @@ def takeDark(exposure, numFrames):
 
     timeStamp("Finished.")
 
-def promptForValueWithDefault(text, defaultValue):
-	value = input(text + "(default is <" + str(defaultValue) + ">)")
-	if value == "":
-		value = str(defaultValue)
-		
-	return value
 
-
-def takeProperFlat(filterNum, startingExposure, targetPercentage, numFlats, takeDarks, binning = 1):
-
-# This function takes an appropriately exposed flat.
+def takeFlat(filterNum, numFlats, takeDarks):
 #
-# filterNum is the filter number used for the flat frame. 
-# if there is no filter wheel or filterNum is set to "NA"
-# then it won't worry about it.
-#
-# numFlats is how many flats frames you want to take
-# takeDarks is "Darks" or something else. If set to "Darks"
-# the routine will take matching dark frames. This is great
-# if you have a real shutter but will require you to intervene
-# if you do not.
-#
-    def shootFlat(exposureTime, binning):
-        TSXSend("ccdsoftCamera.Asynchronous = false")
-        TSXSend("ccdsoftCamera.AutoSaveOn = true")
-        TSXSend("ccdsoftCamera.ImageReduction = 0")
-        TSXSend("ccdsoftCamera.Frame = 4")
-        TSXSend("ccdsoftCamera.BinX = " + str(binning))
-        TSXSend("ccdsoftCamera.BinY = " + str(binning))        
-        TSXSend("ccdsoftCamera.Delay = 1")
-        TSXSend("ccdsoftCamera.Subframe = false")
-        TSXSend("ccdsoftCamera.ExposureTime = " + str(exposureTime))
-        TSXSend("ccdsoftCamera.TakeImage()")
-    
-    def isExposureInRange(brightness, desiredBrightness, tolerance):        
-        writeNote("desiredBrightness  " + str(float(desiredBrightness)))
-        writeNote("brightness  " + str(float(brightness)))
-        writeNote("lastExposure  " + str(float(lastExposure)))
-        
-        return (abs(float(desiredBrightness) - float(brightness)) <= float(tolerance))
-        
-    def calculateOptimalExposure(brightness, desiredBrightness, lastExposure):
-        writeNote("desiredBrightness  " + str(float(desiredBrightness)))
-        writeNote("brightness  " + str(float(brightness)))
-        writeNote("lastExposure  " + str(float(lastExposure)))
-        units = float(brightness) / float(lastExposure)
-        writeNote ("Units are " + str(units))
-        writeNote ("lastExposure was " + str(lastExposure))
-        goalExposure = float(desiredBrightness) / units
-        
-        return goalExposure
-        
-    def getImageStatistics():
-        TSXSend("ccdsoftCameraImage.AttachToActiveImager()")
-
-        imageDepth = int(TSXSend('ccdsoftCameraImage.FITSKeyword("BITPIX")'))
-
-        if TSXSend("ccdsoftCamera.ImageUseDigitizedSkySurvey") == "1":
-            avgPixelValue = round(random.uniform(20000, 60000), 0)
-            writeNote("DSS images in use. Random ADU value assigned: " + str(avgPixelValue))
-        else:
-            avgPixelValue = float(TSXSend("ccdsoftCameraImage.averagePixelValue()"))
-
-        avgPixelValue = int(round(avgPixelValue, 0))
-        fullWell = int(math.pow (2, imageDepth))
-        brightness = avgPixelValue / fullWell
-
-        brightness = str(round(brightness, 2))
-    
-        return brightness
-
-    # Main operation
-    #
-    timeStamp("Taking flat frames.")
-    print("     PLAN: " + numFlats + " flat frame(s).")
-
-    exposure = startingExposure
-
-    if TSXSend("SelectedHardware.filterWheelModel") != "<No Filter Wheel Selected>":
-        TSXSend("ccdsoftCamera.filterWheelConnect()")	
-        if filterNum != "NA":
-            writeNote("Switching to " + TSXSend("ccdsoftCamera.szFilterName(" + filterNum + ")") + " filter.")
-            TSXSend("ccdsoftCamera.FilterIndexZeroBased = " + filterNum) 
-            time.sleep(0.5)
-        else:
-            writeNote("No filter specified. Leaving alone.")
-    else:
-        timeStamp("Imager: No filter used.")
-
-    counter = 1
-
-    while (counter <= int(numFlats)):
-        # Take a flat
-        #
-        timeStamp("Taking flat image: " + str(counter) + " of " + str(numFlats) + ".")
-        shootFlat(exposure, binning)
-        
-        # Check the exposure/brightness
-        #
-        brightness = getImageStatistics()
-        writeNote("   brightness:   " + str(brightness))    
-
-        desiredBrightness = 0.45        
-        tolerance = 0.10
-        
-        writeNote("desiredBrightness: " + str(desiredBrightness))
-        writeNote("brightness: " + str(brightness))
-        writeNote("tolerance: " + str(tolerance))
-        
-        if isExposureInRange(brightness = float(brightness), desiredBrightness = desiredBrightness, tolerance = tolerance):
-            # increment counter
-            # add to total duration (to get average later for darks)
-            writeNote("Brightness of " + str(brightness) + " is good enough")
-            counter = counter + 1
-        else:
-            writeNote("Brightness of " + str(brightness) + " is NOT good enough")
-
-            optimalExposure = calculateOptimalExposure(brightness, desiredBrightness, exposure)
-            writeNote("   calculated Exposure: " + str(optimalExposure))
-            exposure = optimalExposure
-
-            # NOTE : need a stopgap so we don't keep changing duration endlessly
-            # adjust exposure
-            # delete
-            imgPath=TSXSend("ccdsoftCameraImage.Path")
-            if os.path.exists(imgPath):
-                writeNote("Removing sub-par image.")
-                os.remove(imgPath)
-            
-
-        timeStamp("")
-
-    # take a flat
-
-
-    # if takeDarks == "Darks" or takeDarks == "darks":
-    #     TSXSend("ccdsoftCamera.Frame = 3")
-    #
-    #     counter = 1
-    #     while (counter <= numFlats):
-    #         timeStamp("Taking matched dark image: " + str(counter) + " of " + str(numFlats) + ".")
-    #         TSXSend("ccdsoftCamera.TakeImage()")
-    #         counter = counter + 1
-    # else:
-    #     writeNote("No automatic darks requested.")
-    #
-    # timeStamp("Finished.")
-    return str(goalExposure)
-	
-def takeFlat(filterNum, startingExposure, numFlats, takeDarks):
-
-# This function takes an appropriately exposed flat.
+# This function takes a an appropriately exposed flat.
 #
 # filterNum is the filter number used for the flat frame. 
 # if there is no filter wheel or filterNum is set to "NA"
@@ -2913,7 +2765,7 @@ def takeFlat(filterNum, startingExposure, numFlats, takeDarks):
 
         timeStamp("Taking test image.")
         TSXSend("ccdsoftCamera.TakeImage()")
-    
+
     def analyzeImage():
         writeNote("Analyzing test image.")
         TSXSend("ccdsoftCameraImage.AttachToActiveImager()")
@@ -2921,7 +2773,7 @@ def takeFlat(filterNum, startingExposure, numFlats, takeDarks):
         imageDepth = int(TSXSend('ccdsoftCameraImage.FITSKeyword("BITPIX")'))
 
         if TSXSend("ccdsoftCamera.ImageUseDigitizedSkySurvey") == "1":
-            avgPixelValue = round(random.uniform(5000, 40000), 0)
+            avgPixelValue = round(random.uniform(5000, 50000), 0)
             writeNote("DSS images in use. Random ADU value assigned: " + str(avgPixelValue))
         else:
             avgPixelValue = float(TSXSend("ccdsoftCameraImage.averagePixelValue()"))
@@ -2931,7 +2783,7 @@ def takeFlat(filterNum, startingExposure, numFlats, takeDarks):
         brightness = avgPixelValue / fullWell
 
         units = brightness / float(exposure)
-        goalExposure = 0.50 / units
+        goalExposure = 0.40 / units
         imgPath=TSXSend("ccdsoftCameraImage.Path")
         if os.path.exists(imgPath):
             writeNote("Removing test image.")
@@ -2942,7 +2794,7 @@ def takeFlat(filterNum, startingExposure, numFlats, takeDarks):
         units = str(round(units,2))
         goalExposure = str(round(goalExposure,2))
     
-        writeNote("Camera exposure was set to: " + str(exposure) + " second(s).")	
+        writeNote("Camera exposure was set to: " + str(exposure) + " second(s).")
     
         writeNote("Image Average Brightness is " + brightness + " of FWC (" + avgPixelValue + " ADU).")
     
@@ -2950,10 +2802,12 @@ def takeFlat(filterNum, startingExposure, numFlats, takeDarks):
 
         return brightness + "," + goalExposure
 
+    # Start main routine 
+
     timeStamp("Taking flat frames.")
     print("     PLAN: " + numFlats + " flat frame(s).")
 
-    exposure = startingExposure
+    exposure = 1 
 
     if TSXSend("SelectedHardware.filterWheelModel") != "<No Filter Wheel Selected>":
         TSXSend("ccdsoftCamera.filterWheelConnect()")	
@@ -2971,11 +2825,11 @@ def takeFlat(filterNum, startingExposure, numFlats, takeDarks):
 
     while (float(brightness) > 0.85) or (float(brightness) < 0.15):
         if float(brightness) > 0.85:
-            print("    ERROR: Sensor saturated. Reducing exposure: " + str(brightness))
+            print("    ERROR: Sensor saturated. Reducing exposure.")
             exposure = exposure / 2
         
         if float(brightness) < 0.15:
-            print("    ERROR: Signal dim. Increasing exposure: " + str(brightness))
+            print("    ERROR: Signal dim. Increasing exposure.")
             exposure = exposure * 2
         
         shootTest(exposure)

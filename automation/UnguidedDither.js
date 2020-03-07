@@ -47,7 +47,7 @@ const OIII              = findFilterIndexFor(ccdsoftCamera, "O");
 //
 var DELAY            = 5;        // Delay between exposures. Give adequate settle time
 var FOCUS_AT_START   = true;     // If true then the first thing it does is a focus routine.
-var TARGET_NAME      = "M 39";   // Placeholder for when I add closed-loop slew
+var TARGET_NAME      = "M 13";   // Placeholder for when I add closed-loop slew
 
 // Each filter can have its own exposure length.
 // If the exposure length or count is 0 that filter will be skipped when imaging!!

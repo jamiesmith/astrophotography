@@ -14,69 +14,78 @@
 #
 
 from library.PySkyX_ks import *
+from library.PySkyX_jrs import *
 
 import time
 import sys
 import os
+import csv
 
+# imported globals:
+# FILTER_NAMES = nameFilters("Local")
+# NUM_FILTERS
+# LUM
+# RED
+# GREEN
+# BLUE
+# SII
+# HA
+# OIII
+# MAX_BINNING
+    
 expUsed = []
 
 timeStamp("Starting Calibration Run.")
 
 print("")
 
-filStart = promptForValueWithDefault("With which filter slot should we start? The first slot is 0 (Zero). ", 0)
+filStart = promptForValueWithDefault("With which filter slot should we start? The first slot is 0 (" + getFilterAtSlot(0) + "). ", 0)
 numFilters = promptForValueWithDefault("How many filters to calibrate? ", 1)
 numFrames = promptForValueWithDefault("How many frames per filter? ", 5 )
+takeFlatDarks = promptForValueWithDefault("Take Flat Darks? ", "N")
 
 print("")
 
 print("Calibrating " + numFilters + " filters.")
 
-oldASFormula = TSXSend('ccdsoftCamera.PropStr("m_csCustomFileNameFlat")')
-TSXSend('ccdsoftCamera.setPropStr("m_csCustomFileNameFlat", "_:i_:f_:e_")')
 
 numFilters = int(numFilters)
 filCounter = int(filStart)
 target = numFilters + filCounter
 
-while (filCounter < target):
-    expUsed.append(takeProperFlat(filterNum = str(filCounter), 
-                    startingExposure = 1, 
-                    targetPercentage = 40 , 
+# exposureTime = calculateOptimalFlatExposure(str(filCounter), startingExposure = 1, binning = 1)
+
+exposureTime = 1
+flatDarksTaken = {}
+
+while (filCounter < target):    
+
+    exposureTime = getFlatExposureForFilter(filCounter, binning = 1)
+    
+    # Need a way to know if we have taken flats of this duration
+    #
+    takeDarkFlatsThisTime = takeFlatDarks
+    
+    if (takeFlatDarks):
+        if (str(round(exposureTime, 3)) in flatDarksTaken):
+            writeNote("skipping flats of " + str(exposureTime) + ", already done")
+            takeDarkFlatsThisTime = "N"
+        else:
+            writeNote("Taking flats for " + str(exposureTime) + ", not yet done")
+    
+    expUsed.append(takeFlats(filterNum = str(filCounter), 
+                    exposure = exposureTime, 
                     numFlats = str(numFrames), 
-                    binning = 2,
-                    takeDarks = "No"))
+                    binning = 1,
+                    takeDarks = takeDarkFlatsThisTime,
+                    targetBrightness = .45, 
+                    tolerance = .1))
+                    
+    if (takeFlatDarks):
+        flatDarksTaken[str(round(exposureTime, 3))] = "yes"        
+    
+                    
     filCounter = filCounter + 1
-
-TSXSend('ccdsoftCamera.setPropStr("m_csCustomFileNameFlat", "' + oldASFormula + '")')
-
-
-# print("")
-# timeStamp("Taking matching dark frames.")
-# print("")
-# writeNote("If prompted, please cover OTA or turn off flat panel light.")
-# print("")
-#
-#
-# oldASFormula = TSXSend('ccdsoftCamera.PropStr("m_csCustomFileNameDark")')
-# TSXSend('ccdsoftCamera.setPropStr("m_csCustomFileNameDark", "_:i_:f_:e_")')
-#
-# numFilters = int(numFilters)
-# filCounter = int(filStart)
-# arrayCounter = 0
-#
-# target = numFilters + filCounter
-#
-# while (filCounter < target):
-#     TSXSend("ccdsoftCamera.FilterIndexZeroBased = " + str(filCounter))
-#     takeDark(expUsed[arrayCounter], numFrames)
-#     filCounter = filCounter + 1
-#     arrayCounter = arrayCounter + 1
-#
-# TSXSend('ccdsoftCamera.setPropStr("m_csCustomFileNameDark", "' + oldASFormula + '")')
-#
-# print("")
 
 timeStamp("Finished Calibration Run.")
 
