@@ -43,8 +43,8 @@ import glob
 from library.PySkyX_ks import *
 from library.PySkyX_jrs import *
 
-# JRS import serial
-# JRS from library.flatman_ctl import *
+import serial
+from library.flatman_ctl import *
 
 LUM       = 0
 RED       = 1
@@ -60,7 +60,7 @@ def setFlatPanel(filterNum, binning):
     print("     ----")
     
     brightness = getBrightnessForFilter(filterNum, binning)
-    # JRS myFMPanel.Brightness(brightness)
+    myFMPanel.Brightness(brightness)
     
 
 timeStamp("Starting Calibration run.")
@@ -83,17 +83,17 @@ FMSerialPort = "COM10"
 
 # Setting up the panel
 
-# JRS myFMPanel = FlatMan(FMSerialPort, False, model=FLIPFLAP)
+myFMPanel = FlatMan(FMSerialPort, False, model=FLIPFLAP)
 
 print("")
 writeNote("Attempting to connect to: " + FMSerialPort)
 
-# JRS myFMPanel.Connect()
-# JRS myFMPanel.Close()
+myFMPanel.Connect()
+myFMPanel.Close()
 
 writeNote("Switching panel on.")
 
-# JRS myFMPanel.Light("ON")
+myFMPanel.Light("ON")
 
 # Moving on to the real calibration section
 
@@ -127,8 +127,8 @@ while (filCounter < target):
 #
 
 writeNote("Turning off Flatman panel.")
-# JRS myFMPanel.Light("OFF")
-# JRS myFMPanel.Disconnect()
+myFMPanel.Light("OFF")
+myFMPanel.Disconnect()
 
 # ------------------------------------------------------------
 # See if we need dark flats
