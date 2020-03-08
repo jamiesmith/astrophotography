@@ -22,6 +22,17 @@ FILTER_NAMES = []
 FILTER_NAMES = nameFilters("Local")
 NUM_FILTERS = len(FILTER_NAMES)
 
+def promptToExit():
+    done = input("Press enter to exit")
+
+
+def abort(message):
+    writeNote("ERROR: " + message)
+    print("aborting")
+    promptToExit()
+    sys.exit()
+
+
 def getFilterAtSlot(slot):
     return FILTER_NAMES[slot]
 

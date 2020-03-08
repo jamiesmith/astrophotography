@@ -46,14 +46,6 @@ from library.PySkyX_jrs import *
 import serial
 from library.flatman_ctl import *
 
-LUM       = 0
-RED       = 1
-GREEN  = 2
-BLUE   = 3
-SII       = 4
-HA       = 5
-OIII   = 6
-
 def setFlatPanel(filterNum, binning):
     print("     ----")
     writeNote(f"Adjusting the panel for filter: {getFilterAtSlot(filCounter)} @ {binning}x{binning}")
