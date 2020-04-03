@@ -2728,7 +2728,7 @@ def takeDark(exposure, numFrames):
     else:
         writeNote("Setting frame type to dark.")
         TSXSend("ccdsoftCamera.Frame = 3")
-        writeNote("Setting exposure to " + exposure + " seconds.")
+        writeNote(f"Setting exposure to {exposure} seconds.")
         TSXSend("ccdsoftCamera.ExposureTime = " + exposure)
 
     counter = 1
