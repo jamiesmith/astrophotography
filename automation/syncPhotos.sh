@@ -6,6 +6,8 @@ function dirsync
 		--size-only \
 		--archive \
 		--update \
+		--exclude "@Focus3 Runs" \
+		--exclude "astrophotography" \
 		"$1" "$2"
 }
 

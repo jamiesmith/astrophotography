@@ -47,16 +47,16 @@ const OIII              = findFilterIndexFor(ccdsoftCamera, "O");
 //
 var DELAY            = 5;        // Delay between exposures. Give adequate settle time
 var FOCUS_AT_START   = true;     // If true then the first thing it does is a focus routine.
-var TARGET_NAME      = "M 13";   // Placeholder for when I add closed-loop slew
+var TARGET_NAME      = "IC 1396";   // Placeholder for when I add closed-loop slew
 
 // Each filter can have its own exposure length.
 // If the exposure length or count is 0 that filter will be skipped when imaging!!
 //
 var exposureTimePerFilter = new Array(NUMBER_OF_FILTERS);
-exposureTimePerFilter[LUM  ] = 300;
-exposureTimePerFilter[RED  ] = 500;
-exposureTimePerFilter[GREEN] = 500;
-exposureTimePerFilter[BLUE ] = 500;
+exposureTimePerFilter[LUM  ] = 120;
+exposureTimePerFilter[RED  ] = 120;
+exposureTimePerFilter[GREEN] = 120;
+exposureTimePerFilter[BLUE ] = 120;
 exposureTimePerFilter[SII  ] = 600;
 exposureTimePerFilter[HA   ] = 600;
 exposureTimePerFilter[OIII ] = 600;
@@ -65,13 +65,13 @@ exposureTimePerFilter[OIII ] = 600;
 // If the exposure length or count is 0 that filter will be skipped when imaging!!
 //
 var numberOfExposuresPerFilter = new Array(NUMBER_OF_FILTERS);
-numberOfExposuresPerFilter[LUM  ] = 20;
-numberOfExposuresPerFilter[RED  ] = 20;
-numberOfExposuresPerFilter[GREEN] = 20;
-numberOfExposuresPerFilter[BLUE ] = 20;
-numberOfExposuresPerFilter[SII  ] = 20;
-numberOfExposuresPerFilter[HA   ] = 20;
-numberOfExposuresPerFilter[OIII ] = 20;
+numberOfExposuresPerFilter[LUM  ] = 0;
+numberOfExposuresPerFilter[RED  ] = 40;
+numberOfExposuresPerFilter[GREEN] = 40;
+numberOfExposuresPerFilter[BLUE ] = 40;
+numberOfExposuresPerFilter[SII  ] = 0;
+numberOfExposuresPerFilter[HA   ] = 0;
+numberOfExposuresPerFilter[OIII ] = 0;
 
 
 // Each filter can have its own binning during imaging runs.
@@ -121,8 +121,8 @@ logOutput("OIII position:  " + OIII);
 //
 var imageDownloadTimePerBinning = new Array(5);  // one more slot than binning available on your camera
 imageDownloadTimePerBinning[0] = 0;   // Make it easy and make this array st
-imageDownloadTimePerBinning[1] = 13;  // download for 1x1 binning
-imageDownloadTimePerBinning[2] = 7;   // download for 2x2 binning
+imageDownloadTimePerBinning[1] = 5;   // download for 1x1 binning
+imageDownloadTimePerBinning[2] = 3;   // download for 2x2 binning
 imageDownloadTimePerBinning[3] = 3;   // download for 3x3 binning
 imageDownloadTimePerBinning[4] = 2;   // download for 4x4 binning
 // imageDownloadTimePerBinning[5];   // download for 5x5 binning
