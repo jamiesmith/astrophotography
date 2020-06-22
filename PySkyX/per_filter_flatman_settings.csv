@@ -1,8 +1,8 @@
 Panel Brightness Per Binning,1,2,3,4
-Luminance,20,15,8,8
+Luminance,19,15,8,8
 Red,200,55,38,32
-Green,41,30,20,15
-Blue,33,30,20,15
+Green,39,30,20,15
+Blue,29,30,20,15
 Sii,255,255,255,255
 Ha,255,255,255,255
-Oiii,250,255,150,65
+Oiii,245,255,150,65
