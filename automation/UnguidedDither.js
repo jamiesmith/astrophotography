@@ -46,8 +46,12 @@ const OIII              = findFilterIndexFor(ccdsoftCamera, "O");
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //
 var DELAY            = 5;        // Delay between exposures. Give adequate settle time
-var FOCUS_AT_START   = true;     // If true then the first thing it does is a focus routine.
-var TARGET_NAME      = "IC 1396";   // Placeholder for when I add closed-loop slew
+var FOCUS_AT_START   = false;     // If true then the first thing it does is a focus routine.
+// var TARGET_NAME      = "M 51";
+// var TARGET_NAME      = "IC 1396";   // Elephant trunk
+// var TARGET_NAME      = "NGC 7000";   // North America Nebula
+// var TARGET_NAME      = "M 31";
+var TARGET_NAME      = "NGC 6888";  // Near the crescent nebula
 
 // Each filter can have its own exposure length.
 // If the exposure length or count is 0 that filter will be skipped when imaging!!
@@ -57,20 +61,20 @@ exposureTimePerFilter[LUM  ] = 120;
 exposureTimePerFilter[RED  ] = 120;
 exposureTimePerFilter[GREEN] = 120;
 exposureTimePerFilter[BLUE ] = 120;
-exposureTimePerFilter[SII  ] = 600;
-exposureTimePerFilter[HA   ] = 600;
-exposureTimePerFilter[OIII ] = 600;
+exposureTimePerFilter[SII  ] = 180;
+exposureTimePerFilter[HA   ] = 180;
+exposureTimePerFilter[OIII ] = 180;
 
 // Each filter can have its own number of exposures
 // If the exposure length or count is 0 that filter will be skipped when imaging!!
 //
 var numberOfExposuresPerFilter = new Array(NUMBER_OF_FILTERS);
 numberOfExposuresPerFilter[LUM  ] = 0;
-numberOfExposuresPerFilter[RED  ] = 40;
-numberOfExposuresPerFilter[GREEN] = 40;
-numberOfExposuresPerFilter[BLUE ] = 40;
-numberOfExposuresPerFilter[SII  ] = 0;
-numberOfExposuresPerFilter[HA   ] = 0;
+numberOfExposuresPerFilter[RED  ] = 0;
+numberOfExposuresPerFilter[GREEN] = 0;
+numberOfExposuresPerFilter[BLUE ] = 0;
+numberOfExposuresPerFilter[SII  ] = 150;
+numberOfExposuresPerFilter[HA   ] = 150;
 numberOfExposuresPerFilter[OIII ] = 0;
 
 

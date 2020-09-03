@@ -2,6 +2,7 @@
 
 function dirsync
 {
+    echo Synchronizing $1 to $2
 	rsync --verbose \
 		--size-only \
 		--archive \

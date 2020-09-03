@@ -65,9 +65,9 @@ print("")
 # ------------------------------------------------------------
 #
 
-filStart = promptForValueWithDefault("With which filter slot should we start? The first slot is 0 (" + getFilterAtSlot(0) + "). ", 0)
-numFilters = promptForValueWithDefault("How many filters to calibrate? ", 1)
-numFrames = promptForValueWithDefault("How many frames per filter? ", 1 )
+filStart      = promptForValueWithDefault("With which filter slot should we start? The first slot is 0 (" + getFilterAtSlot(0) + "). ", 0)
+numFilters    = promptForValueWithDefault("How many filters to calibrate? ", 1)
+numFrames     = promptForValueWithDefault("How many frames per filter? ", 3 )
 takeFlatDarks = promptForValueWithDefault("Take Flat Darks? ", "N")
 
 print("")
