@@ -51,30 +51,31 @@ var FOCUS_AT_START   = true;     // If true then the first thing it does is a fo
 // var TARGET_NAME      = "IC 1396";   // Elephant trunk
 // var TARGET_NAME      = "NGC 7000";   // North America Nebula
 // var TARGET_NAME      = "M 31";
-var TARGET_NAME      = "HIP 99893";  // Near the crescent nebula hip 99893 or 100155
+// var TARGET_NAME      = "HIP 99893";  // Near the crescent nebula hip 99893 or 100155
+var TARGET_NAME      = "";  // testing
 
 // Each filter can have its own exposure length.
 // If the exposure length or count is 0 that filter will be skipped when imaging!!
 //
 var exposureTimePerFilter = new Array(NUMBER_OF_FILTERS);
-exposureTimePerFilter[LUM  ] = 120;
-exposureTimePerFilter[RED  ] = 120;
-exposureTimePerFilter[GREEN] = 120;
-exposureTimePerFilter[BLUE ] = 120;
-exposureTimePerFilter[SII  ] = 180;
-exposureTimePerFilter[HA   ] = 180;
-exposureTimePerFilter[OIII ] = 180;
+exposureTimePerFilter[LUM  ] = 2;
+exposureTimePerFilter[RED  ] = 2;
+exposureTimePerFilter[GREEN] = 2;
+exposureTimePerFilter[BLUE ] = 2;
+exposureTimePerFilter[SII  ] = 2;
+exposureTimePerFilter[HA   ] = 2;
+exposureTimePerFilter[OIII ] = 2;
 
 // Each filter can have its own number of exposures
 // If the exposure length or count is 0 that filter will be skipped when imaging!!
 //
 var numberOfExposuresPerFilter = new Array(NUMBER_OF_FILTERS);
-numberOfExposuresPerFilter[LUM  ] = 0;
-numberOfExposuresPerFilter[RED  ] = 0;
-numberOfExposuresPerFilter[GREEN] = 0;
-numberOfExposuresPerFilter[BLUE ] = 0;
-numberOfExposuresPerFilter[SII  ] = 150;
-numberOfExposuresPerFilter[HA   ] = 150;
+numberOfExposuresPerFilter[LUM  ] = 6;
+numberOfExposuresPerFilter[RED  ] = 6;
+numberOfExposuresPerFilter[GREEN] = 6;
+numberOfExposuresPerFilter[BLUE ] = 6;
+numberOfExposuresPerFilter[SII  ] = 0;
+numberOfExposuresPerFilter[HA   ] = 0;
 numberOfExposuresPerFilter[OIII ] = 0;
 
 
@@ -137,7 +138,7 @@ imageDownloadTimePerBinning[4] = 2;   // download for 4x4 binning
 // ########### Things you MIGHT change once         ###########
 // ############################################################
 //
-var ditherStepSizeArcSeconds = 13.0;     // Amount of dither between exposures in arcseconds
+var ditherStepSizeArcSeconds = 5.0;      // Amount of dither between exposures in arcseconds
 var decMinus = 1.0;                      // Set one of these to zero to limit dec movements to one direction
 var decPlus  = 1.0;
 
@@ -244,14 +245,14 @@ function autofocus(imager, exposureTime, binning)
 {    
     var discreteStartTime = new Date();
     
-    logOutput("Attempting to focus with " + filterNames[imager.FilterIndexZeroBased] + "  " + binning + "x" + binning + " @ " + FOCUS_EXPOSURE_TIME + " second(s)")
+    var note = "Focus with " + filterNames[imager.FilterIndexZeroBased] + "  " + binning + "x" + binning + " @ " + FOCUS_EXPOSURE_TIME + " second(s)";
     if (isSimulator(imager))
     {
-        logOutput("Skipping @focus3, running with the simulator")
+        logOutput(note + "Skipping @focus3, running with the simulator")
     }
     else
     {            
-        logOutput("Running @focus3");
+        logOutput(note);
         
         var saveBinX = imager.BinX
         var saveBinY = imager.BinY        
@@ -289,18 +290,6 @@ function prettyFormatSeconds(seconds)
 }
 
 ///////////////////////////////////////////////////////////////////////////
-
-function pad(num, size) 
-{
-    var s = "000" + num;
-    return s.substr(s.length - size);
-}
-
-function padString(text, size) 
-{
-    var s = text + "            ";
-    return s.substr(0, size);
-}
 
 function logOutput(logText)
 {
@@ -544,8 +533,8 @@ for (var i = 0; i < NUMBER_OF_FILTERS; i++)
 var timeLeft = timeRemaining(IMAGES_REMAINING_PER_FILTER);
 
 status = "";
-status += "we are taking " + NUMBER_OF_IMAGES + " images.  ";
-status += "Which will take approximately ";
+status += "we are taking " + NUMBER_OF_IMAGES + " images ";
+status += "which will take approximately ";
 status += timeLeft;
 status += " seconds to run; ";
 status += " estimated completion time [" + currentTime.addSeconds(timeLeft).toLocaleTimeString() + "] ";
@@ -604,10 +593,14 @@ while (imageCount < NUMBER_OF_IMAGES)
         // Take the photo
         //
         status = "";    
-        status += "Elapsed time on <" + getCurrentObjectName() + ">: [" + prettyFormatSeconds(elapsed) + "] ";
+        status += "Target <" + getCurrentObjectName() + ">: [" 
+        status += " (n)" + currentTime.toLocaleTimeString();
+        status += " | (Δ)" + prettyFormatSeconds(elapsed);
+        status += " | (ttc)" + prettyFormatSeconds(secondsRemaining);
+        status += " | (end)" + currentTime.addSeconds(secondsRemaining).toLocaleTimeString() + " ] ";
         status += "Exposing for ";
         status += padString(exposureTimePerFilter[currentFilter], 5);
-        status += " seconds ";
+        status += "s ";
         status += binningPerFilter[currentFilter] + "x" + binningPerFilter[currentFilter];
         status += " on ";
         status += padString(filterNames[currentFilter], 10);
@@ -616,8 +609,6 @@ while (imageCount < NUMBER_OF_IMAGES)
         status += " of ";
         status += numberOfExposuresPerFilter[currentFilter];
         status += ")";
-        status += " Remaining [" + prettyFormatSeconds(secondsRemaining) + "] ";
-        status += " Estimated Completion [" + currentTime.addSeconds(secondsRemaining).toLocaleTimeString() + "] ";
         status += " at " + Imager.focTemperature + " degrees";
 
         logOutput(status);
@@ -628,7 +619,22 @@ while (imageCount < NUMBER_OF_IMAGES)
         var imageStartTime = new Date();
         Imager.ExposureTime = exposureTimePerFilter[currentFilter];
         Imager.Delay = DELAY;
-        Imager.TakeImage();
+        
+        try 
+        {
+            // not sure that this is where the error is occurring, but it's a good chance.  I think it's borking during download.
+            //
+            Imager.TakeImage();
+        }
+        catch(e) 
+        {
+
+            logOutput("###############################################");
+            logOutput("############ ERROR TAKING IMAGE ############");
+            logOutput("e");
+            logOutput("###############################################");
+        }    
+        
         var imageEndTIme = new Date();
     
         IMAGES_REMAINING_PER_FILTER[currentFilter] -= 1;
