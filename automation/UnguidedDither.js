@@ -46,12 +46,12 @@ const OIII              = findFilterIndexFor(ccdsoftCamera, "O");
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //
 var DELAY            = 5;        // Delay between exposures. Give adequate settle time
-var FOCUS_AT_START   = false;     // If true then the first thing it does is a focus routine.
+var FOCUS_AT_START   = true;     // If true then the first thing it does is a focus routine.
 // var TARGET_NAME      = "M 51";
 // var TARGET_NAME      = "IC 1396";   // Elephant trunk
 // var TARGET_NAME      = "NGC 7000";   // North America Nebula
 // var TARGET_NAME      = "M 31";
-var TARGET_NAME      = "NGC 6888";  // Near the crescent nebula
+var TARGET_NAME      = "HIP 99893";  // Near the crescent nebula hip 99893 or 100155
 
 // Each filter can have its own exposure length.
 // If the exposure length or count is 0 that filter will be skipped when imaging!!
@@ -553,11 +553,8 @@ logOutput(status);
 
 var startTime = new Date();
 
-if (FOCUS_AT_START)
-{
-    autofocusWithFilter(Imager, FOCUS_WITH_FILTER, FOCUS_EXPOSURE_TIME, FOCUS_BINNING);
-}
-
+// This assumes that we're close enough to focus to plate solve
+// 
 if (TARGET_NAME != "")
 {
     var ret = closedLoopSlew(Imager, TARGET_NAME);
@@ -578,6 +575,11 @@ if (TARGET_NAME != "")
 else
 {
     Imager.AutoSavePrefix = getCurrentObjectName() + "-";    
+}
+
+if (FOCUS_AT_START)
+{
+    autofocusWithFilter(Imager, FOCUS_WITH_FILTER, FOCUS_EXPOSURE_TIME, FOCUS_BINNING);
 }
 
 while (imageCount < NUMBER_OF_IMAGES)
