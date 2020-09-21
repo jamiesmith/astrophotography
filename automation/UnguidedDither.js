@@ -594,10 +594,10 @@ while (imageCount < NUMBER_OF_IMAGES)
         //
         status = "";    
         status += "Target <" + getCurrentObjectName() + ">: [" 
-        status += " (n)" + currentTime.toLocaleTimeString();
-        status += " | (Δ)" + prettyFormatSeconds(elapsed);
-        status += " | (ttc)" + prettyFormatSeconds(secondsRemaining);
-        status += " | (end)" + currentTime.addSeconds(secondsRemaining).toLocaleTimeString() + " ] ";
+        status += " " + currentTime.toLocaleTimeString();
+        status += " | (Δ) " + prettyFormatSeconds(elapsed);
+        // status += " | (left)" + prettyFormatSeconds(secondsRemaining);
+        status += " | (-->) " + currentTime.addSeconds(secondsRemaining).toLocaleTimeString() + " ] ";
         status += "Exposing for ";
         status += padString(exposureTimePerFilter[currentFilter], 5);
         status += "s ";
@@ -609,7 +609,7 @@ while (imageCount < NUMBER_OF_IMAGES)
         status += " of ";
         status += numberOfExposuresPerFilter[currentFilter];
         status += ")";
-        status += " at " + Imager.focTemperature + " degrees";
+        status += " at " + Imager.focTemperature.toFixed(2) + " degrees";
 
         logOutput(status);
 
