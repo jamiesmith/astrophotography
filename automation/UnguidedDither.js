@@ -236,7 +236,20 @@ function autofocusWithFilter(imager, filterNum, exposureTime, binning)
     
     imager.FilterIndexZeroBased = filterNum;
     imager.Delay = 0;    
-    autofocus(imager, exposureTime, binning)
+
+    try
+    {
+        autofocus(imager, exposureTime, binning);
+    }
+    catch(e) 
+    {
+    	logOutput("");
+        logOutput("Error focusing: " + e);
+    	logOutput("trying one more time");
+
+        autofocus(imager, exposureTime, binning);
+    }    
+
     
     imager.FilterIndexZeroBased = saveFilter;
 }
