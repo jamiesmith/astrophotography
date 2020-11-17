@@ -48,9 +48,14 @@ const OIII              = findFilterIndexFor(ccdsoftCamera, "O");
 var DELAY            = 5;        // Delay between exposures. Give adequate settle time
 var FOCUS_AT_START   = true;     // If true then the first thing it does is a focus routine.
 // var TARGET_NAME      = "M 51";
-var TARGET_NAME      = "IC 1396";   // Elephant trunk
+// var TARGET_NAME      = "IC 1396";   // Elephant trunk
+
+var TARGET_NAME      = "M 33";
+// var TARGET_NAME      = "M 45";
+// var TARGET_NAME      = "M 42";
+ 
+
 // var TARGET_NAME      = "NGC 7000";   // North America Nebula
-// var TARGET_NAME      = "M 31";
 // var TARGET_NAME      = "M 31";
 // var TARGET_NAME      = "HIP 99893";  // Near the crescent nebula hip 99893 or 100155
 // var TARGET_NAME      = "";  // testing
@@ -71,13 +76,13 @@ exposureTimePerFilter[OIII ] = 180;
 // If the exposure length or count is 0 that filter will be skipped when imaging!!
 //
 var numberOfExposuresPerFilter = new Array(NUMBER_OF_FILTERS);
-numberOfExposuresPerFilter[LUM  ] = 0;
-numberOfExposuresPerFilter[RED  ] = 0;
-numberOfExposuresPerFilter[GREEN] = 0;
-numberOfExposuresPerFilter[BLUE ] = 0;
-numberOfExposuresPerFilter[SII  ] = 50;
-numberOfExposuresPerFilter[HA   ] = 50;
-numberOfExposuresPerFilter[OIII ] = 50;
+numberOfExposuresPerFilter[LUM  ] = 20;
+numberOfExposuresPerFilter[RED  ] = 20;
+numberOfExposuresPerFilter[GREEN] = 20;
+numberOfExposuresPerFilter[BLUE ] = 20;
+numberOfExposuresPerFilter[SII  ] = 0;
+numberOfExposuresPerFilter[HA   ] = 0;
+numberOfExposuresPerFilter[OIII ] = 0;
 
 
 // Each filter can have its own binning during imaging runs.
@@ -237,20 +242,7 @@ function autofocusWithFilter(imager, filterNum, exposureTime, binning)
     
     imager.FilterIndexZeroBased = filterNum;
     imager.Delay = 0;    
-
-    try
-    {
-        autofocus(imager, exposureTime, binning);
-    }
-    catch(e) 
-    {
-    	logOutput("");
-        logOutput("Error focusing: " + e);
-    	logOutput("trying one more time");
-
-        autofocus(imager, exposureTime, binning);
-    }    
-
+    autofocus(imager, exposureTime, binning)
     
     imager.FilterIndexZeroBased = saveFilter;
 }
@@ -648,6 +640,26 @@ while (imageCount < NUMBER_OF_IMAGES)
             logOutput("e");
             logOutput("###############################################");
         }    
+        
+        // // THIS IS AN ABSOLUTE HACK TO TAKE ANOTHER SHORT IMAGE
+        // //
+        // Imager.ExposureTime = 3;
+        // Imager.Delay = DELAY;
+        //
+        // try
+        // {
+        //     // not sure that this is where the error is occurring, but it's a good chance.  I think it's borking during download.
+        //     //
+        //     Imager.TakeImage();
+        // }
+        // catch(e)
+        // {
+        //
+        //     logOutput("###############################################");
+        //     logOutput("############ ERROR TAKING IMAGE ############");
+        //     logOutput("e");
+        //     logOutput("###############################################");
+        // }
         
         var imageEndTIme = new Date();
     

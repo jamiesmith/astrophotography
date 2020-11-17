@@ -7,7 +7,8 @@ function dirsync
 		--size-only \
 		--archive \
 		--update \
-		--exclude "@Focus3 Runs" \
+        --exclude "@Focus3 Runs" \
+        --exclude "Closed Loop Slews" \
 		--exclude ".Trashes" \
 		--exclude ".Spotlight-V100" \
 		--exclude "astrophotography" \
