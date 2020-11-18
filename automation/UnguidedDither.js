@@ -1,4 +1,4 @@
-// UnguidedDither.js
+////////////////////////////////////////////////////////////////////////////////////////// UnguidedDither.js
 // Based on Dither with ProTrack - Enhanced Version by Richard S. Wright Jr. @ Software Bisque
 // Assumptions: ProTrack is on and enabled (or your exposures are short enough you don't 
 //            need ProTrack.
@@ -71,14 +71,14 @@ exposureTimePerFilter[OIII ] = 180;
 // If the exposure length or count is 0 that filter will be skipped when imaging!!
 //
 var numberOfExposuresPerFilter = new Array(NUMBER_OF_FILTERS);
-numberOfExposuresPerFilter[LUM  ] = 0;
-numberOfExposuresPerFilter[RED  ] = 0;
-numberOfExposuresPerFilter[GREEN] = 0;
-numberOfExposuresPerFilter[BLUE ] = 0;
-numberOfExposuresPerFilter[SII  ] = 50;
-numberOfExposuresPerFilter[HA   ] = 50;
-numberOfExposuresPerFilter[OIII ] = 50;
 
+numberOfExposuresPerFilter[LUM  ] = 40;
+numberOfExposuresPerFilter[RED  ] = 40;
+numberOfExposuresPerFilter[GREEN] = 40;
+numberOfExposuresPerFilter[BLUE ] = 40;
+numberOfExposuresPerFilter[SII  ] = 0;
+numberOfExposuresPerFilter[HA   ] = 0;
+numberOfExposuresPerFilter[OIII ] = 0;
 
 // Each filter can have its own binning during imaging runs.
 //
@@ -97,15 +97,15 @@ binningPerFilter[OIII ] = 1;
 //
 var FOCUS_WITH_FILTER = BLUE;
 var FOCUS_BINNING     = 2;
-var FOCUS_EXPOSURE_TIME = 0.5;
+var FOCUS_EXPOSURE_TIME = 0.5;  // Not sure if this actually carries through
 
 // Focus every x- you can use any of the conditions.  
 // If ANY of these conditions are met it will focus.  It won't ever interrupt an image to focus.
 // Set to arbitrarily large values to skip/omit any conditions
 // Each is reset when focusing, so if it focuses for any condition then they all start over
 //
-var FOCUS_EVERY_X_IMAGES        = 3;   // Refocus every so many frames (just make arbitrarily large to skip)
-var FOCUS_EVERY_X_DEGREES       = 0.5; // Refocus when the temperature changes more than x (just make arbitrarily large to skip)
+var FOCUS_EVERY_X_IMAGES        = 30;  // Refocus every so many frames (just make arbitrarily large to skip)
+var FOCUS_EVERY_X_DEGREES       = 0.5; // Refocus when the temperature changes more than x° C (just make arbitrarily large to skip)
 var FOCUS_EVERY_X_MINUTES       = 30;  // Refocus after elapsed time (just make arbitrarily large to skip)
 
 // ############################################################
@@ -357,35 +357,35 @@ function shouldFocus(imageCount)
     var currentTime = new Date();    
     var elapsed = (currentTime - startTime) / 1000;
     var message = "It's not time to focus";
-    var shouldFocus = false;
+    var shouldFocusNow = false;
     
     var temperatureDelta = Math.abs(LAST_FOCUS_TEMPERATURE - Imager.focTemperature);
     var timeDelta = (currentTime - LAST_FOCUS_TIME) / 1000 / 60;
     var imageDelta = FOCUS_EVERY_X_IMAGES - IMAGES_SINCE_LAST_FOCUS;
     
-    var debug = " -- Temp Delta [" + temperatureDelta + "] timeDelta [" + timeDelta + "] imageDelta [" + imageDelta + "]";
+    var debug = " -- Temp Delta [" + temperatureDelta.toFixed(2) + "] timeDelta [" + timeDelta.toFixed(2) + "] imageDelta [" + imageDelta + "]";
     
     if ( timeDelta > FOCUS_EVERY_X_MINUTES )
     {
         message = "Focus based on last focus time";
-        shouldFocus = true;
+        shouldFocusNow = true;
     }
     else if ( temperatureDelta > FOCUS_EVERY_X_DEGREES )
     {
         message = "Focus based temperature";
-        shouldFocus = true;
+        shouldFocusNow = true;
     }
     else if (IMAGES_SINCE_LAST_FOCUS >= FOCUS_EVERY_X_IMAGES)
     {
         message = "Focus based on number of images";
-        shouldFocus = true;
+        shouldFocusNow = true;
     }
 
-    if (shouldFocus)
+    if (shouldFocusNow)
     {
         logOutput(message + debug);
     }
-    return shouldFocus;
+    return shouldFocusNow;
 }
 
 function getProperty(propertyNum)
@@ -489,9 +489,35 @@ var LAST_FOCUS_TIME =  new Date();
 var LAST_FOCUS_TEMPERATURE = Imager.focTemperature;
 var IMAGES_SINCE_LAST_FOCUS = 0;
 
-// Get current position of the telescope
+// Connect to the telescope 
 //
 sky6RASCOMTele.Connect();
+
+// This assumes that we're close enough to focus to plate solve
+// 
+if (TARGET_NAME != "")
+{
+    var ret = closedLoopSlew(Imager, TARGET_NAME);
+    
+    logOutput("CLS returned [" + ret + "]") 
+
+    if (ret != 0)
+    {
+        // Not sure how to abort...
+        //
+        exit;
+    }
+    
+    // Set the save prefix to the current object, when we dither it gets lost
+    //
+    Imager.AutoSavePrefix = TARGET_NAME + "-";
+}
+else
+{
+    Imager.AutoSavePrefix = getCurrentObjectName() + "-";    
+}
+
+
 sky6RASCOMTele.GetRaDec();
 var startRA = sky6RASCOMTele.dRa;
 var startDEC = sky6RASCOMTele.dDec;
@@ -556,30 +582,6 @@ logOutput(status);
 
 var startTime = new Date();
 
-// This assumes that we're close enough to focus to plate solve
-// 
-if (TARGET_NAME != "")
-{
-    var ret = closedLoopSlew(Imager, TARGET_NAME);
-    
-    logOutput("CLS returned [" + ret + "]") 
-
-    if (ret != 0)
-    {
-        // Not sure how to abort...
-        //
-        exit;
-    }
-    
-    // Set the save prefix to the current object, when we dither it gets lost
-    //
-    Imager.AutoSavePrefix = TARGET_NAME + "-";
-}
-else
-{
-    Imager.AutoSavePrefix = getCurrentObjectName() + "-";    
-}
-
 if (FOCUS_AT_START)
 {
     autofocusWithFilter(Imager, FOCUS_WITH_FILTER, FOCUS_EXPOSURE_TIME, FOCUS_BINNING);
@@ -613,7 +615,7 @@ while (imageCount < NUMBER_OF_IMAGES)
         // status += " | (left)" + prettyFormatSeconds(secondsRemaining);
         status += " | (-->) " + currentTime.addSeconds(secondsRemaining).toLocaleTimeString() + " ] ";
         status += "Exposing for ";
-        status += padString(exposureTimePerFilter[currentFilter], 5);
+        status += exposureTimePerFilter[currentFilter];
         status += "s ";
         status += binningPerFilter[currentFilter] + "x" + binningPerFilter[currentFilter];
         status += " on ";
