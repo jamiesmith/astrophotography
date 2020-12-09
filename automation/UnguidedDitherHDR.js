@@ -50,10 +50,10 @@ var FOCUS_AT_START   = true;     // If true then the first thing it does is a fo
 // var TARGET_NAME      = "M 51";
 // var TARGET_NAME      = "IC 1396";   // Elephant trunk
 
-var TARGET_NAME      = "M 33";
+// var TARGET_NAME      = "M 33";
 // var TARGET_NAME      = "M 45";
 // var TARGET_NAME      = "M 42";
- 
+var TARGET_NAME      = "IC 1848"; // Soul
 
 // var TARGET_NAME      = "NGC 7000";   // North America Nebula
 // var TARGET_NAME      = "M 31";
@@ -69,19 +69,19 @@ exposureTimePerFilter[RED  ] = 120;  // Standard for LRGB is 2
 exposureTimePerFilter[GREEN] = 120;  // Standard for LRGB is 2
 exposureTimePerFilter[BLUE ] = 120;  // Standard for LRGB is 2
 exposureTimePerFilter[SII  ] = 180;
-exposureTimePerFilter[HA   ] = 180;
+exposureTimePerFilter[HA   ] = 300;
 exposureTimePerFilter[OIII ] = 180;
 
 // Each filter can have its own number of exposures
 // If the exposure length or count is 0 that filter will be skipped when imaging!!
 //
 var numberOfExposuresPerFilter = new Array(NUMBER_OF_FILTERS);
-numberOfExposuresPerFilter[LUM  ] = 20;
-numberOfExposuresPerFilter[RED  ] = 20;
-numberOfExposuresPerFilter[GREEN] = 20;
-numberOfExposuresPerFilter[BLUE ] = 20;
+numberOfExposuresPerFilter[LUM  ] = 0;
+numberOfExposuresPerFilter[RED  ] = 0;
+numberOfExposuresPerFilter[GREEN] = 0;
+numberOfExposuresPerFilter[BLUE ] = 0;
 numberOfExposuresPerFilter[SII  ] = 0;
-numberOfExposuresPerFilter[HA   ] = 0;
+numberOfExposuresPerFilter[HA   ] = 60;
 numberOfExposuresPerFilter[OIII ] = 0;
 
 
@@ -109,7 +109,7 @@ var FOCUS_EXPOSURE_TIME = 0.5;
 // Set to arbitrarily large values to skip/omit any conditions
 // Each is reset when focusing, so if it focuses for any condition then they all start over
 //
-var FOCUS_EVERY_X_IMAGES        = 3;   // Refocus every so many frames (just make arbitrarily large to skip)
+var FOCUS_EVERY_X_IMAGES        = 30;   // Refocus every so many frames (just make arbitrarily large to skip)
 var FOCUS_EVERY_X_DEGREES       = 0.5; // Refocus when the temperature changes more than x (just make arbitrarily large to skip)
 var FOCUS_EVERY_X_MINUTES       = 30;  // Refocus after elapsed time (just make arbitrarily large to skip)
 
