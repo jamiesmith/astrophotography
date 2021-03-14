@@ -277,8 +277,18 @@ function autofocus(imager, exposureTime, binning)
         imager.BinY = binning;
         imager.Delay = 0;
         imager.ExposureTime = exposureTime;  // Not convinced that this does anything
-        imager.AtFocus3(3, true);            // Three samples per position, full-auto on subframe selection
-        
+
+	try
+	{
+            imager.AtFocus3(3, true);            // Three samples per position, full-auto on subframe selection
+	}
+	catch(e) 
+	{
+    	    logOutput("");
+            logOutput("@focus3 error: " + e);
+    	    logOutput("Continuing anyway");
+	}    
+	
         imager.BinX = saveBinX;
         imager.BinY = saveBinY;
         imager.Delay = saveDelay;
