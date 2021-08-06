@@ -47,22 +47,25 @@ const OIII              = findFilterIndexFor(ccdsoftCamera, "O");
 //
 var DELAY            = 5;        // Delay between exposures. Give adequate settle time
 var FOCUS_AT_START   = true;     // If true then the first thing it does is a focus routine.
+var CLS_AT_START     = false;
+
 // var TARGET_NAME      = "M 51";
 var TARGET_NAME      = "IC 1396";   // Elephant trunk
 // var TARGET_NAME      = "NGC 7000";   // North America Nebula
 // var TARGET_NAME      = "M 31";
-// var TARGET_NAME      = "M 31";
 // var TARGET_NAME      = "HIP 99893";  // Near the crescent nebula hip 99893 or 100155
 // var TARGET_NAME      = "";  // testing
+// var TARGET_NAME      = "NGC 6205";  // m13
+// var TARGET_NAME      = "NGC 6888";  // Crescent nebula
 
 // Each filter can have its own exposure length.
 // If the exposure length or count is 0 that filter will be skipped when imaging!!
 //
 var exposureTimePerFilter = new Array(NUMBER_OF_FILTERS);
 exposureTimePerFilter[LUM  ] = 120;  // Standard for LRGB is 2
-exposureTimePerFilter[RED  ] = 120;  // Standard for LRGB is 2
-exposureTimePerFilter[GREEN] = 120;  // Standard for LRGB is 2
-exposureTimePerFilter[BLUE ] = 120;  // Standard for LRGB is 2
+exposureTimePerFilter[RED  ] = 180;  // Standard for LRGB is 2
+exposureTimePerFilter[GREEN] = 180;  // Standard for LRGB is 2
+exposureTimePerFilter[BLUE ] = 180;  // Standard for LRGB is 2
 exposureTimePerFilter[SII  ] = 180;
 exposureTimePerFilter[HA   ] = 180;
 exposureTimePerFilter[OIII ] = 180;
@@ -72,13 +75,13 @@ exposureTimePerFilter[OIII ] = 180;
 //
 var numberOfExposuresPerFilter = new Array(NUMBER_OF_FILTERS);
 
-numberOfExposuresPerFilter[LUM  ] = 40;
-numberOfExposuresPerFilter[RED  ] = 40;
-numberOfExposuresPerFilter[GREEN] = 40;
-numberOfExposuresPerFilter[BLUE ] = 40;
-numberOfExposuresPerFilter[SII  ] = 0;
-numberOfExposuresPerFilter[HA   ] = 0;
-numberOfExposuresPerFilter[OIII ] = 0;
+numberOfExposuresPerFilter[LUM  ] = 0;
+numberOfExposuresPerFilter[RED  ] = 0;
+numberOfExposuresPerFilter[GREEN] = 0;
+numberOfExposuresPerFilter[BLUE ] = 0;
+numberOfExposuresPerFilter[SII  ] = 90;
+numberOfExposuresPerFilter[HA   ] = 90;
+numberOfExposuresPerFilter[OIII ] = 90;
 
 // Each filter can have its own binning during imaging runs.
 //
@@ -139,7 +142,7 @@ imageDownloadTimePerBinning[4] = 2;   // download for 4x4 binning
 // ########### Things you MIGHT change once         ###########
 // ############################################################
 //
-var ditherStepSizeArcSeconds = 5.0;      // Amount of dither between exposures in arcseconds
+var ditherStepSizeArcSeconds = 10.0;      // Amount of dither between exposures in arcseconds
 var decMinus = 1.0;                      // Set one of these to zero to limit dec movements to one direction
 var decPlus  = 1.0;
 
@@ -505,7 +508,7 @@ sky6RASCOMTele.Connect();
 
 // This assumes that we're close enough to focus to plate solve
 // 
-if (TARGET_NAME != "")
+if (TARGET_NAME != "" && CLS_AT_START)
 {
     var ret = closedLoopSlew(Imager, TARGET_NAME);
     

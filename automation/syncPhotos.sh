@@ -12,6 +12,7 @@ function dirsync
 		--exclude ".Trashes" \
 		--exclude ".Spotlight-V100" \
 		--exclude "astrophotography" \
+		--exclude "Automated*" \
 		"$1" "$2"
 }
 
