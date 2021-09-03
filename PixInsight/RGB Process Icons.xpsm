@@ -3,8 +3,8 @@
 ********************************************************************
 PixInsight XML Process Serialization Module - XPSM 1.0
 ********************************************************************
-Generated on 2020-06-15T18:47:22.244Z
-PixInsight Core 1.8.8-5 (x64)
+Generated on 2021-05-22T13:47:18.856Z
+PixInsight Core 1.8.8-7 (x64)
 Copyright (c) 2003-2020 Pleiades Astrophoto
 ********************************************************************
 -->
@@ -1727,12 +1727,14 @@ Copyright (c) 2003-2020 Pleiades Astrophoto
       <parameter id="enableSurfaceSplines" value="true"/>
       <parameter id="enableLocalDistortion" value="true"/>
       <parameter id="enableLocalNormalization" value="false"/>
+      <parameter id="enableAdaptiveNormalization" value="false"/>
       <parameter id="useROI" value="false"/>
       <parameter id="roiX0" value="0"/>
       <parameter id="roiY0" value="0"/>
       <parameter id="roiX1" value="0"/>
       <parameter id="roiY1" value="0"/>
       <parameter id="closePreviousImages" value="false"/>
+      <parameter id="truncateOnOutOfRange" value="false"/>
       <parameter id="noGUIMessages" value="true"/>
       <parameter id="onError" value="Continue"/>
       <parameter id="integrationImageId"></parameter>
@@ -2195,6 +2197,7 @@ Copyright (c) 2003-2020 Pleiades Astrophoto
       <parameter id="solverSplineSmoothing" value="0.025"/>
       <parameter id="solverProjection" value="Projection_Gnomonic"/>
       <parameter id="photCatalogName">APASS</parameter>
+      <parameter id="photAutoCatalog" value="true"/>
       <parameter id="photLimitMagnitude" value="12"/>
       <parameter id="photAutoLimitMagnitude" value="true"/>
       <parameter id="photAutoLimitMagnitudeFactor" value="15.00"/>
@@ -2937,6 +2940,7 @@ Copyright (c) 2003-2020 Pleiades Astrophoto
       <parameter id="siteLocalMidnight" value="24"/>
       <parameter id="scaleUnit" value="ArcSeconds"/>
       <parameter id="dataUnit" value="Electron"/>
+      <parameter id="trimmingFactor" value="0.10"/>
       <parameter id="structureLayers" value="5"/>
       <parameter id="noiseLayers" value="0"/>
       <parameter id="hotPixelFilterRadius" value="1"/>
@@ -4194,8 +4198,11 @@ Copyright (c) 2003-2020 Pleiades Astrophoto
       <parameter id="expression3"></parameter>
       <parameter id="useSingleExpression" value="false"/>
       <parameter id="symbols"></parameter>
+      <parameter id="clearImageCacheAndExit" value="false"/>
+      <parameter id="cacheGeneratedImages" value="false"/>
       <parameter id="generateOutput" value="true"/>
       <parameter id="singleThreaded" value="false"/>
+      <parameter id="optimization" value="true"/>
       <parameter id="use64BitWorkingImage" value="false"/>
       <parameter id="rescale" value="false"/>
       <parameter id="rescaleLower" value="0"/>
@@ -4763,8 +4770,11 @@ Copyright (c) 2003-2020 Pleiades Astrophoto
       <parameter id="expression3"></parameter>
       <parameter id="useSingleExpression" value="false"/>
       <parameter id="symbols"></parameter>
+      <parameter id="clearImageCacheAndExit" value="false"/>
+      <parameter id="cacheGeneratedImages" value="false"/>
       <parameter id="generateOutput" value="true"/>
       <parameter id="singleThreaded" value="false"/>
+      <parameter id="optimization" value="true"/>
       <parameter id="use64BitWorkingImage" value="false"/>
       <parameter id="rescale" value="false"/>
       <parameter id="rescaleLower" value="0"/>
@@ -4782,575 +4792,9 @@ Copyright (c) 2003-2020 Pleiades Astrophoto
       <parameter id="newImageSampleFormat" value="SameAsTarget"/>
       <table id="outputData" rows="0"/>
    </instance>
-   <instance class="Script" id="Process28_instance">
-      <parameter id="filePath">$PXI_SRCDIR/scripts/WeightedBatchPreprocessing/WeightedBatchPreprocessing.js</parameter>
-      <parameter id="md5sum">e391613a357bfd5384e65c7c6880c9a2</parameter>
-      <table id="parameters" rows="140">
-         <tr>
-            <td id="id">version</td>
-            <td id="value">1.4.6</td>
-         </tr>
-         <tr>
-            <td id="id">saveFrameGroups</td>
-            <td id="value">false</td>
-         </tr>
-         <tr>
-            <td id="id">outputDirectory</td>
-            <td id="value">/Users/jamie/AstroMirror/Processed</td>
-         </tr>
-         <tr>
-            <td id="id">cfaImages</td>
-            <td id="value">false</td>
-         </tr>
-         <tr>
-            <td id="id">upBottomFITS</td>
-            <td id="value">true</td>
-         </tr>
-         <tr>
-            <td id="id">saveProcessLog</td>
-            <td id="value">true</td>
-         </tr>
-         <tr>
-            <td id="id">generateRejectionMaps</td>
-            <td id="value">false</td>
-         </tr>
-         <tr>
-            <td id="id">masterDarkIncludesBias</td>
-            <td id="value">true</td>
-         </tr>
-         <tr>
-            <td id="id">optimizeDarks</td>
-            <td id="value">true</td>
-         </tr>
-         <tr>
-            <td id="id">darkOptimizationLow</td>
-            <td id="value">3</td>
-         </tr>
-         <tr>
-            <td id="id">darkOptimizationWindow</td>
-            <td id="value">1024</td>
-         </tr>
-         <tr>
-            <td id="id">darkExposureTolerance</td>
-            <td id="value">10</td>
-         </tr>
-         <tr>
-            <td id="id">evaluateNoise</td>
-            <td id="value">true</td>
-         </tr>
-         <tr>
-            <td id="id">overscanEnabled</td>
-            <td id="value">false</td>
-         </tr>
-         <tr>
-            <td id="id">overscanRegionEnabled_1</td>
-            <td id="value">false</td>
-         </tr>
-         <tr>
-            <td id="id">overscanSourceX0_1</td>
-            <td id="value">0</td>
-         </tr>
-         <tr>
-            <td id="id">overscanSourceY0_1</td>
-            <td id="value">0</td>
-         </tr>
-         <tr>
-            <td id="id">overscanSourceX1_1</td>
-            <td id="value">0</td>
-         </tr>
-         <tr>
-            <td id="id">overscanSourceY1_1</td>
-            <td id="value">0</td>
-         </tr>
-         <tr>
-            <td id="id">overscanTargetX0_1</td>
-            <td id="value">0</td>
-         </tr>
-         <tr>
-            <td id="id">overscanTargetY0_1</td>
-            <td id="value">0</td>
-         </tr>
-         <tr>
-            <td id="id">overscanTargetX1_1</td>
-            <td id="value">0</td>
-         </tr>
-         <tr>
-            <td id="id">overscanTargetY1_1</td>
-            <td id="value">0</td>
-         </tr>
-         <tr>
-            <td id="id">overscanRegionEnabled_2</td>
-            <td id="value">false</td>
-         </tr>
-         <tr>
-            <td id="id">overscanSourceX0_2</td>
-            <td id="value">0</td>
-         </tr>
-         <tr>
-            <td id="id">overscanSourceY0_2</td>
-            <td id="value">0</td>
-         </tr>
-         <tr>
-            <td id="id">overscanSourceX1_2</td>
-            <td id="value">0</td>
-         </tr>
-         <tr>
-            <td id="id">overscanSourceY1_2</td>
-            <td id="value">0</td>
-         </tr>
-         <tr>
-            <td id="id">overscanTargetX0_2</td>
-            <td id="value">0</td>
-         </tr>
-         <tr>
-            <td id="id">overscanTargetY0_2</td>
-            <td id="value">0</td>
-         </tr>
-         <tr>
-            <td id="id">overscanTargetX1_2</td>
-            <td id="value">0</td>
-         </tr>
-         <tr>
-            <td id="id">overscanTargetY1_2</td>
-            <td id="value">0</td>
-         </tr>
-         <tr>
-            <td id="id">overscanRegionEnabled_3</td>
-            <td id="value">false</td>
-         </tr>
-         <tr>
-            <td id="id">overscanSourceX0_3</td>
-            <td id="value">0</td>
-         </tr>
-         <tr>
-            <td id="id">overscanSourceY0_3</td>
-            <td id="value">0</td>
-         </tr>
-         <tr>
-            <td id="id">overscanSourceX1_3</td>
-            <td id="value">0</td>
-         </tr>
-         <tr>
-            <td id="id">overscanSourceY1_3</td>
-            <td id="value">0</td>
-         </tr>
-         <tr>
-            <td id="id">overscanTargetX0_3</td>
-            <td id="value">0</td>
-         </tr>
-         <tr>
-            <td id="id">overscanTargetY0_3</td>
-            <td id="value">0</td>
-         </tr>
-         <tr>
-            <td id="id">overscanTargetX1_3</td>
-            <td id="value">0</td>
-         </tr>
-         <tr>
-            <td id="id">overscanTargetY1_3</td>
-            <td id="value">0</td>
-         </tr>
-         <tr>
-            <td id="id">overscanRegionEnabled_4</td>
-            <td id="value">false</td>
-         </tr>
-         <tr>
-            <td id="id">overscanSourceX0_4</td>
-            <td id="value">0</td>
-         </tr>
-         <tr>
-            <td id="id">overscanSourceY0_4</td>
-            <td id="value">0</td>
-         </tr>
-         <tr>
-            <td id="id">overscanSourceX1_4</td>
-            <td id="value">0</td>
-         </tr>
-         <tr>
-            <td id="id">overscanSourceY1_4</td>
-            <td id="value">0</td>
-         </tr>
-         <tr>
-            <td id="id">overscanTargetX0_4</td>
-            <td id="value">0</td>
-         </tr>
-         <tr>
-            <td id="id">overscanTargetY0_4</td>
-            <td id="value">0</td>
-         </tr>
-         <tr>
-            <td id="id">overscanTargetX1_4</td>
-            <td id="value">0</td>
-         </tr>
-         <tr>
-            <td id="id">overscanTargetY1_4</td>
-            <td id="value">0</td>
-         </tr>
-         <tr>
-            <td id="id">overscanImageX0</td>
-            <td id="value">0</td>
-         </tr>
-         <tr>
-            <td id="id">overscanImageY0</td>
-            <td id="value">0</td>
-         </tr>
-         <tr>
-            <td id="id">overscanImageX1</td>
-            <td id="value">0</td>
-         </tr>
-         <tr>
-            <td id="id">overscanImageY1</td>
-            <td id="value">0</td>
-         </tr>
-         <tr>
-            <td id="id">useAsMaster_1</td>
-            <td id="value">false</td>
-         </tr>
-         <tr>
-            <td id="id">combination_1</td>
-            <td id="value">0</td>
-         </tr>
-         <tr>
-            <td id="id">rejection_1</td>
-            <td id="value">999</td>
-         </tr>
-         <tr>
-            <td id="id">minMaxLow_1</td>
-            <td id="value">1</td>
-         </tr>
-         <tr>
-            <td id="id">minMaxHigh_1</td>
-            <td id="value">1</td>
-         </tr>
-         <tr>
-            <td id="id">percentileLow_1</td>
-            <td id="value">0.2</td>
-         </tr>
-         <tr>
-            <td id="id">percentileHigh_1</td>
-            <td id="value">0.1</td>
-         </tr>
-         <tr>
-            <td id="id">sigmaLow_1</td>
-            <td id="value">4</td>
-         </tr>
-         <tr>
-            <td id="id">sigmaHigh_1</td>
-            <td id="value">3</td>
-         </tr>
-         <tr>
-            <td id="id">linearFitLow_1</td>
-            <td id="value">5</td>
-         </tr>
-         <tr>
-            <td id="id">linearFitHigh_1</td>
-            <td id="value">3.5</td>
-         </tr>
-         <tr>
-            <td id="id">ESD_Outliers_1</td>
-            <td id="value">0.3</td>
-         </tr>
-         <tr>
-            <td id="id">ESD_Significance_1</td>
-            <td id="value">0.05</td>
-         </tr>
-         <tr>
-            <td id="id">useAsMaster_2</td>
-            <td id="value">true</td>
-         </tr>
-         <tr>
-            <td id="id">combination_2</td>
-            <td id="value">0</td>
-         </tr>
-         <tr>
-            <td id="id">rejection_2</td>
-            <td id="value">999</td>
-         </tr>
-         <tr>
-            <td id="id">minMaxLow_2</td>
-            <td id="value">1</td>
-         </tr>
-         <tr>
-            <td id="id">minMaxHigh_2</td>
-            <td id="value">1</td>
-         </tr>
-         <tr>
-            <td id="id">percentileLow_2</td>
-            <td id="value">0.2</td>
-         </tr>
-         <tr>
-            <td id="id">percentileHigh_2</td>
-            <td id="value">0.1</td>
-         </tr>
-         <tr>
-            <td id="id">sigmaLow_2</td>
-            <td id="value">4</td>
-         </tr>
-         <tr>
-            <td id="id">sigmaHigh_2</td>
-            <td id="value">3</td>
-         </tr>
-         <tr>
-            <td id="id">linearFitLow_2</td>
-            <td id="value">5</td>
-         </tr>
-         <tr>
-            <td id="id">linearFitHigh_2</td>
-            <td id="value">3.5</td>
-         </tr>
-         <tr>
-            <td id="id">ESD_Outliers_2</td>
-            <td id="value">0.3</td>
-         </tr>
-         <tr>
-            <td id="id">ESD_Significance_2</td>
-            <td id="value">0.05</td>
-         </tr>
-         <tr>
-            <td id="id">useAsMaster_3</td>
-            <td id="value">false</td>
-         </tr>
-         <tr>
-            <td id="id">combination_3</td>
-            <td id="value">0</td>
-         </tr>
-         <tr>
-            <td id="id">rejection_3</td>
-            <td id="value">999</td>
-         </tr>
-         <tr>
-            <td id="id">minMaxLow_3</td>
-            <td id="value">1</td>
-         </tr>
-         <tr>
-            <td id="id">minMaxHigh_3</td>
-            <td id="value">1</td>
-         </tr>
-         <tr>
-            <td id="id">percentileLow_3</td>
-            <td id="value">0.2</td>
-         </tr>
-         <tr>
-            <td id="id">percentileHigh_3</td>
-            <td id="value">0.1</td>
-         </tr>
-         <tr>
-            <td id="id">sigmaLow_3</td>
-            <td id="value">4</td>
-         </tr>
-         <tr>
-            <td id="id">sigmaHigh_3</td>
-            <td id="value">3</td>
-         </tr>
-         <tr>
-            <td id="id">linearFitLow_3</td>
-            <td id="value">5</td>
-         </tr>
-         <tr>
-            <td id="id">linearFitHigh_3</td>
-            <td id="value">3.5</td>
-         </tr>
-         <tr>
-            <td id="id">ESD_Outliers_3</td>
-            <td id="value">0.3</td>
-         </tr>
-         <tr>
-            <td id="id">ESD_Significance_3</td>
-            <td id="value">0.05</td>
-         </tr>
-         <tr>
-            <td id="id">useAsMaster_4</td>
-            <td id="value">false</td>
-         </tr>
-         <tr>
-            <td id="id">combination_4</td>
-            <td id="value">0</td>
-         </tr>
-         <tr>
-            <td id="id">rejection_4</td>
-            <td id="value">999</td>
-         </tr>
-         <tr>
-            <td id="id">minMaxLow_4</td>
-            <td id="value">1</td>
-         </tr>
-         <tr>
-            <td id="id">minMaxHigh_4</td>
-            <td id="value">1</td>
-         </tr>
-         <tr>
-            <td id="id">percentileLow_4</td>
-            <td id="value">0.2</td>
-         </tr>
-         <tr>
-            <td id="id">percentileHigh_4</td>
-            <td id="value">0.1</td>
-         </tr>
-         <tr>
-            <td id="id">sigmaLow_4</td>
-            <td id="value">3.7</td>
-         </tr>
-         <tr>
-            <td id="id">sigmaHigh_4</td>
-            <td id="value">2.7</td>
-         </tr>
-         <tr>
-            <td id="id">linearFitLow_4</td>
-            <td id="value">5</td>
-         </tr>
-         <tr>
-            <td id="id">linearFitHigh_4</td>
-            <td id="value">3.5</td>
-         </tr>
-         <tr>
-            <td id="id">ESD_Outliers_4</td>
-            <td id="value">0.3</td>
-         </tr>
-         <tr>
-            <td id="id">ESD_Significance_4</td>
-            <td id="value">0.05</td>
-         </tr>
-         <tr>
-            <td id="id">flatsLargeScaleRejection</td>
-            <td id="value">false</td>
-         </tr>
-         <tr>
-            <td id="id">flatsLargeScaleRejectionLayers</td>
-            <td id="value">2</td>
-         </tr>
-         <tr>
-            <td id="id">flatsLargeScaleRejectionGrowth</td>
-            <td id="value">2</td>
-         </tr>
-         <tr>
-            <td id="id">lightsLargeScaleRejectionHigh</td>
-            <td id="value">false</td>
-         </tr>
-         <tr>
-            <td id="id">lightsLargeScaleRejectionLayersHigh</td>
-            <td id="value">2</td>
-         </tr>
-         <tr>
-            <td id="id">lightsLargeScaleRejectionGrowthHigh</td>
-            <td id="value">2</td>
-         </tr>
-         <tr>
-            <td id="id">lightsLargeScaleRejectionLow</td>
-            <td id="value">false</td>
-         </tr>
-         <tr>
-            <td id="id">lightsLargeScaleRejectionLayersLow</td>
-            <td id="value">2</td>
-         </tr>
-         <tr>
-            <td id="id">lightsLargeScaleRejectionGrowthLow</td>
-            <td id="value">2</td>
-         </tr>
-         <tr>
-            <td id="id">flatDarksOnly</td>
-            <td id="value">true</td>
-         </tr>
-         <tr>
-            <td id="id">calibrateOnly</td>
-            <td id="value">false</td>
-         </tr>
-         <tr>
-            <td id="id">lightExposureTolerance</td>
-            <td id="value">2</td>
-         </tr>
-         <tr>
-            <td id="id">generateDrizzleData</td>
-            <td id="value">true</td>
-         </tr>
-         <tr>
-            <td id="id">cosmeticCorrection</td>
-            <td id="value">false</td>
-         </tr>
-         <tr>
-            <td id="id">cosmeticCorrectionTemplateId</td>
-            <td id="value"></td>
-         </tr>
-         <tr>
-            <td id="id">bayerPattern</td>
-            <td id="value">0</td>
-         </tr>
-         <tr>
-            <td id="id">debayerMethod</td>
-            <td id="value">2</td>
-         </tr>
-         <tr>
-            <td id="id">pixelInterpolation</td>
-            <td id="value">10</td>
-         </tr>
-         <tr>
-            <td id="id">clampingThreshold</td>
-            <td id="value">0.3</td>
-         </tr>
-         <tr>
-            <td id="id">maxStars</td>
-            <td id="value">500</td>
-         </tr>
-         <tr>
-            <td id="id">distortionCorrection</td>
-            <td id="value">false</td>
-         </tr>
-         <tr>
-            <td id="id">noiseReductionFilterRadius</td>
-            <td id="value">0</td>
-         </tr>
-         <tr>
-            <td id="id">useTriangleSimilarity</td>
-            <td id="value">true</td>
-         </tr>
-         <tr>
-            <td id="id">referenceImage</td>
-            <td id="value"></td>
-         </tr>
-         <tr>
-            <td id="id">subframeWeightingPreset</td>
-            <td id="value">1</td>
-         </tr>
-         <tr>
-            <td id="id">generateSubframesWeights</td>
-            <td id="value">true</td>
-         </tr>
-         <tr>
-            <td id="id">generateSubframesWeightsAfterRegistration</td>
-            <td id="value">false</td>
-         </tr>
-         <tr>
-            <td id="id">useBestLightAsReference</td>
-            <td id="value">true</td>
-         </tr>
-         <tr>
-            <td id="id">FWHMWeight</td>
-            <td id="value">5</td>
-         </tr>
-         <tr>
-            <td id="id">eccentricityWeight</td>
-            <td id="value">10</td>
-         </tr>
-         <tr>
-            <td id="id">SNRWeight</td>
-            <td id="value">20</td>
-         </tr>
-         <tr>
-            <td id="id">pedestal</td>
-            <td id="value">65</td>
-         </tr>
-         <tr>
-            <td id="id">integrate</td>
-            <td id="value">true</td>
-         </tr>
-         <tr>
-            <td id="id">frameGroups</td>
-            <td id="value">WwogIHsKICAgICJpbWFnZVR5cGUiOiAxLAogICAgImZpbHRlciI6ICIiLAogICAgImJpbm5pbmciOiAxLAogICAgImV4cG9zdXJlVGltZSI6IDE4MCwKICAgICJleHBvc3VyZVRpbWVzIjogWwogICAgICAxODAKICAgIF0sCiAgICAibWFzdGVyRnJhbWUiOiB0cnVlLAogICAgImVuYWJsZWQiOiB0cnVlLAogICAgImZpbGVJdGVtcyI6IFsKICAgICAgewogICAgICAgICJmaWxlUGF0aCI6ICIvVXNlcnMvamFtaWUvQXN0cm9waG90b2dyYXBoeS9NYXN0ZXIgQ2FsaWJyYXRpb24vbWFzdGVyRGFyay1CSU5OSU5HXzEtRVhQVElNRV8xODAtb2Zmc2V0LTUwLWdhaW4tMTAwLnhpc2YiLAogICAgICAgICJpbWFnZVR5cGUiOiAxLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIkx1bWluYW5jZSIsCiAgICAgICAgImV4cG9zdXJlVGltZSI6IDE4MCwKICAgICAgICAiZW5hYmxlZCI6IHRydWUsCiAgICAgICAgImlzQ0ZBIjogZmFsc2UKICAgICAgfQogICAgXSwKICAgICJjb250YWluc0NGQSI6IGZhbHNlCiAgfSwKICB7CiAgICAiaW1hZ2VUeXBlIjogMSwKICAgICJmaWx0ZXIiOiAiIiwKICAgICJiaW5uaW5nIjogMSwKICAgICJleHBvc3VyZVRpbWUiOiAxMjAsCiAgICAiZXhwb3N1cmVUaW1lcyI6IFsKICAgICAgMTIwCiAgICBdLAogICAgIm1hc3RlckZyYW1lIjogdHJ1ZSwKICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICJmaWxlSXRlbXMiOiBbCiAgICAgIHsKICAgICAgICAiZmlsZVBhdGgiOiAiL1VzZXJzL2phbWllL0FzdHJvcGhvdG9ncmFwaHkvTWFzdGVyIENhbGlicmF0aW9uL21hc3RlckRhcmstQklOTklOR18xLUVYUFRJTUVfMTIwLW9mZnNldC01MC1nYWluLTEwMC54aXNmIiwKICAgICAgICAiaW1hZ2VUeXBlIjogMSwKICAgICAgICAiYmlubmluZyI6IDEsCiAgICAgICAgImZpbHRlciI6ICJMdW1pbmFuY2UiLAogICAgICAgICJleHBvc3VyZVRpbWUiOiAxMjAsCiAgICAgICAgImVuYWJsZWQiOiB0cnVlLAogICAgICAgICJpc0NGQSI6IGZhbHNlCiAgICAgIH0KICAgIF0sCiAgICAiY29udGFpbnNDRkEiOiBmYWxzZQogIH0sCiAgewogICAgImltYWdlVHlwZSI6IDMsCiAgICAiZmlsdGVyIjogIkJsdWUiLAogICAgImJpbm5pbmciOiAxLAogICAgImV4cG9zdXJlVGltZSI6IDEyMCwKICAgICJleHBvc3VyZVRpbWVzIjogWwogICAgICAxMjAKICAgIF0sCiAgICAibWFzdGVyRnJhbWUiOiBmYWxzZSwKICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICJmaWxlSXRlbXMiOiBbCiAgICAgIHsKICAgICAgICAiZmlsZVBhdGgiOiAiL1VzZXJzL2phbWllL0FzdHJvTWlycm9yL0VsZXBoYW50IFRydW5rIC0gSUMgMTM5Ni8yMDIwLTA2LTEzL0lDIDEzOTYtMTIwLjAwMHNlY3MtMXgxLUxpZ2h0LUJsdWVfMC4wMEMtMDAwMDcyNjguZml0IiwKICAgICAgICAiaW1hZ2VUeXBlIjogMywKICAgICAgICAiYmlubmluZyI6IDEsCiAgICAgICAgImZpbHRlciI6ICJCbHVlIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMTIwLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Vc2Vycy9qYW1pZS9Bc3Ryb01pcnJvci9FbGVwaGFudCBUcnVuayAtIElDIDEzOTYvMjAyMC0wNi0xMy9JQyAxMzk2LTEyMC4wMDBzZWNzLTF4MS1MaWdodC1CbHVlXzAuMDBDLTAwMDA3Mjg4LmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDMsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiQmx1ZSIsCiAgICAgICAgImV4cG9zdXJlVGltZSI6IDEyMCwKICAgICAgICAiZW5hYmxlZCI6IHRydWUsCiAgICAgICAgImlzQ0ZBIjogZmFsc2UKICAgICAgfSwKICAgICAgewogICAgICAgICJmaWxlUGF0aCI6ICIvVXNlcnMvamFtaWUvQXN0cm9NaXJyb3IvRWxlcGhhbnQgVHJ1bmsgLSBJQyAxMzk2LzIwMjAtMDYtMTMvSUMgMTM5Ni0xMjAuMDAwc2Vjcy0xeDEtTGlnaHQtQmx1ZV8wLjAwQy0wMDAwNzMwOC5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAzLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIkJsdWUiLAogICAgICAgICJleHBvc3VyZVRpbWUiOiAxMjAsCiAgICAgICAgImVuYWJsZWQiOiB0cnVlLAogICAgICAgICJpc0NGQSI6IGZhbHNlCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiZmlsZVBhdGgiOiAiL1VzZXJzL2phbWllL0FzdHJvTWlycm9yL0VsZXBoYW50IFRydW5rIC0gSUMgMTM5Ni8yMDIwLTA2LTEzL0lDIDEzOTYtMTIwLjAwMHNlY3MtMXgxLUxpZ2h0LUJsdWVfMC4wMEMtMDAwMDczMjcuZml0IiwKICAgICAgICAiaW1hZ2VUeXBlIjogMywKICAgICAgICAiYmlubmluZyI6IDEsCiAgICAgICAgImZpbHRlciI6ICJCbHVlIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMTIwLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Vc2Vycy9qYW1pZS9Bc3Ryb01pcnJvci9FbGVwaGFudCBUcnVuayAtIElDIDEzOTYvMjAyMC0wNi0xMy9JQyAxMzk2LTEyMC4wMDBzZWNzLTF4MS1MaWdodC1CbHVlXzAuMDBDLTAwMDA3MzQ3LmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDMsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiQmx1ZSIsCiAgICAgICAgImV4cG9zdXJlVGltZSI6IDEyMCwKICAgICAgICAiZW5hYmxlZCI6IHRydWUsCiAgICAgICAgImlzQ0ZBIjogZmFsc2UKICAgICAgfSwKICAgICAgewogICAgICAgICJmaWxlUGF0aCI6ICIvVXNlcnMvamFtaWUvQXN0cm9NaXJyb3IvRWxlcGhhbnQgVHJ1bmsgLSBJQyAxMzk2LzIwMjAtMDYtMTMvSUMgMTM5Ni0xMjAuMDAwc2Vjcy0xeDEtTGlnaHQtQmx1ZV8wLjAwQy0wMDAwNzM2Ni5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAzLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIkJsdWUiLAogICAgICAgICJleHBvc3VyZVRpbWUiOiAxMjAsCiAgICAgICAgImVuYWJsZWQiOiB0cnVlLAogICAgICAgICJpc0NGQSI6IGZhbHNlCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiZmlsZVBhdGgiOiAiL1VzZXJzL2phbWllL0FzdHJvTWlycm9yL0VsZXBoYW50IFRydW5rIC0gSUMgMTM5Ni8yMDIwLTA2LTEzL0lDIDEzOTYtMTIwLjAwMHNlY3MtMXgxLUxpZ2h0LUJsdWVfMC4wMEMtMDAwMDczODYuZml0IiwKICAgICAgICAiaW1hZ2VUeXBlIjogMywKICAgICAgICAiYmlubmluZyI6IDEsCiAgICAgICAgImZpbHRlciI6ICJCbHVlIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMTIwLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Vc2Vycy9qYW1pZS9Bc3Ryb01pcnJvci9FbGVwaGFudCBUcnVuayAtIElDIDEzOTYvMjAyMC0wNi0xMy9JQyAxMzk2LTEyMC4wMDBzZWNzLTF4MS1MaWdodC1CbHVlXzAuMDBDLTAwMDA3NDA2LmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDMsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiQmx1ZSIsCiAgICAgICAgImV4cG9zdXJlVGltZSI6IDEyMCwKICAgICAgICAiZW5hYmxlZCI6IHRydWUsCiAgICAgICAgImlzQ0ZBIjogZmFsc2UKICAgICAgfSwKICAgICAgewogICAgICAgICJmaWxlUGF0aCI6ICIvVXNlcnMvamFtaWUvQXN0cm9NaXJyb3IvRWxlcGhhbnQgVHJ1bmsgLSBJQyAxMzk2LzIwMjAtMDYtMTMvSUMgMTM5Ni0xMjAuMDAwc2Vjcy0xeDEtTGlnaHQtQmx1ZV8wLjAwQy0wMDAwNzQyNy5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAzLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIkJsdWUiLAogICAgICAgICJleHBvc3VyZVRpbWUiOiAxMjAsCiAgICAgICAgImVuYWJsZWQiOiB0cnVlLAogICAgICAgICJpc0NGQSI6IGZhbHNlCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiZmlsZVBhdGgiOiAiL1VzZXJzL2phbWllL0FzdHJvTWlycm9yL0VsZXBoYW50IFRydW5rIC0gSUMgMTM5Ni8yMDIwLTA2LTEzL0lDIDEzOTYtMTIwLjAwMHNlY3MtMXgxLUxpZ2h0LUJsdWVfMC4wMEMtMDAwMDc0NDYuZml0IiwKICAgICAgICAiaW1hZ2VUeXBlIjogMywKICAgICAgICAiYmlubmluZyI6IDEsCiAgICAgICAgImZpbHRlciI6ICJCbHVlIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMTIwLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Vc2Vycy9qYW1pZS9Bc3Ryb01pcnJvci9FbGVwaGFudCBUcnVuayAtIElDIDEzOTYvMjAyMC0wNi0xMy9JQyAxMzk2LTEyMC4wMDBzZWNzLTF4MS1MaWdodC1CbHVlXzAuMDBDLTAwMDA3NDY1LmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDMsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiQmx1ZSIsCiAgICAgICAgImV4cG9zdXJlVGltZSI6IDEyMCwKICAgICAgICAiZW5hYmxlZCI6IHRydWUsCiAgICAgICAgImlzQ0ZBIjogZmFsc2UKICAgICAgfSwKICAgICAgewogICAgICAgICJmaWxlUGF0aCI6ICIvVXNlcnMvamFtaWUvQXN0cm9NaXJyb3IvRWxlcGhhbnQgVHJ1bmsgLSBJQyAxMzk2LzIwMjAtMDYtMTMvSUMgMTM5Ni0xMjAuMDAwc2Vjcy0xeDEtTGlnaHQtQmx1ZV8wLjAwQy0wMDAwNzQ4NC5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAzLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIkJsdWUiLAogICAgICAgICJleHBvc3VyZVRpbWUiOiAxMjAsCiAgICAgICAgImVuYWJsZWQiOiB0cnVlLAogICAgICAgICJpc0NGQSI6IGZhbHNlCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiZmlsZVBhdGgiOiAiL1VzZXJzL2phbWllL0FzdHJvTWlycm9yL0VsZXBoYW50IFRydW5rIC0gSUMgMTM5Ni8yMDIwLTA2LTEzL0lDIDEzOTYtMTIwLjAwMHNlY3MtMXgxLUxpZ2h0LUJsdWVfMC4wMEMtMDAwMDc1MDMuZml0IiwKICAgICAgICAiaW1hZ2VUeXBlIjogMywKICAgICAgICAiYmlubmluZyI6IDEsCiAgICAgICAgImZpbHRlciI6ICJCbHVlIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMTIwLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Vc2Vycy9qYW1pZS9Bc3Ryb01pcnJvci9FbGVwaGFudCBUcnVuayAtIElDIDEzOTYvMjAyMC0wNi0xMy9JQyAxMzk2LTEyMC4wMDBzZWNzLTF4MS1MaWdodC1CbHVlXzAuMDBDLTAwMDA3NTIyLmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDMsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiQmx1ZSIsCiAgICAgICAgImV4cG9zdXJlVGltZSI6IDEyMCwKICAgICAgICAiZW5hYmxlZCI6IHRydWUsCiAgICAgICAgImlzQ0ZBIjogZmFsc2UKICAgICAgfSwKICAgICAgewogICAgICAgICJmaWxlUGF0aCI6ICIvVXNlcnMvamFtaWUvQXN0cm9NaXJyb3IvRWxlcGhhbnQgVHJ1bmsgLSBJQyAxMzk2LzIwMjAtMDYtMTMvSUMgMTM5Ni0xMjAuMDAwc2Vjcy0xeDEtTGlnaHQtQmx1ZV8wLjAwQy0wMDAwNzU0MS5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAzLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIkJsdWUiLAogICAgICAgICJleHBvc3VyZVRpbWUiOiAxMjAsCiAgICAgICAgImVuYWJsZWQiOiB0cnVlLAogICAgICAgICJpc0NGQSI6IGZhbHNlCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiZmlsZVBhdGgiOiAiL1VzZXJzL2phbWllL0FzdHJvTWlycm9yL0VsZXBoYW50IFRydW5rIC0gSUMgMTM5Ni8yMDIwLTA2LTEzL0lDIDEzOTYtMTIwLjAwMHNlY3MtMXgxLUxpZ2h0LUJsdWVfMC4wMEMtMDAwMDc1NjAuZml0IiwKICAgICAgICAiaW1hZ2VUeXBlIjogMywKICAgICAgICAiYmlubmluZyI6IDEsCiAgICAgICAgImZpbHRlciI6ICJCbHVlIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMTIwLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Vc2Vycy9qYW1pZS9Bc3Ryb01pcnJvci9FbGVwaGFudCBUcnVuayAtIElDIDEzOTYvMjAyMC0wNi0xMy9JQyAxMzk2LTEyMC4wMDBzZWNzLTF4MS1MaWdodC1CbHVlXzAuMDBDLTAwMDA3NTkzLmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDMsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiQmx1ZSIsCiAgICAgICAgImV4cG9zdXJlVGltZSI6IDEyMCwKICAgICAgICAiZW5hYmxlZCI6IHRydWUsCiAgICAgICAgImlzQ0ZBIjogZmFsc2UKICAgICAgfSwKICAgICAgewogICAgICAgICJmaWxlUGF0aCI6ICIvVXNlcnMvamFtaWUvQXN0cm9NaXJyb3IvRWxlcGhhbnQgVHJ1bmsgLSBJQyAxMzk2LzIwMjAtMDYtMTMvSUMgMTM5Ni0xMjAuMDAwc2Vjcy0xeDEtTGlnaHQtQmx1ZV8wLjAwQy0wMDAwNzYxMi5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAzLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIkJsdWUiLAogICAgICAgICJleHBvc3VyZVRpbWUiOiAxMjAsCiAgICAgICAgImVuYWJsZWQiOiB0cnVlLAogICAgICAgICJpc0NGQSI6IGZhbHNlCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiZmlsZVBhdGgiOiAiL1VzZXJzL2phbWllL0FzdHJvTWlycm9yL0VsZXBoYW50IFRydW5rIC0gSUMgMTM5Ni8yMDIwLTA2LTEzL0lDIDEzOTYtMTIwLjAwMHNlY3MtMXgxLUxpZ2h0LUJsdWVfMC4wMEMtMDAwMDc2MzEuZml0IiwKICAgICAgICAiaW1hZ2VUeXBlIjogMywKICAgICAgICAiYmlubmluZyI6IDEsCiAgICAgICAgImZpbHRlciI6ICJCbHVlIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMTIwLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Vc2Vycy9qYW1pZS9Bc3Ryb01pcnJvci9FbGVwaGFudCBUcnVuayAtIElDIDEzOTYvMjAyMC0wNi0xMy9JQyAxMzk2LTEyMC4wMDBzZWNzLTF4MS1MaWdodC1CbHVlXzAuMDBDLTAwMDA3NjY5LmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDMsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiQmx1ZSIsCiAgICAgICAgImV4cG9zdXJlVGltZSI6IDEyMCwKICAgICAgICAiZW5hYmxlZCI6IHRydWUsCiAgICAgICAgImlzQ0ZBIjogZmFsc2UKICAgICAgfSwKICAgICAgewogICAgICAgICJmaWxlUGF0aCI6ICIvVXNlcnMvamFtaWUvQXN0cm9NaXJyb3IvRWxlcGhhbnQgVHJ1bmsgLSBJQyAxMzk2LzIwMjAtMDYtMTMvSUMgMTM5Ni0xMjAuMDAwc2Vjcy0xeDEtTGlnaHQtQmx1ZV8wLjAwQy0wMDAwNzY4OC5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAzLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIkJsdWUiLAogICAgICAgICJleHBvc3VyZVRpbWUiOiAxMjAsCiAgICAgICAgImVuYWJsZWQiOiB0cnVlLAogICAgICAgICJpc0NGQSI6IGZhbHNlCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiZmlsZVBhdGgiOiAiL1VzZXJzL2phbWllL0FzdHJvTWlycm9yL0VsZXBoYW50IFRydW5rIC0gSUMgMTM5Ni8yMDIwLTA2LTEzL0lDIDEzOTYtMTIwLjAwMHNlY3MtMXgxLUxpZ2h0LUJsdWVfMC4wMEMtMDAwMDc3MDcuZml0IiwKICAgICAgICAiaW1hZ2VUeXBlIjogMywKICAgICAgICAiYmlubmluZyI6IDEsCiAgICAgICAgImZpbHRlciI6ICJCbHVlIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMTIwLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Vc2Vycy9qYW1pZS9Bc3Ryb01pcnJvci9FbGVwaGFudCBUcnVuayAtIElDIDEzOTYvMjAyMC0wNi0xMy9JQyAxMzk2LTEyMC4wMDBzZWNzLTF4MS1MaWdodC1CbHVlXzAuMDBDLTAwMDA3NzI2LmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDMsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiQmx1ZSIsCiAgICAgICAgImV4cG9zdXJlVGltZSI6IDEyMCwKICAgICAgICAiZW5hYmxlZCI6IHRydWUsCiAgICAgICAgImlzQ0ZBIjogZmFsc2UKICAgICAgfSwKICAgICAgewogICAgICAgICJmaWxlUGF0aCI6ICIvVXNlcnMvamFtaWUvQXN0cm9NaXJyb3IvRWxlcGhhbnQgVHJ1bmsgLSBJQyAxMzk2LzIwMjAtMDYtMTMvSUMgMTM5Ni0xMjAuMDAwc2Vjcy0xeDEtTGlnaHQtQmx1ZV8wLjAwQy0wMDAwNzc0NS5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAzLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIkJsdWUiLAogICAgICAgICJleHBvc3VyZVRpbWUiOiAxMjAsCiAgICAgICAgImVuYWJsZWQiOiB0cnVlLAogICAgICAgICJpc0NGQSI6IGZhbHNlCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiZmlsZVBhdGgiOiAiL1VzZXJzL2phbWllL0FzdHJvTWlycm9yL0VsZXBoYW50IFRydW5rIC0gSUMgMTM5Ni8yMDIwLTA2LTEzL0lDIDEzOTYtMTIwLjAwMHNlY3MtMXgxLUxpZ2h0LUJsdWVfMC4wMEMtMDAwMDc3NjQuZml0IiwKICAgICAgICAiaW1hZ2VUeXBlIjogMywKICAgICAgICAiYmlubmluZyI6IDEsCiAgICAgICAgImZpbHRlciI6ICJCbHVlIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMTIwLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Vc2Vycy9qYW1pZS9Bc3Ryb01pcnJvci9FbGVwaGFudCBUcnVuayAtIElDIDEzOTYvMjAyMC0wNi0xMy9JQyAxMzk2LTEyMC4wMDBzZWNzLTF4MS1MaWdodC1CbHVlXzAuMDBDLTAwMDA3NzgzLmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDMsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiQmx1ZSIsCiAgICAgICAgImV4cG9zdXJlVGltZSI6IDEyMCwKICAgICAgICAiZW5hYmxlZCI6IHRydWUsCiAgICAgICAgImlzQ0ZBIjogZmFsc2UKICAgICAgfSwKICAgICAgewogICAgICAgICJmaWxlUGF0aCI6ICIvVXNlcnMvamFtaWUvQXN0cm9NaXJyb3IvRWxlcGhhbnQgVHJ1bmsgLSBJQyAxMzk2LzIwMjAtMDYtMTMvSUMgMTM5Ni0xMjAuMDAwc2Vjcy0xeDEtTGlnaHQtQmx1ZV8wLjAwQy0wMDAwNzgwMi5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAzLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIkJsdWUiLAogICAgICAgICJleHBvc3VyZVRpbWUiOiAxMjAsCiAgICAgICAgImVuYWJsZWQiOiB0cnVlLAogICAgICAgICJpc0NGQSI6IGZhbHNlCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiZmlsZVBhdGgiOiAiL1VzZXJzL2phbWllL0FzdHJvTWlycm9yL0VsZXBoYW50IFRydW5rIC0gSUMgMTM5Ni8yMDIwLTA2LTEzL0lDIDEzOTYtMTIwLjAwMHNlY3MtMXgxLUxpZ2h0LUJsdWVfMC4wMEMtMDAwMDc4MjEuZml0IiwKICAgICAgICAiaW1hZ2VUeXBlIjogMywKICAgICAgICAiYmlubmluZyI6IDEsCiAgICAgICAgImZpbHRlciI6ICJCbHVlIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMTIwLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Vc2Vycy9qYW1pZS9Bc3Ryb01pcnJvci9FbGVwaGFudCBUcnVuayAtIElDIDEzOTYvMjAyMC0wNi0xMy9JQyAxMzk2LTEyMC4wMDBzZWNzLTF4MS1MaWdodC1CbHVlXzAuMTBDLTAwMDA3NjUwLmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDMsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiQmx1ZSIsCiAgICAgICAgImV4cG9zdXJlVGltZSI6IDEyMCwKICAgICAgICAiZW5hYmxlZCI6IHRydWUsCiAgICAgICAgImlzQ0ZBIjogZmFsc2UKICAgICAgfSwKICAgICAgewogICAgICAgICJmaWxlUGF0aCI6ICIvVXNlcnMvamFtaWUvQXN0cm9NaXJyb3IvRWxlcGhhbnQgVHJ1bmsgLSBJQyAxMzk2LzIwMjAtMDYtMTMvSUMgMTM5Ni0xMjAuMDAwc2Vjcy0xeDEtTGlnaHQtQmx1ZV8wLjEwQy0wMDAwNzg0MC5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAzLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIkJsdWUiLAogICAgICAgICJleHBvc3VyZVRpbWUiOiAxMjAsCiAgICAgICAgImVuYWJsZWQiOiB0cnVlLAogICAgICAgICJpc0NGQSI6IGZhbHNlCiAgICAgIH0KICAgIF0sCiAgICAiY29udGFpbnNDRkEiOiBmYWxzZQogIH0sCiAgewogICAgImltYWdlVHlwZSI6IDMsCiAgICAiZmlsdGVyIjogIkdyZWVuIiwKICAgICJiaW5uaW5nIjogMSwKICAgICJleHBvc3VyZVRpbWUiOiAxMjAsCiAgICAiZXhwb3N1cmVUaW1lcyI6IFsKICAgICAgMTIwCiAgICBdLAogICAgIm1hc3RlckZyYW1lIjogZmFsc2UsCiAgICAiZW5hYmxlZCI6IHRydWUsCiAgICAiZmlsZUl0ZW1zIjogWwogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Vc2Vycy9qYW1pZS9Bc3Ryb01pcnJvci9FbGVwaGFudCBUcnVuayAtIElDIDEzOTYvMjAyMC0wNi0xMy9JQyAxMzk2LTEyMC4wMDBzZWNzLTF4MS1MaWdodC1HcmVlbl8wLjAwQy0wMDAwNzI2Ny5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAzLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIkdyZWVuIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMTIwLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Vc2Vycy9qYW1pZS9Bc3Ryb01pcnJvci9FbGVwaGFudCBUcnVuayAtIElDIDEzOTYvMjAyMC0wNi0xMy9JQyAxMzk2LTEyMC4wMDBzZWNzLTF4MS1MaWdodC1HcmVlbl8wLjAwQy0wMDAwNzI4Ny5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAzLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIkdyZWVuIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMTIwLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Vc2Vycy9qYW1pZS9Bc3Ryb01pcnJvci9FbGVwaGFudCBUcnVuayAtIElDIDEzOTYvMjAyMC0wNi0xMy9JQyAxMzk2LTEyMC4wMDBzZWNzLTF4MS1MaWdodC1HcmVlbl8wLjAwQy0wMDAwNzMwNy5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAzLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIkdyZWVuIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMTIwLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Vc2Vycy9qYW1pZS9Bc3Ryb01pcnJvci9FbGVwaGFudCBUcnVuayAtIElDIDEzOTYvMjAyMC0wNi0xMy9JQyAxMzk2LTEyMC4wMDBzZWNzLTF4MS1MaWdodC1HcmVlbl8wLjAwQy0wMDAwNzMyNi5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAzLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIkdyZWVuIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMTIwLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Vc2Vycy9qYW1pZS9Bc3Ryb01pcnJvci9FbGVwaGFudCBUcnVuayAtIElDIDEzOTYvMjAyMC0wNi0xMy9JQyAxMzk2LTEyMC4wMDBzZWNzLTF4MS1MaWdodC1HcmVlbl8wLjAwQy0wMDAwNzM0Ni5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAzLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIkdyZWVuIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMTIwLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Vc2Vycy9qYW1pZS9Bc3Ryb01pcnJvci9FbGVwaGFudCBUcnVuayAtIElDIDEzOTYvMjAyMC0wNi0xMy9JQyAxMzk2LTEyMC4wMDBzZWNzLTF4MS1MaWdodC1HcmVlbl8wLjAwQy0wMDAwNzM2NS5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAzLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIkdyZWVuIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMTIwLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Vc2Vycy9qYW1pZS9Bc3Ryb01pcnJvci9FbGVwaGFudCBUcnVuayAtIElDIDEzOTYvMjAyMC0wNi0xMy9JQyAxMzk2LTEyMC4wMDBzZWNzLTF4MS1MaWdodC1HcmVlbl8wLjAwQy0wMDAwNzM4NS5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAzLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIkdyZWVuIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMTIwLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Vc2Vycy9qYW1pZS9Bc3Ryb01pcnJvci9FbGVwaGFudCBUcnVuayAtIElDIDEzOTYvMjAyMC0wNi0xMy9JQyAxMzk2LTEyMC4wMDBzZWNzLTF4MS1MaWdodC1HcmVlbl8wLjAwQy0wMDAwNzQwNS5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAzLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIkdyZWVuIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMTIwLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Vc2Vycy9qYW1pZS9Bc3Ryb01pcnJvci9FbGVwaGFudCBUcnVuayAtIElDIDEzOTYvMjAyMC0wNi0xMy9JQyAxMzk2LTEyMC4wMDBzZWNzLTF4MS1MaWdodC1HcmVlbl8wLjAwQy0wMDAwNzQyNi5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAzLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIkdyZWVuIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMTIwLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Vc2Vycy9qYW1pZS9Bc3Ryb01pcnJvci9FbGVwaGFudCBUcnVuayAtIElDIDEzOTYvMjAyMC0wNi0xMy9JQyAxMzk2LTEyMC4wMDBzZWNzLTF4MS1MaWdodC1HcmVlbl8wLjAwQy0wMDAwNzQ0NS5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAzLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIkdyZWVuIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMTIwLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Vc2Vycy9qYW1pZS9Bc3Ryb01pcnJvci9FbGVwaGFudCBUcnVuayAtIElDIDEzOTYvMjAyMC0wNi0xMy9JQyAxMzk2LTEyMC4wMDBzZWNzLTF4MS1MaWdodC1HcmVlbl8wLjAwQy0wMDAwNzQ2NC5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAzLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIkdyZWVuIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMTIwLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Vc2Vycy9qYW1pZS9Bc3Ryb01pcnJvci9FbGVwaGFudCBUcnVuayAtIElDIDEzOTYvMjAyMC0wNi0xMy9JQyAxMzk2LTEyMC4wMDBzZWNzLTF4MS1MaWdodC1HcmVlbl8wLjAwQy0wMDAwNzQ4My5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAzLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIkdyZWVuIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMTIwLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Vc2Vycy9qYW1pZS9Bc3Ryb01pcnJvci9FbGVwaGFudCBUcnVuayAtIElDIDEzOTYvMjAyMC0wNi0xMy9JQyAxMzk2LTEyMC4wMDBzZWNzLTF4MS1MaWdodC1HcmVlbl8wLjAwQy0wMDAwNzUwMi5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAzLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIkdyZWVuIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMTIwLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Vc2Vycy9qYW1pZS9Bc3Ryb01pcnJvci9FbGVwaGFudCBUcnVuayAtIElDIDEzOTYvMjAyMC0wNi0xMy9JQyAxMzk2LTEyMC4wMDBzZWNzLTF4MS1MaWdodC1HcmVlbl8wLjAwQy0wMDAwNzUyMS5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAzLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIkdyZWVuIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMTIwLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Vc2Vycy9qYW1pZS9Bc3Ryb01pcnJvci9FbGVwaGFudCBUcnVuayAtIElDIDEzOTYvMjAyMC0wNi0xMy9JQyAxMzk2LTEyMC4wMDBzZWNzLTF4MS1MaWdodC1HcmVlbl8wLjAwQy0wMDAwNzU0MC5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAzLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIkdyZWVuIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMTIwLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Vc2Vycy9qYW1pZS9Bc3Ryb01pcnJvci9FbGVwaGFudCBUcnVuayAtIElDIDEzOTYvMjAyMC0wNi0xMy9JQyAxMzk2LTEyMC4wMDBzZWNzLTF4MS1MaWdodC1HcmVlbl8wLjAwQy0wMDAwNzU1OS5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAzLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIkdyZWVuIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMTIwLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Vc2Vycy9qYW1pZS9Bc3Ryb01pcnJvci9FbGVwaGFudCBUcnVuayAtIElDIDEzOTYvMjAyMC0wNi0xMy9JQyAxMzk2LTEyMC4wMDBzZWNzLTF4MS1MaWdodC1HcmVlbl8wLjAwQy0wMDAwNzU5Mi5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAzLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIkdyZWVuIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMTIwLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Vc2Vycy9qYW1pZS9Bc3Ryb01pcnJvci9FbGVwaGFudCBUcnVuayAtIElDIDEzOTYvMjAyMC0wNi0xMy9JQyAxMzk2LTEyMC4wMDBzZWNzLTF4MS1MaWdodC1HcmVlbl8wLjAwQy0wMDAwNzYxMS5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAzLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIkdyZWVuIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMTIwLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Vc2Vycy9qYW1pZS9Bc3Ryb01pcnJvci9FbGVwaGFudCBUcnVuayAtIElDIDEzOTYvMjAyMC0wNi0xMy9JQyAxMzk2LTEyMC4wMDBzZWNzLTF4MS1MaWdodC1HcmVlbl8wLjAwQy0wMDAwNzYzMC5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAzLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIkdyZWVuIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMTIwLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Vc2Vycy9qYW1pZS9Bc3Ryb01pcnJvci9FbGVwaGFudCBUcnVuayAtIElDIDEzOTYvMjAyMC0wNi0xMy9JQyAxMzk2LTEyMC4wMDBzZWNzLTF4MS1MaWdodC1HcmVlbl8wLjAwQy0wMDAwNzY0OS5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAzLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIkdyZWVuIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMTIwLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Vc2Vycy9qYW1pZS9Bc3Ryb01pcnJvci9FbGVwaGFudCBUcnVuayAtIElDIDEzOTYvMjAyMC0wNi0xMy9JQyAxMzk2LTEyMC4wMDBzZWNzLTF4MS1MaWdodC1HcmVlbl8wLjAwQy0wMDAwNzY2OC5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAzLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIkdyZWVuIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMTIwLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Vc2Vycy9qYW1pZS9Bc3Ryb01pcnJvci9FbGVwaGFudCBUcnVuayAtIElDIDEzOTYvMjAyMC0wNi0xMy9JQyAxMzk2LTEyMC4wMDBzZWNzLTF4MS1MaWdodC1HcmVlbl8wLjAwQy0wMDAwNzY4Ny5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAzLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIkdyZWVuIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMTIwLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Vc2Vycy9qYW1pZS9Bc3Ryb01pcnJvci9FbGVwaGFudCBUcnVuayAtIElDIDEzOTYvMjAyMC0wNi0xMy9JQyAxMzk2LTEyMC4wMDBzZWNzLTF4MS1MaWdodC1HcmVlbl8wLjAwQy0wMDAwNzcwNi5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAzLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIkdyZWVuIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMTIwLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Vc2Vycy9qYW1pZS9Bc3Ryb01pcnJvci9FbGVwaGFudCBUcnVuayAtIElDIDEzOTYvMjAyMC0wNi0xMy9JQyAxMzk2LTEyMC4wMDBzZWNzLTF4MS1MaWdodC1HcmVlbl8wLjAwQy0wMDAwNzcyNS5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAzLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIkdyZWVuIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMTIwLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Vc2Vycy9qYW1pZS9Bc3Ryb01pcnJvci9FbGVwaGFudCBUcnVuayAtIElDIDEzOTYvMjAyMC0wNi0xMy9JQyAxMzk2LTEyMC4wMDBzZWNzLTF4MS1MaWdodC1HcmVlbl8wLjAwQy0wMDAwNzc0NC5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAzLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIkdyZWVuIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMTIwLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Vc2Vycy9qYW1pZS9Bc3Ryb01pcnJvci9FbGVwaGFudCBUcnVuayAtIElDIDEzOTYvMjAyMC0wNi0xMy9JQyAxMzk2LTEyMC4wMDBzZWNzLTF4MS1MaWdodC1HcmVlbl8wLjAwQy0wMDAwNzc2My5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAzLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIkdyZWVuIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMTIwLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Vc2Vycy9qYW1pZS9Bc3Ryb01pcnJvci9FbGVwaGFudCBUcnVuayAtIElDIDEzOTYvMjAyMC0wNi0xMy9JQyAxMzk2LTEyMC4wMDBzZWNzLTF4MS1MaWdodC1HcmVlbl8wLjAwQy0wMDAwNzc4Mi5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAzLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIkdyZWVuIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMTIwLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Vc2Vycy9qYW1pZS9Bc3Ryb01pcnJvci9FbGVwaGFudCBUcnVuayAtIElDIDEzOTYvMjAyMC0wNi0xMy9JQyAxMzk2LTEyMC4wMDBzZWNzLTF4MS1MaWdodC1HcmVlbl8wLjAwQy0wMDAwNzgwMS5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAzLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIkdyZWVuIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMTIwLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Vc2Vycy9qYW1pZS9Bc3Ryb01pcnJvci9FbGVwaGFudCBUcnVuayAtIElDIDEzOTYvMjAyMC0wNi0xMy9JQyAxMzk2LTEyMC4wMDBzZWNzLTF4MS1MaWdodC1HcmVlbl8wLjAwQy0wMDAwNzgyMC5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAzLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIkdyZWVuIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMTIwLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Vc2Vycy9qYW1pZS9Bc3Ryb01pcnJvci9FbGVwaGFudCBUcnVuayAtIElDIDEzOTYvMjAyMC0wNi0xMy9JQyAxMzk2LTEyMC4wMDBzZWNzLTF4MS1MaWdodC1HcmVlbl8wLjAwQy0wMDAwNzgzOS5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAzLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIkdyZWVuIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMTIwLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9CiAgICBdLAogICAgImNvbnRhaW5zQ0ZBIjogZmFsc2UKICB9LAogIHsKICAgICJpbWFnZVR5cGUiOiAzLAogICAgImZpbHRlciI6ICJSZWQiLAogICAgImJpbm5pbmciOiAxLAogICAgImV4cG9zdXJlVGltZSI6IDEyMCwKICAgICJleHBvc3VyZVRpbWVzIjogWwogICAgICAxMjAKICAgIF0sCiAgICAibWFzdGVyRnJhbWUiOiBmYWxzZSwKICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICJmaWxlSXRlbXMiOiBbCiAgICAgIHsKICAgICAgICAiZmlsZVBhdGgiOiAiL1VzZXJzL2phbWllL0FzdHJvTWlycm9yL0VsZXBoYW50IFRydW5rIC0gSUMgMTM5Ni8yMDIwLTA2LTEzL0lDIDEzOTYtMTIwLjAwMHNlY3MtMXgxLUxpZ2h0LVJlZF8wLjAwQy0wMDAwNzI4Ni5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAzLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIlJlZCIsCiAgICAgICAgImV4cG9zdXJlVGltZSI6IDEyMCwKICAgICAgICAiZW5hYmxlZCI6IHRydWUsCiAgICAgICAgImlzQ0ZBIjogZmFsc2UKICAgICAgfSwKICAgICAgewogICAgICAgICJmaWxlUGF0aCI6ICIvVXNlcnMvamFtaWUvQXN0cm9NaXJyb3IvRWxlcGhhbnQgVHJ1bmsgLSBJQyAxMzk2LzIwMjAtMDYtMTMvSUMgMTM5Ni0xMjAuMDAwc2Vjcy0xeDEtTGlnaHQtUmVkXzAuMDBDLTAwMDA3MzA2LmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDMsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiUmVkIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMTIwLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Vc2Vycy9qYW1pZS9Bc3Ryb01pcnJvci9FbGVwaGFudCBUcnVuayAtIElDIDEzOTYvMjAyMC0wNi0xMy9JQyAxMzk2LTEyMC4wMDBzZWNzLTF4MS1MaWdodC1SZWRfMC4wMEMtMDAwMDczNDUuZml0IiwKICAgICAgICAiaW1hZ2VUeXBlIjogMywKICAgICAgICAiYmlubmluZyI6IDEsCiAgICAgICAgImZpbHRlciI6ICJSZWQiLAogICAgICAgICJleHBvc3VyZVRpbWUiOiAxMjAsCiAgICAgICAgImVuYWJsZWQiOiB0cnVlLAogICAgICAgICJpc0NGQSI6IGZhbHNlCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiZmlsZVBhdGgiOiAiL1VzZXJzL2phbWllL0FzdHJvTWlycm9yL0VsZXBoYW50IFRydW5rIC0gSUMgMTM5Ni8yMDIwLTA2LTEzL0lDIDEzOTYtMTIwLjAwMHNlY3MtMXgxLUxpZ2h0LVJlZF8wLjAwQy0wMDAwNzM4NC5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAzLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIlJlZCIsCiAgICAgICAgImV4cG9zdXJlVGltZSI6IDEyMCwKICAgICAgICAiZW5hYmxlZCI6IHRydWUsCiAgICAgICAgImlzQ0ZBIjogZmFsc2UKICAgICAgfSwKICAgICAgewogICAgICAgICJmaWxlUGF0aCI6ICIvVXNlcnMvamFtaWUvQXN0cm9NaXJyb3IvRWxlcGhhbnQgVHJ1bmsgLSBJQyAxMzk2LzIwMjAtMDYtMTMvSUMgMTM5Ni0xMjAuMDAwc2Vjcy0xeDEtTGlnaHQtUmVkXzAuMDBDLTAwMDA3NDA0LmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDMsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiUmVkIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMTIwLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Vc2Vycy9qYW1pZS9Bc3Ryb01pcnJvci9FbGVwaGFudCBUcnVuayAtIElDIDEzOTYvMjAyMC0wNi0xMy9JQyAxMzk2LTEyMC4wMDBzZWNzLTF4MS1MaWdodC1SZWRfMC4wMEMtMDAwMDc0MjUuZml0IiwKICAgICAgICAiaW1hZ2VUeXBlIjogMywKICAgICAgICAiYmlubmluZyI6IDEsCiAgICAgICAgImZpbHRlciI6ICJSZWQiLAogICAgICAgICJleHBvc3VyZVRpbWUiOiAxMjAsCiAgICAgICAgImVuYWJsZWQiOiB0cnVlLAogICAgICAgICJpc0NGQSI6IGZhbHNlCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiZmlsZVBhdGgiOiAiL1VzZXJzL2phbWllL0FzdHJvTWlycm9yL0VsZXBoYW50IFRydW5rIC0gSUMgMTM5Ni8yMDIwLTA2LTEzL0lDIDEzOTYtMTIwLjAwMHNlY3MtMXgxLUxpZ2h0LVJlZF8wLjAwQy0wMDAwNzU5MS5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAzLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIlJlZCIsCiAgICAgICAgImV4cG9zdXJlVGltZSI6IDEyMCwKICAgICAgICAiZW5hYmxlZCI6IHRydWUsCiAgICAgICAgImlzQ0ZBIjogZmFsc2UKICAgICAgfSwKICAgICAgewogICAgICAgICJmaWxlUGF0aCI6ICIvVXNlcnMvamFtaWUvQXN0cm9NaXJyb3IvRWxlcGhhbnQgVHJ1bmsgLSBJQyAxMzk2LzIwMjAtMDYtMTMvSUMgMTM5Ni0xMjAuMDAwc2Vjcy0xeDEtTGlnaHQtUmVkXzAuMTBDLTAwMDA3MjY2LmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDMsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiUmVkIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMTIwLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Vc2Vycy9qYW1pZS9Bc3Ryb01pcnJvci9FbGVwaGFudCBUcnVuayAtIElDIDEzOTYvMjAyMC0wNi0xMy9JQyAxMzk2LTEyMC4wMDBzZWNzLTF4MS1MaWdodC1SZWRfMC4xMEMtMDAwMDczMjUuZml0IiwKICAgICAgICAiaW1hZ2VUeXBlIjogMywKICAgICAgICAiYmlubmluZyI6IDEsCiAgICAgICAgImZpbHRlciI6ICJSZWQiLAogICAgICAgICJleHBvc3VyZVRpbWUiOiAxMjAsCiAgICAgICAgImVuYWJsZWQiOiB0cnVlLAogICAgICAgICJpc0NGQSI6IGZhbHNlCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiZmlsZVBhdGgiOiAiL1VzZXJzL2phbWllL0FzdHJvTWlycm9yL0VsZXBoYW50IFRydW5rIC0gSUMgMTM5Ni8yMDIwLTA2LTEzL0lDIDEzOTYtMTIwLjAwMHNlY3MtMXgxLUxpZ2h0LVJlZF8wLjEwQy0wMDAwNzM2NC5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAzLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIlJlZCIsCiAgICAgICAgImV4cG9zdXJlVGltZSI6IDEyMCwKICAgICAgICAiZW5hYmxlZCI6IHRydWUsCiAgICAgICAgImlzQ0ZBIjogZmFsc2UKICAgICAgfSwKICAgICAgewogICAgICAgICJmaWxlUGF0aCI6ICIvVXNlcnMvamFtaWUvQXN0cm9NaXJyb3IvRWxlcGhhbnQgVHJ1bmsgLSBJQyAxMzk2LzIwMjAtMDYtMTMvSUMgMTM5Ni0xMjAuMDAwc2Vjcy0xeDEtTGlnaHQtUmVkXzAuMTBDLTAwMDA3NDQ0LmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDMsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiUmVkIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMTIwLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Vc2Vycy9qYW1pZS9Bc3Ryb01pcnJvci9FbGVwaGFudCBUcnVuayAtIElDIDEzOTYvMjAyMC0wNi0xMy9JQyAxMzk2LTEyMC4wMDBzZWNzLTF4MS1MaWdodC1SZWRfMC4xMEMtMDAwMDc0NjMuZml0IiwKICAgICAgICAiaW1hZ2VUeXBlIjogMywKICAgICAgICAiYmlubmluZyI6IDEsCiAgICAgICAgImZpbHRlciI6ICJSZWQiLAogICAgICAgICJleHBvc3VyZVRpbWUiOiAxMjAsCiAgICAgICAgImVuYWJsZWQiOiB0cnVlLAogICAgICAgICJpc0NGQSI6IGZhbHNlCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiZmlsZVBhdGgiOiAiL1VzZXJzL2phbWllL0FzdHJvTWlycm9yL0VsZXBoYW50IFRydW5rIC0gSUMgMTM5Ni8yMDIwLTA2LTEzL0lDIDEzOTYtMTIwLjAwMHNlY3MtMXgxLUxpZ2h0LVJlZF8wLjEwQy0wMDAwNzQ4Mi5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAzLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIlJlZCIsCiAgICAgICAgImV4cG9zdXJlVGltZSI6IDEyMCwKICAgICAgICAiZW5hYmxlZCI6IHRydWUsCiAgICAgICAgImlzQ0ZBIjogZmFsc2UKICAgICAgfSwKICAgICAgewogICAgICAgICJmaWxlUGF0aCI6ICIvVXNlcnMvamFtaWUvQXN0cm9NaXJyb3IvRWxlcGhhbnQgVHJ1bmsgLSBJQyAxMzk2LzIwMjAtMDYtMTMvSUMgMTM5Ni0xMjAuMDAwc2Vjcy0xeDEtTGlnaHQtUmVkXzAuMTBDLTAwMDA3NTAxLmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDMsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiUmVkIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMTIwLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Vc2Vycy9qYW1pZS9Bc3Ryb01pcnJvci9FbGVwaGFudCBUcnVuayAtIElDIDEzOTYvMjAyMC0wNi0xMy9JQyAxMzk2LTEyMC4wMDBzZWNzLTF4MS1MaWdodC1SZWRfMC4xMEMtMDAwMDc1MjAuZml0IiwKICAgICAgICAiaW1hZ2VUeXBlIjogMywKICAgICAgICAiYmlubmluZyI6IDEsCiAgICAgICAgImZpbHRlciI6ICJSZWQiLAogICAgICAgICJleHBvc3VyZVRpbWUiOiAxMjAsCiAgICAgICAgImVuYWJsZWQiOiB0cnVlLAogICAgICAgICJpc0NGQSI6IGZhbHNlCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiZmlsZVBhdGgiOiAiL1VzZXJzL2phbWllL0FzdHJvTWlycm9yL0VsZXBoYW50IFRydW5rIC0gSUMgMTM5Ni8yMDIwLTA2LTEzL0lDIDEzOTYtMTIwLjAwMHNlY3MtMXgxLUxpZ2h0LVJlZF8wLjEwQy0wMDAwNzUzOS5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAzLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIlJlZCIsCiAgICAgICAgImV4cG9zdXJlVGltZSI6IDEyMCwKICAgICAgICAiZW5hYmxlZCI6IHRydWUsCiAgICAgICAgImlzQ0ZBIjogZmFsc2UKICAgICAgfSwKICAgICAgewogICAgICAgICJmaWxlUGF0aCI6ICIvVXNlcnMvamFtaWUvQXN0cm9NaXJyb3IvRWxlcGhhbnQgVHJ1bmsgLSBJQyAxMzk2LzIwMjAtMDYtMTMvSUMgMTM5Ni0xMjAuMDAwc2Vjcy0xeDEtTGlnaHQtUmVkXzAuMTBDLTAwMDA3NTU4LmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDMsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiUmVkIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMTIwLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Vc2Vycy9qYW1pZS9Bc3Ryb01pcnJvci9FbGVwaGFudCBUcnVuayAtIElDIDEzOTYvMjAyMC0wNi0xMy9JQyAxMzk2LTEyMC4wMDBzZWNzLTF4MS1MaWdodC1SZWRfMC4xMEMtMDAwMDc2MTAuZml0IiwKICAgICAgICAiaW1hZ2VUeXBlIjogMywKICAgICAgICAiYmlubmluZyI6IDEsCiAgICAgICAgImZpbHRlciI6ICJSZWQiLAogICAgICAgICJleHBvc3VyZVRpbWUiOiAxMjAsCiAgICAgICAgImVuYWJsZWQiOiB0cnVlLAogICAgICAgICJpc0NGQSI6IGZhbHNlCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiZmlsZVBhdGgiOiAiL1VzZXJzL2phbWllL0FzdHJvTWlycm9yL0VsZXBoYW50IFRydW5rIC0gSUMgMTM5Ni8yMDIwLTA2LTEzL0lDIDEzOTYtMTIwLjAwMHNlY3MtMXgxLUxpZ2h0LVJlZF8wLjEwQy0wMDAwNzYyOS5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAzLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIlJlZCIsCiAgICAgICAgImV4cG9zdXJlVGltZSI6IDEyMCwKICAgICAgICAiZW5hYmxlZCI6IHRydWUsCiAgICAgICAgImlzQ0ZBIjogZmFsc2UKICAgICAgfSwKICAgICAgewogICAgICAgICJmaWxlUGF0aCI6ICIvVXNlcnMvamFtaWUvQXN0cm9NaXJyb3IvRWxlcGhhbnQgVHJ1bmsgLSBJQyAxMzk2LzIwMjAtMDYtMTMvSUMgMTM5Ni0xMjAuMDAwc2Vjcy0xeDEtTGlnaHQtUmVkXzAuMTBDLTAwMDA3NjQ4LmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDMsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiUmVkIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMTIwLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Vc2Vycy9qYW1pZS9Bc3Ryb01pcnJvci9FbGVwaGFudCBUcnVuayAtIElDIDEzOTYvMjAyMC0wNi0xMy9JQyAxMzk2LTEyMC4wMDBzZWNzLTF4MS1MaWdodC1SZWRfMC4xMEMtMDAwMDc2NjcuZml0IiwKICAgICAgICAiaW1hZ2VUeXBlIjogMywKICAgICAgICAiYmlubmluZyI6IDEsCiAgICAgICAgImZpbHRlciI6ICJSZWQiLAogICAgICAgICJleHBvc3VyZVRpbWUiOiAxMjAsCiAgICAgICAgImVuYWJsZWQiOiB0cnVlLAogICAgICAgICJpc0NGQSI6IGZhbHNlCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiZmlsZVBhdGgiOiAiL1VzZXJzL2phbWllL0FzdHJvTWlycm9yL0VsZXBoYW50IFRydW5rIC0gSUMgMTM5Ni8yMDIwLTA2LTEzL0lDIDEzOTYtMTIwLjAwMHNlY3MtMXgxLUxpZ2h0LVJlZF8wLjEwQy0wMDAwNzY4Ni5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAzLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIlJlZCIsCiAgICAgICAgImV4cG9zdXJlVGltZSI6IDEyMCwKICAgICAgICAiZW5hYmxlZCI6IHRydWUsCiAgICAgICAgImlzQ0ZBIjogZmFsc2UKICAgICAgfSwKICAgICAgewogICAgICAgICJmaWxlUGF0aCI6ICIvVXNlcnMvamFtaWUvQXN0cm9NaXJyb3IvRWxlcGhhbnQgVHJ1bmsgLSBJQyAxMzk2LzIwMjAtMDYtMTMvSUMgMTM5Ni0xMjAuMDAwc2Vjcy0xeDEtTGlnaHQtUmVkXzAuMTBDLTAwMDA3NzA1LmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDMsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiUmVkIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMTIwLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Vc2Vycy9qYW1pZS9Bc3Ryb01pcnJvci9FbGVwaGFudCBUcnVuayAtIElDIDEzOTYvMjAyMC0wNi0xMy9JQyAxMzk2LTEyMC4wMDBzZWNzLTF4MS1MaWdodC1SZWRfMC4xMEMtMDAwMDc3MjQuZml0IiwKICAgICAgICAiaW1hZ2VUeXBlIjogMywKICAgICAgICAiYmlubmluZyI6IDEsCiAgICAgICAgImZpbHRlciI6ICJSZWQiLAogICAgICAgICJleHBvc3VyZVRpbWUiOiAxMjAsCiAgICAgICAgImVuYWJsZWQiOiB0cnVlLAogICAgICAgICJpc0NGQSI6IGZhbHNlCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiZmlsZVBhdGgiOiAiL1VzZXJzL2phbWllL0FzdHJvTWlycm9yL0VsZXBoYW50IFRydW5rIC0gSUMgMTM5Ni8yMDIwLTA2LTEzL0lDIDEzOTYtMTIwLjAwMHNlY3MtMXgxLUxpZ2h0LVJlZF8wLjEwQy0wMDAwNzc0My5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAzLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIlJlZCIsCiAgICAgICAgImV4cG9zdXJlVGltZSI6IDEyMCwKICAgICAgICAiZW5hYmxlZCI6IHRydWUsCiAgICAgICAgImlzQ0ZBIjogZmFsc2UKICAgICAgfSwKICAgICAgewogICAgICAgICJmaWxlUGF0aCI6ICIvVXNlcnMvamFtaWUvQXN0cm9NaXJyb3IvRWxlcGhhbnQgVHJ1bmsgLSBJQyAxMzk2LzIwMjAtMDYtMTMvSUMgMTM5Ni0xMjAuMDAwc2Vjcy0xeDEtTGlnaHQtUmVkXzAuMTBDLTAwMDA3NzYyLmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDMsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiUmVkIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMTIwLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Vc2Vycy9qYW1pZS9Bc3Ryb01pcnJvci9FbGVwaGFudCBUcnVuayAtIElDIDEzOTYvMjAyMC0wNi0xMy9JQyAxMzk2LTEyMC4wMDBzZWNzLTF4MS1MaWdodC1SZWRfMC4xMEMtMDAwMDc3ODEuZml0IiwKICAgICAgICAiaW1hZ2VUeXBlIjogMywKICAgICAgICAiYmlubmluZyI6IDEsCiAgICAgICAgImZpbHRlciI6ICJSZWQiLAogICAgICAgICJleHBvc3VyZVRpbWUiOiAxMjAsCiAgICAgICAgImVuYWJsZWQiOiB0cnVlLAogICAgICAgICJpc0NGQSI6IGZhbHNlCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiZmlsZVBhdGgiOiAiL1VzZXJzL2phbWllL0FzdHJvTWlycm9yL0VsZXBoYW50IFRydW5rIC0gSUMgMTM5Ni8yMDIwLTA2LTEzL0lDIDEzOTYtMTIwLjAwMHNlY3MtMXgxLUxpZ2h0LVJlZF8wLjEwQy0wMDAwNzgwMC5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAzLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIlJlZCIsCiAgICAgICAgImV4cG9zdXJlVGltZSI6IDEyMCwKICAgICAgICAiZW5hYmxlZCI6IHRydWUsCiAgICAgICAgImlzQ0ZBIjogZmFsc2UKICAgICAgfSwKICAgICAgewogICAgICAgICJmaWxlUGF0aCI6ICIvVXNlcnMvamFtaWUvQXN0cm9NaXJyb3IvRWxlcGhhbnQgVHJ1bmsgLSBJQyAxMzk2LzIwMjAtMDYtMTMvSUMgMTM5Ni0xMjAuMDAwc2Vjcy0xeDEtTGlnaHQtUmVkXzAuMTBDLTAwMDA3ODE5LmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDMsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiUmVkIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMTIwLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Vc2Vycy9qYW1pZS9Bc3Ryb01pcnJvci9FbGVwaGFudCBUcnVuayAtIElDIDEzOTYvMjAyMC0wNi0xMy9JQyAxMzk2LTEyMC4wMDBzZWNzLTF4MS1MaWdodC1SZWRfMC4xMEMtMDAwMDc4MzguZml0IiwKICAgICAgICAiaW1hZ2VUeXBlIjogMywKICAgICAgICAiYmlubmluZyI6IDEsCiAgICAgICAgImZpbHRlciI6ICJSZWQiLAogICAgICAgICJleHBvc3VyZVRpbWUiOiAxMjAsCiAgICAgICAgImVuYWJsZWQiOiB0cnVlLAogICAgICAgICJpc0NGQSI6IGZhbHNlCiAgICAgIH0KICAgIF0sCiAgICAiY29udGFpbnNDRkEiOiBmYWxzZQogIH0KXQ==</td>
-         </tr>
-      </table>
-   </instance>
    <instance class="CosmeticCorrection" id="CosmeticCorrection_instance">
       <table id="targetFrames" rows="0"/>
-      <parameter id="masterDarkPath">/Users/jamie/Astrophotography/Master Calibration/masterDark-BINNING_1-EXPTIME_180-offset-50-gain-100.xisf</parameter>
+      <parameter id="masterDarkPath">/Volumes/xRaid-Scratch/Astrophotography/Master Calibration/masterDark-Gain-100-EXPTIME_120-offset-50-gain-100.xisf</parameter>
       <parameter id="outputDir"></parameter>
       <parameter id="outputExtension">.xisf</parameter>
       <parameter id="prefix"></parameter>
@@ -5358,44 +4802,48 @@ Copyright (c) 2003-2020 Pleiades Astrophoto
       <parameter id="overwrite" value="false"/>
       <parameter id="amount" value="1.00"/>
       <parameter id="cfa" value="false"/>
-      <parameter id="useMasterDark" value="true"/>
-      <parameter id="hotDarkCheck" value="true"/>
-      <parameter id="hotDarkLevel" value="0.0080568"/>
+      <parameter id="useMasterDark" value="false"/>
+      <parameter id="hotDarkCheck" value="false"/>
+      <parameter id="hotDarkLevel" value="1.0000000"/>
       <parameter id="coldDarkCheck" value="false"/>
-      <parameter id="coldDarkLevel" value="0.0073548"/>
+      <parameter id="coldDarkLevel" value="0.0000000"/>
       <parameter id="useAutoDetect" value="true"/>
       <parameter id="hotAutoCheck" value="true"/>
-      <parameter id="hotAutoValue" value="3.0"/>
+      <parameter id="hotAutoValue" value="4.9"/>
       <parameter id="coldAutoCheck" value="false"/>
       <parameter id="coldAutoValue" value="3.0"/>
       <parameter id="useDefectList" value="false"/>
       <table id="defects" rows="0"/>
    </instance>
+   <instance class="StarNet" id="StarNet_instance">
+      <parameter id="stride" value="Stride_128"/>
+      <parameter id="mask" value="false"/>
+   </instance>
    <icon id="Process01" instance="Process01_instance" xpos="2390" ypos="928" workspace="Workspace03"/>
    <icon id="Process02" instance="Process02_instance" xpos="2427" ypos="1030" workspace="Workspace03"/>
    <icon id="Process04" instance="Process04_instance" xpos="2343" ypos="195" workspace="Workspace02"/>
-   <icon id="DrizzleIntegration" instance="DrizzleIntegration_instance" xpos="1622" ypos="184" workspace="Workspace01"/>
-   <icon id="ChannelCombination_RGB" instance="ChannelCombination_RGB_instance" xpos="1622" ypos="274" workspace="Workspace01"/>
-   <icon id="LinearFit" instance="LinearFit_instance" xpos="1622" ypos="244" workspace="Workspace01"/>
-   <icon id="DBE_DidNotDo" instance="DBE_DidNotDo_instance" xpos="1622" ypos="364" workspace="Workspace01"/>
-   <icon id="BackgroundNeutralization" instance="BackgroundNeutralization_instance" xpos="1622" ypos="394" workspace="Workspace01"/>
-   <icon id="Crop" instance="Crop_instance" xpos="1622" ypos="214" workspace="Workspace01"/>
-   <icon id="RegularColorCalibration" instance="RegularColorCalibration_instance" xpos="1622" ypos="424" workspace="Workspace01"/>
-   <icon id="PhotometricColorCalibration" instance="PhotometricColorCalibration_instance" xpos="1622" ypos="454" workspace="Workspace01"/>
-   <icon id="SCNR" instance="SCNR_instance" xpos="1622" ypos="484" workspace="Workspace01"/>
-   <icon id="STF" instance="STF_instance" xpos="1622" ypos="4" workspace="Workspace01"/>
-   <icon id="HistogramTransformation" instance="HistogramTransformation_instance" xpos="1622" ypos="514" workspace="Workspace01"/>
-   <icon id="HDR_MultiscaleTransform" instance="HDR_MultiscaleTransform_instance" xpos="1622" ypos="544" workspace="Workspace01"/>
-   <icon id="MaskTheImage" instance="MaskTheImage_instance" xpos="1622" ypos="574" workspace="Workspace01"/>
-   <icon id="MultiscaleLinearTransform" instance="MultiscaleLinearTransform_instance" xpos="1622" ypos="604" workspace="Workspace01"/>
-   <icon id="CreateMaskThenHistogramToClipDarks" instance="CreateMaskThenHistogramToClipDarks_instance" xpos="1622" ypos="634" workspace="Workspace01"/>
-   <icon id="CurvesToBoostSaturation" instance="CurvesToBoostSaturation_instance" xpos="1622" ypos="664" workspace="Workspace01"/>
-   <icon id="LocalNormalization" instance="LocalNormalization_instance" xpos="1622" ypos="154" workspace="Workspace01"/>
-   <icon id="OptionallyDoLocalNormalization" instance="OptionallyDoLocalNormalization_instance" xpos="1622" ypos="124" workspace="Workspace01"/>
-   <icon id="SubframeSelector" instance="SubframeSelector_instance" xpos="1622" ypos="34" workspace="Workspace01"/>
-   <icon id="PixelMath_SHO" instance="PixelMath_SHO_instance" xpos="1622" ypos="304" workspace="Workspace01"/>
-   <icon id="WBPP" instance="WBPP_instance" xpos="1622" ypos="94" workspace="Workspace01"/>
-   <icon id="PixelMath_HOO" instance="PixelMath_HOO_instance" xpos="1622" ypos="334" workspace="Workspace01"/>
-   <icon id="Process28" instance="Process28_instance" xpos="1622" ypos="694" workspace="Workspace01"/>
-   <icon id="CosmeticCorrection" instance="CosmeticCorrection_instance" xpos="1622" ypos="64" workspace="Workspace01"/>
+   <icon id="DrizzleIntegration" instance="DrizzleIntegration_instance" xpos="1680" ypos="240" workspace="Workspace01"/>
+   <icon id="ChannelCombination_RGB" instance="ChannelCombination_RGB_instance" xpos="1680" ypos="336" workspace="Workspace01"/>
+   <icon id="LinearFit" instance="LinearFit_instance" xpos="1680" ypos="304" workspace="Workspace01"/>
+   <icon id="DBE_DidNotDo" instance="DBE_DidNotDo_instance" xpos="1680" ypos="432" workspace="Workspace01"/>
+   <icon id="BackgroundNeutralization" instance="BackgroundNeutralization_instance" xpos="1680" ypos="464" workspace="Workspace01"/>
+   <icon id="Crop" instance="Crop_instance" xpos="1680" ypos="272" workspace="Workspace01"/>
+   <icon id="RegularColorCalibration" instance="RegularColorCalibration_instance" xpos="1680" ypos="496" workspace="Workspace01"/>
+   <icon id="PhotometricColorCalibration" instance="PhotometricColorCalibration_instance" xpos="1680" ypos="528" workspace="Workspace01"/>
+   <icon id="SCNR" instance="SCNR_instance" xpos="1680" ypos="560" workspace="Workspace01"/>
+   <icon id="STF" instance="STF_instance" xpos="1680" ypos="16" workspace="Workspace01"/>
+   <icon id="HistogramTransformation" instance="HistogramTransformation_instance" xpos="1680" ypos="592" workspace="Workspace01"/>
+   <icon id="HDR_MultiscaleTransform" instance="HDR_MultiscaleTransform_instance" xpos="1680" ypos="624" workspace="Workspace01"/>
+   <icon id="MaskTheImage" instance="MaskTheImage_instance" xpos="1680" ypos="656" workspace="Workspace01"/>
+   <icon id="MultiscaleLinearTransform" instance="MultiscaleLinearTransform_instance" xpos="1680" ypos="688" workspace="Workspace01"/>
+   <icon id="CreateMaskThenHistogramToClipDarks" instance="CreateMaskThenHistogramToClipDarks_instance" xpos="1680" ypos="720" workspace="Workspace01"/>
+   <icon id="CurvesToBoostSaturation" instance="CurvesToBoostSaturation_instance" xpos="1680" ypos="752" workspace="Workspace01"/>
+   <icon id="LocalNormalization" instance="LocalNormalization_instance" xpos="1680" ypos="208" workspace="Workspace01"/>
+   <icon id="OptionallyDoLocalNormalization" instance="OptionallyDoLocalNormalization_instance" xpos="1680" ypos="176" workspace="Workspace01"/>
+   <icon id="SubframeSelector" instance="SubframeSelector_instance" xpos="1680" ypos="80" workspace="Workspace01"/>
+   <icon id="PixelMath_SHO" instance="PixelMath_SHO_instance" xpos="1680" ypos="368" workspace="Workspace01"/>
+   <icon id="WBPP" instance="WBPP_instance" xpos="1680" ypos="144" workspace="Workspace01"/>
+   <icon id="PixelMath_HOO" instance="PixelMath_HOO_instance" xpos="1680" ypos="400" workspace="Workspace01"/>
+   <icon id="CosmeticCorrection" instance="CosmeticCorrection_instance" xpos="1680" ypos="112" workspace="Workspace01"/>
+   <icon id="StarNet" instance="StarNet_instance" xpos="1680" ypos="48" workspace="Workspace01"/>
 </xpsm>

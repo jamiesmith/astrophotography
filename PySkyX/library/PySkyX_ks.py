@@ -1354,21 +1354,15 @@ def hardPark():
     TSXSend("sky6StarChart.DocumentProperty(0)")
     latitude = TSXSend("sky6StarChart.DocPropOut")
     
-    if float(latitude) < 0:
-        writeNote("Pointing mount to the south.")
-        slew("HIP112405")
+    if not "Error" in TSXSend("sky6RASCOMTele.ParkAndDoNotDisconnect()"):
+        timeStamp("Paramount moved to park position.")
     else:
-        writeNote("Pointing mount to the north.")
-        slew("kochab")
-
-    if "Paramount" in TSXSend("SelectedHardware.mountModel"):
-        if not "Error" in TSXSend("sky6RASCOMTele.ParkAndDoNotDisconnect()"):
-            timeStamp("Paramount moved to park position.")
+        if float(latitude) < 0:
+            writeNote("Pointing mount to the south.")
+            slew("HIP112405")
         else:
-            timeStamp("No park position set. Stopping sidereal motor.")
-            TSXSend("sky6RASCOMTele.SetTracking(0, 1, 0 ,0)")
-    else:
-        if TSXSend("SelectedHardware.mountModel") !=  "Telescope Mount Simulator":
+            writeNote("Pointing mount to the north.")
+            slew("kochab")
             writeNote("Turning off sidereal drive.")
             TSXSend("sky6RASCOMTele.SetTracking(0, 1, 0 ,0)")
 

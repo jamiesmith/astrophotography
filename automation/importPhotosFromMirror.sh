@@ -3,7 +3,7 @@
 # This is not done.
 #
 sourceDir="/Volumes/MIRRORIMAGE"
-baseDestDir="/Volumes/SSD-Stripe/AstroImages"
+baseDestDir="/Volumes/Astrophotography/AstroImages"
 
 cd ${sourceDir}
 
@@ -26,7 +26,7 @@ do
        echo "Copying ${newName} to ${dateDir}/${target}"
     
        mkdir -p "${destDir}"
-       cp "${file}" "${destDir}/${newName}"
+       cp -p "${file}" "${destDir}/${newName}"
     done
 
     find . -type f \( -iname "*FlatField*.fit" ! -iname ".*" \) -print0 | sed 's|./||g' | while IFS= read -r -d '' file    
