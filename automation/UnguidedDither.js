@@ -506,6 +506,12 @@ var IMAGES_SINCE_LAST_FOCUS = 0;
 //
 sky6RASCOMTele.Connect();
 
+if (!Imager.RegulateTemperature)
+{
+    throw new Error("Temperature regulation is not enabled, aborting");
+}
+
+
 // This assumes that we're close enough to focus to plate solve
 // 
 if (TARGET_NAME != "" && CLS_AT_START)
