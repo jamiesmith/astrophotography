@@ -40,7 +40,7 @@ do
             echo "Copying ${newName} to ${dateDir}"
 
             mkdir -p "${destDir}"
-            cp "${file}" "${destDir}/${newName}"
+            cp -p "${file}" "${destDir}/${newName}"
         else
             echo "#### Skipping bad flat ${file}"
         fi
@@ -56,7 +56,7 @@ do
         echo "Copying ${newName} to ${dateDir}"
 
         mkdir -p "${destDir}"
-        cp "${file}" "${destDir}/${newName}"
+        cp -p "${file}" "${destDir}/${newName}"
     done
     
     cd - > /dev/null   
