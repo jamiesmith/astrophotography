@@ -21,8 +21,7 @@
 # will cause an LLRGB LLRGB pattern.
 #
 # Set the four variables below (altLimit = minumum starting altitude, guiderExposure =
-# default guider exposure, guiderDelay = default guider delay, defaultFilter = the 
-# filter you want to use for focusing and closed loop slews.
+# default guider exposure, guiderDelay = default guider delay
 #
 # If you want to use @F3 instead of @F2, just change the "focusStyle" variable below so
 # that it reads ""Three" instead of "Two". CaPiToLiZaTiOn matters, as do the quotes around
@@ -40,7 +39,10 @@
 altLimit = 30
 
 # Which filter should we use for focuses and CLS?
-defaultFilter = "0"
+#
+focusWithFilter = "3"
+clsWithFilter = "0"
+
 
 # Do you use a default guider delay?
 guiderDelay = "0"
@@ -149,7 +151,7 @@ def setUpGuiding():
     if "Error" in AGStar:
         cloudWait()
 
-        if CLSlew(target, defaultFilter) == "Fail":
+        if CLSlew(target, clsWithFilter) == "Fail":
             timeStamp("There was an error CLSing to Target. Stopping script.")
             hardPark()
 
@@ -459,7 +461,7 @@ else:
 
 
 if "Temma" in TSXSend("SelectedHardware.mountModel"):
-    if CLSlew(target, defaultFilter) == "Fail":
+    if CLSlew(target, clsWithFilter) == "Fail":
         timeStamp("There was an error on initial CLS. Stopping script.")
         softPark()
 else:
@@ -479,11 +481,11 @@ else:
     if camTwoIP == "none":
         timeStamp("Conducting initial focus on local camera.")
         if focusStyle == "Two":
-            if atFocus2(target, defaultFilter) == "Fail":
+            if atFocus2(target, focusWithFilter) == "Fail":
                 timeStamp("There was an error on initial focus. Stopping script.")
                 softPark()
         elif focusStyle == "Three":
-            if atFocus3("NoRTZ", defaultFilter) == "Fail":
+            if atFocus3("NoRTZ", focusWithFilter) == "Fail":
                 timeStamp("There was an error on initial focus. Stopping script.")
                 softPark()
         else:
@@ -492,14 +494,14 @@ else:
     else:
         timeStamp("Conducting initial focus on both cameras.")
         if focusStyle == "Two":
-            if atFocus2Both(camTwoIP, target, defaultFilter) == "Fail":
+            if atFocus2Both(camTwoIP, target, focusWithFilter) == "Fail":
                 timeStamp("There was an error on initial focus. Stopping script.")
                 softPark()
         elif focusStyle == "Three":
-            if atFocus3("NoRTZ", defaultFilter) == "Fail":
+            if atFocus3("NoRTZ", focusWithFilter) == "Fail":
                 timeStamp("There was an error on initial (local) focus. Stopping script.")
                 softPark()
-            elif atFocusRemote(camTwoIP, "Imager", "Three", defaultFilter) == "Fail":
+            elif atFocusRemote(camTwoIP, "Imager", "Three", focusWithFilter) == "Fail":
                 timeStamp("There was an error on initial (remote) focus. Stopping script.")
                 softPark
         else:
@@ -529,7 +531,7 @@ if guiderExposure != "0":
     
         cloudWait()
     
-        if CLSlew(target, defaultFilter) == "Fail":
+        if CLSlew(target, clsWithFilter) == "Fail":
             timeStamp("There was an error CLSing to Target. Stopping script.")
             hardPark()
     
@@ -591,7 +593,7 @@ while loopCounter <= numSets:
     
                     cloudWait()
     
-                    if CLSlew(target, defaultFilter) == "Fail":
+                    if CLSlew(target, clsWithFilter) == "Fail":
                         timeStamp("There was an error CLSing to Target. Stopping script.")
                         hardPark()
     
@@ -634,26 +636,26 @@ while loopCounter <= numSets:
         
                         if camTwoIP == "none":
                             if focusStyle == "Two":
-                                if atFocus2(target, defaultFilter) != "Fail":
+                                if atFocus2(target, focusWithFilter) != "Fail":
                                     lastTemp = getTemp()
                                     lastSeconds = round(time.monotonic(),0)
         
                             else:
-                                if atFocus3(target, defaultFilter) != "Fail":
+                                if atFocus3(target, focusWithFilter) != "Fail":
                                     lastTemp = getTemp()
                                     lastSeconds = round(time.monotonic(),0)
                         else:
                             if focusStyle == "Two":
-                                if atFocus2Both(camTwoIP, target, defaultFilter) != "Fail":
+                                if atFocus2Both(camTwoIP, target, focusWithFilter) != "Fail":
                                     lastTemp = getTemp()
                                     lastSeconds = round(time.monotonic(),0)
         
                             else:
-                                if atFocus3(target, defaultFilter) != "Fail":
+                                if atFocus3(target, focusWithFilter) != "Fail":
                                     lastTemp = getTemp()
                                     lastSeconds = round(time.monotonic(),0)
         
-                                atFocusRemote(camTwoIP, "Imager", "Three", defaultFilter)
+                                atFocusRemote(camTwoIP, "Imager", "Three", focusWithFilter)
 
                         dither()
 
@@ -668,7 +670,7 @@ while loopCounter <= numSets:
                             if (TSXSend("sky6RASCOMTele.DoCommandOutput") == "0") and (targHA(target) <= flipAngle):
                                 print("    ERROR: The target is still east of the meridian but the mount appears to have flipped.")
                                 writeNote("Using CLS to ensure target alignment.")
-                                if CLSlew(target, defaultFilter) == "Fail":
+                                if CLSlew(target, clsWithFilter) == "Fail":
                                     timeStamp("Error finding target post-flip. Stopping script.")
                                     hardPark()
 
@@ -681,7 +683,7 @@ while loopCounter <= numSets:
                 
                                 cloudWait()
                 
-                                if CLSlew(target, defaultFilter) == "Fail":
+                                if CLSlew(target, clsWithFilter) == "Fail":
                                     timeStamp("There was an error CLSing to Target. Stopping script.")
                                     hardPark()
                 
@@ -735,11 +737,11 @@ while loopCounter <= numSets:
             timeStamp("Target has crossed the meridian.")
                 
             if "Temma" in TSXSend("SelectedHardware.mountModel"):
-                if CLSlew(target, defaultFilter) == "Fail":
+                if CLSlew(target, clsWithFilter) == "Fail":
                     timeStamp("Error finding target post-flip. Stopping script.")
                     hardPark()
             else:
-                CLSlew(target, defaultFilter)
+                CLSlew(target, clsWithFilter)
 
             #
             # This refocuses after a meridian flip in case something mechanical moved.
@@ -748,16 +750,16 @@ while loopCounter <= numSets:
 
                 if camTwoIP == "none":
                     if focusStyle == "Two":
-                        atFocus2(target, defaultFilter) 
+                        atFocus2(target, focusWithFilter) 
                     elif focusStyle == "Three":
-                        atFocus3("NoRTZ", defaultFilter) 
+                        atFocus3("NoRTZ", focusWithFilter) 
                 else:
                     if focusStyle == "Two":
-                        atFocus2Both(camTwoIP, target, defaultFilter)
+                        atFocus2Both(camTwoIP, target, focusWithFilter)
 
                     elif focusStyle == "Three":
-                        atFocus3("NoRTZ", defaultFilter) == "Fail"
-                        atFocusRemote(camTwoIP, "Imager", "Three", defaultFilter)
+                        atFocus3("NoRTZ", focusWithFilter) == "Fail"
+                        atFocusRemote(camTwoIP, "Imager", "Three", focusWithFilter)
 
                 lastTemp = getTemp()
                 lastSeconds = round(time.monotonic(),0)
@@ -779,7 +781,7 @@ while loopCounter <= numSets:
             if (TSXSend("sky6RASCOMTele.DoCommandOutput") == "0") and (targHA(target) <= flipAngle):
                 print("    ERROR: The target is still east of the meridian but the mount appears to have flipped.")
                 writeNote("Using CLS to ensure target alignment.")
-                if CLSlew(target, defaultFilter) == "Fail":
+                if CLSlew(target, clsWithFilter) == "Fail":
                     timeStamp("Error finding target post-flip. Stopping script.")
                     hardPark()
 
@@ -792,7 +794,7 @@ while loopCounter <= numSets:
     
                 cloudWait()
     
-                if CLSlew(target, defaultFilter) == "Fail":
+                if CLSlew(target, clsWithFilter) == "Fail":
                     timeStamp("There was an error CLSing to Target. Stopping script.")
                     hardPark()
     

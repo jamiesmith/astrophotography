@@ -66,9 +66,9 @@ exposureTimePerFilter[LUM  ] = 120;  // Standard for LRGB is 2
 exposureTimePerFilter[RED  ] = 180;  // Standard for LRGB is 2
 exposureTimePerFilter[GREEN] = 180;  // Standard for LRGB is 2
 exposureTimePerFilter[BLUE ] = 180;  // Standard for LRGB is 2
-exposureTimePerFilter[SII  ] = 180;
-exposureTimePerFilter[HA   ] = 180;
-exposureTimePerFilter[OIII ] = 180;
+exposureTimePerFilter[SII  ] = 600;
+exposureTimePerFilter[HA   ] = 600;
+exposureTimePerFilter[OIII ] = 600;
 
 // Each filter can have its own number of exposures
 // If the exposure length or count is 0 that filter will be skipped when imaging!!
@@ -238,6 +238,8 @@ function autofocusWithFilter(imager, filterNum, exposureTime, binning)
 {
     var saveFilter = imager.FilterIndexZeroBased;
     
+    imager.FocusExposureTime = exposureTime;
+    
     imager.FilterIndexZeroBased = filterNum;
     imager.Delay = 0;    
 
@@ -253,7 +255,6 @@ function autofocusWithFilter(imager, filterNum, exposureTime, binning)
 
         autofocus(imager, exposureTime, binning);
     }    
-
     
     imager.FilterIndexZeroBased = saveFilter;
 }
