@@ -128,47 +128,7 @@ def chkTarget():
         time.sleep (360)
         currentAlt = targAlt(target) 
 
-
-def setupGuiding():
-#
-# This is a "macro" that calls several simpler functions in 
-# order to setup autoguiding.
-#
-    camConnect("Guider")
-
-    stopGuiding()
-
-    time.sleep(5)
-
-    takeImage("Guider", guiderExposure, "0", "NA")
-
-    AGStar = findAGStar()
-
-    if "Error" in AGStar:
-        cloudWait()
-
-        if CLSlew(target, defaultFilter) == "Fail":
-            timeStamp("There was an error CLSing to Target. Stopping script.")
-            hardPark()
-
-        takeImage("Guider", guiderExposure, "0", "NA")
-
-        AGStar = findAGStar()
-     
-        if "Error" in AGStar:
-            print("    ERROR: Still cannot find a guide star. Sorry it didn't work out...")
-            hardPark()
-        else:
-            XCoord,YCoord = AGStar.split(",")
-    else:    
-        XCoord,YCoord = AGStar.split(",")
-
-    expRecommends = adjAGExposure(guiderExposure, guiderDelay, XCoord, YCoord)
-    newGuiderExposure,newGuiderDelay = expRecommends.split(",")
-
-    startGuiding(newGuiderExposure, newGuiderDelay, float(XCoord), float(YCoord))
-
-def doAnImage(exposureTime, FilterNum):
+def takeImage(exposureTime, FilterNum):
 #
 # This function performs the general steps required to take 
 # an image. By default, it doesn't mess with the delay and
@@ -211,7 +171,46 @@ def doAnImage(exposureTime, FilterNum):
     else:
         return "Fail"
 
-        
+def setupGuiding():
+#
+# This is a "macro" that calls several simpler functions in 
+# order to setup autoguiding.
+#
+    camConnect("Guider")
+
+    stopGuiding()
+
+    time.sleep(5)
+
+    takeImage("Guider", guiderExposure, "0", "NA")
+
+    AGStar = findAGStar()
+
+    if "Error" in AGStar:
+        cloudWait()
+
+        if CLSlew(target, defaultFilter) == "Fail":
+            timeStamp("There was an error CLSing to Target. Stopping script.")
+            hardPark()
+
+        takeImage("Guider", guiderExposure, "0", "NA")
+
+        AGStar = findAGStar()
+     
+        if "Error" in AGStar:
+            print("    ERROR: Still cannot find a guide star. Sorry it didn't work out...")
+            hardPark()
+        else:
+            XCoord,YCoord = AGStar.split(",")
+    else:    
+        XCoord,YCoord = AGStar.split(",")
+
+    expRecommends = adjAGExposure(guiderExposure, guiderDelay, XCoord, YCoord)
+    newGuiderExposure,newGuiderDelay = expRecommends.split(",")
+
+    startGuiding(newGuiderExposure, newGuiderDelay, float(XCoord), float(YCoord))
+
+    
 ######################
 # Main Program Start #
 ######################

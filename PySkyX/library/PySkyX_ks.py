@@ -2729,6 +2729,7 @@ def takeDark(exposure, numFrames):
     while (counter <= int(numFrames)):
         timeStamp("Taking frame: " + str(counter) + " of " + numFrames + ".")
         TSXSend("ccdsoftCamera.TakeImage()")
+        timeStamp(TSXSend("ccdsoftCameraImage.Path"))
         counter = counter + 1
 
     timeStamp("Finished.")

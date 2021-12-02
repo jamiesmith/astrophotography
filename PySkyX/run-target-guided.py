@@ -40,9 +40,10 @@ altLimit = 30
 
 # Which filter should we use for focuses and CLS?
 #
-focusWithFilter = "3"
+focusWithFilter = "0"
 clsWithFilter = "0"
 
+imageBinning = "1"
 
 # Do you use a default guider delay?
 guiderDelay = "0"
@@ -172,13 +173,16 @@ def setUpGuiding():
 
     startGuiding(newGuiderExposure, newGuiderDelay, float(XCoord), float(YCoord))
 
-def doAnImage(exposureTime, FilterNum):
+def doAnImage(exposureTime, FilterNum, binning):
 #
 # This function performs the general steps required to take 
 # an image. By default, it doesn't mess with the delay and
 # only manipulates the camera. It does a follow-up on the
 # tracking.
 #
+
+    TSXSend("ccdsoftCamera.BinX = " + str(binning))
+    TSXSend("ccdsoftCamera.BinY = " + str(binning))
 
     if TSXSend('ccdsoftCamera.PropStr("m_csObserver")') == "Ken Sturrock":
         if TSXSend("SelectedHardware.cameraModel") == "QSI Camera  ":
@@ -453,19 +457,9 @@ else:
 # Move the mount and start the setup #
 ######################################
 
-#
-# My Temmas need the help of Closed Loop Slew to make sure that they get on target
-# and resynch. More modern mounts probably don't. If you want to use CLS then
-# adjust the logic accordingly.
-#
-
-
-if "Temma" in TSXSend("SelectedHardware.mountModel"):
-    if CLSlew(target, clsWithFilter) == "Fail":
-        timeStamp("There was an error on initial CLS. Stopping script.")
-        softPark()
-else:
-    slew(target)
+if CLSlew(target, clsWithFilter) == "Fail":
+    timeStamp("There was an error on initial CLS. Stopping script.")
+    softPark()
 
 if camTwoIP != "none":
     slewRemote(camTwoIP, target)
@@ -474,7 +468,7 @@ if "<No Focuser Selected>" in TSXSend("SelectedHardware.focuserModel"):
     writeNote("No focuser selected.")
 
 else:
-#
+
 # If you have a OSC camera then you'll want to modify the focus routines in this script
 # to bin 2x2 before calling atFocus and back to 1x1 after the focus is done.
 #
@@ -585,7 +579,7 @@ while loopCounter <= numSets:
                 writeNote("Starting local camera image " + str(expCountC1) + " of " + str(totalExpC1) + ".")
                 expCountC1 = expCountC1 + 1
     
-                if doAnImage(str(expDurC1[fCounter]), str(fCounter)) == "Fail":
+                if doAnImage(str(expDurC1[fCounter]), str(fCounter), imageBinning) == "Fail":
                     print("    ERROR: Camera problem or clouds..")
     
                     if guiderExposure != "0":
@@ -607,7 +601,7 @@ while loopCounter <= numSets:
                             hardPark()
                         else:
                             writeNote("Attempting to retake image.")
-                            if doAnImage(str(expDurC1[fCounter]), str(fCounter)) == "Fail":
+                            if doAnImage(str(expDurC1[fCounter]), str(fCounter), imageBinning) == "Fail":
                                 print("    ERROR: There is still a problem.")
                                 hardPark()
                             else:

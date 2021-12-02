@@ -228,7 +228,60 @@ def calculateOptimalFlatExposure(filterNum, startingExposure = 1, binning = 1):
     writeNote("Target exposure time of " + str(exposureTime) + " seems to yield an image of " + adu + " for filter " + filterNum)
     writeNote("#######################################################")
 
-    return exposureTime    
+    return exposureTime   
+
+def takeFauxDark(exposure, numFrames):
+#
+# Specify exposure duration & qualtity. 
+# If exposure is zero, take a bias.
+#
+    timeStamp("Taking faux dark frames.")
+    
+    asFormatLight = ":t-:e-:b-:i-:f-:a_:c-:q"
+    asFormatDark = ":i_:b_:e_:q_:c"
+    asFormatBias = ":i_:b_:e_:c_"
+    asFormatFlat = ":i_:f_:e_"
+    
+    saveLightFormat = TSXSend('ccdsoftCamera.PropStr("m_csCustomFileNameLight")')
+
+    if exposure == "0":
+        writeNote("Setting frame type to bias.")
+        TSXSend("ccdsoftCamera.Frame = 1")
+        frameType = "Bias"
+        frameFormat = TSXSend('ccdsoftCamera.PropStr("m_csCustomFileNameBias")')
+        
+    else:
+        writeNote("Setting frame type to dark.")
+        TSXSend("ccdsoftCamera.Frame = 1")
+        writeNote(f"Setting exposure to {exposure} seconds.")
+        TSXSend("ccdsoftCamera.ExposureTime = " + exposure)
+        frameType = "Dark"
+        frameFormat = TSXSend('ccdsoftCamera.PropStr("m_csCustomFileNameDark")')
+
+    counter = 1
+
+    TSXSend('ccdsoftCamera.setPropStr("m_csCustomFileNameLight", "' + frameFormat + '")')
+    
+    while (counter <= int(numFrames)):
+        timeStamp("Taking frame: " + str(counter) + " of " + numFrames + ".")
+        TSXSend("ccdsoftCamera.TakeImage()")
+        counter = counter + 1
+        imgPath = getActiveImagePath()
+
+        TSXSend('ccdsoftCameraImage.Path = "' + imgPath + '"')
+        TSXSend("ccdsoftCameraImage.Open()")
+        TSXSend('ccdsoftCameraImage.setFITSKeyword("IMAGETYP", "' + frameType +' Frame")')
+        TSXSend("ccdsoftCameraImage.Save()")
+        TSXSend("ccdsoftCameraImage.Close()")
+
+        renamePath = imgPath.replace("Light", frameType)
+        os.rename(imgPath, renamePath)
+        timeStamp(imgPath + " " + renamePath)       
+        
+
+    TSXSend('ccdsoftCamera.setPropStr("m_csCustomFileNameLight", "' + saveLightFormat + '")')
+    timeStamp("Finished.")
+
 
 def takeFlats(filterNum, exposure, numFlats, takeDarks = "N", binning = 1, targetBrightness = 0.45, tolerance = .02):
 
@@ -275,6 +328,7 @@ def takeFlats(filterNum, exposure, numFlats, takeDarks = "N", binning = 1, targe
         adu = int(adu)
         
         imgPath = TSXSend("ccdsoftCameraImage.Path")
+        timeStamp(imgPath)
         
         if isExposureInRange(brightness = float(brightness), desiredBrightness = targetBrightness, tolerance = tolerance):
             writeNote("Brightness of " + str(brightness) + " is good enough, appending adu " + str(adu))

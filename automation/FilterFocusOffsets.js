@@ -1,3 +1,12 @@
+// Luminance:  0
+// Red:  37
+// Green:  -70
+// Blue:  -129
+// Sii5nm:  -89
+// Ha5nm:  -109
+// Oiii5nm:  -205
+
+
 // FilterFocusOffsets.js
 // Determine filter focuser offsets.
 // Prerequisits... the camera, focuser, and filterwheel are all setup and 
@@ -75,7 +84,7 @@ function autofocus(imager, exposureTime, binning)
         imager.BinX = binning;
         imager.BinY = binning;
         imager.Delay = 0;
-        imager.ExposureTime = exposureTime;
+        imager.FocusExposureTime = exposureTime;
         imager.AtFocus3(3, true);    // Three samples per position, full-auto on subframe selection
         
         imager.BinX = saveBinX;
@@ -142,22 +151,24 @@ Date.prototype.addSeconds = function(seconds)
 const FOCUS_BINNING = 2;
 var times = new Array(7);
 times[LUM  ] = 3.0; 
-times[RED  ] = 4.0; 
-times[GREEN] = 4.0; 
-times[BLUE ] = 4.0; 
-times[SII  ] = 5.0; 
-times[HA   ] = 5.0; 
-times[OIII ] = 5.0; 
+times[RED  ] = 5.0; 
+times[GREEN] = 5.0;  // 12.0; 
+times[BLUE ] = 5.0;  // 12.0; 
+times[SII  ] = 20.0; // Using a bright star
+times[HA   ] = 12.0; 
+times[OIII ] = 15.0; 
 
 const MAX_TEMPERATURE_DEVIATION = 3.0;
 
-var nNumSamples = 3;       // How many samples for each filter
+var nNumSamples = 2;       // How many samples for each filter
+
 var filters = Array();     // Which filters to test
 
+
 filters.push(LUM);         // comment out any you don't want done
-filters.push(RED);         // comment out any you don't want done
-filters.push(GREEN);       // comment out any you don't want done
-filters.push(BLUE);        // comment out any you don't want done
+// filters.push(RED);         // comment out any you don't want done
+// filters.push(GREEN);       // comment out any you don't want done
+// filters.push(BLUE);        // comment out any you don't want done
 filters.push(SII);         // comment out any you don't want done
 filters.push(HA);          // comment out any you don't want done
 filters.push(OIII);        // comment out any you don't want done
@@ -241,13 +252,13 @@ try
     else
     {    
         // Average the positions
-        for(i = 0; i < numFilters; i++)
+        for (i = 0; i < numFilters; i++)
         {
             focusValues[i] /= nNumSamples;
         }
 
         out = "Averaged Positions: ";
-        for(i = 0; i < numFilters; i++) 
+        for (i = 0; i < numFilters; i++) 
         {
             out += focusValues[i];
             out += ", ";
@@ -255,7 +266,7 @@ try
         out += "\n";
 
         out += "Offsets\n";
-        for(i = 0; i < numFilters; i++) 
+        for (i = 0; i < numFilters; i++) 
         {
             out += ccdsoftCamera.szFilterName(filters[i]);
             out += ":  ";
