@@ -23,6 +23,9 @@
 # Set the four variables below (altLimit = minumum starting altitude, guiderExposure =
 # default guider exposure, guiderDelay = default guider delay
 #
+# If you want to use @F3 instead of @F2, just change the "focusStyle" variable below so
+# that it reads ""Three" instead of "Two". CaPiToLiZaTiOn matters, as do the quotes around
+# Two and Three.
 #
 # Ken Sturrock
 # November 16, 2019
@@ -75,17 +78,27 @@ import datetime
 # Script set Variables #
 ########################
 
-filterNumber = 0
-perFil = []
-numExp = []
-exposureDurations = []
-totalExposures = 0
-numDup = []
-dupGoal = 1
-expCount = 1
-totalSeconds = 0
-remainingSeconds = 0
+filterNumC1 = 0
+filterNumC2 = 0
+perFilC1 = []
+perFilC2 = []
+numExpC1 = []
+numExpC2 = []
+expDurC1 = []
+expDurC2 = []
+totalExpC1 = 0
+totalExpC2 = 0
+numDupC1 = []
+numDupC2 = []
+dupGoalC1 = 1
+dupGoalC2 = 1
+expCountC1 = 1
+expCountC2 = 1
+totalSecC1 = 0
+totalSecC2 = 0
 numSets = 0
+numSets1 = 0
+numSets2 = 0
 
 ####################
 # Define Functions #
@@ -102,7 +115,7 @@ def chkTarget():
         print("    ERROR: " + target + " not found in SkyX database.")
         softPark()
     
-    isDayLight()
+    # isDayLight()
 
     currentHA = targHA(target)
     currentAlt = targAlt(target) 
@@ -160,7 +173,7 @@ def setUpGuiding():
 
     startGuiding(newGuiderExposure, newGuiderDelay, float(XCoord), float(YCoord))
 
-def doAnImage(exposureTime, filterNumber, binning):
+def doAnImage(exposureTime, FilterNum, binning):
 #
 # This function performs the general steps required to take 
 # an image. By default, it doesn't mess with the delay and
@@ -176,7 +189,7 @@ def doAnImage(exposureTime, filterNumber, binning):
             TSXSend('ccdsoftCamera.setPropStr("m_csExCameraMode", "Higher Image Quality")')
             writeNote("Setting QSI Camera to high quality mode.")
 
-    if takeImage("Imager", exposureTime, "NA", filterNumber) == "Success":
+    if takeImage("Imager", exposureTime, "NA", FilterNum) == "Success":
 
         if TSXSend('ccdsoftCamera.PropStr("m_csObserver")') == "Ken Sturrock":
             if TSXSend("SelectedHardware.cameraModel") == "QSI Camera  ":
@@ -206,9 +219,6 @@ def doAnImage(exposureTime, filterNumber, binning):
     else:
         return "Fail"
 
-def estimatedCompletionTime(secondsRemaining):
-    now = datetime.datetime.now() + datetime.timedelta(seconds=secondsRemaining)
-    return now.strftime("%H:%M:%S")
 
 ######################
 # Main Program Start #
@@ -282,31 +292,60 @@ if totalArgs < 1:
 else:
     argumentArray = sys.argv
 
-totalArgs = (len(argumentArray) - 1)
+totalArgs = (len(argumentArray) - 2)
 
-exposures = []
+target = argumentArray[1]
+
+camOneExp = []
+camTwoExp = []
+camTwoIP = "none"
 
 counter = 1
-target = argumentArray[counter]
-counter = counter + 1
-
 
 while counter <= totalArgs:
     writeNote("ARGS: " + argumentArray[counter])
-    exposures.append(argumentArray[counter])
+    if argumentArray[counter + 1] == "-r":
+        if (counter) < totalArgs:
+            if "." in argumentArray[counter + 2]:
+                camTwoIP = argumentArray[counter + 2]
+                counter = counter + 2
+            else:
+                print("Invalid or incomplete IP address specified for second camera.")
+                sys.exit()
+        else:
+            print("Insufficient arguments provided to specify second camera.")
+            sys.exit()
+
+        while counter <= totalArgs:
+            camTwoExp.append(argumentArray[counter + 1])
+            counter = counter + 1
+
+    else:
+        camOneExp.append(argumentArray[counter + 1])
+
     counter = counter + 1
 
-totalFilters = len(exposures)
+totalFilC1 = len(camOneExp)
+totalFilC2 = len(camTwoExp)
+
+if totalFilC1 > totalFilC2:
+    totalFil = totalFilC1
+else:
+    totalFil = totalFilC2
+
+exit
 
 ########################
 # Is the target valid? #
 ########################
 
-writeNote("Checking Target: " + target)
 chkTarget()
 
 writeNote("Checking cameras.")
 camConnect("Imager")
+
+if camTwoIP != "none":
+    camConnectRemote(camTwoIP, "Imager")
 
 if str(TSXSend("SelectedHardware.mountModel")) ==  "Telescope Mount Simulator":
     writeNote("Simulated Mount.")
@@ -314,53 +353,107 @@ else:
     writeNote("Checking sidereal drive.")
     TSXSend("sky6RASCOMTele.SetTracking(1, 1, 0 ,0)")
 
+
 #############################################
 # Work out the imaging plan and explain it. #
 #############################################
 
 print("     PLAN:")
+
 print("           Local Camera")
 print("           ------------")
 
-while filterNumber < totalFilters:
+while filterNumC1 < totalFilC1:
     
-    perFil.append(exposures[filterNumber])
+    perFilC1.append(camOneExp[filterNumC1])
 
-    if perFil[filterNumber].count("x") == 1:
-        num,dur=perFil[filterNumber].split("x")
+
+    if perFilC1[filterNumC1].count("x") == 1:
+        num,dur=perFilC1[filterNumC1].split("x")
         dup=1
 
-    if perFil[filterNumber].count("x") == 2:
-        num,dur,dup=perFil[filterNumber].split("x")
+    if perFilC1[filterNumC1].count("x") == 2:
+        num,dur,dup=perFilC1[filterNumC1].split("x")
 
-    numDup.append(int(dup))
-    numExp.append(int(num))
-    exposureDurations.append(int(dur))
+    numDupC1.append(int(dup))
+    numExpC1.append(int(num))
+    expDurC1.append(int(dur))
 
-    if numDup[filterNumber] == 1:
-        adjExposureNum = numExp[filterNumber]
+    if numDupC1[filterNumC1] == 1:
+        adjExposureNum = numExpC1[filterNumC1]
     else:
-        adjExposureNum = (numExp[filterNumber] * numDup[filterNumber])
+        adjExposureNum = (numExpC1[filterNumC1] * numDupC1[filterNumC1])
 
     if TSXSend("SelectedHardware.filterWheelModel") != "<No Filter Wheel Selected>":
-        filName = TSXSend("ccdsoftCamera.szFilterName(" + str(filterNumber) + ")")
+        filName = TSXSend("ccdsoftCamera.szFilterName(" + str(filterNumC1) + ")")
     else:
         filName = "no"
      
-    print ("           " + str(adjExposureNum) + " exposures for " + str(exposureDurations[filterNumber]) + "s with " + filName + " filter.")
+    print ("           " + str(adjExposureNum) + " exposures for " + str(expDurC1[filterNumC1]) + " secs. with " + filName + " filter.")
     
-    totalExposures = totalExposures + adjExposureNum
-    totalSeconds = totalSeconds + (exposureDurations[filterNumber] * adjExposureNum)
-    if numExp[filterNumber] > numSets:
-        numSets = numExp[filterNumber]
-    
-    remainingSeconds = totalSeconds
-    filterNumber = filterNumber + 1
+    totalExpC1 = totalExpC1 + adjExposureNum
+    totalSecC1 = totalSecC1 + (expDurC1[filterNumC1] * adjExposureNum)
 
+    if numExpC1[filterNumC1] > numSets1:
+        numSets1 = numExpC1[filterNumC1]
+    
+    filterNumC1 = filterNumC1 + 1
+    
 print("           -----")
-print("           " + str(totalExposures) + " total exposures for " + str(round((totalSeconds / 60), 2)) + " total minutes.")
-print("           " + "Earliest completion time: " + estimatedCompletionTime(totalSeconds))
+print("           " + str(totalExpC1) + " total exposures for " + str(round((totalSecC1 / 60), 2)) + " total minutes.")
 print("           -----")
+
+
+if camTwoIP != "none":
+
+    print(" ")
+    print("           Remote Camera")
+    print("           -------------")
+
+    while filterNumC2 < totalFilC2:
+
+        perFilC2.append(camTwoExp[filterNumC2])
+
+        if perFilC2[filterNumC2].count("x") == 1:
+            num,dur=perFilC2[filterNumC2].split("x")
+            dup=1
+
+        if perFilC2[filterNumC2].count("x") == 2:
+            num,dur,dup=perFilC2[filterNumC2].split("x")
+    
+        numDupC2.append(int(dup))
+        numExpC2.append(int(num))
+        expDurC2.append(int(dur))
+    
+        if numDupC2[filterNumC2] == 1:
+            adjExposureNum = numExpC2[filterNumC2]
+        else:
+            adjExposureNum = (numExpC2[filterNumC2] * numDupC2[filterNumC2])
+
+        if TSXSendRemote(camTwoIP,"SelectedHardware.filterWheelModel") != "<No Filter Wheel Selected>":
+            filName = TSXSendRemote(camTwoIP,"ccdsoftCamera.szFilterName(" + str(filterNumC2) + ")")
+        else:
+            filName = "no"
+
+        print ("           " + str(adjExposureNum) + " exposures for " + str(expDurC2[filterNumC2]) + " secs. with " + filName + " filter.")
+        
+        totalExpC2 = totalExpC2 + adjExposureNum
+        totalSecC2 = totalSecC2 + (expDurC2[filterNumC2] * adjExposureNum)
+
+        if numExpC2[filterNumC2] > numSets1:
+            numSets1 = numExpC2[filterNumC2]
+    
+        filterNumC2 = filterNumC2 + 1
+    
+    print("           -----")
+    print("           " + str(totalExpC2) + " total exposures for " + str(round((totalSecC2 / 60), 2)) + " total minutes.")
+    print("           -----")
+    print(" ")
+
+if numSets1 >= numSets2:
+    numSets = numSets1
+else:
+    numSets = numSets2
 
 ######################################
 # Move the mount and start the setup #
@@ -370,6 +463,9 @@ if CLSlew(target, clsWithFilter) == "Fail":
     timeStamp("There was an error on initial CLS. Stopping script.")
     softPark()
 
+if camTwoIP != "none":
+    slewRemote(camTwoIP, target)
+
 if "<No Focuser Selected>" in TSXSend("SelectedHardware.focuserModel"):
     writeNote("No focuser selected.")
 
@@ -378,10 +474,35 @@ else:
 # If you have a OSC camera then you'll want to modify the focus routines in this script
 # to bin 2x2 before calling atFocus and back to 1x1 after the focus is done.
 #
-    timeStamp("Conducting initial focus on local camera.")
-    if atFocus3("NoRTZ", focusWithFilter) == "Fail":
-        timeStamp("There was an error on initial focus. Stopping script.")
-        softPark()
+    if camTwoIP == "none":
+        timeStamp("Conducting initial focus on local camera.")
+        if focusStyle == "Two":
+            if atFocus2(target, focusWithFilter) == "Fail":
+                timeStamp("There was an error on initial focus. Stopping script.")
+                softPark()
+        elif focusStyle == "Three":
+            if atFocus3("NoRTZ", focusWithFilter) == "Fail":
+                timeStamp("There was an error on initial focus. Stopping script.")
+                softPark()
+        else:
+            writeNote('    ERROR: Focus style not defined. Must be either "Two" or "Three".')
+            softPark()
+    else:
+        timeStamp("Conducting initial focus on both cameras.")
+        if focusStyle == "Two":
+            if atFocus2Both(camTwoIP, target, focusWithFilter) == "Fail":
+                timeStamp("There was an error on initial focus. Stopping script.")
+                softPark()
+        elif focusStyle == "Three":
+            if atFocus3("NoRTZ", focusWithFilter) == "Fail":
+                timeStamp("There was an error on initial (local) focus. Stopping script.")
+                softPark()
+            elif atFocusRemote(camTwoIP, "Imager", "Three", focusWithFilter) == "Fail":
+                timeStamp("There was an error on initial (remote) focus. Stopping script.")
+                softPark
+        else:
+            writeNote('    ERROR: Focus style not defined. Must be either "Two" or "Three".')
+            softPark()
 
 lastTargHA = targHA(target)
 
@@ -434,26 +555,33 @@ while loopCounter <= numSets:
     
     fCounter = 0
 
-    while fCounter < totalFilters:
+    while fCounter < totalFil:
 
         dupCounter = 1
-        dupGoal = 1
+        dupGoalC1 = 1
+        dupGoalC2 = 1
        
-        if (fCounter <= len(numDup) - 1):
-            dupGoal = numDup[fCounter]
+        if (fCounter <= len(numDupC1) - 1):
+            dupGoalC1 = numDupC1[fCounter]
 
-        while (dupCounter <= dupGoal):
+        if (fCounter <= len(numDupC2) - 1):
+            dupGoalC2 = numDupC2[fCounter]
 
-            if (fCounter <= (totalFilters - 1)) and (numExp[fCounter] > 0) and (dupCounter <= dupGoal):
+        while (dupCounter <= dupGoalC1) or (dupCounter <= dupGoalC2):
 
-                remainingSeconds = remainingSeconds - exposureDurations[fCounter]
-                
+            if (fCounter <= (totalFilC2 - 1)) and (numExpC2[fCounter] > 0) and (dupCounter <= dupGoalC2):
+
                 print("           -----")
+                writeNote("Starting remote camera image: " + str(expCountC2) + " of " + str(totalExpC2) + ".")
                 
-                writeNote("Starting local camera image " + str(expCount) + " of " + str(totalExposures) + " - Earliest completion: " + estimatedCompletionTime(remainingSeconds))
-                expCount = expCount + 1
+                takeImageRemote(camTwoIP, "Imager", str(expDurC2[fCounter]), "0", str(fCounter))
+   
+            if (fCounter <= (totalFilC1 - 1)) and (numExpC1[fCounter] > 0) and (dupCounter <= dupGoalC1):
+                print("           -----")
+                writeNote("Starting local camera image " + str(expCountC1) + " of " + str(totalExpC1) + ".")
+                expCountC1 = expCountC1 + 1
     
-                if doAnImage(str(exposureDurations[fCounter]), str(fCounter), imageBinning) == "Fail":
+                if doAnImage(str(expDurC1[fCounter]), str(fCounter), imageBinning) == "Fail":
                     print("    ERROR: Camera problem or clouds..")
     
                     if guiderExposure != "0":
@@ -475,7 +603,7 @@ while loopCounter <= numSets:
                             hardPark()
                         else:
                             writeNote("Attempting to retake image.")
-                            if doAnImage(str(exposureDurations[fCounter]), str(fCounter), imageBinning) == "Fail":
+                            if doAnImage(str(expDurC1[fCounter]), str(fCounter), imageBinning) == "Fail":
                                 print("    ERROR: There is still a problem.")
                                 hardPark()
                             else:
@@ -486,7 +614,7 @@ while loopCounter <= numSets:
                 if "<No Focuser Selected>" in TSXSend("SelectedHardware.focuserModel"):
                     currentTemp = "0"
         
-                elif (loopCounter < numSets) or (fCounter < (totalFilters - 1)):
+                elif (loopCounter < numSets) or (fCounter < (totalFilC1 - 1)) or (fCounter < (totalFilC2 -1 )):
                 #
                 # This is the usual periodic focus touch up after a temperature change
                 # or time elapse.
@@ -502,9 +630,28 @@ while loopCounter <= numSets:
                             stopGuiding()
                             writeNote("Guiding Stopped.")
         
-                        if atFocus3(target, focusWithFilter) != "Fail":
-                            lastTemp = getTemp()
-                            lastSeconds = round(time.monotonic(),0)
+                        if camTwoIP == "none":
+                            if focusStyle == "Two":
+                                if atFocus2(target, focusWithFilter) != "Fail":
+                                    lastTemp = getTemp()
+                                    lastSeconds = round(time.monotonic(),0)
+        
+                            else:
+                                if atFocus3(target, focusWithFilter) != "Fail":
+                                    lastTemp = getTemp()
+                                    lastSeconds = round(time.monotonic(),0)
+                        else:
+                            if focusStyle == "Two":
+                                if atFocus2Both(camTwoIP, target, focusWithFilter) != "Fail":
+                                    lastTemp = getTemp()
+                                    lastSeconds = round(time.monotonic(),0)
+        
+                            else:
+                                if atFocus3(target, focusWithFilter) != "Fail":
+                                    lastTemp = getTemp()
+                                    lastSeconds = round(time.monotonic(),0)
+        
+                                atFocusRemote(camTwoIP, "Imager", "Three", focusWithFilter)
 
                         dither()
 
@@ -546,10 +693,18 @@ while loopCounter <= numSets:
                         else:
                             timeStamp("Waiting 20 seconds for mount to settle.")
                             time.sleep(20)
+    
+            if (fCounter <= (totalFilC2 - 1)) and (numExpC2[fCounter] > 0) and (dupCounter <= dupGoalC2):
+                print("           -----")
+                remoteImageDone(camTwoIP, "Imager")
+                getStatsRemote(camTwoIP, "Imager")
+                expCountC2 = expCountC2 + 1
 
             dupCounter = dupCounter + 1
 
-        numExp[fCounter] = numExp[fCounter] - 1
+        numExpC1[fCounter] = numExpC1[fCounter] - 1
+        if (fCounter <= (totalFilC2 - 1)) and (numExpC2[fCounter] > 0):
+            numExpC2[fCounter] = numExpC2[fCounter] - 1
 
         fCounter = fCounter + 1
 
@@ -589,7 +744,18 @@ while loopCounter <= numSets:
             #
             if "<No Focuser Selected>" not in TSXSend("SelectedHardware.focuserModel"):
 
-                atFocus3("NoRTZ", focusWithFilter) 
+                if camTwoIP == "none":
+                    if focusStyle == "Two":
+                        atFocus2(target, focusWithFilter) 
+                    elif focusStyle == "Three":
+                        atFocus3("NoRTZ", focusWithFilter) 
+                else:
+                    if focusStyle == "Two":
+                        atFocus2Both(camTwoIP, target, focusWithFilter)
+
+                    elif focusStyle == "Three":
+                        atFocus3("NoRTZ", focusWithFilter) == "Fail"
+                        atFocusRemote(camTwoIP, "Imager", "Three", focusWithFilter)
 
                 lastTemp = getTemp()
                 lastSeconds = round(time.monotonic(),0)
@@ -638,6 +804,10 @@ while loopCounter <= numSets:
         else:
             timeStamp("Waiting 20 seconds for mount to settle.")
             time.sleep(20)
+
+if camTwoIP != "none":
+    writeNote("Disconnecting remote camera.")
+    camDisconnectRemote(camTwoIP, "Imager")
 
 hardPark()
 

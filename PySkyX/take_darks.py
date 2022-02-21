@@ -20,15 +20,15 @@ timeStamp("Starting Dark Frame Run.")
 
 print("")
 
-    print("Taking generic dark frame mixture: 1, 3 and 5 minutes plus bias.")
-    # Duration, quantity
-    #
-    takeFauxDark("1", "1")
-    takeFauxDark("0", "1")
-    # takeFauxDark("60", "9")
-    # takeFauxDark("180", "9")
-    # takeFauxDark("300", "9")
-    # takeFauxDark("0", "9")
+print("Taking generic dark frame mixture: 1, 3 and 5 minutes plus bias.")
+# Duration, quantity
+#
+takeFauxDark("1", "1")
+takeFauxDark("0", "1")
+# takeFauxDark("60", "9")
+# takeFauxDark("180", "9")
+# takeFauxDark("300", "9")
+# takeFauxDark("0", "9")
 
 print("")
 

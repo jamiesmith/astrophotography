@@ -72,7 +72,7 @@ takeFlatDarks = promptForValueWithDefault("Take Flat Darks? ", "N")
 
 print("")
 
-FMSerialPort = "COM10"
+FMSerialPort = "COM17"
 
 # Setting up the panel
 
@@ -148,7 +148,7 @@ if takeFlatDarks.upper() == "DARKS" or takeFlatDarks.upper() == "Y":
             writeNote("skipping flats of " + str(flatExposure) + ", already done")
         else:
             writeNote("Taking flats for " + str(flatExposure) + ", not yet done")
-            takeDark(str(flatExposure), numFrames)
+            takeFauxDark(str(flatExposure), numFrames)
             flatDarksTaken[str(round(flatExposure, 3))] = "yes"
         
         filCounter += 1

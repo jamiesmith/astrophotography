@@ -1155,7 +1155,10 @@ def getStats():
         else:
             print("    ERROR: Image Link failed.")
             
-            return "Fail" 
+            # JRS - this is brutal. 
+            # This messes up if it's too bright or too many stars
+            # return "Fail"
+            return "Success"
     else:
         writeNote("DSS images are in use. Skipping statistics.")
         
@@ -1403,7 +1406,6 @@ def isDayLight():
 #
 # Is the sun above 15 degrees? If so, it's light outside.
 #
-
     if TSXSend("ccdsoftCamera.ImageUseDigitizedSkySurvey") != "1":
         TSXSend("sky6ObjectInformation.Property(0)")
         target = TSXSend("sky6ObjectInformation.ObjInfoPropOut")
@@ -1416,12 +1418,16 @@ def isDayLight():
             timeStamp("The sky is not yet dark.")
             timeStamp("Waiting five minutes.")
             time.sleep (300)
+            
+        else:
+            writeNote("Using DSS, ignoring that it might be light out")
+            
 
         TSXSend('sky6StarChart.Find("' + target + '")')
 
 
 def isGuiderLost(limit):
-#
+
 # Report back if the guider appears to be lost
 #
     if TSXSend("ccdsoftCamera.ImageUseDigitizedSkySurvey") != "1":
