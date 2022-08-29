@@ -46,16 +46,6 @@ from library.PySkyX_jrs import *
 import serial
 from library.flatman_ctl import *
 
-def setFlatPanel(filterNum, binning):
-    
-    brightness = getBrightnessForFilter(filterNum, binning)
-
-    print("     ----")
-    writeNote(f"Adjusting the panel for filter: {getFilterAtSlot(filCounter)} @ {binning}x{binning} to {brightness}")
-    print("     ----")
-
-    myFMPanel.Brightness(brightness)
-
 timeStamp("Starting Calibration run.")
 
 print("")

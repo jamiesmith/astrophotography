@@ -198,8 +198,8 @@ def doAnImage(exposureTime, filterNumber, binning):
             else:
                 writeNote("Guider Tracking.")
     
-        if getStats() == "Fail":
-            return "Fail"
+        # if getStats() == "Fail":
+        #     return "Fail"
     
         return "Success"
 

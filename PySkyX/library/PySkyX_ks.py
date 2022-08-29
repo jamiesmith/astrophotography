@@ -1409,21 +1409,24 @@ def isDayLight():
     if TSXSend("ccdsoftCamera.ImageUseDigitizedSkySurvey") != "1":
         TSXSend("sky6ObjectInformation.Property(0)")
         target = TSXSend("sky6ObjectInformation.ObjInfoPropOut")
+        sunAlt = targAlt("Sun")
+        sunHA = targHA("Sun")
 
-        if targAlt("Sun") > -15 and targHA("Sun") < 0:
+        if sunAlt > -15 and sunHA < 0:
             timeStamp("Good morning.")
             hardPark()
 
-        while targAlt("Sun") > -15 and targHA("Sun") > 0:
-            timeStamp("The sky is not yet dark.")
-            timeStamp("Waiting five minutes.")
-            time.sleep (300)
-            
-        else:
-            writeNote("Using DSS, ignoring that it might be light out")
-            
+        while sunAlt > -15 and sunHA > 0:
+            timeStamp("The sky is not yet dark. sun alt: " + str(round(sunAlt, 2)) + " sun HA: " + str(round(sunHA, 2)) + ", waiting a minute.")
+            time.sleep (60)
+            sunAlt = targAlt("Sun")
+            sunHA = targHA("Sun")
+                        
+    else:
+        writeNote("Using DSS, ignoring that it might be light out")
+        
 
-        TSXSend('sky6StarChart.Find("' + target + '")')
+    TSXSend('sky6StarChart.Find("' + target + '")')
 
 
 def isGuiderLost(limit):

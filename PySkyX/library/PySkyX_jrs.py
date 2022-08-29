@@ -283,6 +283,16 @@ def takeFauxDark(exposure, numFrames):
     timeStamp("Finished.")
 
 
+def setFlatPanel(filterNum, binning):
+    
+    brightness = getBrightnessForFilter(filterNum, binning)
+
+    print("     ----")
+    writeNote(f"Adjusting the panel for filter: {getFilterAtSlot(filCounter)} @ {binning}x{binning} to {brightness}")
+    print("     ----")
+
+    myFMPanel.Brightness(brightness)
+
 def takeFlats(filterNum, exposure, numFlats, takeDarks = "N", binning = 1, targetBrightness = 0.45, tolerance = .02):
 
 # This function takes an appropriately exposed flat.
@@ -347,12 +357,13 @@ def takeFlats(filterNum, exposure, numFlats, takeDarks = "N", binning = 1, targe
             #            
             if os.path.exists(imgPath):
                 writeNote("Brightness of " + str(brightness) + " is NOT good enough, removing image")
+                
+                # I want to see if this helps when they're not good enough, possible drift
+                #
+                setFlatPanel(filterNum, binning)
                 os.remove(imgPath)            
 
         timeStamp("")
-
-    # take a flat
-
 
     if takeDarks.upper() == "DARKS" or takeDarks.upper() == "Y":
         TSXSend("ccdsoftCamera.Frame = 3")
