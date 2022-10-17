@@ -1,0 +1,3250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+********************************************************************
+PixInsight XML Process Serialization Module - XPSM 1.0
+********************************************************************
+Generated on 2022-10-17T17:49:17.214Z
+PixInsight Core 1.8.9-1 (x64)
+Copyright (c) 2003-2022 Pleiades Astrophoto
+********************************************************************
+-->
+<xpsm version="1.0" xmlns="http://www.pixinsight.com/xpsm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pixinsight.com/xpsm http://pixinsight.com/xpsm/xpsm-1.0.xsd">
+   <instance class="DynamicCrop" version="256" id="Crop_instance">
+      <parameter id="centerX" value="0.50000"/>
+      <parameter id="centerY" value="0.50000"/>
+      <parameter id="width" value="1.00000"/>
+      <parameter id="height" value="1.00000"/>
+      <parameter id="angle" value="0.0000"/>
+      <parameter id="scaleX" value="1.00000"/>
+      <parameter id="scaleY" value="1.00000"/>
+      <parameter id="optimizeFast" value="true"/>
+      <parameter id="interpolation" value="Auto"/>
+      <parameter id="clampingThreshold" value="0.30"/>
+      <parameter id="smoothness" value="1.50"/>
+      <parameter id="xResolution" value="72.000"/>
+      <parameter id="yResolution" value="72.000"/>
+      <parameter id="metric" value="false"/>
+      <parameter id="forceResolution" value="false"/>
+      <parameter id="red" value="0.000000"/>
+      <parameter id="green" value="0.000000"/>
+      <parameter id="blue" value="0.000000"/>
+      <parameter id="alpha" value="1.000000"/>
+      <parameter id="noGUIMessages" value="false"/>
+   </instance>
+   <instance class="ScreenTransferFunction" version="256" id="STF_instance">
+      <table id="STF" rows="4">
+         <tr>
+            <td id="c0" value="0.00391"/>
+            <td id="c1" value="1.00000"/>
+            <td id="m" value="0.00237"/>
+            <td id="r0" value="0.00000"/>
+            <td id="r1" value="1.00000"/>
+         </tr>
+         <tr>
+            <td id="c0" value="0.00407"/>
+            <td id="c1" value="1.00000"/>
+            <td id="m" value="0.00173"/>
+            <td id="r0" value="0.00000"/>
+            <td id="r1" value="1.00000"/>
+         </tr>
+         <tr>
+            <td id="c0" value="0.00382"/>
+            <td id="c1" value="1.00000"/>
+            <td id="m" value="0.00263"/>
+            <td id="r0" value="0.00000"/>
+            <td id="r1" value="1.00000"/>
+         </tr>
+         <tr>
+            <td id="c0" value="0.00000"/>
+            <td id="c1" value="1.00000"/>
+            <td id="m" value="0.50000"/>
+            <td id="r0" value="0.00000"/>
+            <td id="r1" value="1.00000"/>
+         </tr>
+      </table>
+      <parameter id="interaction" value="SeparateChannels"/>
+   </instance>
+   <instance class="HistogramTransformation" version="256" id="HistogramTransformation_instance">
+      <table id="H" rows="5">
+         <tr>
+            <td id="c0" value="0.00000000"/>
+            <td id="m" value="0.50000000"/>
+            <td id="c1" value="1.00000000"/>
+            <td id="r0" value="0.00000000"/>
+            <td id="r1" value="1.00000000"/>
+         </tr>
+         <tr>
+            <td id="c0" value="0.00000000"/>
+            <td id="m" value="0.50000000"/>
+            <td id="c1" value="1.00000000"/>
+            <td id="r0" value="0.00000000"/>
+            <td id="r1" value="1.00000000"/>
+         </tr>
+         <tr>
+            <td id="c0" value="0.00000000"/>
+            <td id="m" value="0.50000000"/>
+            <td id="c1" value="1.00000000"/>
+            <td id="r0" value="0.00000000"/>
+            <td id="r1" value="1.00000000"/>
+         </tr>
+         <tr>
+            <td id="c0" value="0.00197239"/>
+            <td id="m" value="0.50000000"/>
+            <td id="c1" value="1.00000000"/>
+            <td id="r0" value="0.00000000"/>
+            <td id="r1" value="1.00000000"/>
+         </tr>
+         <tr>
+            <td id="c0" value="0.00000000"/>
+            <td id="m" value="0.50000000"/>
+            <td id="c1" value="1.00000000"/>
+            <td id="r0" value="0.00000000"/>
+            <td id="r1" value="1.00000000"/>
+         </tr>
+      </table>
+   </instance>
+   <instance class="NoOperation" version="256" id="Scripts_utilities_dark_structure_enhance_instance"/>
+   <instance class="Script" version="256" id="WBPP_instance">
+      <time start="2020-04-13T17:05:07.538Z" span="4219.6138"/>
+      <parameter id="filePath">$PXI_SRCDIR/scripts/WeightedBatchPreprocessing/WeightedBatchPreprocessing.js</parameter>
+      <parameter id="md5sum">881390ca5f02ab9eaff60a119d6944cc</parameter>
+      <table id="parameters" rows="134">
+         <tr>
+            <td id="id">version</td>
+            <td id="value">1.4.4</td>
+         </tr>
+         <tr>
+            <td id="id">saveFrameGroups</td>
+            <td id="value">false</td>
+         </tr>
+         <tr>
+            <td id="id">outputDirectory</td>
+            <td id="value">/Volumes/2TB SSD/AstroImages/Targets/Calibrating</td>
+         </tr>
+         <tr>
+            <td id="id">cfaImages</td>
+            <td id="value">false</td>
+         </tr>
+         <tr>
+            <td id="id">upBottomFITS</td>
+            <td id="value">true</td>
+         </tr>
+         <tr>
+            <td id="id">saveProcessLog</td>
+            <td id="value">true</td>
+         </tr>
+         <tr>
+            <td id="id">generateRejectionMaps</td>
+            <td id="value">false</td>
+         </tr>
+         <tr>
+            <td id="id">masterDarkIncludesBias</td>
+            <td id="value">false</td>
+         </tr>
+         <tr>
+            <td id="id">optimizeDarks</td>
+            <td id="value">true</td>
+         </tr>
+         <tr>
+            <td id="id">darkOptimizationLow</td>
+            <td id="value">3</td>
+         </tr>
+         <tr>
+            <td id="id">darkOptimizationWindow</td>
+            <td id="value">1024</td>
+         </tr>
+         <tr>
+            <td id="id">darkExposureTolerance</td>
+            <td id="value">10</td>
+         </tr>
+         <tr>
+            <td id="id">evaluateNoise</td>
+            <td id="value">true</td>
+         </tr>
+         <tr>
+            <td id="id">overscanEnabled</td>
+            <td id="value">false</td>
+         </tr>
+         <tr>
+            <td id="id">overscanRegionEnabled_1</td>
+            <td id="value">false</td>
+         </tr>
+         <tr>
+            <td id="id">overscanSourceX0_1</td>
+            <td id="value">0</td>
+         </tr>
+         <tr>
+            <td id="id">overscanSourceY0_1</td>
+            <td id="value">0</td>
+         </tr>
+         <tr>
+            <td id="id">overscanSourceX1_1</td>
+            <td id="value">0</td>
+         </tr>
+         <tr>
+            <td id="id">overscanSourceY1_1</td>
+            <td id="value">0</td>
+         </tr>
+         <tr>
+            <td id="id">overscanTargetX0_1</td>
+            <td id="value">0</td>
+         </tr>
+         <tr>
+            <td id="id">overscanTargetY0_1</td>
+            <td id="value">0</td>
+         </tr>
+         <tr>
+            <td id="id">overscanTargetX1_1</td>
+            <td id="value">0</td>
+         </tr>
+         <tr>
+            <td id="id">overscanTargetY1_1</td>
+            <td id="value">0</td>
+         </tr>
+         <tr>
+            <td id="id">overscanRegionEnabled_2</td>
+            <td id="value">false</td>
+         </tr>
+         <tr>
+            <td id="id">overscanSourceX0_2</td>
+            <td id="value">0</td>
+         </tr>
+         <tr>
+            <td id="id">overscanSourceY0_2</td>
+            <td id="value">0</td>
+         </tr>
+         <tr>
+            <td id="id">overscanSourceX1_2</td>
+            <td id="value">0</td>
+         </tr>
+         <tr>
+            <td id="id">overscanSourceY1_2</td>
+            <td id="value">0</td>
+         </tr>
+         <tr>
+            <td id="id">overscanTargetX0_2</td>
+            <td id="value">0</td>
+         </tr>
+         <tr>
+            <td id="id">overscanTargetY0_2</td>
+            <td id="value">0</td>
+         </tr>
+         <tr>
+            <td id="id">overscanTargetX1_2</td>
+            <td id="value">0</td>
+         </tr>
+         <tr>
+            <td id="id">overscanTargetY1_2</td>
+            <td id="value">0</td>
+         </tr>
+         <tr>
+            <td id="id">overscanRegionEnabled_3</td>
+            <td id="value">false</td>
+         </tr>
+         <tr>
+            <td id="id">overscanSourceX0_3</td>
+            <td id="value">0</td>
+         </tr>
+         <tr>
+            <td id="id">overscanSourceY0_3</td>
+            <td id="value">0</td>
+         </tr>
+         <tr>
+            <td id="id">overscanSourceX1_3</td>
+            <td id="value">0</td>
+         </tr>
+         <tr>
+            <td id="id">overscanSourceY1_3</td>
+            <td id="value">0</td>
+         </tr>
+         <tr>
+            <td id="id">overscanTargetX0_3</td>
+            <td id="value">0</td>
+         </tr>
+         <tr>
+            <td id="id">overscanTargetY0_3</td>
+            <td id="value">0</td>
+         </tr>
+         <tr>
+            <td id="id">overscanTargetX1_3</td>
+            <td id="value">0</td>
+         </tr>
+         <tr>
+            <td id="id">overscanTargetY1_3</td>
+            <td id="value">0</td>
+         </tr>
+         <tr>
+            <td id="id">overscanRegionEnabled_4</td>
+            <td id="value">false</td>
+         </tr>
+         <tr>
+            <td id="id">overscanSourceX0_4</td>
+            <td id="value">0</td>
+         </tr>
+         <tr>
+            <td id="id">overscanSourceY0_4</td>
+            <td id="value">0</td>
+         </tr>
+         <tr>
+            <td id="id">overscanSourceX1_4</td>
+            <td id="value">0</td>
+         </tr>
+         <tr>
+            <td id="id">overscanSourceY1_4</td>
+            <td id="value">0</td>
+         </tr>
+         <tr>
+            <td id="id">overscanTargetX0_4</td>
+            <td id="value">0</td>
+         </tr>
+         <tr>
+            <td id="id">overscanTargetY0_4</td>
+            <td id="value">0</td>
+         </tr>
+         <tr>
+            <td id="id">overscanTargetX1_4</td>
+            <td id="value">0</td>
+         </tr>
+         <tr>
+            <td id="id">overscanTargetY1_4</td>
+            <td id="value">0</td>
+         </tr>
+         <tr>
+            <td id="id">overscanImageX0</td>
+            <td id="value">0</td>
+         </tr>
+         <tr>
+            <td id="id">overscanImageY0</td>
+            <td id="value">0</td>
+         </tr>
+         <tr>
+            <td id="id">overscanImageX1</td>
+            <td id="value">0</td>
+         </tr>
+         <tr>
+            <td id="id">overscanImageY1</td>
+            <td id="value">0</td>
+         </tr>
+         <tr>
+            <td id="id">useAsMaster_1</td>
+            <td id="value">true</td>
+         </tr>
+         <tr>
+            <td id="id">combination_1</td>
+            <td id="value">0</td>
+         </tr>
+         <tr>
+            <td id="id">rejection_1</td>
+            <td id="value">999</td>
+         </tr>
+         <tr>
+            <td id="id">minMaxLow_1</td>
+            <td id="value">1</td>
+         </tr>
+         <tr>
+            <td id="id">minMaxHigh_1</td>
+            <td id="value">1</td>
+         </tr>
+         <tr>
+            <td id="id">percentileLow_1</td>
+            <td id="value">0.20000000298023224</td>
+         </tr>
+         <tr>
+            <td id="id">percentileHigh_1</td>
+            <td id="value">0.10000000149011612</td>
+         </tr>
+         <tr>
+            <td id="id">sigmaLow_1</td>
+            <td id="value">4</td>
+         </tr>
+         <tr>
+            <td id="id">sigmaHigh_1</td>
+            <td id="value">3</td>
+         </tr>
+         <tr>
+            <td id="id">linearFitLow_1</td>
+            <td id="value">5</td>
+         </tr>
+         <tr>
+            <td id="id">linearFitHigh_1</td>
+            <td id="value">3.5</td>
+         </tr>
+         <tr>
+            <td id="id">ESD_Outliers_1</td>
+            <td id="value">0.30000001192092896</td>
+         </tr>
+         <tr>
+            <td id="id">ESD_Significance_1</td>
+            <td id="value">0.05000000074505806</td>
+         </tr>
+         <tr>
+            <td id="id">useAsMaster_2</td>
+            <td id="value">true</td>
+         </tr>
+         <tr>
+            <td id="id">combination_2</td>
+            <td id="value">0</td>
+         </tr>
+         <tr>
+            <td id="id">rejection_2</td>
+            <td id="value">999</td>
+         </tr>
+         <tr>
+            <td id="id">minMaxLow_2</td>
+            <td id="value">1</td>
+         </tr>
+         <tr>
+            <td id="id">minMaxHigh_2</td>
+            <td id="value">1</td>
+         </tr>
+         <tr>
+            <td id="id">percentileLow_2</td>
+            <td id="value">0.20000000298023224</td>
+         </tr>
+         <tr>
+            <td id="id">percentileHigh_2</td>
+            <td id="value">0.10000000149011612</td>
+         </tr>
+         <tr>
+            <td id="id">sigmaLow_2</td>
+            <td id="value">4</td>
+         </tr>
+         <tr>
+            <td id="id">sigmaHigh_2</td>
+            <td id="value">3</td>
+         </tr>
+         <tr>
+            <td id="id">linearFitLow_2</td>
+            <td id="value">5</td>
+         </tr>
+         <tr>
+            <td id="id">linearFitHigh_2</td>
+            <td id="value">3.5</td>
+         </tr>
+         <tr>
+            <td id="id">ESD_Outliers_2</td>
+            <td id="value">0.30000001192092896</td>
+         </tr>
+         <tr>
+            <td id="id">ESD_Significance_2</td>
+            <td id="value">0.05000000074505806</td>
+         </tr>
+         <tr>
+            <td id="id">useAsMaster_3</td>
+            <td id="value">true</td>
+         </tr>
+         <tr>
+            <td id="id">combination_3</td>
+            <td id="value">0</td>
+         </tr>
+         <tr>
+            <td id="id">rejection_3</td>
+            <td id="value">999</td>
+         </tr>
+         <tr>
+            <td id="id">minMaxLow_3</td>
+            <td id="value">1</td>
+         </tr>
+         <tr>
+            <td id="id">minMaxHigh_3</td>
+            <td id="value">1</td>
+         </tr>
+         <tr>
+            <td id="id">percentileLow_3</td>
+            <td id="value">0.20000000298023224</td>
+         </tr>
+         <tr>
+            <td id="id">percentileHigh_3</td>
+            <td id="value">0.10000000149011612</td>
+         </tr>
+         <tr>
+            <td id="id">sigmaLow_3</td>
+            <td id="value">4</td>
+         </tr>
+         <tr>
+            <td id="id">sigmaHigh_3</td>
+            <td id="value">3</td>
+         </tr>
+         <tr>
+            <td id="id">linearFitLow_3</td>
+            <td id="value">5</td>
+         </tr>
+         <tr>
+            <td id="id">linearFitHigh_3</td>
+            <td id="value">3.5</td>
+         </tr>
+         <tr>
+            <td id="id">ESD_Outliers_3</td>
+            <td id="value">0.30000001192092896</td>
+         </tr>
+         <tr>
+            <td id="id">ESD_Significance_3</td>
+            <td id="value">0.05000000074505806</td>
+         </tr>
+         <tr>
+            <td id="id">useAsMaster_4</td>
+            <td id="value">false</td>
+         </tr>
+         <tr>
+            <td id="id">combination_4</td>
+            <td id="value">0</td>
+         </tr>
+         <tr>
+            <td id="id">rejection_4</td>
+            <td id="value">999</td>
+         </tr>
+         <tr>
+            <td id="id">minMaxLow_4</td>
+            <td id="value">1</td>
+         </tr>
+         <tr>
+            <td id="id">minMaxHigh_4</td>
+            <td id="value">1</td>
+         </tr>
+         <tr>
+            <td id="id">percentileLow_4</td>
+            <td id="value">0.20000000298023224</td>
+         </tr>
+         <tr>
+            <td id="id">percentileHigh_4</td>
+            <td id="value">0.10000000149011612</td>
+         </tr>
+         <tr>
+            <td id="id">sigmaLow_4</td>
+            <td id="value">4</td>
+         </tr>
+         <tr>
+            <td id="id">sigmaHigh_4</td>
+            <td id="value">3</td>
+         </tr>
+         <tr>
+            <td id="id">linearFitLow_4</td>
+            <td id="value">5</td>
+         </tr>
+         <tr>
+            <td id="id">linearFitHigh_4</td>
+            <td id="value">3.5</td>
+         </tr>
+         <tr>
+            <td id="id">ESD_Outliers_4</td>
+            <td id="value">0.30000001192092896</td>
+         </tr>
+         <tr>
+            <td id="id">ESD_Significance_4</td>
+            <td id="value">0.05000000074505806</td>
+         </tr>
+         <tr>
+            <td id="id">flatsLargeScaleRejection</td>
+            <td id="value">false</td>
+         </tr>
+         <tr>
+            <td id="id">flatsLargeScaleRejectionLayers</td>
+            <td id="value">2</td>
+         </tr>
+         <tr>
+            <td id="id">flatsLargeScaleRejectionGrowth</td>
+            <td id="value">2</td>
+         </tr>
+         <tr>
+            <td id="id">flatDarksOnly</td>
+            <td id="value">true</td>
+         </tr>
+         <tr>
+            <td id="id">calibrateOnly</td>
+            <td id="value">false</td>
+         </tr>
+         <tr>
+            <td id="id">lightExposureTolerance</td>
+            <td id="value">2</td>
+         </tr>
+         <tr>
+            <td id="id">generateDrizzleData</td>
+            <td id="value">true</td>
+         </tr>
+         <tr>
+            <td id="id">cosmeticCorrection</td>
+            <td id="value">true</td>
+         </tr>
+         <tr>
+            <td id="id">cosmeticCorrectionTemplateId</td>
+            <td id="value">CosmeticCorrection</td>
+         </tr>
+         <tr>
+            <td id="id">bayerPattern</td>
+            <td id="value">0</td>
+         </tr>
+         <tr>
+            <td id="id">debayerMethod</td>
+            <td id="value">2</td>
+         </tr>
+         <tr>
+            <td id="id">pixelInterpolation</td>
+            <td id="value">10</td>
+         </tr>
+         <tr>
+            <td id="id">clampingThreshold</td>
+            <td id="value">0.30000001192092896</td>
+         </tr>
+         <tr>
+            <td id="id">maxStars</td>
+            <td id="value">500</td>
+         </tr>
+         <tr>
+            <td id="id">distortionCorrection</td>
+            <td id="value">false</td>
+         </tr>
+         <tr>
+            <td id="id">noiseReductionFilterRadius</td>
+            <td id="value">2</td>
+         </tr>
+         <tr>
+            <td id="id">useTriangleSimilarity</td>
+            <td id="value">true</td>
+         </tr>
+         <tr>
+            <td id="id">referenceImage</td>
+            <td id="value"></td>
+         </tr>
+         <tr>
+            <td id="id">subframeWeightingPreset</td>
+            <td id="value">2</td>
+         </tr>
+         <tr>
+            <td id="id">generateSubframesWeights</td>
+            <td id="value">true</td>
+         </tr>
+         <tr>
+            <td id="id">generateSubframesWeightsAfterRegistration</td>
+            <td id="value">true</td>
+         </tr>
+         <tr>
+            <td id="id">useBestLightAsReference</td>
+            <td id="value">true</td>
+         </tr>
+         <tr>
+            <td id="id">FWHMWeight</td>
+            <td id="value">20</td>
+         </tr>
+         <tr>
+            <td id="id">eccentricityWeight</td>
+            <td id="value">15</td>
+         </tr>
+         <tr>
+            <td id="id">SNRWeight</td>
+            <td id="value">25</td>
+         </tr>
+         <tr>
+            <td id="id">pedestal</td>
+            <td id="value">40</td>
+         </tr>
+         <tr>
+            <td id="id">integrate</td>
+            <td id="value">true</td>
+         </tr>
+         <tr>
+            <td id="id">frameGroups</td>
+            <td id="value">WwogIHsKICAgICJpbWFnZVR5cGUiOiAxLAogICAgImZpbHRlciI6ICIiLAogICAgImJpbm5pbmciOiAxLAogICAgImV4cG9zdXJlVGltZSI6IDYwMCwKICAgICJleHBvc3VyZVRpbWVzIjogWwogICAgICA2MDAKICAgIF0sCiAgICAibWFzdGVyRnJhbWUiOiB0cnVlLAogICAgImVuYWJsZWQiOiB0cnVlLAogICAgImZpbGVJdGVtcyI6IFsKICAgICAgewogICAgICAgICJmaWxlUGF0aCI6ICIvVm9sdW1lcy94UmFpZC1TY3JhdGNoL0FzdHJvcGhvdG9ncmFwaHkvUmF3IENhbGlicmF0aW9uL0RhcmsvRGFya18xeDFfNjAwLjAwMHNlY3NfMDAwMDEzNDNfMTkuNjJDLmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDEsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiTm9GaWx0ZXIiLAogICAgICAgICJleHBvc3VyZVRpbWUiOiA2MDAsCiAgICAgICAgImVuYWJsZWQiOiB0cnVlLAogICAgICAgICJpc0NGQSI6IGZhbHNlCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiZmlsZVBhdGgiOiAiL1ZvbHVtZXMveFJhaWQtU2NyYXRjaC9Bc3Ryb3Bob3RvZ3JhcGh5L1JhdyBDYWxpYnJhdGlvbi9EYXJrL0RhcmtfMXgxXzYwMC4wMDBzZWNzXzAwMDAxMzQ0Xy0xOC45MEMuZml0IiwKICAgICAgICAiaW1hZ2VUeXBlIjogMSwKICAgICAgICAiYmlubmluZyI6IDEsCiAgICAgICAgImZpbHRlciI6ICJOb0ZpbHRlciIsCiAgICAgICAgImV4cG9zdXJlVGltZSI6IDYwMCwKICAgICAgICAiZW5hYmxlZCI6IHRydWUsCiAgICAgICAgImlzQ0ZBIjogZmFsc2UKICAgICAgfSwKICAgICAgewogICAgICAgICJmaWxlUGF0aCI6ICIvVm9sdW1lcy94UmFpZC1TY3JhdGNoL0FzdHJvcGhvdG9ncmFwaHkvUmF3IENhbGlicmF0aW9uL0RhcmsvRGFya18xeDFfNjAwLjAwMHNlY3NfMDAwMDEzNDVfLTE5LjU1Qy5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAxLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIk5vRmlsdGVyIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogNjAwLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Wb2x1bWVzL3hSYWlkLVNjcmF0Y2gvQXN0cm9waG90b2dyYXBoeS9SYXcgQ2FsaWJyYXRpb24vRGFyay9EYXJrXzF4MV82MDAuMDAwc2Vjc18wMDAwMTM0Nl8tMjAuNDNDLmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDEsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiTm9GaWx0ZXIiLAogICAgICAgICJleHBvc3VyZVRpbWUiOiA2MDAsCiAgICAgICAgImVuYWJsZWQiOiB0cnVlLAogICAgICAgICJpc0NGQSI6IGZhbHNlCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiZmlsZVBhdGgiOiAiL1ZvbHVtZXMveFJhaWQtU2NyYXRjaC9Bc3Ryb3Bob3RvZ3JhcGh5L1JhdyBDYWxpYnJhdGlvbi9EYXJrL0RhcmtfMXgxXzYwMC4wMDBzZWNzXzAwMDAxMzQ3Xy0xOS43MUMuZml0IiwKICAgICAgICAiaW1hZ2VUeXBlIjogMSwKICAgICAgICAiYmlubmluZyI6IDEsCiAgICAgICAgImZpbHRlciI6ICJOb0ZpbHRlciIsCiAgICAgICAgImV4cG9zdXJlVGltZSI6IDYwMCwKICAgICAgICAiZW5hYmxlZCI6IHRydWUsCiAgICAgICAgImlzQ0ZBIjogZmFsc2UKICAgICAgfSwKICAgICAgewogICAgICAgICJmaWxlUGF0aCI6ICIvVm9sdW1lcy94UmFpZC1TY3JhdGNoL0FzdHJvcGhvdG9ncmFwaHkvUmF3IENhbGlicmF0aW9uL0RhcmsvRGFya18xeDFfNjAwLjAwMHNlY3NfMDAwMDEzNDhfLTIwLjM1Qy5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAxLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIk5vRmlsdGVyIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogNjAwLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Wb2x1bWVzL3hSYWlkLVNjcmF0Y2gvQXN0cm9waG90b2dyYXBoeS9SYXcgQ2FsaWJyYXRpb24vRGFyay9EYXJrXzF4MV82MDAuMDAwc2Vjc18wMDAwMTM0OV8tMjAuMDNDLmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDEsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiTm9GaWx0ZXIiLAogICAgICAgICJleHBvc3VyZVRpbWUiOiA2MDAsCiAgICAgICAgImVuYWJsZWQiOiB0cnVlLAogICAgICAgICJpc0NGQSI6IGZhbHNlCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiZmlsZVBhdGgiOiAiL1ZvbHVtZXMveFJhaWQtU2NyYXRjaC9Bc3Ryb3Bob3RvZ3JhcGh5L1JhdyBDYWxpYnJhdGlvbi9EYXJrL0RhcmtfMXgxXzYwMC4wMDBzZWNzXzAwMDAxMzUwXy0xOS43MUMuZml0IiwKICAgICAgICAiaW1hZ2VUeXBlIjogMSwKICAgICAgICAiYmlubmluZyI6IDEsCiAgICAgICAgImZpbHRlciI6ICJOb0ZpbHRlciIsCiAgICAgICAgImV4cG9zdXJlVGltZSI6IDYwMCwKICAgICAgICAiZW5hYmxlZCI6IHRydWUsCiAgICAgICAgImlzQ0ZBIjogZmFsc2UKICAgICAgfSwKICAgICAgewogICAgICAgICJmaWxlUGF0aCI6ICIvVm9sdW1lcy94UmFpZC1TY3JhdGNoL0FzdHJvcGhvdG9ncmFwaHkvUmF3IENhbGlicmF0aW9uL0RhcmsvRGFya18xeDFfNjAwLjAwMHNlY3NfMDAwMDEzNTFfLTIwLjAzQy5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAxLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIk5vRmlsdGVyIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogNjAwLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Wb2x1bWVzL3hSYWlkLVNjcmF0Y2gvQXN0cm9waG90b2dyYXBoeS9SYXcgQ2FsaWJyYXRpb24vRGFyay9EYXJrXzF4MV82MDAuMDAwc2Vjc18wMDAwMTM1Ml8tMjAuMzVDLmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDEsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiTm9GaWx0ZXIiLAogICAgICAgICJleHBvc3VyZVRpbWUiOiA2MDAsCiAgICAgICAgImVuYWJsZWQiOiB0cnVlLAogICAgICAgICJpc0NGQSI6IGZhbHNlCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiZmlsZVBhdGgiOiAiL1ZvbHVtZXMveFJhaWQtU2NyYXRjaC9Bc3Ryb3Bob3RvZ3JhcGh5L1JhdyBDYWxpYnJhdGlvbi9EYXJrL0RhcmtfMXgxXzYwMC4wMDBzZWNzXzAwMDAxMzUzXy0xOS42M0MuZml0IiwKICAgICAgICAiaW1hZ2VUeXBlIjogMSwKICAgICAgICAiYmlubmluZyI6IDEsCiAgICAgICAgImZpbHRlciI6ICJOb0ZpbHRlciIsCiAgICAgICAgImV4cG9zdXJlVGltZSI6IDYwMCwKICAgICAgICAiZW5hYmxlZCI6IHRydWUsCiAgICAgICAgImlzQ0ZBIjogZmFsc2UKICAgICAgfSwKICAgICAgewogICAgICAgICJmaWxlUGF0aCI6ICIvVm9sdW1lcy94UmFpZC1TY3JhdGNoL0FzdHJvcGhvdG9ncmFwaHkvUmF3IENhbGlicmF0aW9uL0RhcmsvRGFya18xeDFfNjAwLjAwMHNlY3NfMDAwMDEzNTRfLTIwLjAzQy5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAxLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIk5vRmlsdGVyIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogNjAwLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Wb2x1bWVzL3hSYWlkLVNjcmF0Y2gvQXN0cm9waG90b2dyYXBoeS9SYXcgQ2FsaWJyYXRpb24vRGFyay9EYXJrXzF4MV82MDAuMDAwc2Vjc18wMDAwMTM1NV8tMjAuMDNDLmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDEsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiTm9GaWx0ZXIiLAogICAgICAgICJleHBvc3VyZVRpbWUiOiA2MDAsCiAgICAgICAgImVuYWJsZWQiOiB0cnVlLAogICAgICAgICJpc0NGQSI6IGZhbHNlCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiZmlsZVBhdGgiOiAiL1ZvbHVtZXMveFJhaWQtU2NyYXRjaC9Bc3Ryb3Bob3RvZ3JhcGh5L1JhdyBDYWxpYnJhdGlvbi9EYXJrL0RhcmtfMXgxXzYwMC4wMDBzZWNzXzAwMDAxMzU2Xy0xOS43OUMuZml0IiwKICAgICAgICAiaW1hZ2VUeXBlIjogMSwKICAgICAgICAiYmlubmluZyI6IDEsCiAgICAgICAgImZpbHRlciI6ICJOb0ZpbHRlciIsCiAgICAgICAgImV4cG9zdXJlVGltZSI6IDYwMCwKICAgICAgICAiZW5hYmxlZCI6IHRydWUsCiAgICAgICAgImlzQ0ZBIjogZmFsc2UKICAgICAgfSwKICAgICAgewogICAgICAgICJmaWxlUGF0aCI6ICIvVm9sdW1lcy94UmFpZC1TY3JhdGNoL0FzdHJvcGhvdG9ncmFwaHkvUmF3IENhbGlicmF0aW9uL0RhcmsvRGFya18xeDFfNjAwLjAwMHNlY3NfMDAwMDEzNTdfLTE5LjcxQy5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAxLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIk5vRmlsdGVyIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogNjAwLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Wb2x1bWVzL3hSYWlkLVNjcmF0Y2gvQXN0cm9waG90b2dyYXBoeS9SYXcgQ2FsaWJyYXRpb24vRGFyay9EYXJrXzF4MV82MDAuMDAwc2Vjc18wMDAwMTM1OF8tMTkuMzhDLmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDEsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiTm9GaWx0ZXIiLAogICAgICAgICJleHBvc3VyZVRpbWUiOiA2MDAsCiAgICAgICAgImVuYWJsZWQiOiB0cnVlLAogICAgICAgICJpc0NGQSI6IGZhbHNlCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiZmlsZVBhdGgiOiAiL1ZvbHVtZXMveFJhaWQtU2NyYXRjaC9Bc3Ryb3Bob3RvZ3JhcGh5L1JhdyBDYWxpYnJhdGlvbi9EYXJrL0RhcmtfMXgxXzYwMC4wMDBzZWNzXzAwMDAxMzU5Xy0yMC4wM0MuZml0IiwKICAgICAgICAiaW1hZ2VUeXBlIjogMSwKICAgICAgICAiYmlubmluZyI6IDEsCiAgICAgICAgImZpbHRlciI6ICJOb0ZpbHRlciIsCiAgICAgICAgImV4cG9zdXJlVGltZSI6IDYwMCwKICAgICAgICAiZW5hYmxlZCI6IHRydWUsCiAgICAgICAgImlzQ0ZBIjogZmFsc2UKICAgICAgfSwKICAgICAgewogICAgICAgICJmaWxlUGF0aCI6ICIvVm9sdW1lcy94UmFpZC1TY3JhdGNoL0FzdHJvcGhvdG9ncmFwaHkvUmF3IENhbGlicmF0aW9uL0RhcmsvRGFya18xeDFfNjAwLjAwMHNlY3NfMDAwMDEzNjBfLTIwLjAzQy5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAxLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIk5vRmlsdGVyIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogNjAwLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Wb2x1bWVzL3hSYWlkLVNjcmF0Y2gvQXN0cm9waG90b2dyYXBoeS9SYXcgQ2FsaWJyYXRpb24vRGFyay9EYXJrXzF4MV82MDAuMDAwc2Vjc18wMDAwMTM2MV8tMjAuMDNDLmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDEsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiTm9GaWx0ZXIiLAogICAgICAgICJleHBvc3VyZVRpbWUiOiA2MDAsCiAgICAgICAgImVuYWJsZWQiOiB0cnVlLAogICAgICAgICJpc0NGQSI6IGZhbHNlCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiZmlsZVBhdGgiOiAiL1ZvbHVtZXMveFJhaWQtU2NyYXRjaC9Bc3Ryb3Bob3RvZ3JhcGh5L1JhdyBDYWxpYnJhdGlvbi9EYXJrL0RhcmtfMXgxXzYwMC4wMDBzZWNzXzAwMDAxMzYyXy0yMC4wM0MuZml0IiwKICAgICAgICAiaW1hZ2VUeXBlIjogMSwKICAgICAgICAiYmlubmluZyI6IDEsCiAgICAgICAgImZpbHRlciI6ICJOb0ZpbHRlciIsCiAgICAgICAgImV4cG9zdXJlVGltZSI6IDYwMCwKICAgICAgICAiZW5hYmxlZCI6IHRydWUsCiAgICAgICAgImlzQ0ZBIjogZmFsc2UKICAgICAgfSwKICAgICAgewogICAgICAgICJmaWxlUGF0aCI6ICIvVm9sdW1lcy94UmFpZC1TY3JhdGNoL0FzdHJvcGhvdG9ncmFwaHkvUmF3IENhbGlicmF0aW9uL0RhcmsvRGFya18xeDFfNjAwLjAwMHNlY3NfMDAwMDEzNjNfLTE5Ljc5Qy5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAxLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIk5vRmlsdGVyIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogNjAwLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9CiAgICBdLAogICAgImNvbnRhaW5zQ0ZBIjogZmFsc2UKICB9LAogIHsKICAgICJpbWFnZVR5cGUiOiAwLAogICAgImZpbHRlciI6ICIiLAogICAgImJpbm5pbmciOiAxLAogICAgImV4cG9zdXJlVGltZSI6IDAsCiAgICAiZXhwb3N1cmVUaW1lcyI6IFsKICAgICAgMAogICAgXSwKICAgICJtYXN0ZXJGcmFtZSI6IHRydWUsCiAgICAiZW5hYmxlZCI6IHRydWUsCiAgICAiZmlsZUl0ZW1zIjogWwogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Wb2x1bWVzL3hSYWlkLVNjcmF0Y2gvQXN0cm9waG90b2dyYXBoeS9SYXcgQ2FsaWJyYXRpb24vQmlhcy9CaWFzXzF4MV8wLjAwMXNlY3NfMDAwMDQ2MzhfLTE5LjQ2Qy5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAwLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIkx1bWluYW5jZSIsCiAgICAgICAgImV4cG9zdXJlVGltZSI6IDAsCiAgICAgICAgImVuYWJsZWQiOiB0cnVlLAogICAgICAgICJpc0NGQSI6IGZhbHNlCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiZmlsZVBhdGgiOiAiL1ZvbHVtZXMveFJhaWQtU2NyYXRjaC9Bc3Ryb3Bob3RvZ3JhcGh5L1JhdyBDYWxpYnJhdGlvbi9CaWFzL0JpYXNfMXgxXzAuMDAxc2Vjc18wMDAwNDYzOV8tMjAuOTFDLmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDAsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiTHVtaW5hbmNlIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMCwKICAgICAgICAiZW5hYmxlZCI6IHRydWUsCiAgICAgICAgImlzQ0ZBIjogZmFsc2UKICAgICAgfSwKICAgICAgewogICAgICAgICJmaWxlUGF0aCI6ICIvVm9sdW1lcy94UmFpZC1TY3JhdGNoL0FzdHJvcGhvdG9ncmFwaHkvUmF3IENhbGlicmF0aW9uL0JpYXMvQmlhc18xeDFfMC4wMDFzZWNzXzAwMDA0NjQwXy0xOS43OEMuZml0IiwKICAgICAgICAiaW1hZ2VUeXBlIjogMCwKICAgICAgICAiYmlubmluZyI6IDEsCiAgICAgICAgImZpbHRlciI6ICJMdW1pbmFuY2UiLAogICAgICAgICJleHBvc3VyZVRpbWUiOiAwLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Wb2x1bWVzL3hSYWlkLVNjcmF0Y2gvQXN0cm9waG90b2dyYXBoeS9SYXcgQ2FsaWJyYXRpb24vQmlhcy9CaWFzXzF4MV8wLjAwMXNlY3NfMDAwMDQ2NDFfLTE5Ljc4Qy5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAwLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIkx1bWluYW5jZSIsCiAgICAgICAgImV4cG9zdXJlVGltZSI6IDAsCiAgICAgICAgImVuYWJsZWQiOiB0cnVlLAogICAgICAgICJpc0NGQSI6IGZhbHNlCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiZmlsZVBhdGgiOiAiL1ZvbHVtZXMveFJhaWQtU2NyYXRjaC9Bc3Ryb3Bob3RvZ3JhcGh5L1JhdyBDYWxpYnJhdGlvbi9CaWFzL0JpYXNfMXgxXzAuMDAxc2Vjc18wMDAwNDY0Ml8tMjAuMzRDLmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDAsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiTHVtaW5hbmNlIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMCwKICAgICAgICAiZW5hYmxlZCI6IHRydWUsCiAgICAgICAgImlzQ0ZBIjogZmFsc2UKICAgICAgfSwKICAgICAgewogICAgICAgICJmaWxlUGF0aCI6ICIvVm9sdW1lcy94UmFpZC1TY3JhdGNoL0FzdHJvcGhvdG9ncmFwaHkvUmF3IENhbGlicmF0aW9uL0JpYXMvQmlhc18xeDFfMC4wMDFzZWNzXzAwMDA0NjQzXy0yMC4zNEMuZml0IiwKICAgICAgICAiaW1hZ2VUeXBlIjogMCwKICAgICAgICAiYmlubmluZyI6IDEsCiAgICAgICAgImZpbHRlciI6ICJMdW1pbmFuY2UiLAogICAgICAgICJleHBvc3VyZVRpbWUiOiAwLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Wb2x1bWVzL3hSYWlkLVNjcmF0Y2gvQXN0cm9waG90b2dyYXBoeS9SYXcgQ2FsaWJyYXRpb24vQmlhcy9CaWFzXzF4MV8wLjAwMXNlY3NfMDAwMDQ2NDRfLTIwLjU4Qy5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAwLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIkx1bWluYW5jZSIsCiAgICAgICAgImV4cG9zdXJlVGltZSI6IDAsCiAgICAgICAgImVuYWJsZWQiOiB0cnVlLAogICAgICAgICJpc0NGQSI6IGZhbHNlCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiZmlsZVBhdGgiOiAiL1ZvbHVtZXMveFJhaWQtU2NyYXRjaC9Bc3Ryb3Bob3RvZ3JhcGh5L1JhdyBDYWxpYnJhdGlvbi9CaWFzL0JpYXNfMXgxXzAuMDAxc2Vjc18wMDAwNDY0NV8tMjAuMDJDLmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDAsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiTHVtaW5hbmNlIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMCwKICAgICAgICAiZW5hYmxlZCI6IHRydWUsCiAgICAgICAgImlzQ0ZBIjogZmFsc2UKICAgICAgfSwKICAgICAgewogICAgICAgICJmaWxlUGF0aCI6ICIvVm9sdW1lcy94UmFpZC1TY3JhdGNoL0FzdHJvcGhvdG9ncmFwaHkvUmF3IENhbGlicmF0aW9uL0JpYXMvQmlhc18xeDFfMC4wMDFzZWNzXzAwMDA0NjQ2Xy0yMC4wMkMuZml0IiwKICAgICAgICAiaW1hZ2VUeXBlIjogMCwKICAgICAgICAiYmlubmluZyI6IDEsCiAgICAgICAgImZpbHRlciI6ICJMdW1pbmFuY2UiLAogICAgICAgICJleHBvc3VyZVRpbWUiOiAwLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Wb2x1bWVzL3hSYWlkLVNjcmF0Y2gvQXN0cm9waG90b2dyYXBoeS9SYXcgQ2FsaWJyYXRpb24vQmlhcy9CaWFzXzF4MV8wLjAwMXNlY3NfMDAwMDQ2NDdfLTE5LjcwQy5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAwLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIkx1bWluYW5jZSIsCiAgICAgICAgImV4cG9zdXJlVGltZSI6IDAsCiAgICAgICAgImVuYWJsZWQiOiB0cnVlLAogICAgICAgICJpc0NGQSI6IGZhbHNlCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiZmlsZVBhdGgiOiAiL1ZvbHVtZXMveFJhaWQtU2NyYXRjaC9Bc3Ryb3Bob3RvZ3JhcGh5L1JhdyBDYWxpYnJhdGlvbi9CaWFzL0JpYXNfMXgxXzAuMDAxc2Vjc18wMDAwNDY0OF8tMTkuNzBDLmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDAsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiTHVtaW5hbmNlIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMCwKICAgICAgICAiZW5hYmxlZCI6IHRydWUsCiAgICAgICAgImlzQ0ZBIjogZmFsc2UKICAgICAgfSwKICAgICAgewogICAgICAgICJmaWxlUGF0aCI6ICIvVm9sdW1lcy94UmFpZC1TY3JhdGNoL0FzdHJvcGhvdG9ncmFwaHkvUmF3IENhbGlicmF0aW9uL0JpYXMvQmlhc18xeDFfMC4wMDFzZWNzXzAwMDA0NjQ5Xy0yMC4wMkMuZml0IiwKICAgICAgICAiaW1hZ2VUeXBlIjogMCwKICAgICAgICAiYmlubmluZyI6IDEsCiAgICAgICAgImZpbHRlciI6ICJMdW1pbmFuY2UiLAogICAgICAgICJleHBvc3VyZVRpbWUiOiAwLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Wb2x1bWVzL3hSYWlkLVNjcmF0Y2gvQXN0cm9waG90b2dyYXBoeS9SYXcgQ2FsaWJyYXRpb24vQmlhcy9CaWFzXzF4MV8wLjAwMXNlY3NfMDAwMDQ2NTBfLTIwLjAyQy5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAwLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIkx1bWluYW5jZSIsCiAgICAgICAgImV4cG9zdXJlVGltZSI6IDAsCiAgICAgICAgImVuYWJsZWQiOiB0cnVlLAogICAgICAgICJpc0NGQSI6IGZhbHNlCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiZmlsZVBhdGgiOiAiL1ZvbHVtZXMveFJhaWQtU2NyYXRjaC9Bc3Ryb3Bob3RvZ3JhcGh5L1JhdyBDYWxpYnJhdGlvbi9CaWFzL0JpYXNfMXgxXzAuMDAxc2Vjc18wMDAwNDY1MV8tMjAuNThDLmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDAsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiTHVtaW5hbmNlIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMCwKICAgICAgICAiZW5hYmxlZCI6IHRydWUsCiAgICAgICAgImlzQ0ZBIjogZmFsc2UKICAgICAgfSwKICAgICAgewogICAgICAgICJmaWxlUGF0aCI6ICIvVm9sdW1lcy94UmFpZC1TY3JhdGNoL0FzdHJvcGhvdG9ncmFwaHkvUmF3IENhbGlicmF0aW9uL0JpYXMvQmlhc18xeDFfMC4wMDFzZWNzXzAwMDA0NjUyXy0yMC4zNEMuZml0IiwKICAgICAgICAiaW1hZ2VUeXBlIjogMCwKICAgICAgICAiYmlubmluZyI6IDEsCiAgICAgICAgImZpbHRlciI6ICJMdW1pbmFuY2UiLAogICAgICAgICJleHBvc3VyZVRpbWUiOiAwLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Wb2x1bWVzL3hSYWlkLVNjcmF0Y2gvQXN0cm9waG90b2dyYXBoeS9SYXcgQ2FsaWJyYXRpb24vQmlhcy9CaWFzXzF4MV8wLjAwMXNlY3NfMDAwMDQ2NTNfLTIwLjM0Qy5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAwLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIkx1bWluYW5jZSIsCiAgICAgICAgImV4cG9zdXJlVGltZSI6IDAsCiAgICAgICAgImVuYWJsZWQiOiB0cnVlLAogICAgICAgICJpc0NGQSI6IGZhbHNlCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiZmlsZVBhdGgiOiAiL1ZvbHVtZXMveFJhaWQtU2NyYXRjaC9Bc3Ryb3Bob3RvZ3JhcGh5L1JhdyBDYWxpYnJhdGlvbi9CaWFzL0JpYXNfMXgxXzAuMDAxc2Vjc18wMDAwNDY1NF8tMjAuMDJDLmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDAsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiTHVtaW5hbmNlIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMCwKICAgICAgICAiZW5hYmxlZCI6IHRydWUsCiAgICAgICAgImlzQ0ZBIjogZmFsc2UKICAgICAgfSwKICAgICAgewogICAgICAgICJmaWxlUGF0aCI6ICIvVm9sdW1lcy94UmFpZC1TY3JhdGNoL0FzdHJvcGhvdG9ncmFwaHkvUmF3IENhbGlicmF0aW9uL0JpYXMvQmlhc18xeDFfMC4wMDFzZWNzXzAwMDA0NjU1Xy0yMC4wMkMuZml0IiwKICAgICAgICAiaW1hZ2VUeXBlIjogMCwKICAgICAgICAiYmlubmluZyI6IDEsCiAgICAgICAgImZpbHRlciI6ICJMdW1pbmFuY2UiLAogICAgICAgICJleHBvc3VyZVRpbWUiOiAwLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Wb2x1bWVzL3hSYWlkLVNjcmF0Y2gvQXN0cm9waG90b2dyYXBoeS9SYXcgQ2FsaWJyYXRpb24vQmlhcy9CaWFzXzF4MV8wLjAwMXNlY3NfMDAwMDQ2NTZfLTE5Ljc4Qy5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAwLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIkx1bWluYW5jZSIsCiAgICAgICAgImV4cG9zdXJlVGltZSI6IDAsCiAgICAgICAgImVuYWJsZWQiOiB0cnVlLAogICAgICAgICJpc0NGQSI6IGZhbHNlCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiZmlsZVBhdGgiOiAiL1ZvbHVtZXMveFJhaWQtU2NyYXRjaC9Bc3Ryb3Bob3RvZ3JhcGh5L1JhdyBDYWxpYnJhdGlvbi9CaWFzL0JpYXNfMXgxXzAuMDAxc2Vjc18wMDAwNDY1N18tMjAuNzRDLmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDAsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiTHVtaW5hbmNlIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMCwKICAgICAgICAiZW5hYmxlZCI6IHRydWUsCiAgICAgICAgImlzQ0ZBIjogZmFsc2UKICAgICAgfSwKICAgICAgewogICAgICAgICJmaWxlUGF0aCI6ICIvVm9sdW1lcy94UmFpZC1TY3JhdGNoL0FzdHJvcGhvdG9ncmFwaHkvUmF3IENhbGlicmF0aW9uL0JpYXMvQmlhc18xeDFfMC4wMDFzZWNzXzAwMDA0NjU4Xy0yMC43NEMuZml0IiwKICAgICAgICAiaW1hZ2VUeXBlIjogMCwKICAgICAgICAiYmlubmluZyI6IDEsCiAgICAgICAgImZpbHRlciI6ICJMdW1pbmFuY2UiLAogICAgICAgICJleHBvc3VyZVRpbWUiOiAwLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Wb2x1bWVzL3hSYWlkLVNjcmF0Y2gvQXN0cm9waG90b2dyYXBoeS9SYXcgQ2FsaWJyYXRpb24vQmlhcy9CaWFzXzF4MV8wLjAwMXNlY3NfMDAwMDQ2NTlfLTIwLjU4Qy5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAwLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIkx1bWluYW5jZSIsCiAgICAgICAgImV4cG9zdXJlVGltZSI6IDAsCiAgICAgICAgImVuYWJsZWQiOiB0cnVlLAogICAgICAgICJpc0NGQSI6IGZhbHNlCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiZmlsZVBhdGgiOiAiL1ZvbHVtZXMveFJhaWQtU2NyYXRjaC9Bc3Ryb3Bob3RvZ3JhcGh5L1JhdyBDYWxpYnJhdGlvbi9CaWFzL0JpYXNfMXgxXzAuMDAxc2Vjc18wMDAwNDY2MF8tMjAuNThDLmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDAsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiTHVtaW5hbmNlIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMCwKICAgICAgICAiZW5hYmxlZCI6IHRydWUsCiAgICAgICAgImlzQ0ZBIjogZmFsc2UKICAgICAgfSwKICAgICAgewogICAgICAgICJmaWxlUGF0aCI6ICIvVm9sdW1lcy94UmFpZC1TY3JhdGNoL0FzdHJvcGhvdG9ncmFwaHkvUmF3IENhbGlicmF0aW9uL0JpYXMvQmlhc18xeDFfMC4wMDFzZWNzXzAwMDA0NjYxXy0yMC4wMkMuZml0IiwKICAgICAgICAiaW1hZ2VUeXBlIjogMCwKICAgICAgICAiYmlubmluZyI6IDEsCiAgICAgICAgImZpbHRlciI6ICJMdW1pbmFuY2UiLAogICAgICAgICJleHBvc3VyZVRpbWUiOiAwLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Wb2x1bWVzL3hSYWlkLVNjcmF0Y2gvQXN0cm9waG90b2dyYXBoeS9SYXcgQ2FsaWJyYXRpb24vQmlhcy9CaWFzXzF4MV8wLjAwMXNlY3NfMDAwMDQ2NjJfLTIwLjAyQy5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAwLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIkx1bWluYW5jZSIsCiAgICAgICAgImV4cG9zdXJlVGltZSI6IDAsCiAgICAgICAgImVuYWJsZWQiOiB0cnVlLAogICAgICAgICJpc0NGQSI6IGZhbHNlCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiZmlsZVBhdGgiOiAiL1ZvbHVtZXMveFJhaWQtU2NyYXRjaC9Bc3Ryb3Bob3RvZ3JhcGh5L1JhdyBDYWxpYnJhdGlvbi9CaWFzL0JpYXNfMXgxXzAuMDAxc2Vjc18wMDAwNDY2M18tMjAuMDJDLmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDAsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiTHVtaW5hbmNlIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMCwKICAgICAgICAiZW5hYmxlZCI6IHRydWUsCiAgICAgICAgImlzQ0ZBIjogZmFsc2UKICAgICAgfSwKICAgICAgewogICAgICAgICJmaWxlUGF0aCI6ICIvVm9sdW1lcy94UmFpZC1TY3JhdGNoL0FzdHJvcGhvdG9ncmFwaHkvUmF3IENhbGlicmF0aW9uL0JpYXMvQmlhc18xeDFfMC4wMDFzZWNzXzAwMDA0NjY0Xy0yMC43NEMuZml0IiwKICAgICAgICAiaW1hZ2VUeXBlIjogMCwKICAgICAgICAiYmlubmluZyI6IDEsCiAgICAgICAgImZpbHRlciI6ICJMdW1pbmFuY2UiLAogICAgICAgICJleHBvc3VyZVRpbWUiOiAwLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Wb2x1bWVzL3hSYWlkLVNjcmF0Y2gvQXN0cm9waG90b2dyYXBoeS9SYXcgQ2FsaWJyYXRpb24vQmlhcy9CaWFzXzF4MV8wLjAwMXNlY3NfMDAwMDQ2NjVfLTIwLjc0Qy5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAwLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIkx1bWluYW5jZSIsCiAgICAgICAgImV4cG9zdXJlVGltZSI6IDAsCiAgICAgICAgImVuYWJsZWQiOiB0cnVlLAogICAgICAgICJpc0NGQSI6IGZhbHNlCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiZmlsZVBhdGgiOiAiL1ZvbHVtZXMveFJhaWQtU2NyYXRjaC9Bc3Ryb3Bob3RvZ3JhcGh5L1JhdyBDYWxpYnJhdGlvbi9CaWFzL0JpYXNfMXgxXzAuMDAxc2Vjc18wMDAwNDY2Nl8tMjAuNTBDLmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDAsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiTHVtaW5hbmNlIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMCwKICAgICAgICAiZW5hYmxlZCI6IHRydWUsCiAgICAgICAgImlzQ0ZBIjogZmFsc2UKICAgICAgfSwKICAgICAgewogICAgICAgICJmaWxlUGF0aCI6ICIvVm9sdW1lcy94UmFpZC1TY3JhdGNoL0FzdHJvcGhvdG9ncmFwaHkvUmF3IENhbGlicmF0aW9uL0JpYXMvQmlhc18xeDFfMC4wMDFzZWNzXzAwMDA0NjY3Xy0yMC41MEMuZml0IiwKICAgICAgICAiaW1hZ2VUeXBlIjogMCwKICAgICAgICAiYmlubmluZyI6IDEsCiAgICAgICAgImZpbHRlciI6ICJMdW1pbmFuY2UiLAogICAgICAgICJleHBvc3VyZVRpbWUiOiAwLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9CiAgICBdLAogICAgImNvbnRhaW5zQ0ZBIjogZmFsc2UKICB9LAogIHsKICAgICJpbWFnZVR5cGUiOiAyLAogICAgImZpbHRlciI6ICJCbHVlIiwKICAgICJiaW5uaW5nIjogMSwKICAgICJleHBvc3VyZVRpbWUiOiAyLAogICAgImV4cG9zdXJlVGltZXMiOiBbCiAgICAgIDIKICAgIF0sCiAgICAibWFzdGVyRnJhbWUiOiB0cnVlLAogICAgImVuYWJsZWQiOiB0cnVlLAogICAgImZpbGVJdGVtcyI6IFsKICAgICAgewogICAgICAgICJmaWxlUGF0aCI6ICIvVm9sdW1lcy8yVEIgU1NEL0FzdHJvSW1hZ2VzLzIwMjAtMDQtMTAvRmxhdHMvRmxhdEZpZWxkX0JsdWVfMi4wMDBzZWNzXzAwMDA1Nzg0LTM1MDc5YWR1LmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDIsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiQmx1ZSIsCiAgICAgICAgImV4cG9zdXJlVGltZSI6IDIsCiAgICAgICAgImVuYWJsZWQiOiB0cnVlLAogICAgICAgICJpc0NGQSI6IGZhbHNlCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiZmlsZVBhdGgiOiAiL1ZvbHVtZXMvMlRCIFNTRC9Bc3Ryb0ltYWdlcy8yMDIwLTA0LTEwL0ZsYXRzL0ZsYXRGaWVsZF9CbHVlXzIuMDAwc2Vjc18wMDAwNTc4NS0zNTA2NWFkdS5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAyLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIkJsdWUiLAogICAgICAgICJleHBvc3VyZVRpbWUiOiAyLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Wb2x1bWVzLzJUQiBTU0QvQXN0cm9JbWFnZXMvMjAyMC0wNC0xMC9GbGF0cy9GbGF0RmllbGRfQmx1ZV8yLjAwMHNlY3NfMDAwMDU3ODYtMzUwMDRhZHUuZml0IiwKICAgICAgICAiaW1hZ2VUeXBlIjogMiwKICAgICAgICAiYmlubmluZyI6IDEsCiAgICAgICAgImZpbHRlciI6ICJCbHVlIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMiwKICAgICAgICAiZW5hYmxlZCI6IHRydWUsCiAgICAgICAgImlzQ0ZBIjogZmFsc2UKICAgICAgfSwKICAgICAgewogICAgICAgICJmaWxlUGF0aCI6ICIvVm9sdW1lcy8yVEIgU1NEL0FzdHJvSW1hZ2VzLzIwMjAtMDQtMTAvRmxhdHMvRmxhdEZpZWxkX0JsdWVfMi4wMDBzZWNzXzAwMDA1Nzg3LTM0ODcwYWR1LmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDIsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiQmx1ZSIsCiAgICAgICAgImV4cG9zdXJlVGltZSI6IDIsCiAgICAgICAgImVuYWJsZWQiOiB0cnVlLAogICAgICAgICJpc0NGQSI6IGZhbHNlCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiZmlsZVBhdGgiOiAiL1ZvbHVtZXMvMlRCIFNTRC9Bc3Ryb0ltYWdlcy8yMDIwLTA0LTEwL0ZsYXRzL0ZsYXRGaWVsZF9CbHVlXzIuMDAwc2Vjc18wMDAwNTc4OC0zNDU2N2FkdS5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAyLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIkJsdWUiLAogICAgICAgICJleHBvc3VyZVRpbWUiOiAyLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Wb2x1bWVzLzJUQiBTU0QvQXN0cm9JbWFnZXMvMjAyMC0wNC0xMC9GbGF0cy9GbGF0RmllbGRfQmx1ZV8yLjAwMHNlY3NfMDAwMDU3ODktMzQ1NDJhZHUuZml0IiwKICAgICAgICAiaW1hZ2VUeXBlIjogMiwKICAgICAgICAiYmlubmluZyI6IDEsCiAgICAgICAgImZpbHRlciI6ICJCbHVlIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMiwKICAgICAgICAiZW5hYmxlZCI6IHRydWUsCiAgICAgICAgImlzQ0ZBIjogZmFsc2UKICAgICAgfSwKICAgICAgewogICAgICAgICJmaWxlUGF0aCI6ICIvVm9sdW1lcy8yVEIgU1NEL0FzdHJvSW1hZ2VzLzIwMjAtMDQtMTAvRmxhdHMvRmxhdEZpZWxkX0JsdWVfMi4wMDBzZWNzXzAwMDA1NzkwLTM0NTA4YWR1LmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDIsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiQmx1ZSIsCiAgICAgICAgImV4cG9zdXJlVGltZSI6IDIsCiAgICAgICAgImVuYWJsZWQiOiB0cnVlLAogICAgICAgICJpc0NGQSI6IGZhbHNlCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiZmlsZVBhdGgiOiAiL1ZvbHVtZXMvMlRCIFNTRC9Bc3Ryb0ltYWdlcy8yMDIwLTA0LTEwL0ZsYXRzL0ZsYXRGaWVsZF9CbHVlXzIuMDAwc2Vjc18wMDAwNTc5MS0zNDQwNGFkdS5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAyLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIkJsdWUiLAogICAgICAgICJleHBvc3VyZVRpbWUiOiAyLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Wb2x1bWVzLzJUQiBTU0QvQXN0cm9JbWFnZXMvMjAyMC0wNC0xMC9GbGF0cy9GbGF0RmllbGRfQmx1ZV8yLjAwMHNlY3NfMDAwMDU3OTItMzQ0NjhhZHUuZml0IiwKICAgICAgICAiaW1hZ2VUeXBlIjogMiwKICAgICAgICAiYmlubmluZyI6IDEsCiAgICAgICAgImZpbHRlciI6ICJCbHVlIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMiwKICAgICAgICAiZW5hYmxlZCI6IHRydWUsCiAgICAgICAgImlzQ0ZBIjogZmFsc2UKICAgICAgfSwKICAgICAgewogICAgICAgICJmaWxlUGF0aCI6ICIvVm9sdW1lcy8yVEIgU1NEL0FzdHJvSW1hZ2VzLzIwMjAtMDQtMTAvRmxhdHMvRmxhdEZpZWxkX0JsdWVfMi4wMDBzZWNzXzAwMDA1NzkzLTM0NDM4YWR1LmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDIsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiQmx1ZSIsCiAgICAgICAgImV4cG9zdXJlVGltZSI6IDIsCiAgICAgICAgImVuYWJsZWQiOiB0cnVlLAogICAgICAgICJpc0NGQSI6IGZhbHNlCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiZmlsZVBhdGgiOiAiL1ZvbHVtZXMvMlRCIFNTRC9Bc3Ryb0ltYWdlcy8yMDIwLTA0LTEwL0ZsYXRzL0ZsYXRGaWVsZF9CbHVlXzIuMDAwc2Vjc18wMDAwNTc5NC0zNDMxN2FkdS5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAyLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIkJsdWUiLAogICAgICAgICJleHBvc3VyZVRpbWUiOiAyLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Wb2x1bWVzLzJUQiBTU0QvQXN0cm9JbWFnZXMvMjAyMC0wNC0xMC9GbGF0cy9GbGF0RmllbGRfQmx1ZV8yLjAwMHNlY3NfMDAwMDU3OTUtMzQzMTNhZHUuZml0IiwKICAgICAgICAiaW1hZ2VUeXBlIjogMiwKICAgICAgICAiYmlubmluZyI6IDEsCiAgICAgICAgImZpbHRlciI6ICJCbHVlIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMiwKICAgICAgICAiZW5hYmxlZCI6IHRydWUsCiAgICAgICAgImlzQ0ZBIjogZmFsc2UKICAgICAgfSwKICAgICAgewogICAgICAgICJmaWxlUGF0aCI6ICIvVm9sdW1lcy8yVEIgU1NEL0FzdHJvSW1hZ2VzLzIwMjAtMDQtMTAvRmxhdHMvRmxhdEZpZWxkX0JsdWVfMi4wMDBzZWNzXzAwMDA1Nzk2LTM0MzA4YWR1LmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDIsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiQmx1ZSIsCiAgICAgICAgImV4cG9zdXJlVGltZSI6IDIsCiAgICAgICAgImVuYWJsZWQiOiB0cnVlLAogICAgICAgICJpc0NGQSI6IGZhbHNlCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiZmlsZVBhdGgiOiAiL1ZvbHVtZXMvMlRCIFNTRC9Bc3Ryb0ltYWdlcy8yMDIwLTA0LTEwL0ZsYXRzL0ZsYXRGaWVsZF9CbHVlXzIuMDAwc2Vjc18wMDAwNTc5Ny0zNDQ2NGFkdS5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAyLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIkJsdWUiLAogICAgICAgICJleHBvc3VyZVRpbWUiOiAyLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Wb2x1bWVzLzJUQiBTU0QvQXN0cm9JbWFnZXMvMjAyMC0wNC0xMC9GbGF0cy9GbGF0RmllbGRfQmx1ZV8yLjAwMHNlY3NfMDAwMDU3OTgtMzQ2MDlhZHUuZml0IiwKICAgICAgICAiaW1hZ2VUeXBlIjogMiwKICAgICAgICAiYmlubmluZyI6IDEsCiAgICAgICAgImZpbHRlciI6ICJCbHVlIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMiwKICAgICAgICAiZW5hYmxlZCI6IHRydWUsCiAgICAgICAgImlzQ0ZBIjogZmFsc2UKICAgICAgfSwKICAgICAgewogICAgICAgICJmaWxlUGF0aCI6ICIvVm9sdW1lcy8yVEIgU1NEL0FzdHJvSW1hZ2VzLzIwMjAtMDQtMTAvRmxhdHMvRmxhdEZpZWxkX0JsdWVfMi4wMDBzZWNzXzAwMDA1Nzk5LTM0NTk1YWR1LmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDIsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiQmx1ZSIsCiAgICAgICAgImV4cG9zdXJlVGltZSI6IDIsCiAgICAgICAgImVuYWJsZWQiOiB0cnVlLAogICAgICAgICJpc0NGQSI6IGZhbHNlCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiZmlsZVBhdGgiOiAiL1ZvbHVtZXMvMlRCIFNTRC9Bc3Ryb0ltYWdlcy8yMDIwLTA0LTEwL0ZsYXRzL0ZsYXRGaWVsZF9CbHVlXzIuMDAwc2Vjc18wMDAwNTgwMC0zNDU5OGFkdS5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAyLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIkJsdWUiLAogICAgICAgICJleHBvc3VyZVRpbWUiOiAyLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Wb2x1bWVzLzJUQiBTU0QvQXN0cm9JbWFnZXMvMjAyMC0wNC0xMC9GbGF0cy9GbGF0RmllbGRfQmx1ZV8yLjAwMHNlY3NfMDAwMDU4MDEtMzQ1NzhhZHUuZml0IiwKICAgICAgICAiaW1hZ2VUeXBlIjogMiwKICAgICAgICAiYmlubmluZyI6IDEsCiAgICAgICAgImZpbHRlciI6ICJCbHVlIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMiwKICAgICAgICAiZW5hYmxlZCI6IHRydWUsCiAgICAgICAgImlzQ0ZBIjogZmFsc2UKICAgICAgfSwKICAgICAgewogICAgICAgICJmaWxlUGF0aCI6ICIvVm9sdW1lcy8yVEIgU1NEL0FzdHJvSW1hZ2VzLzIwMjAtMDQtMTAvRmxhdHMvRmxhdEZpZWxkX0JsdWVfMi4wMDBzZWNzXzAwMDA1ODAyLTM0NTYwYWR1LmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDIsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiQmx1ZSIsCiAgICAgICAgImV4cG9zdXJlVGltZSI6IDIsCiAgICAgICAgImVuYWJsZWQiOiB0cnVlLAogICAgICAgICJpc0NGQSI6IGZhbHNlCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiZmlsZVBhdGgiOiAiL1ZvbHVtZXMvMlRCIFNTRC9Bc3Ryb0ltYWdlcy8yMDIwLTA0LTEwL0ZsYXRzL0ZsYXRGaWVsZF9CbHVlXzIuMDAwc2Vjc18wMDAwNTgwMy0zNDU2NGFkdS5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAyLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIkJsdWUiLAogICAgICAgICJleHBvc3VyZVRpbWUiOiAyLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Wb2x1bWVzLzJUQiBTU0QvQXN0cm9JbWFnZXMvMjAyMC0wNC0xMC9GbGF0cy9GbGF0RmllbGRfQmx1ZV8yLjAwMHNlY3NfMDAwMDU4MDQtMzUwNDNhZHUuZml0IiwKICAgICAgICAiaW1hZ2VUeXBlIjogMiwKICAgICAgICAiYmlubmluZyI6IDEsCiAgICAgICAgImZpbHRlciI6ICJCbHVlIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMiwKICAgICAgICAiZW5hYmxlZCI6IHRydWUsCiAgICAgICAgImlzQ0ZBIjogZmFsc2UKICAgICAgfQogICAgXSwKICAgICJjb250YWluc0NGQSI6IGZhbHNlCiAgfSwKICB7CiAgICAiaW1hZ2VUeXBlIjogMiwKICAgICJmaWx0ZXIiOiAiR3JlZW4iLAogICAgImJpbm5pbmciOiAxLAogICAgImV4cG9zdXJlVGltZSI6IDIsCiAgICAiZXhwb3N1cmVUaW1lcyI6IFsKICAgICAgMgogICAgXSwKICAgICJtYXN0ZXJGcmFtZSI6IHRydWUsCiAgICAiZW5hYmxlZCI6IHRydWUsCiAgICAiZmlsZUl0ZW1zIjogWwogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Wb2x1bWVzLzJUQiBTU0QvQXN0cm9JbWFnZXMvMjAyMC0wNC0xMC9GbGF0cy9GbGF0RmllbGRfR3JlZW5fMi4wMDBzZWNzXzAwMDA1NzUxLTI5MjMyYWR1LmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDIsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiR3JlZW4iLAogICAgICAgICJleHBvc3VyZVRpbWUiOiAyLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Wb2x1bWVzLzJUQiBTU0QvQXN0cm9JbWFnZXMvMjAyMC0wNC0xMC9GbGF0cy9GbGF0RmllbGRfR3JlZW5fMi4wMDBzZWNzXzAwMDA1NzUyLTI5MTEwYWR1LmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDIsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiR3JlZW4iLAogICAgICAgICJleHBvc3VyZVRpbWUiOiAyLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Wb2x1bWVzLzJUQiBTU0QvQXN0cm9JbWFnZXMvMjAyMC0wNC0xMC9GbGF0cy9GbGF0RmllbGRfR3JlZW5fMi4wMDBzZWNzXzAwMDA1NzUzLTI5MDExYWR1LmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDIsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiR3JlZW4iLAogICAgICAgICJleHBvc3VyZVRpbWUiOiAyLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Wb2x1bWVzLzJUQiBTU0QvQXN0cm9JbWFnZXMvMjAyMC0wNC0xMC9GbGF0cy9GbGF0RmllbGRfR3JlZW5fMi4wMDBzZWNzXzAwMDA1NzU0LTI4OTIyYWR1LmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDIsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiR3JlZW4iLAogICAgICAgICJleHBvc3VyZVRpbWUiOiAyLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Wb2x1bWVzLzJUQiBTU0QvQXN0cm9JbWFnZXMvMjAyMC0wNC0xMC9GbGF0cy9GbGF0RmllbGRfR3JlZW5fMi4wMDBzZWNzXzAwMDA1NzU1LTI4ODU0YWR1LmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDIsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiR3JlZW4iLAogICAgICAgICJleHBvc3VyZVRpbWUiOiAyLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Wb2x1bWVzLzJUQiBTU0QvQXN0cm9JbWFnZXMvMjAyMC0wNC0xMC9GbGF0cy9GbGF0RmllbGRfR3JlZW5fMi4wMDBzZWNzXzAwMDA1NzU2LTI4NzUyYWR1LmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDIsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiR3JlZW4iLAogICAgICAgICJleHBvc3VyZVRpbWUiOiAyLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Wb2x1bWVzLzJUQiBTU0QvQXN0cm9JbWFnZXMvMjAyMC0wNC0xMC9GbGF0cy9GbGF0RmllbGRfR3JlZW5fMi4wMDBzZWNzXzAwMDA1NzU3LTI4NjQ4YWR1LmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDIsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiR3JlZW4iLAogICAgICAgICJleHBvc3VyZVRpbWUiOiAyLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Wb2x1bWVzLzJUQiBTU0QvQXN0cm9JbWFnZXMvMjAyMC0wNC0xMC9GbGF0cy9GbGF0RmllbGRfR3JlZW5fMi4wMDBzZWNzXzAwMDA1NzU4LTI4NjI1YWR1LmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDIsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiR3JlZW4iLAogICAgICAgICJleHBvc3VyZVRpbWUiOiAyLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Wb2x1bWVzLzJUQiBTU0QvQXN0cm9JbWFnZXMvMjAyMC0wNC0xMC9GbGF0cy9GbGF0RmllbGRfR3JlZW5fMi4wMDBzZWNzXzAwMDA1NzU5LTI4NjE2YWR1LmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDIsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiR3JlZW4iLAogICAgICAgICJleHBvc3VyZVRpbWUiOiAyLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Wb2x1bWVzLzJUQiBTU0QvQXN0cm9JbWFnZXMvMjAyMC0wNC0xMC9GbGF0cy9GbGF0RmllbGRfR3JlZW5fMi4wMDBzZWNzXzAwMDA1NzYwLTI4NTk1YWR1LmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDIsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiR3JlZW4iLAogICAgICAgICJleHBvc3VyZVRpbWUiOiAyLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Wb2x1bWVzLzJUQiBTU0QvQXN0cm9JbWFnZXMvMjAyMC0wNC0xMC9GbGF0cy9GbGF0RmllbGRfR3JlZW5fMi4wMDBzZWNzXzAwMDA1NzYxLTI4NTg0YWR1LmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDIsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiR3JlZW4iLAogICAgICAgICJleHBvc3VyZVRpbWUiOiAyLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Wb2x1bWVzLzJUQiBTU0QvQXN0cm9JbWFnZXMvMjAyMC0wNC0xMC9GbGF0cy9GbGF0RmllbGRfR3JlZW5fMi4wMDBzZWNzXzAwMDA1NzYyLTI4NjY5YWR1LmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDIsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiR3JlZW4iLAogICAgICAgICJleHBvc3VyZVRpbWUiOiAyLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Wb2x1bWVzLzJUQiBTU0QvQXN0cm9JbWFnZXMvMjAyMC0wNC0xMC9GbGF0cy9GbGF0RmllbGRfR3JlZW5fMi4wMDBzZWNzXzAwMDA1NzYzLTI4NzQ3YWR1LmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDIsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiR3JlZW4iLAogICAgICAgICJleHBvc3VyZVRpbWUiOiAyLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Wb2x1bWVzLzJUQiBTU0QvQXN0cm9JbWFnZXMvMjAyMC0wNC0xMC9GbGF0cy9GbGF0RmllbGRfR3JlZW5fMi4wMDBzZWNzXzAwMDA1NzY0LTI4NjE5YWR1LmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDIsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiR3JlZW4iLAogICAgICAgICJleHBvc3VyZVRpbWUiOiAyLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Wb2x1bWVzLzJUQiBTU0QvQXN0cm9JbWFnZXMvMjAyMC0wNC0xMC9GbGF0cy9GbGF0RmllbGRfR3JlZW5fMi4wMDBzZWNzXzAwMDA1NzY1LTI4NjAxYWR1LmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDIsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiR3JlZW4iLAogICAgICAgICJleHBvc3VyZVRpbWUiOiAyLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Wb2x1bWVzLzJUQiBTU0QvQXN0cm9JbWFnZXMvMjAyMC0wNC0xMC9GbGF0cy9GbGF0RmllbGRfR3JlZW5fMi4wMDBzZWNzXzAwMDA1NzY2LTI4NTgwYWR1LmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDIsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiR3JlZW4iLAogICAgICAgICJleHBvc3VyZVRpbWUiOiAyLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Wb2x1bWVzLzJUQiBTU0QvQXN0cm9JbWFnZXMvMjAyMC0wNC0xMC9GbGF0cy9GbGF0RmllbGRfR3JlZW5fMi4wMDBzZWNzXzAwMDA1NzY3LTI4NTc0YWR1LmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDIsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiR3JlZW4iLAogICAgICAgICJleHBvc3VyZVRpbWUiOiAyLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Wb2x1bWVzLzJUQiBTU0QvQXN0cm9JbWFnZXMvMjAyMC0wNC0xMC9GbGF0cy9GbGF0RmllbGRfR3JlZW5fMi4wMDBzZWNzXzAwMDA1NzY4LTI4NTQ5YWR1LmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDIsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiR3JlZW4iLAogICAgICAgICJleHBvc3VyZVRpbWUiOiAyLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Wb2x1bWVzLzJUQiBTU0QvQXN0cm9JbWFnZXMvMjAyMC0wNC0xMC9GbGF0cy9GbGF0RmllbGRfR3JlZW5fMi4wMDBzZWNzXzAwMDA1NzY5LTI4NTM4YWR1LmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDIsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiR3JlZW4iLAogICAgICAgICJleHBvc3VyZVRpbWUiOiAyLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Wb2x1bWVzLzJUQiBTU0QvQXN0cm9JbWFnZXMvMjAyMC0wNC0xMC9GbGF0cy9GbGF0RmllbGRfR3JlZW5fMi4wMDBzZWNzXzAwMDA1NzcwLTI4NTEyYWR1LmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDIsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiR3JlZW4iLAogICAgICAgICJleHBvc3VyZVRpbWUiOiAyLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Wb2x1bWVzLzJUQiBTU0QvQXN0cm9JbWFnZXMvMjAyMC0wNC0xMC9GbGF0cy9GbGF0RmllbGRfR3JlZW5fMi4wMDBzZWNzXzAwMDA1NzcxLTI4NTAyYWR1LmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDIsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiR3JlZW4iLAogICAgICAgICJleHBvc3VyZVRpbWUiOiAyLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9CiAgICBdLAogICAgImNvbnRhaW5zQ0ZBIjogZmFsc2UKICB9LAogIHsKICAgICJpbWFnZVR5cGUiOiAzLAogICAgImZpbHRlciI6ICJIYTVubSIsCiAgICAiYmlubmluZyI6IDEsCiAgICAiZXhwb3N1cmVUaW1lIjogNjAwLAogICAgImV4cG9zdXJlVGltZXMiOiBbCiAgICAgIDYwMAogICAgXSwKICAgICJtYXN0ZXJGcmFtZSI6IGZhbHNlLAogICAgImVuYWJsZWQiOiB0cnVlLAogICAgImZpbGVJdGVtcyI6IFsKICAgICAgewogICAgICAgICJmaWxlUGF0aCI6ICIvVm9sdW1lcy8yVEIgU1NEL0FzdHJvSW1hZ2VzLzIwMjAtMDQtMDMvTSA1MS02MDAuMDAwc2Vjcy0xeDEtTGlnaHQtSGE1bm1fLTE5LjA1Qy0wMDAwNDkyMi5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAzLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIkhhNW5tIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogNjAwLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Wb2x1bWVzLzJUQiBTU0QvQXN0cm9JbWFnZXMvMjAyMC0wNC0wMy9NIDUxLTYwMC4wMDBzZWNzLTF4MS1MaWdodC1IYTVubV8tMTkuMTNDLTAwMDA0ODgyLmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDMsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiSGE1bm0iLAogICAgICAgICJleHBvc3VyZVRpbWUiOiA2MDAsCiAgICAgICAgImVuYWJsZWQiOiB0cnVlLAogICAgICAgICJpc0NGQSI6IGZhbHNlCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiZmlsZVBhdGgiOiAiL1ZvbHVtZXMvMlRCIFNTRC9Bc3Ryb0ltYWdlcy8yMDIwLTA0LTAzL00gNTEtNjAwLjAwMHNlY3MtMXgxLUxpZ2h0LUhhNW5tXy0xOS4xM0MtMDAwMDQ5MDIuZml0IiwKICAgICAgICAiaW1hZ2VUeXBlIjogMywKICAgICAgICAiYmlubmluZyI6IDEsCiAgICAgICAgImZpbHRlciI6ICJIYTVubSIsCiAgICAgICAgImV4cG9zdXJlVGltZSI6IDYwMCwKICAgICAgICAiZW5hYmxlZCI6IHRydWUsCiAgICAgICAgImlzQ0ZBIjogZmFsc2UKICAgICAgfSwKICAgICAgewogICAgICAgICJmaWxlUGF0aCI6ICIvVm9sdW1lcy8yVEIgU1NEL0FzdHJvSW1hZ2VzLzIwMjAtMDQtMDMvTSA1MS02MDAuMDAwc2Vjcy0xeDEtTGlnaHQtSGE1bm1fLTE5LjEzQy0wMDAwNDkyMS5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAzLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIkhhNW5tIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogNjAwLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Wb2x1bWVzLzJUQiBTU0QvQXN0cm9JbWFnZXMvMjAyMC0wNC0wMy9NIDUxLTYwMC4wMDBzZWNzLTF4MS1MaWdodC1IYTVubV8tMTkuMTNDLTAwMDA0OTc3LmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDMsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiSGE1bm0iLAogICAgICAgICJleHBvc3VyZVRpbWUiOiA2MDAsCiAgICAgICAgImVuYWJsZWQiOiB0cnVlLAogICAgICAgICJpc0NGQSI6IGZhbHNlCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiZmlsZVBhdGgiOiAiL1ZvbHVtZXMvMlRCIFNTRC9Bc3Ryb0ltYWdlcy8yMDIwLTA0LTAzL00gNTEtNjAwLjAwMHNlY3MtMXgxLUxpZ2h0LUhhNW5tXy0xOS4yMUMtMDAwMDUwMTQuZml0IiwKICAgICAgICAiaW1hZ2VUeXBlIjogMywKICAgICAgICAiYmlubmluZyI6IDEsCiAgICAgICAgImZpbHRlciI6ICJIYTVubSIsCiAgICAgICAgImV4cG9zdXJlVGltZSI6IDYwMCwKICAgICAgICAiZW5hYmxlZCI6IHRydWUsCiAgICAgICAgImlzQ0ZBIjogZmFsc2UKICAgICAgfSwKICAgICAgewogICAgICAgICJmaWxlUGF0aCI6ICIvVm9sdW1lcy8yVEIgU1NEL0FzdHJvSW1hZ2VzLzIwMjAtMDQtMDMvTSA1MS02MDAuMDAwc2Vjcy0xeDEtTGlnaHQtSGE1bm1fLTE5LjYyQy0wMDAwNDg2NS5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAzLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIkhhNW5tIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogNjAwLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Wb2x1bWVzLzJUQiBTU0QvQXN0cm9JbWFnZXMvMjAyMC0wNC0wMy9NIDUxLTYwMC4wMDBzZWNzLTF4MS1MaWdodC1IYTVubV8tMTkuNzBDLTAwMDA0OTAxLmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDMsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiSGE1bm0iLAogICAgICAgICJleHBvc3VyZVRpbWUiOiA2MDAsCiAgICAgICAgImVuYWJsZWQiOiB0cnVlLAogICAgICAgICJpc0NGQSI6IGZhbHNlCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiZmlsZVBhdGgiOiAiL1ZvbHVtZXMvMlRCIFNTRC9Bc3Ryb0ltYWdlcy8yMDIwLTA0LTAzL00gNTEtNjAwLjAwMHNlY3MtMXgxLUxpZ2h0LUhhNW5tXy0xOS43MEMtMDAwMDUwMzQuZml0IiwKICAgICAgICAiaW1hZ2VUeXBlIjogMywKICAgICAgICAiYmlubmluZyI6IDEsCiAgICAgICAgImZpbHRlciI6ICJIYTVubSIsCiAgICAgICAgImV4cG9zdXJlVGltZSI6IDYwMCwKICAgICAgICAiZW5hYmxlZCI6IHRydWUsCiAgICAgICAgImlzQ0ZBIjogZmFsc2UKICAgICAgfSwKICAgICAgewogICAgICAgICJmaWxlUGF0aCI6ICIvVm9sdW1lcy8yVEIgU1NEL0FzdHJvSW1hZ2VzLzIwMjAtMDQtMDMvTSA1MS02MDAuMDAwc2Vjcy0xeDEtTGlnaHQtSGE1bm1fLTIwLjAyQy0wMDAwNDk1Ny5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAzLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIkhhNW5tIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogNjAwLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Wb2x1bWVzLzJUQiBTU0QvQXN0cm9JbWFnZXMvMjAyMC0wNC0wMy9NIDUxLTYwMC4wMDBzZWNzLTF4MS1MaWdodC1IYTVubV8tMjAuMDJDLTAwMDA0OTc2LmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDMsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiSGE1bm0iLAogICAgICAgICJleHBvc3VyZVRpbWUiOiA2MDAsCiAgICAgICAgImVuYWJsZWQiOiB0cnVlLAogICAgICAgICJpc0NGQSI6IGZhbHNlCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiZmlsZVBhdGgiOiAiL1ZvbHVtZXMvMlRCIFNTRC9Bc3Ryb0ltYWdlcy8yMDIwLTA0LTAzL00gNTEtNjAwLjAwMHNlY3MtMXgxLUxpZ2h0LUhhNW5tXy0yMC4wMkMtMDAwMDUwMTUuZml0IiwKICAgICAgICAiaW1hZ2VUeXBlIjogMywKICAgICAgICAiYmlubmluZyI6IDEsCiAgICAgICAgImZpbHRlciI6ICJIYTVubSIsCiAgICAgICAgImV4cG9zdXJlVGltZSI6IDYwMCwKICAgICAgICAiZW5hYmxlZCI6IHRydWUsCiAgICAgICAgImlzQ0ZBIjogZmFsc2UKICAgICAgfSwKICAgICAgewogICAgICAgICJmaWxlUGF0aCI6ICIvVm9sdW1lcy8yVEIgU1NEL0FzdHJvSW1hZ2VzLzIwMjAtMDQtMDMvTSA1MS02MDAuMDAwc2Vjcy0xeDEtTGlnaHQtSGE1bm1fLTIwLjM0Qy0wMDAwNTAxNi5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAzLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIkhhNW5tIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogNjAwLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Wb2x1bWVzLzJUQiBTU0QvQXN0cm9JbWFnZXMvMjAyMC0wNC0wMy9NIDUxLTYwMC4wMDBzZWNzLTF4MS1MaWdodC1IYTVubV8tMjAuNTBDLTAwMDA0OTk1LmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDMsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiSGE1bm0iLAogICAgICAgICJleHBvc3VyZVRpbWUiOiA2MDAsCiAgICAgICAgImVuYWJsZWQiOiB0cnVlLAogICAgICAgICJpc0NGQSI6IGZhbHNlCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiZmlsZVBhdGgiOiAiL1ZvbHVtZXMvMlRCIFNTRC9Bc3Ryb0ltYWdlcy8yMDIwLTA0LTAzL00gNTEtNjAwLjAwMHNlY3MtMXgxLUxpZ2h0LUhhNW5tXy0yMC41OEMtMDAwMDQ5MjAuZml0IiwKICAgICAgICAiaW1hZ2VUeXBlIjogMywKICAgICAgICAiYmlubmluZyI6IDEsCiAgICAgICAgImZpbHRlciI6ICJIYTVubSIsCiAgICAgICAgImV4cG9zdXJlVGltZSI6IDYwMCwKICAgICAgICAiZW5hYmxlZCI6IHRydWUsCiAgICAgICAgImlzQ0ZBIjogZmFsc2UKICAgICAgfSwKICAgICAgewogICAgICAgICJmaWxlUGF0aCI6ICIvVm9sdW1lcy8yVEIgU1NEL0FzdHJvSW1hZ2VzLzIwMjAtMDQtMDMvTSA1MS02MDAuMDAwc2Vjcy0xeDEtTGlnaHQtSGE1bm1fLTIwLjU4Qy0wMDAwNDkzOS5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAzLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIkhhNW5tIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogNjAwLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Wb2x1bWVzLzJUQiBTU0QvQXN0cm9JbWFnZXMvMjAyMC0wNC0wMy9NIDUxLTYwMC4wMDBzZWNzLTF4MS1MaWdodC1IYTVubV8tMjAuNzRDLTAwMDA0OTU4LmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDMsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiSGE1bm0iLAogICAgICAgICJleHBvc3VyZVRpbWUiOiA2MDAsCiAgICAgICAgImVuYWJsZWQiOiB0cnVlLAogICAgICAgICJpc0NGQSI6IGZhbHNlCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiZmlsZVBhdGgiOiAiL1ZvbHVtZXMvMlRCIFNTRC9Bc3Ryb0ltYWdlcy8yMDIwLTA0LTAzL00gNTEtNjAwLjAwMHNlY3MtMXgxLUxpZ2h0LUhhNW5tXy0yMC43NEMtMDAwMDUwMzMuZml0IiwKICAgICAgICAiaW1hZ2VUeXBlIjogMywKICAgICAgICAiYmlubmluZyI6IDEsCiAgICAgICAgImZpbHRlciI6ICJIYTVubSIsCiAgICAgICAgImV4cG9zdXJlVGltZSI6IDYwMCwKICAgICAgICAiZW5hYmxlZCI6IHRydWUsCiAgICAgICAgImlzQ0ZBIjogZmFsc2UKICAgICAgfSwKICAgICAgewogICAgICAgICJmaWxlUGF0aCI6ICIvVm9sdW1lcy8yVEIgU1NEL0FzdHJvSW1hZ2VzLzIwMjAtMDQtMDMvTSA1MS02MDAuMDAwc2Vjcy0xeDEtTGlnaHQtSGE1bm1fLTIwLjgzQy0wMDAwNDg4My5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAzLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIkhhNW5tIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogNjAwLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Wb2x1bWVzLzJUQiBTU0QvQXN0cm9JbWFnZXMvMjAyMC0wNC0wMy9NIDUxLTYwMC4wMDBzZWNzLTF4MS1MaWdodC1IYTVubV8tMjAuODNDLTAwMDA0OTc4LmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDMsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiSGE1bm0iLAogICAgICAgICJleHBvc3VyZVRpbWUiOiA2MDAsCiAgICAgICAgImVuYWJsZWQiOiB0cnVlLAogICAgICAgICJpc0NGQSI6IGZhbHNlCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiZmlsZVBhdGgiOiAiL1ZvbHVtZXMvMlRCIFNTRC9Bc3Ryb0ltYWdlcy8yMDIwLTA0LTAzL00gNTEtNjAwLjAwMHNlY3MtMXgxLUxpZ2h0LUhhNW5tXy0yMC44M0MtMDAwMDUwMzUuZml0IiwKICAgICAgICAiaW1hZ2VUeXBlIjogMywKICAgICAgICAiYmlubmluZyI6IDEsCiAgICAgICAgImZpbHRlciI6ICJIYTVubSIsCiAgICAgICAgImV4cG9zdXJlVGltZSI6IDYwMCwKICAgICAgICAiZW5hYmxlZCI6IHRydWUsCiAgICAgICAgImlzQ0ZBIjogZmFsc2UKICAgICAgfSwKICAgICAgewogICAgICAgICJmaWxlUGF0aCI6ICIvVm9sdW1lcy8yVEIgU1NEL0FzdHJvSW1hZ2VzLzIwMjAtMDQtMDMvTSA1MS02MDAuMDAwc2Vjcy0xeDEtTGlnaHQtSGE1bm1fLTIwLjkxQy0wMDAwNDg2NC5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAzLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIkhhNW5tIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogNjAwLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Wb2x1bWVzLzJUQiBTU0QvQXN0cm9JbWFnZXMvMjAyMC0wNC0wMy9NIDUxLTYwMC4wMDBzZWNzLTF4MS1MaWdodC1IYTVubV8tMjAuOTlDLTAwMDA0OTAzLmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDMsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiSGE1bm0iLAogICAgICAgICJleHBvc3VyZVRpbWUiOiA2MDAsCiAgICAgICAgImVuYWJsZWQiOiB0cnVlLAogICAgICAgICJpc0NGQSI6IGZhbHNlCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiZmlsZVBhdGgiOiAiL1ZvbHVtZXMvMlRCIFNTRC9Bc3Ryb0ltYWdlcy8yMDIwLTA0LTAzL00gNTEtNjAwLjAwMHNlY3MtMXgxLUxpZ2h0LUhhNW5tXy0yMS4xNUMtMDAwMDQ4ODQuZml0IiwKICAgICAgICAiaW1hZ2VUeXBlIjogMywKICAgICAgICAiYmlubmluZyI6IDEsCiAgICAgICAgImZpbHRlciI6ICJIYTVubSIsCiAgICAgICAgImV4cG9zdXJlVGltZSI6IDYwMCwKICAgICAgICAiZW5hYmxlZCI6IHRydWUsCiAgICAgICAgImlzQ0ZBIjogZmFsc2UKICAgICAgfSwKICAgICAgewogICAgICAgICJmaWxlUGF0aCI6ICIvVm9sdW1lcy8yVEIgU1NEL0FzdHJvSW1hZ2VzLzIwMjAtMDQtMDMvTSA1MS02MDAuMDAwc2Vjcy0xeDEtTGlnaHQtSGE1bm1fLTIxLjE1Qy0wMDAwNDk0MC5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAzLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIkhhNW5tIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogNjAwLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Wb2x1bWVzLzJUQiBTU0QvQXN0cm9JbWFnZXMvMjAyMC0wNC0wMy9NIDUxLTYwMC4wMDBzZWNzLTF4MS1MaWdodC1IYTVubV8tMjEuMTVDLTAwMDA0OTU5LmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDMsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiSGE1bm0iLAogICAgICAgICJleHBvc3VyZVRpbWUiOiA2MDAsCiAgICAgICAgImVuYWJsZWQiOiB0cnVlLAogICAgICAgICJpc0NGQSI6IGZhbHNlCiAgICAgIH0KICAgIF0sCiAgICAiY29udGFpbnNDRkEiOiBmYWxzZQogIH0sCiAgewogICAgImltYWdlVHlwZSI6IDIsCiAgICAiZmlsdGVyIjogIkhhNW5tIiwKICAgICJiaW5uaW5nIjogMSwKICAgICJleHBvc3VyZVRpbWUiOiAyNiwKICAgICJleHBvc3VyZVRpbWVzIjogWwogICAgICAyNgogICAgXSwKICAgICJtYXN0ZXJGcmFtZSI6IHRydWUsCiAgICAiZW5hYmxlZCI6IHRydWUsCiAgICAiZmlsZUl0ZW1zIjogWwogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Wb2x1bWVzLzJUQiBTU0QvQXN0cm9JbWFnZXMvMjAyMC0wNC0wMy9GbGF0RmllbGRfSGE1bm1fMjYuMDAwc2Vjc18wMDAwNDY3NS0yOTQ1MmFkdS5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAyLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIkhhNW5tIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMjYsCiAgICAgICAgImVuYWJsZWQiOiB0cnVlLAogICAgICAgICJpc0NGQSI6IGZhbHNlCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiZmlsZVBhdGgiOiAiL1ZvbHVtZXMvMlRCIFNTRC9Bc3Ryb0ltYWdlcy8yMDIwLTA0LTAzL0ZsYXRGaWVsZF9IYTVubV8yNi4wMDBzZWNzXzAwMDA0Njc2LTI4OTY5YWR1LmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDIsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiSGE1bm0iLAogICAgICAgICJleHBvc3VyZVRpbWUiOiAyNiwKICAgICAgICAiZW5hYmxlZCI6IHRydWUsCiAgICAgICAgImlzQ0ZBIjogZmFsc2UKICAgICAgfSwKICAgICAgewogICAgICAgICJmaWxlUGF0aCI6ICIvVm9sdW1lcy8yVEIgU1NEL0FzdHJvSW1hZ2VzLzIwMjAtMDQtMDMvRmxhdEZpZWxkX0hhNW5tXzI2LjAwMHNlY3NfMDAwMDQ2NzgtMjk1NzBhZHUuZml0IiwKICAgICAgICAiaW1hZ2VUeXBlIjogMiwKICAgICAgICAiYmlubmluZyI6IDEsCiAgICAgICAgImZpbHRlciI6ICJIYTVubSIsCiAgICAgICAgImV4cG9zdXJlVGltZSI6IDI2LAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Wb2x1bWVzLzJUQiBTU0QvQXN0cm9JbWFnZXMvMjAyMC0wNC0wMy9GbGF0RmllbGRfSGE1bm1fMjYuMDAwc2Vjc18wMDAwNDY5MS0yODkxOWFkdS5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAyLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIkhhNW5tIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMjYsCiAgICAgICAgImVuYWJsZWQiOiB0cnVlLAogICAgICAgICJpc0NGQSI6IGZhbHNlCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiZmlsZVBhdGgiOiAiL1ZvbHVtZXMvMlRCIFNTRC9Bc3Ryb0ltYWdlcy8yMDIwLTA0LTAzL0ZsYXRGaWVsZF9IYTVubV8yNi4wMDBzZWNzXzAwMDA0NjkyLTI4NzgzYWR1LmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDIsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiSGE1bm0iLAogICAgICAgICJleHBvc3VyZVRpbWUiOiAyNiwKICAgICAgICAiZW5hYmxlZCI6IHRydWUsCiAgICAgICAgImlzQ0ZBIjogZmFsc2UKICAgICAgfSwKICAgICAgewogICAgICAgICJmaWxlUGF0aCI6ICIvVm9sdW1lcy8yVEIgU1NEL0FzdHJvSW1hZ2VzLzIwMjAtMDQtMDMvRmxhdEZpZWxkX0hhNW5tXzI2LjAwMHNlY3NfMDAwMDQ2OTMtMjg2MzhhZHUuZml0IiwKICAgICAgICAiaW1hZ2VUeXBlIjogMiwKICAgICAgICAiYmlubmluZyI6IDEsCiAgICAgICAgImZpbHRlciI6ICJIYTVubSIsCiAgICAgICAgImV4cG9zdXJlVGltZSI6IDI2LAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Wb2x1bWVzLzJUQiBTU0QvQXN0cm9JbWFnZXMvMjAyMC0wNC0wMy9GbGF0RmllbGRfSGE1bm1fMjYuMDAwc2Vjc18wMDAwNDY5NC0yODY2NWFkdS5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAyLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIkhhNW5tIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMjYsCiAgICAgICAgImVuYWJsZWQiOiB0cnVlLAogICAgICAgICJpc0NGQSI6IGZhbHNlCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiZmlsZVBhdGgiOiAiL1ZvbHVtZXMvMlRCIFNTRC9Bc3Ryb0ltYWdlcy8yMDIwLTA0LTAzL0ZsYXRGaWVsZF9IYTVubV8yNi4wMDBzZWNzXzAwMDA0Njk1LTI4ODI5YWR1LmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDIsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiSGE1bm0iLAogICAgICAgICJleHBvc3VyZVRpbWUiOiAyNiwKICAgICAgICAiZW5hYmxlZCI6IHRydWUsCiAgICAgICAgImlzQ0ZBIjogZmFsc2UKICAgICAgfSwKICAgICAgewogICAgICAgICJmaWxlUGF0aCI6ICIvVm9sdW1lcy8yVEIgU1NEL0FzdHJvSW1hZ2VzLzIwMjAtMDQtMDMvRmxhdEZpZWxkX0hhNW5tXzI2LjAwMHNlY3NfMDAwMDQ2OTYtMjg1MzNhZHUuZml0IiwKICAgICAgICAiaW1hZ2VUeXBlIjogMiwKICAgICAgICAiYmlubmluZyI6IDEsCiAgICAgICAgImZpbHRlciI6ICJIYTVubSIsCiAgICAgICAgImV4cG9zdXJlVGltZSI6IDI2LAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Wb2x1bWVzLzJUQiBTU0QvQXN0cm9JbWFnZXMvMjAyMC0wNC0wMy9GbGF0RmllbGRfSGE1bm1fMjYuMDAwc2Vjc18wMDAwNDY5Ny0yODQ5OGFkdS5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAyLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIkhhNW5tIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMjYsCiAgICAgICAgImVuYWJsZWQiOiB0cnVlLAogICAgICAgICJpc0NGQSI6IGZhbHNlCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiZmlsZVBhdGgiOiAiL1ZvbHVtZXMvMlRCIFNTRC9Bc3Ryb0ltYWdlcy8yMDIwLTA0LTAzL0ZsYXRGaWVsZF9IYTVubV8yNi4wMDBzZWNzXzAwMDA0Njk4LTI4NjUzYWR1LmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDIsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiSGE1bm0iLAogICAgICAgICJleHBvc3VyZVRpbWUiOiAyNiwKICAgICAgICAiZW5hYmxlZCI6IHRydWUsCiAgICAgICAgImlzQ0ZBIjogZmFsc2UKICAgICAgfSwKICAgICAgewogICAgICAgICJmaWxlUGF0aCI6ICIvVm9sdW1lcy8yVEIgU1NEL0FzdHJvSW1hZ2VzLzIwMjAtMDQtMDMvRmxhdEZpZWxkX0hhNW5tXzI2LjAwMHNlY3NfMDAwMDQ2OTktMjgzNzBhZHUuZml0IiwKICAgICAgICAiaW1hZ2VUeXBlIjogMiwKICAgICAgICAiYmlubmluZyI6IDEsCiAgICAgICAgImZpbHRlciI6ICJIYTVubSIsCiAgICAgICAgImV4cG9zdXJlVGltZSI6IDI2LAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Wb2x1bWVzLzJUQiBTU0QvQXN0cm9JbWFnZXMvMjAyMC0wNC0wMy9GbGF0RmllbGRfSGE1bm1fMjYuMDAwc2Vjc18wMDAwNDcwMC0yODU1NGFkdS5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAyLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIkhhNW5tIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMjYsCiAgICAgICAgImVuYWJsZWQiOiB0cnVlLAogICAgICAgICJpc0NGQSI6IGZhbHNlCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiZmlsZVBhdGgiOiAiL1ZvbHVtZXMvMlRCIFNTRC9Bc3Ryb0ltYWdlcy8yMDIwLTA0LTAzL0ZsYXRGaWVsZF9IYTVubV8yNi4wMDBzZWNzXzAwMDA0NzAxLTI4NDgzYWR1LmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDIsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiSGE1bm0iLAogICAgICAgICJleHBvc3VyZVRpbWUiOiAyNiwKICAgICAgICAiZW5hYmxlZCI6IHRydWUsCiAgICAgICAgImlzQ0ZBIjogZmFsc2UKICAgICAgfSwKICAgICAgewogICAgICAgICJmaWxlUGF0aCI6ICIvVm9sdW1lcy8yVEIgU1NEL0FzdHJvSW1hZ2VzLzIwMjAtMDQtMDMvRmxhdEZpZWxkX0hhNW5tXzI2LjAwMHNlY3NfMDAwMDQ3MDItMjgxNThhZHUuZml0IiwKICAgICAgICAiaW1hZ2VUeXBlIjogMiwKICAgICAgICAiYmlubmluZyI6IDEsCiAgICAgICAgImZpbHRlciI6ICJIYTVubSIsCiAgICAgICAgImV4cG9zdXJlVGltZSI6IDI2LAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Wb2x1bWVzLzJUQiBTU0QvQXN0cm9JbWFnZXMvMjAyMC0wNC0wMy9GbGF0RmllbGRfSGE1bm1fMjYuMDAwc2Vjc18wMDAwNDcwMy0yODEwOWFkdS5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAyLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIkhhNW5tIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMjYsCiAgICAgICAgImVuYWJsZWQiOiB0cnVlLAogICAgICAgICJpc0NGQSI6IGZhbHNlCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiZmlsZVBhdGgiOiAiL1ZvbHVtZXMvMlRCIFNTRC9Bc3Ryb0ltYWdlcy8yMDIwLTA0LTAzL0ZsYXRGaWVsZF9IYTVubV8yNi4wMDBzZWNzXzAwMDA0NzA0LTI4MDg2YWR1LmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDIsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiSGE1bm0iLAogICAgICAgICJleHBvc3VyZVRpbWUiOiAyNiwKICAgICAgICAiZW5hYmxlZCI6IHRydWUsCiAgICAgICAgImlzQ0ZBIjogZmFsc2UKICAgICAgfSwKICAgICAgewogICAgICAgICJmaWxlUGF0aCI6ICIvVm9sdW1lcy8yVEIgU1NEL0FzdHJvSW1hZ2VzLzIwMjAtMDQtMDMvRmxhdEZpZWxkX0hhNW5tXzI2LjAwMHNlY3NfMDAwMDQ3MDUtMjgwMzlhZHUuZml0IiwKICAgICAgICAiaW1hZ2VUeXBlIjogMiwKICAgICAgICAiYmlubmluZyI6IDEsCiAgICAgICAgImZpbHRlciI6ICJIYTVubSIsCiAgICAgICAgImV4cG9zdXJlVGltZSI6IDI2LAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Wb2x1bWVzLzJUQiBTU0QvQXN0cm9JbWFnZXMvMjAyMC0wNC0wMy9GbGF0RmllbGRfSGE1bm1fMjYuMDAwc2Vjc18wMDAwNDcwNi0yODEwMGFkdS5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAyLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIkhhNW5tIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMjYsCiAgICAgICAgImVuYWJsZWQiOiB0cnVlLAogICAgICAgICJpc0NGQSI6IGZhbHNlCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiZmlsZVBhdGgiOiAiL1ZvbHVtZXMvMlRCIFNTRC9Bc3Ryb0ltYWdlcy8yMDIwLTA0LTAzL0ZsYXRGaWVsZF9IYTVubV8yNi4wMDBzZWNzXzAwMDA0NzA3LTI3ODU3YWR1LmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDIsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiSGE1bm0iLAogICAgICAgICJleHBvc3VyZVRpbWUiOiAyNiwKICAgICAgICAiZW5hYmxlZCI6IHRydWUsCiAgICAgICAgImlzQ0ZBIjogZmFsc2UKICAgICAgfSwKICAgICAgewogICAgICAgICJmaWxlUGF0aCI6ICIvVm9sdW1lcy8yVEIgU1NEL0FzdHJvSW1hZ2VzLzIwMjAtMDQtMDMvRmxhdEZpZWxkX0hhNW5tXzI2LjAwMHNlY3NfMDAwMDQ3MDgtMjgwNjRhZHUuZml0IiwKICAgICAgICAiaW1hZ2VUeXBlIjogMiwKICAgICAgICAiYmlubmluZyI6IDEsCiAgICAgICAgImZpbHRlciI6ICJIYTVubSIsCiAgICAgICAgImV4cG9zdXJlVGltZSI6IDI2LAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Wb2x1bWVzLzJUQiBTU0QvQXN0cm9JbWFnZXMvMjAyMC0wNC0wMy9GbGF0RmllbGRfSGE1bm1fMjYuMDAwc2Vjc18wMDAwNDcwOS0yNzgxMGFkdS5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAyLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIkhhNW5tIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMjYsCiAgICAgICAgImVuYWJsZWQiOiB0cnVlLAogICAgICAgICJpc0NGQSI6IGZhbHNlCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiZmlsZVBhdGgiOiAiL1ZvbHVtZXMvMlRCIFNTRC9Bc3Ryb0ltYWdlcy8yMDIwLTA0LTAzL0ZsYXRGaWVsZF9IYTVubV8yNi4wMDBzZWNzXzAwMDA0NzEwLTI4MDA5YWR1LmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDIsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiSGE1bm0iLAogICAgICAgICJleHBvc3VyZVRpbWUiOiAyNiwKICAgICAgICAiZW5hYmxlZCI6IHRydWUsCiAgICAgICAgImlzQ0ZBIjogZmFsc2UKICAgICAgfSwKICAgICAgewogICAgICAgICJmaWxlUGF0aCI6ICIvVm9sdW1lcy8yVEIgU1NEL0FzdHJvSW1hZ2VzLzIwMjAtMDQtMDMvRmxhdEZpZWxkX0hhNW5tXzI2LjAwMHNlY3NfMDAwMDQ3MTEtMjc3NDhhZHUuZml0IiwKICAgICAgICAiaW1hZ2VUeXBlIjogMiwKICAgICAgICAiYmlubmluZyI6IDEsCiAgICAgICAgImZpbHRlciI6ICJIYTVubSIsCiAgICAgICAgImV4cG9zdXJlVGltZSI6IDI2LAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9CiAgICBdLAogICAgImNvbnRhaW5zQ0ZBIjogZmFsc2UKICB9LAogIHsKICAgICJpbWFnZVR5cGUiOiAyLAogICAgImZpbHRlciI6ICJPaWlpNW5tIiwKICAgICJiaW5uaW5nIjogMSwKICAgICJleHBvc3VyZVRpbWUiOiA2LAogICAgImV4cG9zdXJlVGltZXMiOiBbCiAgICAgIDYKICAgIF0sCiAgICAibWFzdGVyRnJhbWUiOiB0cnVlLAogICAgImVuYWJsZWQiOiB0cnVlLAogICAgImZpbGVJdGVtcyI6IFsKICAgICAgewogICAgICAgICJmaWxlUGF0aCI6ICIvVm9sdW1lcy8yVEIgU1NEL0FzdHJvSW1hZ2VzLzIwMjAtMDQtMTAvRmxhdHMvRmxhdEZpZWxkX09paWk1bm1fNi4wMDBzZWNzXzAwMDA1NzA5LTI4NjgxYWR1LmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDIsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiT2lpaTVubSIsCiAgICAgICAgImV4cG9zdXJlVGltZSI6IDYsCiAgICAgICAgImVuYWJsZWQiOiB0cnVlLAogICAgICAgICJpc0NGQSI6IGZhbHNlCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiZmlsZVBhdGgiOiAiL1ZvbHVtZXMvMlRCIFNTRC9Bc3Ryb0ltYWdlcy8yMDIwLTA0LTEwL0ZsYXRzL0ZsYXRGaWVsZF9PaWlpNW5tXzYuMDAwc2Vjc18wMDAwNTcxMC0yOTI5MGFkdS5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAyLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIk9paWk1bm0iLAogICAgICAgICJleHBvc3VyZVRpbWUiOiA2LAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Wb2x1bWVzLzJUQiBTU0QvQXN0cm9JbWFnZXMvMjAyMC0wNC0xMC9GbGF0cy9GbGF0RmllbGRfT2lpaTVubV82LjAwMHNlY3NfMDAwMDU3MTEtMjkzNjNhZHUuZml0IiwKICAgICAgICAiaW1hZ2VUeXBlIjogMiwKICAgICAgICAiYmlubmluZyI6IDEsCiAgICAgICAgImZpbHRlciI6ICJPaWlpNW5tIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogNiwKICAgICAgICAiZW5hYmxlZCI6IHRydWUsCiAgICAgICAgImlzQ0ZBIjogZmFsc2UKICAgICAgfSwKICAgICAgewogICAgICAgICJmaWxlUGF0aCI6ICIvVm9sdW1lcy8yVEIgU1NEL0FzdHJvSW1hZ2VzLzIwMjAtMDQtMTAvRmxhdHMvRmxhdEZpZWxkX09paWk1bm1fNi4wMDBzZWNzXzAwMDA1NzEyLTI5NTc3YWR1LmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDIsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiT2lpaTVubSIsCiAgICAgICAgImV4cG9zdXJlVGltZSI6IDYsCiAgICAgICAgImVuYWJsZWQiOiB0cnVlLAogICAgICAgICJpc0NGQSI6IGZhbHNlCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiZmlsZVBhdGgiOiAiL1ZvbHVtZXMvMlRCIFNTRC9Bc3Ryb0ltYWdlcy8yMDIwLTA0LTEwL0ZsYXRzL0ZsYXRGaWVsZF9PaWlpNW5tXzYuMDAwc2Vjc18wMDAwNTcxMy0yOTc3N2FkdS5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAyLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIk9paWk1bm0iLAogICAgICAgICJleHBvc3VyZVRpbWUiOiA2LAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Wb2x1bWVzLzJUQiBTU0QvQXN0cm9JbWFnZXMvMjAyMC0wNC0xMC9GbGF0cy9GbGF0RmllbGRfT2lpaTVubV82LjAwMHNlY3NfMDAwMDU3MTQtMjk2OTRhZHUuZml0IiwKICAgICAgICAiaW1hZ2VUeXBlIjogMiwKICAgICAgICAiYmlubmluZyI6IDEsCiAgICAgICAgImZpbHRlciI6ICJPaWlpNW5tIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogNiwKICAgICAgICAiZW5hYmxlZCI6IHRydWUsCiAgICAgICAgImlzQ0ZBIjogZmFsc2UKICAgICAgfSwKICAgICAgewogICAgICAgICJmaWxlUGF0aCI6ICIvVm9sdW1lcy8yVEIgU1NEL0FzdHJvSW1hZ2VzLzIwMjAtMDQtMTAvRmxhdHMvRmxhdEZpZWxkX09paWk1bm1fNi4wMDBzZWNzXzAwMDA1NzE1LTI5Mzk1YWR1LmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDIsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiT2lpaTVubSIsCiAgICAgICAgImV4cG9zdXJlVGltZSI6IDYsCiAgICAgICAgImVuYWJsZWQiOiB0cnVlLAogICAgICAgICJpc0NGQSI6IGZhbHNlCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiZmlsZVBhdGgiOiAiL1ZvbHVtZXMvMlRCIFNTRC9Bc3Ryb0ltYWdlcy8yMDIwLTA0LTEwL0ZsYXRzL0ZsYXRGaWVsZF9PaWlpNW5tXzYuMDAwc2Vjc18wMDAwNTcxNi0yOTU1NmFkdS5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAyLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIk9paWk1bm0iLAogICAgICAgICJleHBvc3VyZVRpbWUiOiA2LAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Wb2x1bWVzLzJUQiBTU0QvQXN0cm9JbWFnZXMvMjAyMC0wNC0xMC9GbGF0cy9GbGF0RmllbGRfT2lpaTVubV82LjAwMHNlY3NfMDAwMDU3MTctMjk0NjJhZHUuZml0IiwKICAgICAgICAiaW1hZ2VUeXBlIjogMiwKICAgICAgICAiYmlubmluZyI6IDEsCiAgICAgICAgImZpbHRlciI6ICJPaWlpNW5tIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogNiwKICAgICAgICAiZW5hYmxlZCI6IHRydWUsCiAgICAgICAgImlzQ0ZBIjogZmFsc2UKICAgICAgfSwKICAgICAgewogICAgICAgICJmaWxlUGF0aCI6ICIvVm9sdW1lcy8yVEIgU1NEL0FzdHJvSW1hZ2VzLzIwMjAtMDQtMTAvRmxhdHMvRmxhdEZpZWxkX09paWk1bm1fNi4wMDBzZWNzXzAwMDA1NzE4LTI5NDk2YWR1LmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDIsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiT2lpaTVubSIsCiAgICAgICAgImV4cG9zdXJlVGltZSI6IDYsCiAgICAgICAgImVuYWJsZWQiOiB0cnVlLAogICAgICAgICJpc0NGQSI6IGZhbHNlCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiZmlsZVBhdGgiOiAiL1ZvbHVtZXMvMlRCIFNTRC9Bc3Ryb0ltYWdlcy8yMDIwLTA0LTEwL0ZsYXRzL0ZsYXRGaWVsZF9PaWlpNW5tXzYuMDAwc2Vjc18wMDAwNTcxOS0yOTU5M2FkdS5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAyLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIk9paWk1bm0iLAogICAgICAgICJleHBvc3VyZVRpbWUiOiA2LAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Wb2x1bWVzLzJUQiBTU0QvQXN0cm9JbWFnZXMvMjAyMC0wNC0xMC9GbGF0cy9GbGF0RmllbGRfT2lpaTVubV82LjAwMHNlY3NfMDAwMDU3MjAtMjk4NDVhZHUuZml0IiwKICAgICAgICAiaW1hZ2VUeXBlIjogMiwKICAgICAgICAiYmlubmluZyI6IDEsCiAgICAgICAgImZpbHRlciI6ICJPaWlpNW5tIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogNiwKICAgICAgICAiZW5hYmxlZCI6IHRydWUsCiAgICAgICAgImlzQ0ZBIjogZmFsc2UKICAgICAgfSwKICAgICAgewogICAgICAgICJmaWxlUGF0aCI6ICIvVm9sdW1lcy8yVEIgU1NEL0FzdHJvSW1hZ2VzLzIwMjAtMDQtMTAvRmxhdHMvRmxhdEZpZWxkX09paWk1bm1fNi4wMDBzZWNzXzAwMDA1NzIxLTI5ODI4YWR1LmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDIsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiT2lpaTVubSIsCiAgICAgICAgImV4cG9zdXJlVGltZSI6IDYsCiAgICAgICAgImVuYWJsZWQiOiB0cnVlLAogICAgICAgICJpc0NGQSI6IGZhbHNlCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiZmlsZVBhdGgiOiAiL1ZvbHVtZXMvMlRCIFNTRC9Bc3Ryb0ltYWdlcy8yMDIwLTA0LTEwL0ZsYXRzL0ZsYXRGaWVsZF9PaWlpNW5tXzYuMDAwc2Vjc18wMDAwNTcyMi0yOTgwNGFkdS5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAyLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIk9paWk1bm0iLAogICAgICAgICJleHBvc3VyZVRpbWUiOiA2LAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Wb2x1bWVzLzJUQiBTU0QvQXN0cm9JbWFnZXMvMjAyMC0wNC0xMC9GbGF0cy9GbGF0RmllbGRfT2lpaTVubV82LjAwMHNlY3NfMDAwMDU3MjMtMjk3NTdhZHUuZml0IiwKICAgICAgICAiaW1hZ2VUeXBlIjogMiwKICAgICAgICAiYmlubmluZyI6IDEsCiAgICAgICAgImZpbHRlciI6ICJPaWlpNW5tIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogNiwKICAgICAgICAiZW5hYmxlZCI6IHRydWUsCiAgICAgICAgImlzQ0ZBIjogZmFsc2UKICAgICAgfSwKICAgICAgewogICAgICAgICJmaWxlUGF0aCI6ICIvVm9sdW1lcy8yVEIgU1NEL0FzdHJvSW1hZ2VzLzIwMjAtMDQtMTAvRmxhdHMvRmxhdEZpZWxkX09paWk1bm1fNi4wMDBzZWNzXzAwMDA1NzI0LTI5NzQ1YWR1LmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDIsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiT2lpaTVubSIsCiAgICAgICAgImV4cG9zdXJlVGltZSI6IDYsCiAgICAgICAgImVuYWJsZWQiOiB0cnVlLAogICAgICAgICJpc0NGQSI6IGZhbHNlCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiZmlsZVBhdGgiOiAiL1ZvbHVtZXMvMlRCIFNTRC9Bc3Ryb0ltYWdlcy8yMDIwLTA0LTEwL0ZsYXRzL0ZsYXRGaWVsZF9PaWlpNW5tXzYuMDAwc2Vjc18wMDAwNTcyNS0yOTc1NGFkdS5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAyLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIk9paWk1bm0iLAogICAgICAgICJleHBvc3VyZVRpbWUiOiA2LAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Wb2x1bWVzLzJUQiBTU0QvQXN0cm9JbWFnZXMvMjAyMC0wNC0xMC9GbGF0cy9GbGF0RmllbGRfT2lpaTVubV82LjAwMHNlY3NfMDAwMDU3MjYtMjk3ODRhZHUuZml0IiwKICAgICAgICAiaW1hZ2VUeXBlIjogMiwKICAgICAgICAiYmlubmluZyI6IDEsCiAgICAgICAgImZpbHRlciI6ICJPaWlpNW5tIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogNiwKICAgICAgICAiZW5hYmxlZCI6IHRydWUsCiAgICAgICAgImlzQ0ZBIjogZmFsc2UKICAgICAgfSwKICAgICAgewogICAgICAgICJmaWxlUGF0aCI6ICIvVm9sdW1lcy8yVEIgU1NEL0FzdHJvSW1hZ2VzLzIwMjAtMDQtMTAvRmxhdHMvRmxhdEZpZWxkX09paWk1bm1fNi4wMDBzZWNzXzAwMDA1NzI3LTI5NzYwYWR1LmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDIsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiT2lpaTVubSIsCiAgICAgICAgImV4cG9zdXJlVGltZSI6IDYsCiAgICAgICAgImVuYWJsZWQiOiB0cnVlLAogICAgICAgICJpc0NGQSI6IGZhbHNlCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiZmlsZVBhdGgiOiAiL1ZvbHVtZXMvMlRCIFNTRC9Bc3Ryb0ltYWdlcy8yMDIwLTA0LTEwL0ZsYXRzL0ZsYXRGaWVsZF9PaWlpNW5tXzYuMDAwc2Vjc18wMDAwNTcyOC0yOTczNGFkdS5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAyLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIk9paWk1bm0iLAogICAgICAgICJleHBvc3VyZVRpbWUiOiA2LAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Wb2x1bWVzLzJUQiBTU0QvQXN0cm9JbWFnZXMvMjAyMC0wNC0xMC9GbGF0cy9GbGF0RmllbGRfT2lpaTVubV82LjAwMHNlY3NfMDAwMDU3MjktMjk2ODNhZHUuZml0IiwKICAgICAgICAiaW1hZ2VUeXBlIjogMiwKICAgICAgICAiYmlubmluZyI6IDEsCiAgICAgICAgImZpbHRlciI6ICJPaWlpNW5tIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogNiwKICAgICAgICAiZW5hYmxlZCI6IHRydWUsCiAgICAgICAgImlzQ0ZBIjogZmFsc2UKICAgICAgfQogICAgXSwKICAgICJjb250YWluc0NGQSI6IGZhbHNlCiAgfSwKICB7CiAgICAiaW1hZ2VUeXBlIjogMiwKICAgICJmaWx0ZXIiOiAiUmVkIiwKICAgICJiaW5uaW5nIjogMSwKICAgICJleHBvc3VyZVRpbWUiOiAyLAogICAgImV4cG9zdXJlVGltZXMiOiBbCiAgICAgIDIKICAgIF0sCiAgICAibWFzdGVyRnJhbWUiOiB0cnVlLAogICAgImVuYWJsZWQiOiB0cnVlLAogICAgImZpbGVJdGVtcyI6IFsKICAgICAgewogICAgICAgICJmaWxlUGF0aCI6ICIvVm9sdW1lcy8yVEIgU1NEL0FzdHJvSW1hZ2VzLzIwMjAtMDQtMTAvRmxhdHMvRmxhdEZpZWxkX1JlZF8yLjAwMHNlY3NfMDAwMDU3MzAtMzE0NzVhZHUuZml0IiwKICAgICAgICAiaW1hZ2VUeXBlIjogMiwKICAgICAgICAiYmlubmluZyI6IDEsCiAgICAgICAgImZpbHRlciI6ICJSZWQiLAogICAgICAgICJleHBvc3VyZVRpbWUiOiAyLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Wb2x1bWVzLzJUQiBTU0QvQXN0cm9JbWFnZXMvMjAyMC0wNC0xMC9GbGF0cy9GbGF0RmllbGRfUmVkXzIuMDAwc2Vjc18wMDAwNTczMS0zMTYyMWFkdS5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAyLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIlJlZCIsCiAgICAgICAgImV4cG9zdXJlVGltZSI6IDIsCiAgICAgICAgImVuYWJsZWQiOiB0cnVlLAogICAgICAgICJpc0NGQSI6IGZhbHNlCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiZmlsZVBhdGgiOiAiL1ZvbHVtZXMvMlRCIFNTRC9Bc3Ryb0ltYWdlcy8yMDIwLTA0LTEwL0ZsYXRzL0ZsYXRGaWVsZF9SZWRfMi4wMDBzZWNzXzAwMDA1NzMyLTMxNjg4YWR1LmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDIsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiUmVkIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMiwKICAgICAgICAiZW5hYmxlZCI6IHRydWUsCiAgICAgICAgImlzQ0ZBIjogZmFsc2UKICAgICAgfSwKICAgICAgewogICAgICAgICJmaWxlUGF0aCI6ICIvVm9sdW1lcy8yVEIgU1NEL0FzdHJvSW1hZ2VzLzIwMjAtMDQtMTAvRmxhdHMvRmxhdEZpZWxkX1JlZF8yLjAwMHNlY3NfMDAwMDU3MzMtMzE2ODZhZHUuZml0IiwKICAgICAgICAiaW1hZ2VUeXBlIjogMiwKICAgICAgICAiYmlubmluZyI6IDEsCiAgICAgICAgImZpbHRlciI6ICJSZWQiLAogICAgICAgICJleHBvc3VyZVRpbWUiOiAyLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Wb2x1bWVzLzJUQiBTU0QvQXN0cm9JbWFnZXMvMjAyMC0wNC0xMC9GbGF0cy9GbGF0RmllbGRfUmVkXzIuMDAwc2Vjc18wMDAwNTczNC0zMTcxN2FkdS5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAyLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIlJlZCIsCiAgICAgICAgImV4cG9zdXJlVGltZSI6IDIsCiAgICAgICAgImVuYWJsZWQiOiB0cnVlLAogICAgICAgICJpc0NGQSI6IGZhbHNlCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiZmlsZVBhdGgiOiAiL1ZvbHVtZXMvMlRCIFNTRC9Bc3Ryb0ltYWdlcy8yMDIwLTA0LTEwL0ZsYXRzL0ZsYXRGaWVsZF9SZWRfMi4wMDBzZWNzXzAwMDA1NzM1LTMxNjc4YWR1LmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDIsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiUmVkIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMiwKICAgICAgICAiZW5hYmxlZCI6IHRydWUsCiAgICAgICAgImlzQ0ZBIjogZmFsc2UKICAgICAgfSwKICAgICAgewogICAgICAgICJmaWxlUGF0aCI6ICIvVm9sdW1lcy8yVEIgU1NEL0FzdHJvSW1hZ2VzLzIwMjAtMDQtMTAvRmxhdHMvRmxhdEZpZWxkX1JlZF8yLjAwMHNlY3NfMDAwMDU3MzYtMzE3NDJhZHUuZml0IiwKICAgICAgICAiaW1hZ2VUeXBlIjogMiwKICAgICAgICAiYmlubmluZyI6IDEsCiAgICAgICAgImZpbHRlciI6ICJSZWQiLAogICAgICAgICJleHBvc3VyZVRpbWUiOiAyLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Wb2x1bWVzLzJUQiBTU0QvQXN0cm9JbWFnZXMvMjAyMC0wNC0xMC9GbGF0cy9GbGF0RmllbGRfUmVkXzIuMDAwc2Vjc18wMDAwNTczNy0zMTY5MmFkdS5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAyLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIlJlZCIsCiAgICAgICAgImV4cG9zdXJlVGltZSI6IDIsCiAgICAgICAgImVuYWJsZWQiOiB0cnVlLAogICAgICAgICJpc0NGQSI6IGZhbHNlCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiZmlsZVBhdGgiOiAiL1ZvbHVtZXMvMlRCIFNTRC9Bc3Ryb0ltYWdlcy8yMDIwLTA0LTEwL0ZsYXRzL0ZsYXRGaWVsZF9SZWRfMi4wMDBzZWNzXzAwMDA1NzM4LTMxNjgxYWR1LmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDIsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiUmVkIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMiwKICAgICAgICAiZW5hYmxlZCI6IHRydWUsCiAgICAgICAgImlzQ0ZBIjogZmFsc2UKICAgICAgfSwKICAgICAgewogICAgICAgICJmaWxlUGF0aCI6ICIvVm9sdW1lcy8yVEIgU1NEL0FzdHJvSW1hZ2VzLzIwMjAtMDQtMTAvRmxhdHMvRmxhdEZpZWxkX1JlZF8yLjAwMHNlY3NfMDAwMDU3MzktMzE1MDBhZHUuZml0IiwKICAgICAgICAiaW1hZ2VUeXBlIjogMiwKICAgICAgICAiYmlubmluZyI6IDEsCiAgICAgICAgImZpbHRlciI6ICJSZWQiLAogICAgICAgICJleHBvc3VyZVRpbWUiOiAyLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Wb2x1bWVzLzJUQiBTU0QvQXN0cm9JbWFnZXMvMjAyMC0wNC0xMC9GbGF0cy9GbGF0RmllbGRfUmVkXzIuMDAwc2Vjc18wMDAwNTc0MC0zMTU3MGFkdS5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAyLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIlJlZCIsCiAgICAgICAgImV4cG9zdXJlVGltZSI6IDIsCiAgICAgICAgImVuYWJsZWQiOiB0cnVlLAogICAgICAgICJpc0NGQSI6IGZhbHNlCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiZmlsZVBhdGgiOiAiL1ZvbHVtZXMvMlRCIFNTRC9Bc3Ryb0ltYWdlcy8yMDIwLTA0LTEwL0ZsYXRzL0ZsYXRGaWVsZF9SZWRfMi4wMDBzZWNzXzAwMDA1NzQxLTMxNTE4YWR1LmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDIsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiUmVkIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMiwKICAgICAgICAiZW5hYmxlZCI6IHRydWUsCiAgICAgICAgImlzQ0ZBIjogZmFsc2UKICAgICAgfSwKICAgICAgewogICAgICAgICJmaWxlUGF0aCI6ICIvVm9sdW1lcy8yVEIgU1NEL0FzdHJvSW1hZ2VzLzIwMjAtMDQtMTAvRmxhdHMvRmxhdEZpZWxkX1JlZF8yLjAwMHNlY3NfMDAwMDU3NDItMzE1MjNhZHUuZml0IiwKICAgICAgICAiaW1hZ2VUeXBlIjogMiwKICAgICAgICAiYmlubmluZyI6IDEsCiAgICAgICAgImZpbHRlciI6ICJSZWQiLAogICAgICAgICJleHBvc3VyZVRpbWUiOiAyLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Wb2x1bWVzLzJUQiBTU0QvQXN0cm9JbWFnZXMvMjAyMC0wNC0xMC9GbGF0cy9GbGF0RmllbGRfUmVkXzIuMDAwc2Vjc18wMDAwNTc0My0zMTQ4OWFkdS5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAyLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIlJlZCIsCiAgICAgICAgImV4cG9zdXJlVGltZSI6IDIsCiAgICAgICAgImVuYWJsZWQiOiB0cnVlLAogICAgICAgICJpc0NGQSI6IGZhbHNlCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiZmlsZVBhdGgiOiAiL1ZvbHVtZXMvMlRCIFNTRC9Bc3Ryb0ltYWdlcy8yMDIwLTA0LTEwL0ZsYXRzL0ZsYXRGaWVsZF9SZWRfMi4wMDBzZWNzXzAwMDA1NzQ0LTMxNTEwYWR1LmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDIsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiUmVkIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMiwKICAgICAgICAiZW5hYmxlZCI6IHRydWUsCiAgICAgICAgImlzQ0ZBIjogZmFsc2UKICAgICAgfSwKICAgICAgewogICAgICAgICJmaWxlUGF0aCI6ICIvVm9sdW1lcy8yVEIgU1NEL0FzdHJvSW1hZ2VzLzIwMjAtMDQtMTAvRmxhdHMvRmxhdEZpZWxkX1JlZF8yLjAwMHNlY3NfMDAwMDU3NDUtMzE0NzhhZHUuZml0IiwKICAgICAgICAiaW1hZ2VUeXBlIjogMiwKICAgICAgICAiYmlubmluZyI6IDEsCiAgICAgICAgImZpbHRlciI6ICJSZWQiLAogICAgICAgICJleHBvc3VyZVRpbWUiOiAyLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Wb2x1bWVzLzJUQiBTU0QvQXN0cm9JbWFnZXMvMjAyMC0wNC0xMC9GbGF0cy9GbGF0RmllbGRfUmVkXzIuMDAwc2Vjc18wMDAwNTc0Ni0zMTQ3N2FkdS5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAyLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIlJlZCIsCiAgICAgICAgImV4cG9zdXJlVGltZSI6IDIsCiAgICAgICAgImVuYWJsZWQiOiB0cnVlLAogICAgICAgICJpc0NGQSI6IGZhbHNlCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiZmlsZVBhdGgiOiAiL1ZvbHVtZXMvMlRCIFNTRC9Bc3Ryb0ltYWdlcy8yMDIwLTA0LTEwL0ZsYXRzL0ZsYXRGaWVsZF9SZWRfMi4wMDBzZWNzXzAwMDA1NzQ3LTMxNDk1YWR1LmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDIsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiUmVkIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMiwKICAgICAgICAiZW5hYmxlZCI6IHRydWUsCiAgICAgICAgImlzQ0ZBIjogZmFsc2UKICAgICAgfSwKICAgICAgewogICAgICAgICJmaWxlUGF0aCI6ICIvVm9sdW1lcy8yVEIgU1NEL0FzdHJvSW1hZ2VzLzIwMjAtMDQtMTAvRmxhdHMvRmxhdEZpZWxkX1JlZF8yLjAwMHNlY3NfMDAwMDU3NDgtMzE1MDZhZHUuZml0IiwKICAgICAgICAiaW1hZ2VUeXBlIjogMiwKICAgICAgICAiYmlubmluZyI6IDEsCiAgICAgICAgImZpbHRlciI6ICJSZWQiLAogICAgICAgICJleHBvc3VyZVRpbWUiOiAyLAogICAgICAgICJlbmFibGVkIjogdHJ1ZSwKICAgICAgICAiaXNDRkEiOiBmYWxzZQogICAgICB9LAogICAgICB7CiAgICAgICAgImZpbGVQYXRoIjogIi9Wb2x1bWVzLzJUQiBTU0QvQXN0cm9JbWFnZXMvMjAyMC0wNC0xMC9GbGF0cy9GbGF0RmllbGRfUmVkXzIuMDAwc2Vjc18wMDAwNTc0OS0zMTQ4OWFkdS5maXQiLAogICAgICAgICJpbWFnZVR5cGUiOiAyLAogICAgICAgICJiaW5uaW5nIjogMSwKICAgICAgICAiZmlsdGVyIjogIlJlZCIsCiAgICAgICAgImV4cG9zdXJlVGltZSI6IDIsCiAgICAgICAgImVuYWJsZWQiOiB0cnVlLAogICAgICAgICJpc0NGQSI6IGZhbHNlCiAgICAgIH0sCiAgICAgIHsKICAgICAgICAiZmlsZVBhdGgiOiAiL1ZvbHVtZXMvMlRCIFNTRC9Bc3Ryb0ltYWdlcy8yMDIwLTA0LTEwL0ZsYXRzL0ZsYXRGaWVsZF9SZWRfMi4wMDBzZWNzXzAwMDA1NzUwLTMxNTA5YWR1LmZpdCIsCiAgICAgICAgImltYWdlVHlwZSI6IDIsCiAgICAgICAgImJpbm5pbmciOiAxLAogICAgICAgICJmaWx0ZXIiOiAiUmVkIiwKICAgICAgICAiZXhwb3N1cmVUaW1lIjogMiwKICAgICAgICAiZW5hYmxlZCI6IHRydWUsCiAgICAgICAgImlzQ0ZBIjogZmFsc2UKICAgICAgfQogICAgXSwKICAgICJjb250YWluc0NGQSI6IGZhbHNlCiAgfQpd</td>
+         </tr>
+      </table>
+   </instance>
+   <instance class="DynamicBackgroundExtraction" version="256" id="DBE_maybe_more_that_once_instance">
+      <time start="2022-04-03T13:08:06.266Z" span="1.0375815"/>
+      <table id="data" rows="75">
+         <tr>
+            <td id="x" value="0.01585791"/>
+            <td id="y" value="0.02437439"/>
+            <td id="z0" value="0.01297750"/>
+            <td id="w0" value="0.897"/>
+            <td id="z1" value="0.00000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.00000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="0.01585791"/>
+            <td id="y" value="0.18297043"/>
+            <td id="z0" value="0.01299711"/>
+            <td id="w0" value="0.906"/>
+            <td id="z1" value="0.00000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.00000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="0.01585791"/>
+            <td id="y" value="0.34140396"/>
+            <td id="z0" value="0.01301239"/>
+            <td id="w0" value="0.912"/>
+            <td id="z1" value="0.00000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.00000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="0.01585791"/>
+            <td id="y" value="0.49983750"/>
+            <td id="z0" value="0.01303909"/>
+            <td id="w0" value="0.923"/>
+            <td id="z1" value="0.00000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.00000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="0.01585791"/>
+            <td id="y" value="0.65843354"/>
+            <td id="z0" value="0.01306474"/>
+            <td id="w0" value="0.933"/>
+            <td id="z1" value="0.00000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.00000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="0.01585791"/>
+            <td id="y" value="0.81702957"/>
+            <td id="z0" value="0.01306548"/>
+            <td id="w0" value="0.933"/>
+            <td id="z1" value="0.00000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.00000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="0.01585791"/>
+            <td id="y" value="0.97546311"/>
+            <td id="z0" value="0.01307609"/>
+            <td id="w0" value="0.937"/>
+            <td id="z1" value="0.00000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.00000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="0.11269690"/>
+            <td id="y" value="0.02437439"/>
+            <td id="z0" value="0.01299800"/>
+            <td id="w0" value="0.906"/>
+            <td id="z1" value="0.00000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.00000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="0.11269690"/>
+            <td id="y" value="0.18297043"/>
+            <td id="z0" value="0.01305151"/>
+            <td id="w0" value="0.927"/>
+            <td id="z1" value="0.00000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.00000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="0.11269690"/>
+            <td id="y" value="0.34140396"/>
+            <td id="z0" value="0.01305368"/>
+            <td id="w0" value="0.930"/>
+            <td id="z1" value="0.00000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.00000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="0.11269690"/>
+            <td id="y" value="0.49983750"/>
+            <td id="z0" value="0.01310553"/>
+            <td id="w0" value="0.943"/>
+            <td id="z1" value="0.00000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.00000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="0.11269690"/>
+            <td id="y" value="0.65843354"/>
+            <td id="z0" value="0.01309435"/>
+            <td id="w0" value="0.942"/>
+            <td id="z1" value="0.00000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.00000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="0.11269690"/>
+            <td id="y" value="0.81702957"/>
+            <td id="z0" value="0.01311339"/>
+            <td id="w0" value="0.946"/>
+            <td id="z1" value="0.00000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.00000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="0.11269690"/>
+            <td id="y" value="0.97546311"/>
+            <td id="z0" value="0.01311270"/>
+            <td id="w0" value="0.946"/>
+            <td id="z1" value="0.00000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.00000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="0.20953589"/>
+            <td id="y" value="0.02437439"/>
+            <td id="z0" value="0.01300561"/>
+            <td id="w0" value="0.910"/>
+            <td id="z1" value="0.00000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.00000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="0.20953589"/>
+            <td id="y" value="0.18297043"/>
+            <td id="z0" value="0.01305684"/>
+            <td id="w0" value="0.930"/>
+            <td id="z1" value="0.00000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.00000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="0.20953589"/>
+            <td id="y" value="0.34140396"/>
+            <td id="z0" value="0.01308577"/>
+            <td id="w0" value="0.940"/>
+            <td id="z1" value="0.00000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.00000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="0.20953589"/>
+            <td id="y" value="0.49983750"/>
+            <td id="z0" value="0.01310490"/>
+            <td id="w0" value="0.946"/>
+            <td id="z1" value="0.00000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.00000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="0.20953589"/>
+            <td id="y" value="0.65843354"/>
+            <td id="z0" value="0.01313199"/>
+            <td id="w0" value="0.952"/>
+            <td id="z1" value="0.00000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.00000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="0.20953589"/>
+            <td id="y" value="0.81702957"/>
+            <td id="z0" value="0.01314854"/>
+            <td id="w0" value="0.953"/>
+            <td id="z1" value="0.00000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.00000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="0.20953589"/>
+            <td id="y" value="0.97546311"/>
+            <td id="z0" value="0.01313708"/>
+            <td id="w0" value="0.950"/>
+            <td id="z1" value="0.00000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.00000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="0.30626916"/>
+            <td id="y" value="0.02437439"/>
+            <td id="z0" value="0.01302845"/>
+            <td id="w0" value="0.920"/>
+            <td id="z1" value="0.00000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.00000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="0.30626916"/>
+            <td id="y" value="0.18297043"/>
+            <td id="z0" value="0.01310460"/>
+            <td id="w0" value="0.944"/>
+            <td id="z1" value="0.00000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.00000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="0.30626916"/>
+            <td id="y" value="0.34140396"/>
+            <td id="z0" value="0.01310631"/>
+            <td id="w0" value="0.947"/>
+            <td id="z1" value="0.00000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.00000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="0.30626916"/>
+            <td id="y" value="0.49983750"/>
+            <td id="z0" value="0.01312492"/>
+            <td id="w0" value="0.952"/>
+            <td id="z1" value="0.00000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.00000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="0.30626916"/>
+            <td id="y" value="0.65843354"/>
+            <td id="z0" value="0.01314627"/>
+            <td id="w0" value="0.955"/>
+            <td id="z1" value="0.00000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.00000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="0.30626916"/>
+            <td id="y" value="0.81702957"/>
+            <td id="z0" value="0.01316008"/>
+            <td id="w0" value="0.955"/>
+            <td id="z1" value="0.00000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.00000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="0.30626916"/>
+            <td id="y" value="0.97546311"/>
+            <td id="z0" value="0.01313189"/>
+            <td id="w0" value="0.951"/>
+            <td id="z1" value="0.00000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.00000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="0.40310815"/>
+            <td id="y" value="0.02437439"/>
+            <td id="z0" value="0.01307047"/>
+            <td id="w0" value="0.936"/>
+            <td id="z1" value="0.00000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.00000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="0.40310815"/>
+            <td id="y" value="0.18297043"/>
+            <td id="z0" value="0.01312014"/>
+            <td id="w0" value="0.951"/>
+            <td id="z1" value="0.00000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.00000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="0.40310815"/>
+            <td id="y" value="0.34140396"/>
+            <td id="z0" value="0.01314160"/>
+            <td id="w0" value="0.954"/>
+            <td id="z1" value="0.00000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.00000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="0.40310815"/>
+            <td id="y" value="0.49983750"/>
+            <td id="z0" value="0.01314950"/>
+            <td id="w0" value="0.955"/>
+            <td id="z1" value="0.00000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.00000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="0.40310815"/>
+            <td id="y" value="0.65843354"/>
+            <td id="z0" value="0.01317447"/>
+            <td id="w0" value="0.956"/>
+            <td id="z1" value="0.00000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.00000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="0.40310815"/>
+            <td id="y" value="0.81702957"/>
+            <td id="z0" value="0.01317504"/>
+            <td id="w0" value="0.955"/>
+            <td id="z1" value="0.00000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.00000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="0.40310815"/>
+            <td id="y" value="0.97546311"/>
+            <td id="z0" value="0.01315306"/>
+            <td id="w0" value="0.954"/>
+            <td id="z1" value="0.00000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.00000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="0.49994714"/>
+            <td id="y" value="0.02437439"/>
+            <td id="z0" value="0.01311468"/>
+            <td id="w0" value="0.948"/>
+            <td id="z1" value="0.00000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.00000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="0.49994714"/>
+            <td id="y" value="0.18297043"/>
+            <td id="z0" value="0.01317165"/>
+            <td id="w0" value="0.955"/>
+            <td id="z1" value="0.00000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.00000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="0.49994714"/>
+            <td id="y" value="0.34140396"/>
+            <td id="z0" value="0.01320374"/>
+            <td id="w0" value="0.953"/>
+            <td id="z1" value="0.00000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.00000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="0.49994714"/>
+            <td id="y" value="0.65843354"/>
+            <td id="z0" value="0.01317921"/>
+            <td id="w0" value="0.957"/>
+            <td id="z1" value="0.00000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.00000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="0.49994714"/>
+            <td id="y" value="0.81702957"/>
+            <td id="z0" value="0.01319118"/>
+            <td id="w0" value="0.956"/>
+            <td id="z1" value="0.00000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.00000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="0.49994714"/>
+            <td id="y" value="0.97546311"/>
+            <td id="z0" value="0.01319400"/>
+            <td id="w0" value="0.954"/>
+            <td id="z1" value="0.00000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.00000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="0.59678613"/>
+            <td id="y" value="0.02437439"/>
+            <td id="z0" value="0.01317683"/>
+            <td id="w0" value="0.956"/>
+            <td id="z1" value="0.00000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.00000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="0.59678613"/>
+            <td id="y" value="0.18297043"/>
+            <td id="z0" value="0.01320350"/>
+            <td id="w0" value="0.955"/>
+            <td id="z1" value="0.00000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.00000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="0.59678613"/>
+            <td id="y" value="0.34140396"/>
+            <td id="z0" value="0.01320767"/>
+            <td id="w0" value="0.955"/>
+            <td id="z1" value="0.00000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.00000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="0.59678613"/>
+            <td id="y" value="0.49983750"/>
+            <td id="z0" value="0.01320582"/>
+            <td id="w0" value="0.955"/>
+            <td id="z1" value="0.00000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.00000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="0.59678613"/>
+            <td id="y" value="0.65843354"/>
+            <td id="z0" value="0.01320145"/>
+            <td id="w0" value="0.956"/>
+            <td id="z1" value="0.00000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.00000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="0.59678613"/>
+            <td id="y" value="0.81702957"/>
+            <td id="z0" value="0.01320058"/>
+            <td id="w0" value="0.955"/>
+            <td id="z1" value="0.00000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.00000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="0.59678613"/>
+            <td id="y" value="0.97546311"/>
+            <td id="z0" value="0.01318562"/>
+            <td id="w0" value="0.956"/>
+            <td id="z1" value="0.00000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.00000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="0.69362512"/>
+            <td id="y" value="0.02437439"/>
+            <td id="z0" value="0.01324650"/>
+            <td id="w0" value="0.947"/>
+            <td id="z1" value="0.00000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.00000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="0.69362512"/>
+            <td id="y" value="0.18297043"/>
+            <td id="z0" value="0.01324326"/>
+            <td id="w0" value="0.949"/>
+            <td id="z1" value="0.00000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.00000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="0.69362512"/>
+            <td id="y" value="0.34140396"/>
+            <td id="z0" value="0.01323381"/>
+            <td id="w0" value="0.951"/>
+            <td id="z1" value="0.00000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.00000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="0.69362512"/>
+            <td id="y" value="0.49983750"/>
+            <td id="z0" value="0.01322851"/>
+            <td id="w0" value="0.952"/>
+            <td id="z1" value="0.00000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.00000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="0.69362512"/>
+            <td id="y" value="0.65843354"/>
+            <td id="z0" value="0.01322678"/>
+            <td id="w0" value="0.952"/>
+            <td id="z1" value="0.00000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.00000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="0.69362512"/>
+            <td id="y" value="0.81702957"/>
+            <td id="z0" value="0.01320978"/>
+            <td id="w0" value="0.954"/>
+            <td id="z1" value="0.00000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.00000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="0.69362512"/>
+            <td id="y" value="0.97546311"/>
+            <td id="z0" value="0.01319871"/>
+            <td id="w0" value="0.954"/>
+            <td id="z1" value="0.00000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.00000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="0.79035839"/>
+            <td id="y" value="0.02437439"/>
+            <td id="z0" value="0.01329706"/>
+            <td id="w0" value="0.932"/>
+            <td id="z1" value="0.00000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.00000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="0.79035839"/>
+            <td id="y" value="0.18297043"/>
+            <td id="z0" value="0.01326202"/>
+            <td id="w0" value="0.944"/>
+            <td id="z1" value="0.00000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.00000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="0.79035839"/>
+            <td id="y" value="0.34140396"/>
+            <td id="z0" value="0.01324125"/>
+            <td id="w0" value="0.949"/>
+            <td id="z1" value="0.00000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.00000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="0.79035839"/>
+            <td id="y" value="0.49983750"/>
+            <td id="z0" value="0.01322997"/>
+            <td id="w0" value="0.951"/>
+            <td id="z1" value="0.00000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.00000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="0.79035839"/>
+            <td id="y" value="0.65843354"/>
+            <td id="z0" value="0.01322613"/>
+            <td id="w0" value="0.952"/>
+            <td id="z1" value="0.00000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.00000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="0.79035839"/>
+            <td id="y" value="0.81702957"/>
+            <td id="z0" value="0.01321219"/>
+            <td id="w0" value="0.954"/>
+            <td id="z1" value="0.00000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.00000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="0.79035839"/>
+            <td id="y" value="0.97546311"/>
+            <td id="z0" value="0.01320215"/>
+            <td id="w0" value="0.954"/>
+            <td id="z1" value="0.00000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.00000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="0.88719738"/>
+            <td id="y" value="0.02437439"/>
+            <td id="z0" value="0.01330166"/>
+            <td id="w0" value="0.931"/>
+            <td id="z1" value="0.00000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.00000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="0.88719738"/>
+            <td id="y" value="0.18297043"/>
+            <td id="z0" value="0.01326365"/>
+            <td id="w0" value="0.943"/>
+            <td id="z1" value="0.00000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.00000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="0.88719738"/>
+            <td id="y" value="0.34140396"/>
+            <td id="z0" value="0.01322648"/>
+            <td id="w0" value="0.951"/>
+            <td id="z1" value="0.00000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.00000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="0.88719738"/>
+            <td id="y" value="0.49983750"/>
+            <td id="z0" value="0.01321603"/>
+            <td id="w0" value="0.953"/>
+            <td id="z1" value="0.00000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.00000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="0.88719738"/>
+            <td id="y" value="0.65843354"/>
+            <td id="z0" value="0.01322308"/>
+            <td id="w0" value="0.952"/>
+            <td id="z1" value="0.00000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.00000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="0.88719738"/>
+            <td id="y" value="0.81702957"/>
+            <td id="z0" value="0.01322014"/>
+            <td id="w0" value="0.952"/>
+            <td id="z1" value="0.00000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.00000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="0.88719738"/>
+            <td id="y" value="0.97546311"/>
+            <td id="z0" value="0.01321999"/>
+            <td id="w0" value="0.952"/>
+            <td id="z1" value="0.00000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.00000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="0.98403637"/>
+            <td id="y" value="0.02437439"/>
+            <td id="z0" value="0.01322300"/>
+            <td id="w0" value="0.951"/>
+            <td id="z1" value="0.00000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.00000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="0.98403637"/>
+            <td id="y" value="0.34140396"/>
+            <td id="z0" value="0.01324299"/>
+            <td id="w0" value="0.948"/>
+            <td id="z1" value="0.00000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.00000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="0.98403637"/>
+            <td id="y" value="0.49983750"/>
+            <td id="z0" value="0.01321840"/>
+            <td id="w0" value="0.952"/>
+            <td id="z1" value="0.00000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.00000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="0.98403637"/>
+            <td id="y" value="0.65843354"/>
+            <td id="z0" value="0.01321286"/>
+            <td id="w0" value="0.953"/>
+            <td id="z1" value="0.00000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.00000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="0.98403637"/>
+            <td id="y" value="0.81702957"/>
+            <td id="z0" value="0.01321809"/>
+            <td id="w0" value="0.952"/>
+            <td id="z1" value="0.00000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.00000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="0.98403637"/>
+            <td id="y" value="0.97546311"/>
+            <td id="z0" value="0.01323624"/>
+            <td id="w0" value="0.949"/>
+            <td id="z1" value="0.00000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.00000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+      </table>
+      <parameter id="numberOfChannels" value="1"/>
+      <parameter id="derivativeOrder" value="2"/>
+      <parameter id="smoothing" value="0.250"/>
+      <parameter id="ignoreWeights" value="false"/>
+      <parameter id="modelId"></parameter>
+      <parameter id="modelWidth" value="0"/>
+      <parameter id="modelHeight" value="0"/>
+      <parameter id="downsample" value="2"/>
+      <parameter id="modelSampleFormat" value="f32"/>
+      <parameter id="targetCorrection" value="Divide"/>
+      <parameter id="normalize" value="false"/>
+      <parameter id="discardModel" value="false"/>
+      <parameter id="replaceTarget" value="true"/>
+      <parameter id="correctedImageId"></parameter>
+      <parameter id="correctedImageSampleFormat" value="SameAsTarget"/>
+      <table id="samples" rows="75">
+         <tr>
+            <td id="x" value="150"/>
+            <td id="y" value="150"/>
+            <td id="radius" value="150"/>
+            <td id="symmetries" value="0"/>
+            <td id="axialCount" value="6"/>
+            <td id="isFixed" value="0"/>
+            <td id="z0" value="0.012978"/>
+            <td id="w0" value="0.897"/>
+            <td id="z1" value="0.000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="150"/>
+            <td id="y" value="1126"/>
+            <td id="radius" value="150"/>
+            <td id="symmetries" value="0"/>
+            <td id="axialCount" value="6"/>
+            <td id="isFixed" value="0"/>
+            <td id="z0" value="0.012997"/>
+            <td id="w0" value="0.906"/>
+            <td id="z1" value="0.000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="150"/>
+            <td id="y" value="2101"/>
+            <td id="radius" value="150"/>
+            <td id="symmetries" value="0"/>
+            <td id="axialCount" value="6"/>
+            <td id="isFixed" value="0"/>
+            <td id="z0" value="0.013012"/>
+            <td id="w0" value="0.912"/>
+            <td id="z1" value="0.000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="150"/>
+            <td id="y" value="3076"/>
+            <td id="radius" value="150"/>
+            <td id="symmetries" value="0"/>
+            <td id="axialCount" value="6"/>
+            <td id="isFixed" value="0"/>
+            <td id="z0" value="0.013039"/>
+            <td id="w0" value="0.923"/>
+            <td id="z1" value="0.000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="150"/>
+            <td id="y" value="4052"/>
+            <td id="radius" value="150"/>
+            <td id="symmetries" value="0"/>
+            <td id="axialCount" value="6"/>
+            <td id="isFixed" value="0"/>
+            <td id="z0" value="0.013065"/>
+            <td id="w0" value="0.933"/>
+            <td id="z1" value="0.000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="150"/>
+            <td id="y" value="5028"/>
+            <td id="radius" value="150"/>
+            <td id="symmetries" value="0"/>
+            <td id="axialCount" value="6"/>
+            <td id="isFixed" value="0"/>
+            <td id="z0" value="0.013065"/>
+            <td id="w0" value="0.933"/>
+            <td id="z1" value="0.000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="150"/>
+            <td id="y" value="6003"/>
+            <td id="radius" value="150"/>
+            <td id="symmetries" value="0"/>
+            <td id="axialCount" value="6"/>
+            <td id="isFixed" value="0"/>
+            <td id="z0" value="0.013076"/>
+            <td id="w0" value="0.937"/>
+            <td id="z1" value="0.000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="1066"/>
+            <td id="y" value="150"/>
+            <td id="radius" value="150"/>
+            <td id="symmetries" value="0"/>
+            <td id="axialCount" value="6"/>
+            <td id="isFixed" value="0"/>
+            <td id="z0" value="0.012998"/>
+            <td id="w0" value="0.906"/>
+            <td id="z1" value="0.000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="1066"/>
+            <td id="y" value="1126"/>
+            <td id="radius" value="150"/>
+            <td id="symmetries" value="0"/>
+            <td id="axialCount" value="6"/>
+            <td id="isFixed" value="0"/>
+            <td id="z0" value="0.013052"/>
+            <td id="w0" value="0.927"/>
+            <td id="z1" value="0.000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="1066"/>
+            <td id="y" value="2101"/>
+            <td id="radius" value="150"/>
+            <td id="symmetries" value="0"/>
+            <td id="axialCount" value="6"/>
+            <td id="isFixed" value="0"/>
+            <td id="z0" value="0.013054"/>
+            <td id="w0" value="0.930"/>
+            <td id="z1" value="0.000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="1066"/>
+            <td id="y" value="3076"/>
+            <td id="radius" value="150"/>
+            <td id="symmetries" value="0"/>
+            <td id="axialCount" value="6"/>
+            <td id="isFixed" value="0"/>
+            <td id="z0" value="0.013106"/>
+            <td id="w0" value="0.943"/>
+            <td id="z1" value="0.000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="1066"/>
+            <td id="y" value="4052"/>
+            <td id="radius" value="150"/>
+            <td id="symmetries" value="0"/>
+            <td id="axialCount" value="6"/>
+            <td id="isFixed" value="0"/>
+            <td id="z0" value="0.013094"/>
+            <td id="w0" value="0.942"/>
+            <td id="z1" value="0.000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="1066"/>
+            <td id="y" value="5028"/>
+            <td id="radius" value="150"/>
+            <td id="symmetries" value="0"/>
+            <td id="axialCount" value="6"/>
+            <td id="isFixed" value="0"/>
+            <td id="z0" value="0.013113"/>
+            <td id="w0" value="0.946"/>
+            <td id="z1" value="0.000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="1066"/>
+            <td id="y" value="6003"/>
+            <td id="radius" value="150"/>
+            <td id="symmetries" value="0"/>
+            <td id="axialCount" value="6"/>
+            <td id="isFixed" value="0"/>
+            <td id="z0" value="0.013113"/>
+            <td id="w0" value="0.946"/>
+            <td id="z1" value="0.000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="1982"/>
+            <td id="y" value="150"/>
+            <td id="radius" value="150"/>
+            <td id="symmetries" value="0"/>
+            <td id="axialCount" value="6"/>
+            <td id="isFixed" value="0"/>
+            <td id="z0" value="0.013006"/>
+            <td id="w0" value="0.910"/>
+            <td id="z1" value="0.000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="1982"/>
+            <td id="y" value="1126"/>
+            <td id="radius" value="150"/>
+            <td id="symmetries" value="0"/>
+            <td id="axialCount" value="6"/>
+            <td id="isFixed" value="0"/>
+            <td id="z0" value="0.013057"/>
+            <td id="w0" value="0.930"/>
+            <td id="z1" value="0.000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="1982"/>
+            <td id="y" value="2101"/>
+            <td id="radius" value="150"/>
+            <td id="symmetries" value="0"/>
+            <td id="axialCount" value="6"/>
+            <td id="isFixed" value="0"/>
+            <td id="z0" value="0.013086"/>
+            <td id="w0" value="0.940"/>
+            <td id="z1" value="0.000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="1982"/>
+            <td id="y" value="3076"/>
+            <td id="radius" value="150"/>
+            <td id="symmetries" value="0"/>
+            <td id="axialCount" value="6"/>
+            <td id="isFixed" value="0"/>
+            <td id="z0" value="0.013105"/>
+            <td id="w0" value="0.946"/>
+            <td id="z1" value="0.000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="1982"/>
+            <td id="y" value="4052"/>
+            <td id="radius" value="150"/>
+            <td id="symmetries" value="0"/>
+            <td id="axialCount" value="6"/>
+            <td id="isFixed" value="0"/>
+            <td id="z0" value="0.013132"/>
+            <td id="w0" value="0.952"/>
+            <td id="z1" value="0.000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="1982"/>
+            <td id="y" value="5028"/>
+            <td id="radius" value="150"/>
+            <td id="symmetries" value="0"/>
+            <td id="axialCount" value="6"/>
+            <td id="isFixed" value="0"/>
+            <td id="z0" value="0.013149"/>
+            <td id="w0" value="0.953"/>
+            <td id="z1" value="0.000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="1982"/>
+            <td id="y" value="6003"/>
+            <td id="radius" value="150"/>
+            <td id="symmetries" value="0"/>
+            <td id="axialCount" value="6"/>
+            <td id="isFixed" value="0"/>
+            <td id="z0" value="0.013137"/>
+            <td id="w0" value="0.950"/>
+            <td id="z1" value="0.000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="2897"/>
+            <td id="y" value="150"/>
+            <td id="radius" value="150"/>
+            <td id="symmetries" value="0"/>
+            <td id="axialCount" value="6"/>
+            <td id="isFixed" value="0"/>
+            <td id="z0" value="0.013028"/>
+            <td id="w0" value="0.920"/>
+            <td id="z1" value="0.000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="2897"/>
+            <td id="y" value="1126"/>
+            <td id="radius" value="150"/>
+            <td id="symmetries" value="0"/>
+            <td id="axialCount" value="6"/>
+            <td id="isFixed" value="0"/>
+            <td id="z0" value="0.013105"/>
+            <td id="w0" value="0.944"/>
+            <td id="z1" value="0.000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="2897"/>
+            <td id="y" value="2101"/>
+            <td id="radius" value="150"/>
+            <td id="symmetries" value="0"/>
+            <td id="axialCount" value="6"/>
+            <td id="isFixed" value="0"/>
+            <td id="z0" value="0.013106"/>
+            <td id="w0" value="0.947"/>
+            <td id="z1" value="0.000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="2897"/>
+            <td id="y" value="3076"/>
+            <td id="radius" value="150"/>
+            <td id="symmetries" value="0"/>
+            <td id="axialCount" value="6"/>
+            <td id="isFixed" value="0"/>
+            <td id="z0" value="0.013125"/>
+            <td id="w0" value="0.952"/>
+            <td id="z1" value="0.000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="2897"/>
+            <td id="y" value="4052"/>
+            <td id="radius" value="150"/>
+            <td id="symmetries" value="0"/>
+            <td id="axialCount" value="6"/>
+            <td id="isFixed" value="0"/>
+            <td id="z0" value="0.013146"/>
+            <td id="w0" value="0.955"/>
+            <td id="z1" value="0.000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="2897"/>
+            <td id="y" value="5028"/>
+            <td id="radius" value="150"/>
+            <td id="symmetries" value="0"/>
+            <td id="axialCount" value="6"/>
+            <td id="isFixed" value="0"/>
+            <td id="z0" value="0.013160"/>
+            <td id="w0" value="0.955"/>
+            <td id="z1" value="0.000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="2897"/>
+            <td id="y" value="6003"/>
+            <td id="radius" value="150"/>
+            <td id="symmetries" value="0"/>
+            <td id="axialCount" value="6"/>
+            <td id="isFixed" value="0"/>
+            <td id="z0" value="0.013132"/>
+            <td id="w0" value="0.951"/>
+            <td id="z1" value="0.000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="3813"/>
+            <td id="y" value="150"/>
+            <td id="radius" value="150"/>
+            <td id="symmetries" value="0"/>
+            <td id="axialCount" value="6"/>
+            <td id="isFixed" value="0"/>
+            <td id="z0" value="0.013070"/>
+            <td id="w0" value="0.936"/>
+            <td id="z1" value="0.000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="3813"/>
+            <td id="y" value="1126"/>
+            <td id="radius" value="150"/>
+            <td id="symmetries" value="0"/>
+            <td id="axialCount" value="6"/>
+            <td id="isFixed" value="0"/>
+            <td id="z0" value="0.013120"/>
+            <td id="w0" value="0.951"/>
+            <td id="z1" value="0.000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="3813"/>
+            <td id="y" value="2101"/>
+            <td id="radius" value="150"/>
+            <td id="symmetries" value="0"/>
+            <td id="axialCount" value="6"/>
+            <td id="isFixed" value="0"/>
+            <td id="z0" value="0.013142"/>
+            <td id="w0" value="0.954"/>
+            <td id="z1" value="0.000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="3813"/>
+            <td id="y" value="3076"/>
+            <td id="radius" value="150"/>
+            <td id="symmetries" value="0"/>
+            <td id="axialCount" value="6"/>
+            <td id="isFixed" value="0"/>
+            <td id="z0" value="0.013149"/>
+            <td id="w0" value="0.955"/>
+            <td id="z1" value="0.000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="3813"/>
+            <td id="y" value="4052"/>
+            <td id="radius" value="150"/>
+            <td id="symmetries" value="0"/>
+            <td id="axialCount" value="6"/>
+            <td id="isFixed" value="0"/>
+            <td id="z0" value="0.013174"/>
+            <td id="w0" value="0.956"/>
+            <td id="z1" value="0.000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="3813"/>
+            <td id="y" value="5028"/>
+            <td id="radius" value="150"/>
+            <td id="symmetries" value="0"/>
+            <td id="axialCount" value="6"/>
+            <td id="isFixed" value="0"/>
+            <td id="z0" value="0.013175"/>
+            <td id="w0" value="0.955"/>
+            <td id="z1" value="0.000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="3813"/>
+            <td id="y" value="6003"/>
+            <td id="radius" value="150"/>
+            <td id="symmetries" value="0"/>
+            <td id="axialCount" value="6"/>
+            <td id="isFixed" value="0"/>
+            <td id="z0" value="0.013153"/>
+            <td id="w0" value="0.954"/>
+            <td id="z1" value="0.000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="4729"/>
+            <td id="y" value="150"/>
+            <td id="radius" value="150"/>
+            <td id="symmetries" value="0"/>
+            <td id="axialCount" value="6"/>
+            <td id="isFixed" value="0"/>
+            <td id="z0" value="0.013115"/>
+            <td id="w0" value="0.948"/>
+            <td id="z1" value="0.000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="4729"/>
+            <td id="y" value="1126"/>
+            <td id="radius" value="150"/>
+            <td id="symmetries" value="0"/>
+            <td id="axialCount" value="6"/>
+            <td id="isFixed" value="0"/>
+            <td id="z0" value="0.013172"/>
+            <td id="w0" value="0.955"/>
+            <td id="z1" value="0.000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="4729"/>
+            <td id="y" value="2101"/>
+            <td id="radius" value="150"/>
+            <td id="symmetries" value="0"/>
+            <td id="axialCount" value="6"/>
+            <td id="isFixed" value="0"/>
+            <td id="z0" value="0.013204"/>
+            <td id="w0" value="0.953"/>
+            <td id="z1" value="0.000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="4729"/>
+            <td id="y" value="4052"/>
+            <td id="radius" value="150"/>
+            <td id="symmetries" value="0"/>
+            <td id="axialCount" value="6"/>
+            <td id="isFixed" value="0"/>
+            <td id="z0" value="0.013179"/>
+            <td id="w0" value="0.957"/>
+            <td id="z1" value="0.000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="4729"/>
+            <td id="y" value="5028"/>
+            <td id="radius" value="150"/>
+            <td id="symmetries" value="0"/>
+            <td id="axialCount" value="6"/>
+            <td id="isFixed" value="0"/>
+            <td id="z0" value="0.013191"/>
+            <td id="w0" value="0.956"/>
+            <td id="z1" value="0.000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="4729"/>
+            <td id="y" value="6003"/>
+            <td id="radius" value="150"/>
+            <td id="symmetries" value="0"/>
+            <td id="axialCount" value="6"/>
+            <td id="isFixed" value="0"/>
+            <td id="z0" value="0.013194"/>
+            <td id="w0" value="0.954"/>
+            <td id="z1" value="0.000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="5645"/>
+            <td id="y" value="150"/>
+            <td id="radius" value="150"/>
+            <td id="symmetries" value="0"/>
+            <td id="axialCount" value="6"/>
+            <td id="isFixed" value="0"/>
+            <td id="z0" value="0.013177"/>
+            <td id="w0" value="0.956"/>
+            <td id="z1" value="0.000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="5645"/>
+            <td id="y" value="1126"/>
+            <td id="radius" value="150"/>
+            <td id="symmetries" value="0"/>
+            <td id="axialCount" value="6"/>
+            <td id="isFixed" value="0"/>
+            <td id="z0" value="0.013203"/>
+            <td id="w0" value="0.955"/>
+            <td id="z1" value="0.000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="5645"/>
+            <td id="y" value="2101"/>
+            <td id="radius" value="150"/>
+            <td id="symmetries" value="0"/>
+            <td id="axialCount" value="6"/>
+            <td id="isFixed" value="0"/>
+            <td id="z0" value="0.013208"/>
+            <td id="w0" value="0.955"/>
+            <td id="z1" value="0.000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="5645"/>
+            <td id="y" value="3076"/>
+            <td id="radius" value="150"/>
+            <td id="symmetries" value="0"/>
+            <td id="axialCount" value="6"/>
+            <td id="isFixed" value="0"/>
+            <td id="z0" value="0.013206"/>
+            <td id="w0" value="0.955"/>
+            <td id="z1" value="0.000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="5645"/>
+            <td id="y" value="4052"/>
+            <td id="radius" value="150"/>
+            <td id="symmetries" value="0"/>
+            <td id="axialCount" value="6"/>
+            <td id="isFixed" value="0"/>
+            <td id="z0" value="0.013201"/>
+            <td id="w0" value="0.956"/>
+            <td id="z1" value="0.000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="5645"/>
+            <td id="y" value="5028"/>
+            <td id="radius" value="150"/>
+            <td id="symmetries" value="0"/>
+            <td id="axialCount" value="6"/>
+            <td id="isFixed" value="0"/>
+            <td id="z0" value="0.013201"/>
+            <td id="w0" value="0.955"/>
+            <td id="z1" value="0.000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="5645"/>
+            <td id="y" value="6003"/>
+            <td id="radius" value="150"/>
+            <td id="symmetries" value="0"/>
+            <td id="axialCount" value="6"/>
+            <td id="isFixed" value="0"/>
+            <td id="z0" value="0.013186"/>
+            <td id="w0" value="0.956"/>
+            <td id="z1" value="0.000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="6561"/>
+            <td id="y" value="150"/>
+            <td id="radius" value="150"/>
+            <td id="symmetries" value="0"/>
+            <td id="axialCount" value="6"/>
+            <td id="isFixed" value="0"/>
+            <td id="z0" value="0.013246"/>
+            <td id="w0" value="0.947"/>
+            <td id="z1" value="0.000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="6561"/>
+            <td id="y" value="1126"/>
+            <td id="radius" value="150"/>
+            <td id="symmetries" value="0"/>
+            <td id="axialCount" value="6"/>
+            <td id="isFixed" value="0"/>
+            <td id="z0" value="0.013243"/>
+            <td id="w0" value="0.949"/>
+            <td id="z1" value="0.000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="6561"/>
+            <td id="y" value="2101"/>
+            <td id="radius" value="150"/>
+            <td id="symmetries" value="0"/>
+            <td id="axialCount" value="6"/>
+            <td id="isFixed" value="0"/>
+            <td id="z0" value="0.013234"/>
+            <td id="w0" value="0.951"/>
+            <td id="z1" value="0.000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="6561"/>
+            <td id="y" value="3076"/>
+            <td id="radius" value="150"/>
+            <td id="symmetries" value="0"/>
+            <td id="axialCount" value="6"/>
+            <td id="isFixed" value="0"/>
+            <td id="z0" value="0.013229"/>
+            <td id="w0" value="0.952"/>
+            <td id="z1" value="0.000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="6561"/>
+            <td id="y" value="4052"/>
+            <td id="radius" value="150"/>
+            <td id="symmetries" value="0"/>
+            <td id="axialCount" value="6"/>
+            <td id="isFixed" value="0"/>
+            <td id="z0" value="0.013227"/>
+            <td id="w0" value="0.952"/>
+            <td id="z1" value="0.000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="6561"/>
+            <td id="y" value="5028"/>
+            <td id="radius" value="150"/>
+            <td id="symmetries" value="0"/>
+            <td id="axialCount" value="6"/>
+            <td id="isFixed" value="0"/>
+            <td id="z0" value="0.013210"/>
+            <td id="w0" value="0.954"/>
+            <td id="z1" value="0.000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="6561"/>
+            <td id="y" value="6003"/>
+            <td id="radius" value="150"/>
+            <td id="symmetries" value="0"/>
+            <td id="axialCount" value="6"/>
+            <td id="isFixed" value="0"/>
+            <td id="z0" value="0.013199"/>
+            <td id="w0" value="0.954"/>
+            <td id="z1" value="0.000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="7476"/>
+            <td id="y" value="150"/>
+            <td id="radius" value="150"/>
+            <td id="symmetries" value="0"/>
+            <td id="axialCount" value="6"/>
+            <td id="isFixed" value="0"/>
+            <td id="z0" value="0.013297"/>
+            <td id="w0" value="0.932"/>
+            <td id="z1" value="0.000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="7476"/>
+            <td id="y" value="1126"/>
+            <td id="radius" value="150"/>
+            <td id="symmetries" value="0"/>
+            <td id="axialCount" value="6"/>
+            <td id="isFixed" value="0"/>
+            <td id="z0" value="0.013262"/>
+            <td id="w0" value="0.944"/>
+            <td id="z1" value="0.000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="7476"/>
+            <td id="y" value="2101"/>
+            <td id="radius" value="150"/>
+            <td id="symmetries" value="0"/>
+            <td id="axialCount" value="6"/>
+            <td id="isFixed" value="0"/>
+            <td id="z0" value="0.013241"/>
+            <td id="w0" value="0.949"/>
+            <td id="z1" value="0.000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="7476"/>
+            <td id="y" value="3076"/>
+            <td id="radius" value="150"/>
+            <td id="symmetries" value="0"/>
+            <td id="axialCount" value="6"/>
+            <td id="isFixed" value="0"/>
+            <td id="z0" value="0.013230"/>
+            <td id="w0" value="0.951"/>
+            <td id="z1" value="0.000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="7476"/>
+            <td id="y" value="4052"/>
+            <td id="radius" value="150"/>
+            <td id="symmetries" value="0"/>
+            <td id="axialCount" value="6"/>
+            <td id="isFixed" value="0"/>
+            <td id="z0" value="0.013226"/>
+            <td id="w0" value="0.952"/>
+            <td id="z1" value="0.000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="7476"/>
+            <td id="y" value="5028"/>
+            <td id="radius" value="150"/>
+            <td id="symmetries" value="0"/>
+            <td id="axialCount" value="6"/>
+            <td id="isFixed" value="0"/>
+            <td id="z0" value="0.013212"/>
+            <td id="w0" value="0.954"/>
+            <td id="z1" value="0.000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="7476"/>
+            <td id="y" value="6003"/>
+            <td id="radius" value="150"/>
+            <td id="symmetries" value="0"/>
+            <td id="axialCount" value="6"/>
+            <td id="isFixed" value="0"/>
+            <td id="z0" value="0.013202"/>
+            <td id="w0" value="0.954"/>
+            <td id="z1" value="0.000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="8392"/>
+            <td id="y" value="150"/>
+            <td id="radius" value="150"/>
+            <td id="symmetries" value="0"/>
+            <td id="axialCount" value="6"/>
+            <td id="isFixed" value="0"/>
+            <td id="z0" value="0.013302"/>
+            <td id="w0" value="0.931"/>
+            <td id="z1" value="0.000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="8392"/>
+            <td id="y" value="1126"/>
+            <td id="radius" value="150"/>
+            <td id="symmetries" value="0"/>
+            <td id="axialCount" value="6"/>
+            <td id="isFixed" value="0"/>
+            <td id="z0" value="0.013264"/>
+            <td id="w0" value="0.943"/>
+            <td id="z1" value="0.000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="8392"/>
+            <td id="y" value="2101"/>
+            <td id="radius" value="150"/>
+            <td id="symmetries" value="0"/>
+            <td id="axialCount" value="6"/>
+            <td id="isFixed" value="0"/>
+            <td id="z0" value="0.013226"/>
+            <td id="w0" value="0.951"/>
+            <td id="z1" value="0.000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="8392"/>
+            <td id="y" value="3076"/>
+            <td id="radius" value="150"/>
+            <td id="symmetries" value="0"/>
+            <td id="axialCount" value="6"/>
+            <td id="isFixed" value="0"/>
+            <td id="z0" value="0.013216"/>
+            <td id="w0" value="0.953"/>
+            <td id="z1" value="0.000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="8392"/>
+            <td id="y" value="4052"/>
+            <td id="radius" value="150"/>
+            <td id="symmetries" value="0"/>
+            <td id="axialCount" value="6"/>
+            <td id="isFixed" value="0"/>
+            <td id="z0" value="0.013223"/>
+            <td id="w0" value="0.952"/>
+            <td id="z1" value="0.000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="8392"/>
+            <td id="y" value="5028"/>
+            <td id="radius" value="150"/>
+            <td id="symmetries" value="0"/>
+            <td id="axialCount" value="6"/>
+            <td id="isFixed" value="0"/>
+            <td id="z0" value="0.013220"/>
+            <td id="w0" value="0.952"/>
+            <td id="z1" value="0.000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="8392"/>
+            <td id="y" value="6003"/>
+            <td id="radius" value="150"/>
+            <td id="symmetries" value="0"/>
+            <td id="axialCount" value="6"/>
+            <td id="isFixed" value="0"/>
+            <td id="z0" value="0.013220"/>
+            <td id="w0" value="0.952"/>
+            <td id="z1" value="0.000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="9308"/>
+            <td id="y" value="150"/>
+            <td id="radius" value="150"/>
+            <td id="symmetries" value="0"/>
+            <td id="axialCount" value="6"/>
+            <td id="isFixed" value="0"/>
+            <td id="z0" value="0.013223"/>
+            <td id="w0" value="0.951"/>
+            <td id="z1" value="0.000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="9308"/>
+            <td id="y" value="2101"/>
+            <td id="radius" value="150"/>
+            <td id="symmetries" value="0"/>
+            <td id="axialCount" value="6"/>
+            <td id="isFixed" value="0"/>
+            <td id="z0" value="0.013243"/>
+            <td id="w0" value="0.948"/>
+            <td id="z1" value="0.000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="9308"/>
+            <td id="y" value="3076"/>
+            <td id="radius" value="150"/>
+            <td id="symmetries" value="0"/>
+            <td id="axialCount" value="6"/>
+            <td id="isFixed" value="0"/>
+            <td id="z0" value="0.013218"/>
+            <td id="w0" value="0.952"/>
+            <td id="z1" value="0.000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="9308"/>
+            <td id="y" value="4052"/>
+            <td id="radius" value="150"/>
+            <td id="symmetries" value="0"/>
+            <td id="axialCount" value="6"/>
+            <td id="isFixed" value="0"/>
+            <td id="z0" value="0.013213"/>
+            <td id="w0" value="0.953"/>
+            <td id="z1" value="0.000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="9308"/>
+            <td id="y" value="5028"/>
+            <td id="radius" value="150"/>
+            <td id="symmetries" value="0"/>
+            <td id="axialCount" value="6"/>
+            <td id="isFixed" value="0"/>
+            <td id="z0" value="0.013218"/>
+            <td id="w0" value="0.952"/>
+            <td id="z1" value="0.000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+         <tr>
+            <td id="x" value="9308"/>
+            <td id="y" value="6003"/>
+            <td id="radius" value="150"/>
+            <td id="symmetries" value="0"/>
+            <td id="axialCount" value="6"/>
+            <td id="isFixed" value="0"/>
+            <td id="z0" value="0.013236"/>
+            <td id="w0" value="0.949"/>
+            <td id="z1" value="0.000000"/>
+            <td id="w1" value="0.000"/>
+            <td id="z2" value="0.000000"/>
+            <td id="w2" value="0.000"/>
+         </tr>
+      </table>
+      <parameter id="imageWidth" value="9459"/>
+      <parameter id="imageHeight" value="6154"/>
+      <parameter id="symmetryCenterX" value="0.500000"/>
+      <parameter id="symmetryCenterY" value="0.500000"/>
+      <parameter id="tolerance" value="2.000"/>
+      <parameter id="shadowsRelaxation" value="6.000"/>
+      <parameter id="minSampleFraction" value="0.050"/>
+      <parameter id="defaultSampleRadius" value="150"/>
+      <parameter id="samplesPerRow" value="10"/>
+      <parameter id="minWeight" value="0.750"/>
+      <parameter id="sampleColor" value="4292927712"/>
+      <parameter id="selectedSampleColor" value="4278255360"/>
+      <parameter id="selectedSampleFillColor" value="0"/>
+      <parameter id="badSampleColor" value="4294901760"/>
+      <parameter id="badSampleFillColor" value="2164195328"/>
+      <parameter id="axisColor" value="4292927712"/>
+   </instance>
+   <instance class="NoOperation" version="256" id="DoOneBE_DBE_DivdeThenSubtract_instance"/>
+   <instance class="CosmeticCorrection" version="256" id="CosmeticCorrection_Auto_3_instance">
+      <table id="targetFrames" rows="0"/>
+      <parameter id="masterDarkPath"></parameter>
+      <parameter id="outputDir"></parameter>
+      <parameter id="outputExtension">.xisf</parameter>
+      <parameter id="prefix"></parameter>
+      <parameter id="postfix">_cc</parameter>
+      <parameter id="overwrite" value="false"/>
+      <parameter id="amount" value="1.00"/>
+      <parameter id="cfa" value="false"/>
+      <parameter id="useMasterDark" value="false"/>
+      <parameter id="hotDarkCheck" value="false"/>
+      <parameter id="hotDarkLevel" value="1.0000000"/>
+      <parameter id="coldDarkCheck" value="false"/>
+      <parameter id="coldDarkLevel" value="0.0000000"/>
+      <parameter id="useAutoDetect" value="true"/>
+      <parameter id="hotAutoCheck" value="true"/>
+      <parameter id="hotAutoValue" value="3.0"/>
+      <parameter id="coldAutoCheck" value="false"/>
+      <parameter id="coldAutoValue" value="3.0"/>
+      <parameter id="useDefectList" value="false"/>
+      <table id="defects" rows="0"/>
+   </instance>
+   <instance class="LRGBCombination" version="256" id="LRGB_combo_HSHO_instance">
+      <table id="channels" rows="4">
+         <tr>
+            <td id="enabled" value="true"/>
+            <td id="id">Sii</td>
+            <td id="k" value="1.00000"/>
+         </tr>
+         <tr>
+            <td id="enabled" value="true"/>
+            <td id="id">Ha</td>
+            <td id="k" value="1.00000"/>
+         </tr>
+         <tr>
+            <td id="enabled" value="true"/>
+            <td id="id">Oiii</td>
+            <td id="k" value="1.00000"/>
+         </tr>
+         <tr>
+            <td id="enabled" value="true"/>
+            <td id="id">Ha</td>
+            <td id="k" value="1.00000"/>
+         </tr>
+      </table>
+      <parameter id="mL" value="0.500"/>
+      <parameter id="mc" value="0.500"/>
+      <parameter id="clipHighlights" value="true"/>
+      <parameter id="noiseReduction" value="false"/>
+      <parameter id="layersRemoved" value="4"/>
+      <parameter id="layersProtected" value="2"/>
+   </instance>
+   <instance class="BackgroundNeutralization" version="256" id="BackgroundNeutralization_preview_optional_instance">
+      <parameter id="backgroundReferenceViewId"></parameter>
+      <parameter id="backgroundLow" value="0.0000000"/>
+      <parameter id="backgroundHigh" value="0.1000000"/>
+      <parameter id="useROI" value="false"/>
+      <parameter id="roiX0" value="0"/>
+      <parameter id="roiY0" value="0"/>
+      <parameter id="roiX1" value="0"/>
+      <parameter id="roiY1" value="0"/>
+      <parameter id="mode" value="RescaleAsNeeded"/>
+      <parameter id="targetBackground" value="0.0010000"/>
+   </instance>
+   <instance class="ColorCalibration" version="256" id="ColorCalibration_instance">
+      <parameter id="whiteReferenceViewId"></parameter>
+      <parameter id="whiteLow" value="0.0000000"/>
+      <parameter id="whiteHigh" value="0.9000000"/>
+      <parameter id="whiteUseROI" value="false"/>
+      <parameter id="whiteROIX0" value="0"/>
+      <parameter id="whiteROIY0" value="0"/>
+      <parameter id="whiteROIX1" value="0"/>
+      <parameter id="whiteROIY1" value="0"/>
+      <parameter id="structureDetection" value="true"/>
+      <parameter id="structureLayers" value="5"/>
+      <parameter id="noiseLayers" value="1"/>
+      <parameter id="manualWhiteBalance" value="false"/>
+      <parameter id="manualRedFactor" value="1.0000"/>
+      <parameter id="manualGreenFactor" value="1.0000"/>
+      <parameter id="manualBlueFactor" value="1.0000"/>
+      <parameter id="backgroundReferenceViewId"></parameter>
+      <parameter id="backgroundLow" value="0.0000000"/>
+      <parameter id="backgroundHigh" value="0.1000000"/>
+      <parameter id="backgroundUseROI" value="false"/>
+      <parameter id="backgroundROIX0" value="0"/>
+      <parameter id="backgroundROIY0" value="0"/>
+      <parameter id="backgroundROIX1" value="0"/>
+      <parameter id="backgroundROIY1" value="0"/>
+      <parameter id="outputWhiteReferenceMask" value="false"/>
+      <parameter id="outputBackgroundReferenceMask" value="false"/>
+   </instance>
+   <instance class="SCNR" version="256" id="SCNR_if_too_green_instance">
+      <parameter id="amount" value="0.30"/>
+      <parameter id="protectionMethod" value="AverageNeutral"/>
+      <parameter id="colorToRemove" value="Green"/>
+      <parameter id="preserveLightness" value="true"/>
+   </instance>
+   <instance class="Script" version="256" id="CorrectMagentaStars_script_instance">
+      <time start="2022-10-16T16:59:16.212Z" span="5.362841"/>
+      <parameter id="filePath">$PXI_SRCDIR/scripts/CorrectMagentaStars/CorrectMagentaStars.js</parameter>
+      <parameter id="md5sum">31bdf816791092b80b5344db2d2f7ce2</parameter>
+      <table id="parameters" rows="2">
+         <tr>
+            <td id="id">scnrAmount</td>
+            <td id="value">0.8</td>
+         </tr>
+         <tr>
+            <td id="id">scnrPresLight</td>
+            <td id="value">true</td>
+         </tr>
+      </table>
+   </instance>
+   <instance class="StarXTerminator" version="256" id="StarXTerminator_instance">
+      <time start="2022-10-16T16:32:38.583Z" span="117.94258"/>
+      <parameter id="stars" value="true"/>
+      <parameter id="unscreen" value="true"/>
+      <parameter id="overlap" value="0.20"/>
+   </instance>
+   <instance class="CurvesTransformation" version="256" id="Curves_stretch_all_channels_and_saturation_instance">
+      <description>* Curves tool
+    * Stretched all the channels, s-curve
+        * Again
+        * Dropped the shadows a bit
+    * Green
+        * Dropped the midpoint
+    * Saturation
+        * Bumped up the midpoint
+    * Back and forth w/ the green
+    * Red
+        * Pushed up the midpoint, dropped the shadows
+    * Boosted all channels at once again
+        * Up midpoint, down shadows</description>
+      <table id="R" rows="2">
+         <tr>
+            <td id="x" value="0.00000"/>
+            <td id="y" value="0.00000"/>
+         </tr>
+         <tr>
+            <td id="x" value="1.00000"/>
+            <td id="y" value="1.00000"/>
+         </tr>
+      </table>
+      <parameter id="Rt" value="AkimaSubsplines"/>
+      <table id="G" rows="2">
+         <tr>
+            <td id="x" value="0.00000"/>
+            <td id="y" value="0.00000"/>
+         </tr>
+         <tr>
+            <td id="x" value="1.00000"/>
+            <td id="y" value="1.00000"/>
+         </tr>
+      </table>
+      <parameter id="Gt" value="AkimaSubsplines"/>
+      <table id="B" rows="2">
+         <tr>
+            <td id="x" value="0.00000"/>
+            <td id="y" value="0.00000"/>
+         </tr>
+         <tr>
+            <td id="x" value="1.00000"/>
+            <td id="y" value="1.00000"/>
+         </tr>
+      </table>
+      <parameter id="Bt" value="AkimaSubsplines"/>
+      <table id="K" rows="2">
+         <tr>
+            <td id="x" value="0.00000"/>
+            <td id="y" value="0.00000"/>
+         </tr>
+         <tr>
+            <td id="x" value="1.00000"/>
+            <td id="y" value="1.00000"/>
+         </tr>
+      </table>
+      <parameter id="Kt" value="AkimaSubsplines"/>
+      <table id="A" rows="2">
+         <tr>
+            <td id="x" value="0.00000"/>
+            <td id="y" value="0.00000"/>
+         </tr>
+         <tr>
+            <td id="x" value="1.00000"/>
+            <td id="y" value="1.00000"/>
+         </tr>
+      </table>
+      <parameter id="At" value="AkimaSubsplines"/>
+      <table id="L" rows="2">
+         <tr>
+            <td id="x" value="0.00000"/>
+            <td id="y" value="0.00000"/>
+         </tr>
+         <tr>
+            <td id="x" value="1.00000"/>
+            <td id="y" value="1.00000"/>
+         </tr>
+      </table>
+      <parameter id="Lt" value="AkimaSubsplines"/>
+      <table id="a" rows="2">
+         <tr>
+            <td id="x" value="0.00000"/>
+            <td id="y" value="0.00000"/>
+         </tr>
+         <tr>
+            <td id="x" value="1.00000"/>
+            <td id="y" value="1.00000"/>
+         </tr>
+      </table>
+      <parameter id="at" value="AkimaSubsplines"/>
+      <table id="b" rows="2">
+         <tr>
+            <td id="x" value="0.00000"/>
+            <td id="y" value="0.00000"/>
+         </tr>
+         <tr>
+            <td id="x" value="1.00000"/>
+            <td id="y" value="1.00000"/>
+         </tr>
+      </table>
+      <parameter id="bt" value="AkimaSubsplines"/>
+      <table id="c" rows="2">
+         <tr>
+            <td id="x" value="0.00000"/>
+            <td id="y" value="0.00000"/>
+         </tr>
+         <tr>
+            <td id="x" value="1.00000"/>
+            <td id="y" value="1.00000"/>
+         </tr>
+      </table>
+      <parameter id="ct" value="AkimaSubsplines"/>
+      <table id="H" rows="2">
+         <tr>
+            <td id="x" value="0.00000"/>
+            <td id="y" value="0.00000"/>
+         </tr>
+         <tr>
+            <td id="x" value="1.00000"/>
+            <td id="y" value="1.00000"/>
+         </tr>
+      </table>
+      <parameter id="Ht" value="AkimaSubsplines"/>
+      <table id="S" rows="2">
+         <tr>
+            <td id="x" value="0.00000"/>
+            <td id="y" value="0.00000"/>
+         </tr>
+         <tr>
+            <td id="x" value="1.00000"/>
+            <td id="y" value="1.00000"/>
+         </tr>
+      </table>
+      <parameter id="St" value="AkimaSubsplines"/>
+   </instance>
+   <instance class="Script" version="256" id="CorrectMagentaStars_script_if_needed_instance">
+      <parameter id="filePath">$PXI_SRCDIR/scripts/CorrectMagentaStars/CorrectMagentaStars.js</parameter>
+      <parameter id="md5sum">31bdf816791092b80b5344db2d2f7ce2</parameter>
+      <table id="parameters" rows="2">
+         <tr>
+            <td id="id">scnrAmount</td>
+            <td id="value">0.8</td>
+         </tr>
+         <tr>
+            <td id="id">scnrPresLight</td>
+            <td id="value">true</td>
+         </tr>
+      </table>
+   </instance>
+   <instance class="SCNR" version="256" id="SCNR_again_if_needed_instance">
+      <parameter id="amount" value="0.30"/>
+      <parameter id="protectionMethod" value="AverageNeutral"/>
+      <parameter id="colorToRemove" value="Green"/>
+      <parameter id="preserveLightness" value="true"/>
+   </instance>
+   <instance class="PixelMath" version="256" id="Rescreen_Stars_To_CLONED_Image_instance">
+      <parameter id="expression">~((~starless)*(~stars))</parameter>
+      <parameter id="expression1">0.2 * Oiii + 0.6* Ha + 0.2 * Sii</parameter>
+      <parameter id="expression2">2*Oiii</parameter>
+      <parameter id="expression3"></parameter>
+      <parameter id="useSingleExpression" value="true"/>
+      <parameter id="symbols"></parameter>
+      <parameter id="clearImageCacheAndExit" value="false"/>
+      <parameter id="cacheGeneratedImages" value="false"/>
+      <parameter id="generateOutput" value="true"/>
+      <parameter id="singleThreaded" value="false"/>
+      <parameter id="optimization" value="true"/>
+      <parameter id="use64BitWorkingImage" value="false"/>
+      <parameter id="rescale" value="false"/>
+      <parameter id="rescaleLower" value="0"/>
+      <parameter id="rescaleUpper" value="1"/>
+      <parameter id="truncate" value="true"/>
+      <parameter id="truncateLower" value="0"/>
+      <parameter id="truncateUpper" value="1"/>
+      <parameter id="createNewImage" value="true"/>
+      <parameter id="showNewImage" value="true"/>
+      <parameter id="newImageId"></parameter>
+      <parameter id="newImageWidth" value="0"/>
+      <parameter id="newImageHeight" value="0"/>
+      <parameter id="newImageAlpha" value="false"/>
+      <parameter id="newImageColorSpace" value="RGB"/>
+      <parameter id="newImageSampleFormat" value="SameAsTarget"/>
+      <table id="outputData" rows="0"/>
+   </instance>
+   <instance class="MorphologicalTransformation" version="256" id="Morphological_Transform_experiment_instance">
+      <time start="2022-10-16T16:41:59.581Z" span="1.7850786"/>
+      <parameter id="operator" value="Erosion"/>
+      <parameter id="interlacingDistance" value="1"/>
+      <parameter id="lowThreshold" value="0.000000"/>
+      <parameter id="highThreshold" value="0.000000"/>
+      <parameter id="numberOfIterations" value="1"/>
+      <parameter id="amount" value="0.50"/>
+      <parameter id="selectionPoint" value="0.50"/>
+      <parameter id="structureName"></parameter>
+      <parameter id="structureSize" value="3"/>
+      <table id="structureWayTable" rows="1">
+         <tr>
+            <td id="mask">0x01,0x01,0x01,0x01,0x01,0x01,0x01,0x01,0x01</td>
+         </tr>
+      </table>
+   </instance>
+   <instance class="PixelMath" version="256" id="Rescreen_Stars_To_MORPHED_Image_instance">
+      <parameter id="expression">~((~starless)*(~stars))</parameter>
+      <parameter id="expression1">0.2 * Oiii + 0.6* Ha + 0.2 * Sii</parameter>
+      <parameter id="expression2">2*Oiii</parameter>
+      <parameter id="expression3"></parameter>
+      <parameter id="useSingleExpression" value="true"/>
+      <parameter id="symbols"></parameter>
+      <parameter id="clearImageCacheAndExit" value="false"/>
+      <parameter id="cacheGeneratedImages" value="false"/>
+      <parameter id="generateOutput" value="true"/>
+      <parameter id="singleThreaded" value="false"/>
+      <parameter id="optimization" value="true"/>
+      <parameter id="use64BitWorkingImage" value="false"/>
+      <parameter id="rescale" value="false"/>
+      <parameter id="rescaleLower" value="0"/>
+      <parameter id="rescaleUpper" value="1"/>
+      <parameter id="truncate" value="true"/>
+      <parameter id="truncateLower" value="0"/>
+      <parameter id="truncateUpper" value="1"/>
+      <parameter id="createNewImage" value="true"/>
+      <parameter id="showNewImage" value="true"/>
+      <parameter id="newImageId"></parameter>
+      <parameter id="newImageWidth" value="0"/>
+      <parameter id="newImageHeight" value="0"/>
+      <parameter id="newImageAlpha" value="false"/>
+      <parameter id="newImageColorSpace" value="RGB"/>
+      <parameter id="newImageSampleFormat" value="SameAsTarget"/>
+      <table id="outputData" rows="0"/>
+   </instance>
+   <instance class="PhotometricColorCalibration" version="2" id="PhotometricColorCalibration_instance">
+      <parameter id="workingMode" value="WorkingMode_Broadband"/>
+      <parameter id="applyCalibration" value="true"/>
+      <parameter id="redFilterWavelength" value="656.3"/>
+      <parameter id="redFilterBandwidth" value="3.0"/>
+      <parameter id="greenFilterWavelength" value="500.7"/>
+      <parameter id="greenFilterBandwidth" value="3.0"/>
+      <parameter id="blueFilterWavelength" value="500.7"/>
+      <parameter id="blueFilterBandwidth" value="3.0"/>
+      <parameter id="whiteReferenceId">S</parameter>
+      <parameter id="whiteReferenceName">Average Spiral Galaxy</parameter>
+      <parameter id="whiteReferenceSr_JV" value="-0.35230"/>
+      <parameter id="whiteReferenceJB_JV" value="0.28594"/>
+      <parameter id="zeroPointSr_JV" value="-0.12403"/>
+      <parameter id="zeroPointJB_JV" value="-0.42292"/>
+      <parameter id="focalLength" value="1000.00"/>
+      <parameter id="pixelSize" value="9.00"/>
+      <parameter id="centerRA" value="0.0000000"/>
+      <parameter id="centerDec" value="0.0000000"/>
+      <parameter id="epochJD" value="2451545.0000000"/>
+      <parameter id="forcePlateSolve" value="false"/>
+      <parameter id="ignoreImagePositionAndScale" value="false"/>
+      <parameter id="serverURL">http://cdsarc.u-strasbg.fr/</parameter>
+      <parameter id="solverCatalogName">GaiaDR2</parameter>
+      <parameter id="solverAutoCatalog" value="true"/>
+      <parameter id="solverLimitMagnitude" value="12"/>
+      <parameter id="solverAutoLimitMagnitude" value="true"/>
+      <parameter id="solverStructureLayers" value="5"/>
+      <parameter id="solverMinStructureSize" value="0"/>
+      <parameter id="solverNoiseReductionFilterRadius" value="0"/>
+      <parameter id="solverSensitivity" value="0.50"/>
+      <parameter id="solverAlignmentDevice" value="AlignmentDevice_TriangleSimilarity"/>
+      <parameter id="solverDistortionCorrection" value="false"/>
+      <parameter id="solverSplineSmoothing" value="0.015"/>
+      <parameter id="solverProjection" value="Projection_Gnomonic"/>
+      <parameter id="photCatalogName">APASS</parameter>
+      <parameter id="photAutoCatalog" value="true"/>
+      <parameter id="photLimitMagnitude" value="12"/>
+      <parameter id="photAutoLimitMagnitude" value="true"/>
+      <parameter id="photAutoLimitMagnitudeFactor" value="15.00"/>
+      <parameter id="photAutoAperture" value="true"/>
+      <parameter id="photAperture" value="8"/>
+      <parameter id="photUsePSF" value="false"/>
+      <parameter id="photSaturationThreshold" value="0.95"/>
+      <parameter id="photShowDetectedStars" value="false"/>
+      <parameter id="photShowBackgroundModels" value="false"/>
+      <parameter id="photGenerateGraphs" value="true"/>
+      <parameter id="neutralizeBackground" value="true"/>
+      <parameter id="backgroundReferenceViewId"></parameter>
+      <parameter id="backgroundLow" value="0.0000000"/>
+      <parameter id="backgroundHigh" value="0.1000000"/>
+      <parameter id="backgroundUseROI" value="false"/>
+      <parameter id="backgroundROIX0" value="0"/>
+      <parameter id="backgroundROIY0" value="0"/>
+      <parameter id="backgroundROIX1" value="0"/>
+      <parameter id="backgroundROIY1" value="0"/>
+   </instance>
+   <instance class="Script" version="256" id="PlateSolveForPCC_instance">
+      <parameter id="filePath">$PXI_SRCDIR/scripts/AdP/ImageSolver.js</parameter>
+      <parameter id="md5sum">d0030b454a0ebe5b108fa5c00799666d</parameter>
+      <table id="parameters" rows="48">
+         <tr>
+            <td id="id">metadata_focal</td>
+            <td id="value">532.1234868944745</td>
+         </tr>
+         <tr>
+            <td id="id">metadata_useFocal</td>
+            <td id="value">false</td>
+         </tr>
+         <tr>
+            <td id="id">metadata_xpixsz</td>
+            <td id="value">3.76</td>
+         </tr>
+         <tr>
+            <td id="id">metadata_resolution</td>
+            <td id="value">0.00040485364069620913</td>
+         </tr>
+         <tr>
+            <td id="id">metadata_referenceSystem</td>
+            <td id="value">ICRS</td>
+         </tr>
+         <tr>
+            <td id="id">metadata_ra</td>
+            <td id="value">38.16984514405516</td>
+         </tr>
+         <tr>
+            <td id="id">metadata_dec</td>
+            <td id="value">61.458335334051</td>
+         </tr>
+         <tr>
+            <td id="id">metadata_epoch</td>
+            <td id="value">2459549.6628403934</td>
+         </tr>
+         <tr>
+            <td id="id">metadata_observationTime</td>
+            <td id="value">2459549.6663078703</td>
+         </tr>
+         <tr>
+            <td id="id">metadata_topocentric</td>
+            <td id="value">true</td>
+         </tr>
+         <tr>
+            <td id="id">metadata_obsLongitude</td>
+            <td id="value">-80.536944</td>
+         </tr>
+         <tr>
+            <td id="id">metadata_obsLatitude</td>
+            <td id="value">34.695833</td>
+         </tr>
+         <tr>
+            <td id="id">metadata_obsHeight</td>
+            <td id="value">0</td>
+         </tr>
+         <tr>
+            <td id="id">solver_version</td>
+            <td id="value">5.6.4</td>
+         </tr>
+         <tr>
+            <td id="id">solver_magnitude</td>
+            <td id="value">12</td>
+         </tr>
+         <tr>
+            <td id="id">solver_autoMagnitude</td>
+            <td id="value">true</td>
+         </tr>
+         <tr>
+            <td id="id">solver_generateErrorImg</td>
+            <td id="value">false</td>
+         </tr>
+         <tr>
+            <td id="id">solver_structureLayers</td>
+            <td id="value">5</td>
+         </tr>
+         <tr>
+            <td id="id">solver_minStructureSize</td>
+            <td id="value">0</td>
+         </tr>
+         <tr>
+            <td id="id">solver_hotPixelFilterRadius</td>
+            <td id="value">1</td>
+         </tr>
+         <tr>
+            <td id="id">solver_noiseReductionFilterRadius</td>
+            <td id="value">0</td>
+         </tr>
+         <tr>
+            <td id="id">solver_sensitivity</td>
+            <td id="value">-1</td>
+         </tr>
+         <tr>
+            <td id="id">solver_peakResponse</td>
+            <td id="value">0.8</td>
+         </tr>
+         <tr>
+            <td id="id">solver_brightThreshold</td>
+            <td id="value">3</td>
+         </tr>
+         <tr>
+            <td id="id">solver_maxStarDistortion</td>
+            <td id="value">0.6</td>
+         </tr>
+         <tr>
+            <td id="id">solver_psfSearchRadius</td>
+            <td id="value">12</td>
+         </tr>
+         <tr>
+            <td id="id">solver_catalogMode</td>
+            <td id="value">2</td>
+         </tr>
+         <tr>
+            <td id="id">solver_vizierServer</td>
+            <td id="value">http://vizier.u-strasbg.fr/</td>
+         </tr>
+         <tr>
+            <td id="id">solver_showStars</td>
+            <td id="value">false</td>
+         </tr>
+         <tr>
+            <td id="id">solver_showSimplifiedSurfaces</td>
+            <td id="value">false</td>
+         </tr>
+         <tr>
+            <td id="id">solver_showDistortion</td>
+            <td id="value">false</td>
+         </tr>
+         <tr>
+            <td id="id">solver_generateDistortModel</td>
+            <td id="value">false</td>
+         </tr>
+         <tr>
+            <td id="id">solver_catalog</td>
+            <td id="value">PPMXL</td>
+         </tr>
+         <tr>
+            <td id="id">solver_distortionCorrection</td>
+            <td id="value">false</td>
+         </tr>
+         <tr>
+            <td id="id">solver_splineSmoothing</td>
+            <td id="value">0.02500000037252903</td>
+         </tr>
+         <tr>
+            <td id="id">solver_enableSimplifier</td>
+            <td id="value">true</td>
+         </tr>
+         <tr>
+            <td id="id">solver_simplifierTolerance</td>
+            <td id="value">0.25</td>
+         </tr>
+         <tr>
+            <td id="id">solver_simplifierRejectFraction</td>
+            <td id="value">0.10000000149011612</td>
+         </tr>
+         <tr>
+            <td id="id">solver_useDistortionModel</td>
+            <td id="value">false</td>
+         </tr>
+         <tr>
+            <td id="id">solver_onlyOptimize</td>
+            <td id="value">false</td>
+         </tr>
+         <tr>
+            <td id="id">solver_alignAlgorithm</td>
+            <td id="value">0</td>
+         </tr>
+         <tr>
+            <td id="id">solver_useActive</td>
+            <td id="value">true</td>
+         </tr>
+         <tr>
+            <td id="id">solver_outSuffix</td>
+            <td id="value">_WCS</td>
+         </tr>
+         <tr>
+            <td id="id">solver_projection</td>
+            <td id="value">0</td>
+         </tr>
+         <tr>
+            <td id="id">solver_projectionOriginMode</td>
+            <td id="value">0</td>
+         </tr>
+         <tr>
+            <td id="id">solver_distortedCorners</td>
+            <td id="value">false</td>
+         </tr>
+         <tr>
+            <td id="id">solver_optimizeSolution</td>
+            <td id="value">true</td>
+         </tr>
+         <tr>
+            <td id="id">solver_restrictToHQStars</td>
+            <td id="value">false</td>
+         </tr>
+      </table>
+   </instance>
+   <instance class="Script" version="256" id="Rename_Ha_instance">
+      <time start="2022-10-17T16:57:14.932Z" span="101.88139"/>
+      <parameter id="filePath">$PXI_SRCDIR/scripts/mschuster/ViewIdReplace/ViewIdReplace.js</parameter>
+      <parameter id="md5sum">3da1defde6d51f965775cff07ba364aa</parameter>
+      <table id="parameters" rows="3">
+         <tr>
+            <td id="id">version</td>
+            <td id="value">1.4</td>
+         </tr>
+         <tr>
+            <td id="id">pattern</td>
+            <td id="value">/.*[_-]Ha5nm.*/</td>
+         </tr>
+         <tr>
+            <td id="id">replacement</td>
+            <td id="value">Ha</td>
+         </tr>
+      </table>
+   </instance>
+   <instance class="Script" version="256" id="Rename_Sii_instance">
+      <parameter id="filePath">$PXI_SRCDIR/scripts/mschuster/ViewIdReplace/ViewIdReplace.js</parameter>
+      <parameter id="md5sum">3da1defde6d51f965775cff07ba364aa</parameter>
+      <table id="parameters" rows="3">
+         <tr>
+            <td id="id">version</td>
+            <td id="value">1.4</td>
+         </tr>
+         <tr>
+            <td id="id">pattern</td>
+            <td id="value">/.*[_-]Sii5nm.*/</td>
+         </tr>
+         <tr>
+            <td id="id">replacement</td>
+            <td id="value">Sii</td>
+         </tr>
+      </table>
+   </instance>
+   <instance class="Script" version="256" id="Rename_Oiii_instance">
+      <parameter id="filePath">$PXI_SRCDIR/scripts/mschuster/ViewIdReplace/ViewIdReplace.js</parameter>
+      <parameter id="md5sum">3da1defde6d51f965775cff07ba364aa</parameter>
+      <table id="parameters" rows="3">
+         <tr>
+            <td id="id">version</td>
+            <td id="value">1.4</td>
+         </tr>
+         <tr>
+            <td id="id">pattern</td>
+            <td id="value">/.*[_-]Oiii5nm.*/</td>
+         </tr>
+         <tr>
+            <td id="id">replacement</td>
+            <td id="value">Oiii</td>
+         </tr>
+      </table>
+   </instance>
+   <instance class="Script" version="256" id="Rename_Luminance_instance">
+      <parameter id="filePath">$PXI_SRCDIR/scripts/mschuster/ViewIdReplace/ViewIdReplace.js</parameter>
+      <parameter id="md5sum">3da1defde6d51f965775cff07ba364aa</parameter>
+      <table id="parameters" rows="3">
+         <tr>
+            <td id="id">version</td>
+            <td id="value">1.4</td>
+         </tr>
+         <tr>
+            <td id="id">pattern</td>
+            <td id="value">/.*[_-]Luminance[_-].*/</td>
+         </tr>
+         <tr>
+            <td id="id">replacement</td>
+            <td id="value">Lum</td>
+         </tr>
+      </table>
+   </instance>
+   <instance class="Script" version="256" id="Rename_Red_instance">
+      <parameter id="filePath">$PXI_SRCDIR/scripts/mschuster/ViewIdReplace/ViewIdReplace.js</parameter>
+      <parameter id="md5sum">3da1defde6d51f965775cff07ba364aa</parameter>
+      <table id="parameters" rows="3">
+         <tr>
+            <td id="id">version</td>
+            <td id="value">1.4</td>
+         </tr>
+         <tr>
+            <td id="id">pattern</td>
+            <td id="value">/.*[_-]Red[_-].*/</td>
+         </tr>
+         <tr>
+            <td id="id">replacement</td>
+            <td id="value">Red</td>
+         </tr>
+      </table>
+   </instance>
+   <instance class="Script" version="256" id="Rename_Green_instance">
+      <parameter id="filePath">$PXI_SRCDIR/scripts/mschuster/ViewIdReplace/ViewIdReplace.js</parameter>
+      <parameter id="md5sum">3da1defde6d51f965775cff07ba364aa</parameter>
+      <table id="parameters" rows="3">
+         <tr>
+            <td id="id">version</td>
+            <td id="value">1.4</td>
+         </tr>
+         <tr>
+            <td id="id">pattern</td>
+            <td id="value">/.*[_-]Green[_-].*/</td>
+         </tr>
+         <tr>
+            <td id="id">replacement</td>
+            <td id="value">Green</td>
+         </tr>
+      </table>
+   </instance>
+   <instance class="Script" version="256" id="Rename_Blue_instance">
+      <parameter id="filePath">$PXI_SRCDIR/scripts/mschuster/ViewIdReplace/ViewIdReplace.js</parameter>
+      <parameter id="md5sum">3da1defde6d51f965775cff07ba364aa</parameter>
+      <table id="parameters" rows="3">
+         <tr>
+            <td id="id">version</td>
+            <td id="value">1.4</td>
+         </tr>
+         <tr>
+            <td id="id">pattern</td>
+            <td id="value">/.*[_-]Blue[_-].*/</td>
+         </tr>
+         <tr>
+            <td id="id">replacement</td>
+            <td id="value">Blue</td>
+         </tr>
+      </table>
+   </instance>
+   <icon id="Crop" instance="Crop_instance" xpos="2672" ypos="328" workspace="Workspace01"/>
+   <icon id="STF" instance="STF_instance" xpos="2672" ypos="8" workspace="Workspace01"/>
+   <icon id="HistogramTransformation" instance="HistogramTransformation_instance" xpos="2672" ypos="360" workspace="Workspace01"/>
+   <icon id="Scripts_utilities_dark_structure_enhance" instance="Scripts_utilities_dark_structure_enhance_instance" xpos="2672" ypos="808" workspace="Workspace01"/>
+   <icon id="WBPP" instance="WBPP_instance" xpos="2672" ypos="72" workspace="Workspace01"/>
+   <icon id="DBE_maybe_more_that_once" instance="DBE_maybe_more_that_once_instance" xpos="2672" ypos="424" workspace="Workspace01"/>
+   <icon id="DoOneBE_DBE_DivdeThenSubtract" instance="DoOneBE_DBE_DivdeThenSubtract_instance" xpos="2672" ypos="680" workspace="Workspace01"/>
+   <icon id="CosmeticCorrection_Auto_3" instance="CosmeticCorrection_Auto_3_instance" xpos="2672" ypos="40" workspace="Workspace01"/>
+   <icon id="LRGB_combo_HSHO" instance="LRGB_combo_HSHO_instance" xpos="2672" ypos="392" workspace="Workspace01"/>
+   <icon id="BackgroundNeutralization_preview_optional" instance="BackgroundNeutralization_preview_optional_instance" xpos="2672" ypos="456" workspace="Workspace01"/>
+   <icon id="ColorCalibration" instance="ColorCalibration_instance" xpos="2672" ypos="488" workspace="Workspace01"/>
+   <icon id="SCNR_if_too_green" instance="SCNR_if_too_green_instance" xpos="2672" ypos="584" workspace="Workspace01"/>
+   <icon id="CorrectMagentaStars_script" instance="CorrectMagentaStars_script_instance" xpos="2672" ypos="616" workspace="Workspace01"/>
+   <icon id="StarXTerminator" instance="StarXTerminator_instance" xpos="2672" ypos="648" workspace="Workspace01"/>
+   <icon id="Curves_stretch_all_channels_and_saturation" instance="Curves_stretch_all_channels_and_saturation_instance" xpos="2672" ypos="712" workspace="Workspace01"/>
+   <icon id="CorrectMagentaStars_script_if_needed" instance="CorrectMagentaStars_script_if_needed_instance" xpos="2672" ypos="744" workspace="Workspace01"/>
+   <icon id="SCNR_again_if_needed" instance="SCNR_again_if_needed_instance" xpos="2672" ypos="776" workspace="Workspace01"/>
+   <icon id="Rescreen_Stars_To_CLONED_Image" instance="Rescreen_Stars_To_CLONED_Image_instance" xpos="2672" ypos="840" workspace="Workspace01"/>
+   <icon id="Morphological_Transform_experiment" instance="Morphological_Transform_experiment_instance" xpos="2672" ypos="872" workspace="Workspace01"/>
+   <icon id="Rescreen_Stars_To_MORPHED_Image" instance="Rescreen_Stars_To_MORPHED_Image_instance" xpos="2672" ypos="904" workspace="Workspace01"/>
+   <icon id="PhotometricColorCalibration" instance="PhotometricColorCalibration_instance" xpos="2672" ypos="552" workspace="Workspace01"/>
+   <icon id="PlateSolveForPCC" instance="PlateSolveForPCC_instance" xpos="2672" ypos="520" workspace="Workspace01"/>
+   <icon id="Rename_Ha" instance="Rename_Ha_instance" xpos="2672" ypos="136" workspace="Workspace01"/>
+   <icon id="Rename_Sii" instance="Rename_Sii_instance" xpos="2672" ypos="104" workspace="Workspace01"/>
+   <icon id="Rename_Oiii" instance="Rename_Oiii_instance" xpos="2672" ypos="168" workspace="Workspace01"/>
+   <icon id="Rename_Luminance" instance="Rename_Luminance_instance" xpos="2672" ypos="200" workspace="Workspace01"/>
+   <icon id="Rename_Red" instance="Rename_Red_instance" xpos="2672" ypos="232" workspace="Workspace01"/>
+   <icon id="Rename_Green" instance="Rename_Green_instance" xpos="2672" ypos="264" workspace="Workspace01"/>
+   <icon id="Rename_Blue" instance="Rename_Blue_instance" xpos="2672" ypos="296" workspace="Workspace01"/>
+</xpsm>

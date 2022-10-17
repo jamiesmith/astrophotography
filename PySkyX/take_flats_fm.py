@@ -48,6 +48,17 @@ from library.flatman_ctl import *
 
 timeStamp("Starting Calibration run.")
 
+def setFlatPanel(filterNum, binning):
+    
+    brightness = getBrightnessForFilter(filterNum, binning)
+
+    print("     ----")
+    writeNote(f"Adjusting the panel for filter: {getFilterAtSlot(filterNum)} @ {binning}x{binning} to {brightness}")
+    print("     ----")
+
+    myFMPanel.Brightness(brightness)
+
+
 print("")
 
 # ------------------------------------------------------------

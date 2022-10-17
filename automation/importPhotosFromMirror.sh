@@ -23,7 +23,8 @@ do
        newName="$(echo ${file} | sed "s|-NoTarget||g;s|${target}-${target}|${target}|g;s|${target}-FlatField|FlatField|g")"
     
        destDir="${baseDestDir}/${target}/${dateDir}"
-       echo "Copying ${newName} to ${dateDir}/${target}"
+
+       echo "Copying ${newName} to ${target}/${dateDir}"
     
        mkdir -p "${destDir}"
        cp -p "${file}" "${destDir}/${newName}"

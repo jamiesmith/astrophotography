@@ -1,0 +1,1304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+********************************************************************
+PixInsight XML Process Serialization Module - XPSM 1.0
+********************************************************************
+Generated on 2022-02-23T14:02:15.111Z
+PixInsight Core 1.8.8-12 (x64)
+Copyright (c) 2003-2021 Pleiades Astrophoto
+********************************************************************
+-->
+<xpsm version="1.0" xmlns="http://www.pixinsight.com/xpsm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pixinsight.com/xpsm http://pixinsight.com/xpsm/xpsm-1.0.xsd">
+   <instance class="DynamicCrop" id="dynamiccrop_instance">
+      <parameter id="centerX" value="0.50000"/>
+      <parameter id="centerY" value="0.50000"/>
+      <parameter id="width" value="1.00000"/>
+      <parameter id="height" value="1.00000"/>
+      <parameter id="angle" value="0.0000"/>
+      <parameter id="scaleX" value="1.00000"/>
+      <parameter id="scaleY" value="1.00000"/>
+      <parameter id="optimizeFast" value="true"/>
+      <parameter id="interpolation" value="Auto"/>
+      <parameter id="clampingThreshold" value="0.30"/>
+      <parameter id="smoothness" value="1.50"/>
+      <parameter id="xResolution" value="72.000"/>
+      <parameter id="yResolution" value="72.000"/>
+      <parameter id="metric" value="false"/>
+      <parameter id="forceResolution" value="false"/>
+      <parameter id="red" value="0.000000"/>
+      <parameter id="green" value="0.000000"/>
+      <parameter id="blue" value="0.000000"/>
+      <parameter id="alpha" value="1.000000"/>
+      <parameter id="noGUIMessages" value="false"/>
+   </instance>
+   <instance class="AutomaticBackgroundExtractor" id="ABE_instance">
+      <parameter id="tolerance" value="1.000"/>
+      <parameter id="deviation" value="0.800"/>
+      <parameter id="unbalance" value="1.800"/>
+      <parameter id="minBoxFraction" value="0.050"/>
+      <parameter id="maxBackground" value="1.0000"/>
+      <parameter id="minBackground" value="0.0000"/>
+      <parameter id="useBrightnessLimits" value="false"/>
+      <parameter id="polyDegree" value="4"/>
+      <parameter id="boxSize" value="5"/>
+      <parameter id="boxSeparation" value="5"/>
+      <parameter id="modelImageSampleFormat" value="f32"/>
+      <parameter id="abeDownsample" value="2.00"/>
+      <parameter id="writeSampleBoxes" value="false"/>
+      <parameter id="justTrySamples" value="false"/>
+      <parameter id="targetCorrection" value="None"/>
+      <parameter id="normalize" value="false"/>
+      <parameter id="discardModel" value="false"/>
+      <parameter id="replaceTarget" value="false"/>
+      <parameter id="correctedImageId"></parameter>
+      <parameter id="correctedImageSampleFormat" value="SameAsTarget"/>
+      <parameter id="verboseCoefficients" value="false"/>
+      <parameter id="compareModel" value="false"/>
+      <parameter id="compareFactor" value="10.00"/>
+   </instance>
+   <instance class="DynamicBackgroundExtraction" id="DBE_instance">
+      <table id="data" rows="0"/>
+      <parameter id="numberOfChannels" value="1"/>
+      <parameter id="derivativeOrder" value="2"/>
+      <parameter id="smoothing" value="0.250"/>
+      <parameter id="ignoreWeights" value="false"/>
+      <parameter id="modelId"></parameter>
+      <parameter id="modelWidth" value="0"/>
+      <parameter id="modelHeight" value="0"/>
+      <parameter id="downsample" value="2"/>
+      <parameter id="modelSampleFormat" value="f32"/>
+      <parameter id="targetCorrection" value="None"/>
+      <parameter id="normalize" value="false"/>
+      <parameter id="discardModel" value="false"/>
+      <parameter id="replaceTarget" value="false"/>
+      <parameter id="correctedImageId"></parameter>
+      <parameter id="correctedImageSampleFormat" value="SameAsTarget"/>
+      <table id="samples" rows="0"/>
+      <parameter id="imageWidth" value="0"/>
+      <parameter id="imageHeight" value="0"/>
+      <parameter id="symmetryCenterX" value="0.500000"/>
+      <parameter id="symmetryCenterY" value="0.500000"/>
+      <parameter id="tolerance" value="0.500"/>
+      <parameter id="shadowsRelaxation" value="3.000"/>
+      <parameter id="minSampleFraction" value="0.050"/>
+      <parameter id="defaultSampleRadius" value="5"/>
+      <parameter id="samplesPerRow" value="10"/>
+      <parameter id="minWeight" value="0.750"/>
+      <parameter id="sampleColor" value="4292927712"/>
+      <parameter id="selectedSampleColor" value="4278255360"/>
+      <parameter id="selectedSampleFillColor" value="0"/>
+      <parameter id="badSampleColor" value="4294901760"/>
+      <parameter id="badSampleFillColor" value="2164195328"/>
+      <parameter id="axisColor" value="4292927712"/>
+   </instance>
+   <instance class="CurvesTransformation" id="curves_instance">
+      <table id="R" rows="2">
+         <tr>
+            <td id="x" value="0.00000"/>
+            <td id="y" value="0.00000"/>
+         </tr>
+         <tr>
+            <td id="x" value="1.00000"/>
+            <td id="y" value="1.00000"/>
+         </tr>
+      </table>
+      <parameter id="Rt" value="AkimaSubsplines"/>
+      <table id="G" rows="2">
+         <tr>
+            <td id="x" value="0.00000"/>
+            <td id="y" value="0.00000"/>
+         </tr>
+         <tr>
+            <td id="x" value="1.00000"/>
+            <td id="y" value="1.00000"/>
+         </tr>
+      </table>
+      <parameter id="Gt" value="AkimaSubsplines"/>
+      <table id="B" rows="2">
+         <tr>
+            <td id="x" value="0.00000"/>
+            <td id="y" value="0.00000"/>
+         </tr>
+         <tr>
+            <td id="x" value="1.00000"/>
+            <td id="y" value="1.00000"/>
+         </tr>
+      </table>
+      <parameter id="Bt" value="AkimaSubsplines"/>
+      <table id="K" rows="2">
+         <tr>
+            <td id="x" value="0.00000"/>
+            <td id="y" value="0.00000"/>
+         </tr>
+         <tr>
+            <td id="x" value="1.00000"/>
+            <td id="y" value="1.00000"/>
+         </tr>
+      </table>
+      <parameter id="Kt" value="AkimaSubsplines"/>
+      <table id="A" rows="2">
+         <tr>
+            <td id="x" value="0.00000"/>
+            <td id="y" value="0.00000"/>
+         </tr>
+         <tr>
+            <td id="x" value="1.00000"/>
+            <td id="y" value="1.00000"/>
+         </tr>
+      </table>
+      <parameter id="At" value="AkimaSubsplines"/>
+      <table id="L" rows="2">
+         <tr>
+            <td id="x" value="0.00000"/>
+            <td id="y" value="0.00000"/>
+         </tr>
+         <tr>
+            <td id="x" value="1.00000"/>
+            <td id="y" value="1.00000"/>
+         </tr>
+      </table>
+      <parameter id="Lt" value="AkimaSubsplines"/>
+      <table id="a" rows="2">
+         <tr>
+            <td id="x" value="0.00000"/>
+            <td id="y" value="0.00000"/>
+         </tr>
+         <tr>
+            <td id="x" value="1.00000"/>
+            <td id="y" value="1.00000"/>
+         </tr>
+      </table>
+      <parameter id="at" value="AkimaSubsplines"/>
+      <table id="b" rows="2">
+         <tr>
+            <td id="x" value="0.00000"/>
+            <td id="y" value="0.00000"/>
+         </tr>
+         <tr>
+            <td id="x" value="1.00000"/>
+            <td id="y" value="1.00000"/>
+         </tr>
+      </table>
+      <parameter id="bt" value="AkimaSubsplines"/>
+      <table id="c" rows="2">
+         <tr>
+            <td id="x" value="0.00000"/>
+            <td id="y" value="0.00000"/>
+         </tr>
+         <tr>
+            <td id="x" value="1.00000"/>
+            <td id="y" value="1.00000"/>
+         </tr>
+      </table>
+      <parameter id="ct" value="AkimaSubsplines"/>
+      <table id="H" rows="2">
+         <tr>
+            <td id="x" value="0.00000"/>
+            <td id="y" value="0.00000"/>
+         </tr>
+         <tr>
+            <td id="x" value="1.00000"/>
+            <td id="y" value="1.00000"/>
+         </tr>
+      </table>
+      <parameter id="Ht" value="AkimaSubsplines"/>
+      <table id="S" rows="2">
+         <tr>
+            <td id="x" value="0.00000"/>
+            <td id="y" value="0.00000"/>
+         </tr>
+         <tr>
+            <td id="x" value="1.00000"/>
+            <td id="y" value="1.00000"/>
+         </tr>
+      </table>
+      <parameter id="St" value="AkimaSubsplines"/>
+   </instance>
+   <instance class="HistogramTransformation" id="hist_instance">
+      <table id="H" rows="5">
+         <tr>
+            <td id="c0" value="0.00000000"/>
+            <td id="m" value="0.50000000"/>
+            <td id="c1" value="1.00000000"/>
+            <td id="r0" value="0.00000000"/>
+            <td id="r1" value="1.00000000"/>
+         </tr>
+         <tr>
+            <td id="c0" value="0.00000000"/>
+            <td id="m" value="0.50000000"/>
+            <td id="c1" value="1.00000000"/>
+            <td id="r0" value="0.00000000"/>
+            <td id="r1" value="1.00000000"/>
+         </tr>
+         <tr>
+            <td id="c0" value="0.00000000"/>
+            <td id="m" value="0.50000000"/>
+            <td id="c1" value="1.00000000"/>
+            <td id="r0" value="0.00000000"/>
+            <td id="r1" value="1.00000000"/>
+         </tr>
+         <tr>
+            <td id="c0" value="0.00000000"/>
+            <td id="m" value="0.50000000"/>
+            <td id="c1" value="1.00000000"/>
+            <td id="r0" value="0.00000000"/>
+            <td id="r1" value="1.00000000"/>
+         </tr>
+         <tr>
+            <td id="c0" value="0.00000000"/>
+            <td id="m" value="0.50000000"/>
+            <td id="c1" value="1.00000000"/>
+            <td id="r0" value="0.00000000"/>
+            <td id="r1" value="1.00000000"/>
+         </tr>
+      </table>
+   </instance>
+   <instance class="ScreenTransferFunction" id="STF_instance">
+      <table id="STF" rows="4">
+         <tr>
+            <td id="c0" value="0.00000"/>
+            <td id="c1" value="1.00000"/>
+            <td id="m" value="0.50000"/>
+            <td id="r0" value="0.00000"/>
+            <td id="r1" value="1.00000"/>
+         </tr>
+         <tr>
+            <td id="c0" value="0.00000"/>
+            <td id="c1" value="1.00000"/>
+            <td id="m" value="0.50000"/>
+            <td id="r0" value="0.00000"/>
+            <td id="r1" value="1.00000"/>
+         </tr>
+         <tr>
+            <td id="c0" value="0.00000"/>
+            <td id="c1" value="1.00000"/>
+            <td id="m" value="0.50000"/>
+            <td id="r0" value="0.00000"/>
+            <td id="r1" value="1.00000"/>
+         </tr>
+         <tr>
+            <td id="c0" value="0.00000"/>
+            <td id="c1" value="1.00000"/>
+            <td id="m" value="0.50000"/>
+            <td id="r0" value="0.00000"/>
+            <td id="r1" value="1.00000"/>
+         </tr>
+      </table>
+      <parameter id="interaction" value="SeparateChannels"/>
+   </instance>
+   <instance class="SCNR" id="scnr_instance">
+      <parameter id="amount" value="1.00"/>
+      <parameter id="protectionMethod" value="AverageNeutral"/>
+      <parameter id="colorToRemove" value="Green"/>
+      <parameter id="preserveLightness" value="true"/>
+   </instance>
+   <instance class="BackgroundNeutralization" id="bgneutralization_instance">
+      <parameter id="backgroundReferenceViewId"></parameter>
+      <parameter id="backgroundLow" value="0.0000000"/>
+      <parameter id="backgroundHigh" value="0.1000000"/>
+      <parameter id="useROI" value="false"/>
+      <parameter id="roiX0" value="0"/>
+      <parameter id="roiY0" value="0"/>
+      <parameter id="roiX1" value="0"/>
+      <parameter id="roiY1" value="0"/>
+      <parameter id="mode" value="RescaleAsNeeded"/>
+      <parameter id="targetBackground" value="0.0010000"/>
+   </instance>
+   <instance class="ColorCalibration" id="colourcal_instance">
+      <parameter id="whiteReferenceViewId"></parameter>
+      <parameter id="whiteLow" value="0.0000000"/>
+      <parameter id="whiteHigh" value="0.9000000"/>
+      <parameter id="whiteUseROI" value="false"/>
+      <parameter id="whiteROIX0" value="0"/>
+      <parameter id="whiteROIY0" value="0"/>
+      <parameter id="whiteROIX1" value="0"/>
+      <parameter id="whiteROIY1" value="0"/>
+      <parameter id="structureDetection" value="true"/>
+      <parameter id="structureLayers" value="5"/>
+      <parameter id="noiseLayers" value="1"/>
+      <parameter id="manualWhiteBalance" value="false"/>
+      <parameter id="manualRedFactor" value="1.0000"/>
+      <parameter id="manualGreenFactor" value="1.0000"/>
+      <parameter id="manualBlueFactor" value="1.0000"/>
+      <parameter id="backgroundReferenceViewId"></parameter>
+      <parameter id="backgroundLow" value="0.0000000"/>
+      <parameter id="backgroundHigh" value="0.1000000"/>
+      <parameter id="backgroundUseROI" value="false"/>
+      <parameter id="backgroundROIX0" value="0"/>
+      <parameter id="backgroundROIY0" value="0"/>
+      <parameter id="backgroundROIX1" value="0"/>
+      <parameter id="backgroundROIY1" value="0"/>
+      <parameter id="outputWhiteReferenceMask" value="false"/>
+      <parameter id="outputBackgroundReferenceMask" value="false"/>
+   </instance>
+   <instance class="ColorSaturation" id="SatCurve_instance">
+      <table id="HS" rows="2">
+         <tr>
+            <td id="x" value="0.00000"/>
+            <td id="y" value="0.00000"/>
+         </tr>
+         <tr>
+            <td id="x" value="1.00000"/>
+            <td id="y" value="0.00000"/>
+         </tr>
+      </table>
+      <parameter id="HSt" value="AkimaSubsplines"/>
+      <parameter id="hueShift" value="0.000"/>
+   </instance>
+   <instance class="LRGBCombination" id="LRGB_instance">
+      <table id="channels" rows="4">
+         <tr>
+            <td id="enabled" value="true"/>
+            <td id="id"></td>
+            <td id="k" value="1.00000"/>
+         </tr>
+         <tr>
+            <td id="enabled" value="true"/>
+            <td id="id"></td>
+            <td id="k" value="1.00000"/>
+         </tr>
+         <tr>
+            <td id="enabled" value="true"/>
+            <td id="id"></td>
+            <td id="k" value="1.00000"/>
+         </tr>
+         <tr>
+            <td id="enabled" value="true"/>
+            <td id="id"></td>
+            <td id="k" value="1.00000"/>
+         </tr>
+      </table>
+      <parameter id="mL" value="0.500"/>
+      <parameter id="mc" value="0.500"/>
+      <parameter id="clipHighlights" value="true"/>
+      <parameter id="noiseReduction" value="false"/>
+      <parameter id="layersRemoved" value="4"/>
+      <parameter id="layersProtected" value="2"/>
+   </instance>
+   <instance class="PixelMath" id="MagentaMask_instance">
+      <parameter id="expression">//  Simple Magenta Color Mask
+
+E1= 0   ;//  Chrominance Mask= 0, Lightness Mask= 1
+E2= 1.0 ;//  Mask Strength (Range= 0 to 1)
+
+
+
+
+
+
+
+
+
+
+
+//Equations:
+E3= iif(CIEh($T)&lt;=0,~mtf((0-CIEh($T))/(1/6),~E2)*CIEc($T),
+iif(CIEh($T)&lt;(2/3),0,iif(CIEh($T)&lt;=(5/6),
+~mtf((CIEh($T)-(2/3))/(1/6),~E2)*CIEc($T),
+~mtf((1+0-CIEh($T))/(1/6),~E2)*CIEc($T))));
+
+E4= iif(CIEh($T)&lt;=0,~mtf((0-CIEh($T))/(1/6),~E2)*CIEL($T),
+iif(CIEh($T)&lt;(2/3),0,iif(CIEh($T)&lt;=(5/6),
+~mtf((CIEh($T)-(2/3))/(1/6),~E2)*CIEL($T),
+~mtf((1+0-CIEh($T))/(1/6),~E2)*CIEL($T))));
+
+iif(E1==0,E3,E4)</parameter>
+      <parameter id="expression1"></parameter>
+      <parameter id="expression2"></parameter>
+      <parameter id="expression3"></parameter>
+      <parameter id="useSingleExpression" value="true"/>
+      <parameter id="symbols">E1,E2,E3,E4,E5,</parameter>
+      <parameter id="clearImageCacheAndExit" value="false"/>
+      <parameter id="cacheGeneratedImages" value="false"/>
+      <parameter id="generateOutput" value="true"/>
+      <parameter id="singleThreaded" value="false"/>
+      <parameter id="optimization" value="true"/>
+      <parameter id="use64BitWorkingImage" value="false"/>
+      <parameter id="rescale" value="true"/>
+      <parameter id="rescaleLower" value="0"/>
+      <parameter id="rescaleUpper" value="1"/>
+      <parameter id="truncate" value="true"/>
+      <parameter id="truncateLower" value="0"/>
+      <parameter id="truncateUpper" value="1"/>
+      <parameter id="createNewImage" value="true"/>
+      <parameter id="showNewImage" value="true"/>
+      <parameter id="newImageId">MagentaMask</parameter>
+      <parameter id="newImageWidth" value="0"/>
+      <parameter id="newImageHeight" value="0"/>
+      <parameter id="newImageAlpha" value="false"/>
+      <parameter id="newImageColorSpace" value="Gray"/>
+      <parameter id="newImageSampleFormat" value="i8"/>
+      <table id="outputData" rows="0"/>
+   </instance>
+   <instance class="PixelMath" id="GreenMask_instance">
+      <time start="2021-11-09T21:29:58.752Z" span="10.383261"/>
+      <parameter id="expression">//  Simple Green Color Mask
+
+E1= 0   ;//  Chrominance Mask= 0, Lightness Mask= 1
+E2= 1.0 ;//  Mask Strength (Range= 0 to 1)
+
+
+
+
+ 
+
+
+
+
+
+
+//Equations:
+E3= iif(CIEh($T)&lt;(1/6),0,iif(CIEh($T)&lt;=(1/3),
+~mtf((CIEh($T)-(1/6))/(1/6),~E2)*
+CIEc($T),iif(CIEh($T)&lt;=0.5,~mtf((0.5-CIEh($T))/
+(1/6),~E2)*CIEc($T),0)));
+
+E4= iif(CIEh($T)&lt;(1/6),0,iif(CIEh($T)&lt;=(1/3),
+~mtf((CIEh($T)-(1/6))/(1/6),~E2)*
+CIEL($T),iif(CIEh($T)&lt;=0.5,~mtf((0.5-CIEh($T))/
+(1/6),~E2)*CIEL($T),0)));
+
+iif(E1==0,E3,E4)</parameter>
+      <parameter id="expression1"></parameter>
+      <parameter id="expression2"></parameter>
+      <parameter id="expression3"></parameter>
+      <parameter id="useSingleExpression" value="true"/>
+      <parameter id="symbols">E1,E2,E3,E4,E5,</parameter>
+      <parameter id="clearImageCacheAndExit" value="false"/>
+      <parameter id="cacheGeneratedImages" value="false"/>
+      <parameter id="generateOutput" value="true"/>
+      <parameter id="singleThreaded" value="false"/>
+      <parameter id="optimization" value="true"/>
+      <parameter id="use64BitWorkingImage" value="false"/>
+      <parameter id="rescale" value="true"/>
+      <parameter id="rescaleLower" value="0"/>
+      <parameter id="rescaleUpper" value="1"/>
+      <parameter id="truncate" value="true"/>
+      <parameter id="truncateLower" value="0"/>
+      <parameter id="truncateUpper" value="1"/>
+      <parameter id="createNewImage" value="true"/>
+      <parameter id="showNewImage" value="true"/>
+      <parameter id="newImageId">GreenMask</parameter>
+      <parameter id="newImageWidth" value="0"/>
+      <parameter id="newImageHeight" value="0"/>
+      <parameter id="newImageAlpha" value="false"/>
+      <parameter id="newImageColorSpace" value="Gray"/>
+      <parameter id="newImageSampleFormat" value="i8"/>
+      <table id="outputData" rows="0"/>
+   </instance>
+   <instance class="PixelMath" id="CyanMask_instance">
+      <parameter id="expression">//  Simple Cyan Color Mask
+
+E1= 0   ;//  Chrominance Mask= 0, Lightness Mask= 1
+E2= 1.0 ;//  Mask Strength (Range= 0 to 1)
+
+
+
+
+
+
+
+
+
+
+
+//Equations:
+E3= iif(CIEh($T)&lt;(1/3),0,iif(CIEh($T)&lt;=0.5,
+~mtf((CIEh($T)-(1/3))/(1/6),~E2)*
+CIEc($T),iif(CIEh($T)&lt;=(2/3),~mtf(((2/3)-
+CIEh($T))/(1/6),~E2)*CIEc($T),0)));
+
+E4= iif(CIEh($T)&lt;(1/3),0,iif(CIEh($T)&lt;=0.5,
+~mtf((CIEh($T)-(1/3))/(1/6),~E2)*
+CIEL($T),iif(CIEh($T)&lt;=(2/3),~mtf(((2/3)-
+CIEh($T))/(1/6),~E2)*CIEL($T),0)));
+
+iif(E1==0,E3,E4)</parameter>
+      <parameter id="expression1"></parameter>
+      <parameter id="expression2"></parameter>
+      <parameter id="expression3"></parameter>
+      <parameter id="useSingleExpression" value="true"/>
+      <parameter id="symbols">E1,E2,E3,E4,E5,</parameter>
+      <parameter id="clearImageCacheAndExit" value="false"/>
+      <parameter id="cacheGeneratedImages" value="false"/>
+      <parameter id="generateOutput" value="true"/>
+      <parameter id="singleThreaded" value="false"/>
+      <parameter id="optimization" value="true"/>
+      <parameter id="use64BitWorkingImage" value="false"/>
+      <parameter id="rescale" value="true"/>
+      <parameter id="rescaleLower" value="0"/>
+      <parameter id="rescaleUpper" value="1"/>
+      <parameter id="truncate" value="true"/>
+      <parameter id="truncateLower" value="0"/>
+      <parameter id="truncateUpper" value="1"/>
+      <parameter id="createNewImage" value="true"/>
+      <parameter id="showNewImage" value="true"/>
+      <parameter id="newImageId">CyanMask</parameter>
+      <parameter id="newImageWidth" value="0"/>
+      <parameter id="newImageHeight" value="0"/>
+      <parameter id="newImageAlpha" value="false"/>
+      <parameter id="newImageColorSpace" value="Gray"/>
+      <parameter id="newImageSampleFormat" value="i8"/>
+      <table id="outputData" rows="0"/>
+   </instance>
+   <instance class="PixelMath" id="BlueMask_instance">
+      <time start="2021-11-09T21:48:40.840Z" span="10.470199"/>
+      <parameter id="expression">//  Simple Blue Color Mask
+
+E1= 0   ;//  Chrominance Mask= 0, Lightness Mask= 1
+E2= 1.0 ;//  Mask Strength (Range= 0 to 1)
+
+
+
+
+
+
+
+
+
+
+
+//Equations:
+E3= iif(CIEh($T)&lt;0.5,0,iif(CIEh($T)&lt;=(2/3),
+~mtf((CIEh($T)-0.5)/(1/6),~E2)*
+CIEc($T),iif(CIEh($T)&lt;=(5/6),~mtf(((5/6)-
+CIEh($T))/(1/6),~E2)*CIEc($T),0)));
+
+E4= iif(CIEh($T)&lt;0.5,0,iif(CIEh($T)&lt;=(2/3),
+~mtf((CIEh($T)-0.5)/(1/6),~E2)*
+CIEL($T),iif(CIEh($T)&lt;=(5/6),~mtf(((5/6)-
+CIEh($T))/(1/6),~E2)*CIEL($T),0)));
+
+iif(E1==0,E3,E4)</parameter>
+      <parameter id="expression1"></parameter>
+      <parameter id="expression2"></parameter>
+      <parameter id="expression3"></parameter>
+      <parameter id="useSingleExpression" value="true"/>
+      <parameter id="symbols">E1,E2,E3,E4,E5,</parameter>
+      <parameter id="clearImageCacheAndExit" value="false"/>
+      <parameter id="cacheGeneratedImages" value="false"/>
+      <parameter id="generateOutput" value="true"/>
+      <parameter id="singleThreaded" value="false"/>
+      <parameter id="optimization" value="true"/>
+      <parameter id="use64BitWorkingImage" value="false"/>
+      <parameter id="rescale" value="true"/>
+      <parameter id="rescaleLower" value="0"/>
+      <parameter id="rescaleUpper" value="1"/>
+      <parameter id="truncate" value="true"/>
+      <parameter id="truncateLower" value="0"/>
+      <parameter id="truncateUpper" value="1"/>
+      <parameter id="createNewImage" value="true"/>
+      <parameter id="showNewImage" value="true"/>
+      <parameter id="newImageId">BlueMask</parameter>
+      <parameter id="newImageWidth" value="0"/>
+      <parameter id="newImageHeight" value="0"/>
+      <parameter id="newImageAlpha" value="false"/>
+      <parameter id="newImageColorSpace" value="Gray"/>
+      <parameter id="newImageSampleFormat" value="i8"/>
+      <table id="outputData" rows="0"/>
+   </instance>
+   <instance class="PixelMath" id="RedMask_instance">
+      <parameter id="expression">//  Simple Red Color Mask
+
+E1= 0   ;//  Chrominance Mask= 0, Lightness Mask= 1
+E2= 1.0 ;//  Mask Strength (Range= 0 to 1)
+
+
+
+
+
+
+
+
+
+
+
+//Equations:
+E3= iif(CIEh($T)&lt;=0,~mtf((CIEh($T)+1-(5/6))/(1/6),~E2)*
+CIEc($T),iif(CIEh($T)&lt;=(1/6),~mtf(((1/6)-CIEh($T))/(1/6),~E2)*
+CIEc($T),iif(CIEh($T)&lt;(5/6),0,~mtf((CIEh($T)-(5/6))/(1/6),~E2)*
+CIEc($T))));
+
+E4= iif(CIEh($T)&lt;=0,~mtf((CIEh($T)+1-(5/6))/(1/6),~E2)*
+CIEL($T),iif(CIEh($T)&lt;=(1/6),~mtf(((1/6)-CIEh($T))/(1/6),~E2)*
+CIEL($T),iif(CIEh($T)&lt;(5/6),0,~mtf((CIEh($T)-(5/6))/(1/6),~E2)*
+CIEL($T))));
+
+iif(E1==0,E3,E4)</parameter>
+      <parameter id="expression1"></parameter>
+      <parameter id="expression2"></parameter>
+      <parameter id="expression3"></parameter>
+      <parameter id="useSingleExpression" value="true"/>
+      <parameter id="symbols">E1,E2,E3,E4,E5,</parameter>
+      <parameter id="clearImageCacheAndExit" value="false"/>
+      <parameter id="cacheGeneratedImages" value="false"/>
+      <parameter id="generateOutput" value="true"/>
+      <parameter id="singleThreaded" value="false"/>
+      <parameter id="optimization" value="true"/>
+      <parameter id="use64BitWorkingImage" value="false"/>
+      <parameter id="rescale" value="true"/>
+      <parameter id="rescaleLower" value="0"/>
+      <parameter id="rescaleUpper" value="1"/>
+      <parameter id="truncate" value="true"/>
+      <parameter id="truncateLower" value="0"/>
+      <parameter id="truncateUpper" value="1"/>
+      <parameter id="createNewImage" value="true"/>
+      <parameter id="showNewImage" value="true"/>
+      <parameter id="newImageId">RedMask</parameter>
+      <parameter id="newImageWidth" value="0"/>
+      <parameter id="newImageHeight" value="0"/>
+      <parameter id="newImageAlpha" value="false"/>
+      <parameter id="newImageColorSpace" value="Gray"/>
+      <parameter id="newImageSampleFormat" value="i8"/>
+      <table id="outputData" rows="0"/>
+   </instance>
+   <instance class="PixelMath" id="MaskBlur_instance">
+      <parameter id="expression">gconv($T,  //Image name
+
+15,         //sigma -  Increase to add more blur
+1,         //aspectRatio - Default: 1
+0 )        //rotationAngle - Default: 0</parameter>
+      <parameter id="expression1"></parameter>
+      <parameter id="expression2"></parameter>
+      <parameter id="expression3"></parameter>
+      <parameter id="useSingleExpression" value="true"/>
+      <parameter id="symbols"></parameter>
+      <parameter id="clearImageCacheAndExit" value="false"/>
+      <parameter id="cacheGeneratedImages" value="false"/>
+      <parameter id="generateOutput" value="true"/>
+      <parameter id="singleThreaded" value="false"/>
+      <parameter id="optimization" value="true"/>
+      <parameter id="use64BitWorkingImage" value="false"/>
+      <parameter id="rescale" value="false"/>
+      <parameter id="rescaleLower" value="0"/>
+      <parameter id="rescaleUpper" value="1"/>
+      <parameter id="truncate" value="true"/>
+      <parameter id="truncateLower" value="0"/>
+      <parameter id="truncateUpper" value="1"/>
+      <parameter id="createNewImage" value="false"/>
+      <parameter id="showNewImage" value="true"/>
+      <parameter id="newImageId"></parameter>
+      <parameter id="newImageWidth" value="0"/>
+      <parameter id="newImageHeight" value="0"/>
+      <parameter id="newImageAlpha" value="false"/>
+      <parameter id="newImageColorSpace" value="SameAsTarget"/>
+      <parameter id="newImageSampleFormat" value="SameAsTarget"/>
+      <table id="outputData" rows="0"/>
+   </instance>
+   <instance class="PixelMath" id="YellowMask_instance">
+      <time start="2021-11-09T21:29:07.020Z" span="10.477211"/>
+      <parameter id="expression">//  Simple Yellow Color Mask
+
+E1= 0   ;//  Chrominance Mask= 0, Lightness Mask= 1
+E2= 1.0 ;//  Mask Strength (Range= 0 to 1)
+
+
+
+
+
+
+
+
+
+
+
+//Equations:
+E3= iif(CIEh($T)&lt;0,0,iif(CIEh($T)&lt;=(1/6),
+~mtf((CIEh($T)-0)/(1/6),~E2)*
+CIEc($T),iif(CIEh($T)&lt;=(1/3),~mtf(((1/3)-
+CIEh($T))/(1/6),~E2)*CIEc($T),0)));
+
+E4= iif(CIEh($T)&lt;0,0,iif(CIEh($T)&lt;=(1/6),
+~mtf((CIEh($T)-0)/(1/6),~E2)*
+CIEL($T),iif(CIEh($T)&lt;=(1/3),~mtf(((1/3)-
+CIEh($T))/(1/6),~E2)*CIEL($T),0)));
+
+iif(E1==0,E3,E4)</parameter>
+      <parameter id="expression1"></parameter>
+      <parameter id="expression2"></parameter>
+      <parameter id="expression3"></parameter>
+      <parameter id="useSingleExpression" value="true"/>
+      <parameter id="symbols">E1,E2,E3,E4,E5,</parameter>
+      <parameter id="clearImageCacheAndExit" value="false"/>
+      <parameter id="cacheGeneratedImages" value="false"/>
+      <parameter id="generateOutput" value="true"/>
+      <parameter id="singleThreaded" value="false"/>
+      <parameter id="optimization" value="true"/>
+      <parameter id="use64BitWorkingImage" value="false"/>
+      <parameter id="rescale" value="true"/>
+      <parameter id="rescaleLower" value="0"/>
+      <parameter id="rescaleUpper" value="1"/>
+      <parameter id="truncate" value="true"/>
+      <parameter id="truncateLower" value="0"/>
+      <parameter id="truncateUpper" value="1"/>
+      <parameter id="createNewImage" value="true"/>
+      <parameter id="showNewImage" value="true"/>
+      <parameter id="newImageId">YellowMask</parameter>
+      <parameter id="newImageWidth" value="0"/>
+      <parameter id="newImageHeight" value="0"/>
+      <parameter id="newImageAlpha" value="false"/>
+      <parameter id="newImageColorSpace" value="Gray"/>
+      <parameter id="newImageSampleFormat" value="i8"/>
+      <table id="outputData" rows="0"/>
+   </instance>
+   <instance class="PixelMath" id="BillsStarReduction_V1_instance">
+      <parameter id="expression">//Star Reduction using PixelMath, by Bill Blanshan - V1//
+
+Img1= Starless  ;// &lt;--Starless image name, yours must match
+M=   1          ;// &lt;--Method mode; 1:Strong; 2:Moderate; 3:Soft;
+S=   0.15       ;// &lt;--Reduction strength, lower &quot;S&quot; value, smaller stars
+I=   0          ;// Iteration mode, 0:Off / 1:On
+
+/* Note:
+
+-Strong mode decreases stars sizes by using stars from a lesser stretch
+-Moderate mode reduces small stars by subtracting a differential halo mask
+-Soft reduction mode retains smaller stars while reducing larger stars
+-Iteration reduction mode uses a different technique to reduce star size,
+ by using its own star shape to reduce and sometimes sharpen the stars
+
+Drag bottom left arrow over to the image you require star reduction
+
+Enjoy!!
+
+
+
+
+*/
+
+
+
+//equations
+f1= ~((~mtf(~S,$T)/~mtf(~S,Img1))*~Img1); //Transfer method
+f2= $T-max(0,(($T-mtf(~S,$T))*~(Img1/$T))*~Img1); //Halo-1 method
+
+f3= $T*~(~(~$T/~Img1)-~(~mtf(~S,$T)/~mtf(~S,Img1)));
+f4= ($T*f3)+(f3*~f3); //Halo-3 method, Shinks Large stars
+
+f5= $T*~(~((Img1/$T))*~$T);  //iteration-1
+f6= max(f5,($T*f5)+(f5*~f5));
+
+f7= f5*~(~((Img1/f5))*~f5);  //iteration-2
+f8= max(f7,($T*f7)+(f7*~f7));
+
+f9= f7*~(~((Img1/f7))*~f7);  //iteration-3
+f10= max(f9,($T*f9)+(f9*~f9));
+
+f11= iif(S&gt;=.2,f5,iif(S&gt;=.15,f7,f9)); // Strong reduction mode
+f12= iif(S&gt;=.2,f6,iif(S&gt;=.15,f8,f10)); // Moderate reduction mode
+
+f13= mean(
+$T-($T-iif(S&gt;=.2,f6,iif(S&gt;=.15,f8,f10))), 
+$T*~($T-iif(S&gt;=.2,f6,iif(S&gt;=.15,f8,f10))) ); //soft reduction mode
+
+f14= iif(I==0,iif(M==1,f1,iif(M==2,f2,f4)),iif(M==1,f11,iif(M==2,f12,f13)) );
+
+f14</parameter>
+      <parameter id="expression1"></parameter>
+      <parameter id="expression2"></parameter>
+      <parameter id="expression3"></parameter>
+      <parameter id="useSingleExpression" value="true"/>
+      <parameter id="symbols">M,S,I,Img1,f1,f2,f3,f4,f5,f6,f7,f8,f9,f10,f11,f12,f13,f14,f15,</parameter>
+      <parameter id="clearImageCacheAndExit" value="false"/>
+      <parameter id="cacheGeneratedImages" value="false"/>
+      <parameter id="generateOutput" value="true"/>
+      <parameter id="singleThreaded" value="false"/>
+      <parameter id="optimization" value="true"/>
+      <parameter id="use64BitWorkingImage" value="false"/>
+      <parameter id="rescale" value="false"/>
+      <parameter id="rescaleLower" value="0"/>
+      <parameter id="rescaleUpper" value="1"/>
+      <parameter id="truncate" value="true"/>
+      <parameter id="truncateLower" value="0"/>
+      <parameter id="truncateUpper" value="1"/>
+      <parameter id="createNewImage" value="true"/>
+      <parameter id="showNewImage" value="true"/>
+      <parameter id="newImageId">ReducedStars</parameter>
+      <parameter id="newImageWidth" value="0"/>
+      <parameter id="newImageHeight" value="0"/>
+      <parameter id="newImageAlpha" value="false"/>
+      <parameter id="newImageColorSpace" value="SameAsTarget"/>
+      <parameter id="newImageSampleFormat" value="SameAsTarget"/>
+      <table id="outputData" rows="0"/>
+   </instance>
+   <instance class="PixelMath" id="ExtractLightness_instance">
+      <time start="2022-01-26T17:33:27.058Z" span="0.6196719"/>
+      <parameter id="expression">//Extract Lightness for RGB Images
+
+M=    0   ;//&lt;-- Mode,0= average RGB value; 1=Max RGB value 
+
+
+//Drag arrow over to your image
+
+
+
+
+
+
+
+
+
+
+//equations
+E1= mean($T[0],$T[1],$T[2]);
+E2= max($T[0],$T[1],$T[2]);
+
+iif(M==0,E1,E2)</parameter>
+      <parameter id="expression1"></parameter>
+      <parameter id="expression2"></parameter>
+      <parameter id="expression3"></parameter>
+      <parameter id="useSingleExpression" value="true"/>
+      <parameter id="symbols">Img1,M,E1,E2,E3,E4,E5,</parameter>
+      <parameter id="clearImageCacheAndExit" value="false"/>
+      <parameter id="cacheGeneratedImages" value="false"/>
+      <parameter id="generateOutput" value="true"/>
+      <parameter id="singleThreaded" value="false"/>
+      <parameter id="optimization" value="true"/>
+      <parameter id="use64BitWorkingImage" value="false"/>
+      <parameter id="rescale" value="false"/>
+      <parameter id="rescaleLower" value="0"/>
+      <parameter id="rescaleUpper" value="1"/>
+      <parameter id="truncate" value="true"/>
+      <parameter id="truncateLower" value="0"/>
+      <parameter id="truncateUpper" value="1"/>
+      <parameter id="createNewImage" value="true"/>
+      <parameter id="showNewImage" value="true"/>
+      <parameter id="newImageId">LumMask</parameter>
+      <parameter id="newImageWidth" value="0"/>
+      <parameter id="newImageHeight" value="0"/>
+      <parameter id="newImageAlpha" value="false"/>
+      <parameter id="newImageColorSpace" value="Gray"/>
+      <parameter id="newImageSampleFormat" value="SameAsTarget"/>
+      <table id="outputData" rows="0"/>
+   </instance>
+   <instance class="PixelMath" id="SuperStretch_instance">
+      <parameter id="expression">// Super-Stretch
+
+D = 200; //Controls the amount of stretch
+
+b = 10;  // &gt;0&lt;1 is hyperbolic, 1 is harmonic, &gt;1 is super-hyperbolic stretch
+
+HP= 1; //Highlight point 
+
+
+
+//Equations
+SP= med($T)*.5;  //Symmetry point, typically left of hystogram peak
+q0=  (1+(D*b)*SP)^(-1/b);
+qWP= 2-(1+(D*b)*(HP-SP))^(-1/b);
+q1=  2-2*(1+(D*b)*(HP-SP))^(-1/b)+(1+(D*b)*(2*HP-SP-1))^(-1/b);
+iif($T&lt;SP,0*exp(-(D*b)*(SP-$T))+1*(1+(D*b)*(SP-$T))^(-1/b)-q0,
+    2-0*exp(-(D*b)*($T-SP))-(1-0)*(1+(D*b)*($T-SP))^(-1/b)-q0 )
+    /(q1-q0);
+
+
+//Equation by David Payne</parameter>
+      <parameter id="expression1"></parameter>
+      <parameter id="expression2"></parameter>
+      <parameter id="expression3"></parameter>
+      <parameter id="useSingleExpression" value="true"/>
+      <parameter id="symbols">D,b,SP,HP,q0,qWP,q1</parameter>
+      <parameter id="clearImageCacheAndExit" value="false"/>
+      <parameter id="cacheGeneratedImages" value="false"/>
+      <parameter id="generateOutput" value="true"/>
+      <parameter id="singleThreaded" value="false"/>
+      <parameter id="optimization" value="true"/>
+      <parameter id="use64BitWorkingImage" value="false"/>
+      <parameter id="rescale" value="false"/>
+      <parameter id="rescaleLower" value="0"/>
+      <parameter id="rescaleUpper" value="1"/>
+      <parameter id="truncate" value="true"/>
+      <parameter id="truncateLower" value="0"/>
+      <parameter id="truncateUpper" value="1"/>
+      <parameter id="createNewImage" value="true"/>
+      <parameter id="showNewImage" value="true"/>
+      <parameter id="newImageId"></parameter>
+      <parameter id="newImageWidth" value="0"/>
+      <parameter id="newImageHeight" value="0"/>
+      <parameter id="newImageAlpha" value="false"/>
+      <parameter id="newImageColorSpace" value="SameAsTarget"/>
+      <parameter id="newImageSampleFormat" value="SameAsTarget"/>
+      <table id="outputData" rows="0"/>
+   </instance>
+   <instance class="PixelMath" id="Stretch_Linked_RGB_instance">
+      <parameter id="expression">//  linked Stretch in Pixelmath  //
+
+C = -2.8  ;  //Shadow Clipping
+B = 0.25  ;  //Target Background value
+
+
+m = (med( $T[0] ) + med( $T[1] ) + med( $T[2] ))/3;
+d = (mdev( $T[0] ) + mdev( $T[1] ) + mdev( $T[2] ))/3;
+c = min( max( 0, m + C*1.4826*d ), 1 );
+mtf( mtf( B, m - c ), max( 0, ($T - c)/~c ) )</parameter>
+      <parameter id="expression1"></parameter>
+      <parameter id="expression2"></parameter>
+      <parameter id="expression3"></parameter>
+      <parameter id="useSingleExpression" value="true"/>
+      <parameter id="symbols">C,B,c,m,d,</parameter>
+      <parameter id="clearImageCacheAndExit" value="false"/>
+      <parameter id="cacheGeneratedImages" value="false"/>
+      <parameter id="generateOutput" value="true"/>
+      <parameter id="singleThreaded" value="false"/>
+      <parameter id="optimization" value="true"/>
+      <parameter id="use64BitWorkingImage" value="false"/>
+      <parameter id="rescale" value="false"/>
+      <parameter id="rescaleLower" value="0"/>
+      <parameter id="rescaleUpper" value="1"/>
+      <parameter id="truncate" value="true"/>
+      <parameter id="truncateLower" value="0"/>
+      <parameter id="truncateUpper" value="1"/>
+      <parameter id="createNewImage" value="true"/>
+      <parameter id="showNewImage" value="true"/>
+      <parameter id="newImageId"></parameter>
+      <parameter id="newImageWidth" value="0"/>
+      <parameter id="newImageHeight" value="0"/>
+      <parameter id="newImageAlpha" value="false"/>
+      <parameter id="newImageColorSpace" value="SameAsTarget"/>
+      <parameter id="newImageSampleFormat" value="SameAsTarget"/>
+      <table id="outputData" rows="0"/>
+   </instance>
+   <instance class="PixelMath" id="Stretch_Unlinked_instance">
+      <time start="2021-12-30T16:16:12.207Z" span="0.3031571"/>
+      <parameter id="expression">//  Unlinked Stretch in Pixelmath  //
+
+C = -2.8  ;  //Shadow Clipping
+B = 0.25  ;  //Target Background value
+
+
+c = min( max( 0, med( $T ) + C*1.4826*mdev( $T ) ), 1 );
+mtf( mtf( B, med( $T ) - c ), max( 0, ($T - c)/~c ) )</parameter>
+      <parameter id="expression1"></parameter>
+      <parameter id="expression2"></parameter>
+      <parameter id="expression3"></parameter>
+      <parameter id="useSingleExpression" value="true"/>
+      <parameter id="symbols">C,B,c</parameter>
+      <parameter id="clearImageCacheAndExit" value="false"/>
+      <parameter id="cacheGeneratedImages" value="false"/>
+      <parameter id="generateOutput" value="true"/>
+      <parameter id="singleThreaded" value="false"/>
+      <parameter id="optimization" value="true"/>
+      <parameter id="use64BitWorkingImage" value="false"/>
+      <parameter id="rescale" value="false"/>
+      <parameter id="rescaleLower" value="0"/>
+      <parameter id="rescaleUpper" value="1"/>
+      <parameter id="truncate" value="true"/>
+      <parameter id="truncateLower" value="0"/>
+      <parameter id="truncateUpper" value="1"/>
+      <parameter id="createNewImage" value="false"/>
+      <parameter id="showNewImage" value="true"/>
+      <parameter id="newImageId"></parameter>
+      <parameter id="newImageWidth" value="0"/>
+      <parameter id="newImageHeight" value="0"/>
+      <parameter id="newImageAlpha" value="false"/>
+      <parameter id="newImageColorSpace" value="SameAsTarget"/>
+      <parameter id="newImageSampleFormat" value="SameAsTarget"/>
+      <table id="outputData" rows="0"/>
+   </instance>
+   <instance class="PixelMath" id="BillsHDRStretch_instance">
+      <parameter id="expression">//  Bill&apos;s HDR Stretch
+
+S= 1     ;//&lt;--Stretch amount (Default 1 usually best)
+B= 3     ;// Stretch mode, 1= mean, 2=median, 3= blend A, 4= Blend B
+
+
+
+
+
+
+
+
+E1= S/1000;
+E2= E1*2;
+E3= E2*2;
+E4= E3*2;
+E5= E4*2;
+E6= E5*2;
+E7= E6*2;
+E8= E7*2;
+
+E9= mean(
+    mtf(E1,$T),
+    mtf(E2,$T),
+    mtf(E3,$T),
+    mtf(E4,$T),
+    mtf(E5,$T),
+    mtf(E6,$T),
+    mtf(E7,$T),
+    mtf(E8,$T) );
+
+E10= med(
+     mtf(E1,$T),
+     mtf(E2,$T),
+     mtf(E3,$T),
+     mtf(E4,$T),
+     mtf(E5,$T),
+     mtf(E6,$T),
+     mtf(E7,$T),
+     mtf(E8,$T) );
+
+E11=
+iif(B==1,E9,
+iif(B==2,E10,
+iif(B==3,(E9*E10)+(E10*~E10),(E9*E10)+(E9*~E9) )));
+
+E11</parameter>
+      <parameter id="expression1"></parameter>
+      <parameter id="expression2"></parameter>
+      <parameter id="expression3"></parameter>
+      <parameter id="useSingleExpression" value="true"/>
+      <parameter id="symbols">S,B,E1,E2,E3,E4,E5,E6,E7,E8,E9,E10,E11,</parameter>
+      <parameter id="clearImageCacheAndExit" value="false"/>
+      <parameter id="cacheGeneratedImages" value="false"/>
+      <parameter id="generateOutput" value="true"/>
+      <parameter id="singleThreaded" value="false"/>
+      <parameter id="optimization" value="true"/>
+      <parameter id="use64BitWorkingImage" value="false"/>
+      <parameter id="rescale" value="false"/>
+      <parameter id="rescaleLower" value="0"/>
+      <parameter id="rescaleUpper" value="1"/>
+      <parameter id="truncate" value="true"/>
+      <parameter id="truncateLower" value="0"/>
+      <parameter id="truncateUpper" value="1"/>
+      <parameter id="createNewImage" value="true"/>
+      <parameter id="showNewImage" value="true"/>
+      <parameter id="newImageId">NL</parameter>
+      <parameter id="newImageWidth" value="0"/>
+      <parameter id="newImageHeight" value="0"/>
+      <parameter id="newImageAlpha" value="false"/>
+      <parameter id="newImageColorSpace" value="SameAsTarget"/>
+      <parameter id="newImageSampleFormat" value="SameAsTarget"/>
+      <table id="outputData" rows="0"/>
+   </instance>
+   <instance class="PixelMath" id="RangeMask_instance">
+      <parameter id="expression">L= 0.15  ;//&lt;--  Low Range Clip - above will be clipped
+H= 0.35  ;//&lt;--  High Range Clip - below will be clipped
+
+
+iif($T&lt;=L,0,iif($T&gt;=H,0,$T))</parameter>
+      <parameter id="expression1"></parameter>
+      <parameter id="expression2"></parameter>
+      <parameter id="expression3"></parameter>
+      <parameter id="useSingleExpression" value="true"/>
+      <parameter id="symbols">H,L,</parameter>
+      <parameter id="clearImageCacheAndExit" value="false"/>
+      <parameter id="cacheGeneratedImages" value="false"/>
+      <parameter id="generateOutput" value="true"/>
+      <parameter id="singleThreaded" value="false"/>
+      <parameter id="optimization" value="true"/>
+      <parameter id="use64BitWorkingImage" value="false"/>
+      <parameter id="rescale" value="true"/>
+      <parameter id="rescaleLower" value="0"/>
+      <parameter id="rescaleUpper" value="1"/>
+      <parameter id="truncate" value="true"/>
+      <parameter id="truncateLower" value="0"/>
+      <parameter id="truncateUpper" value="1"/>
+      <parameter id="createNewImage" value="true"/>
+      <parameter id="showNewImage" value="true"/>
+      <parameter id="newImageId">TruncateMask</parameter>
+      <parameter id="newImageWidth" value="0"/>
+      <parameter id="newImageHeight" value="0"/>
+      <parameter id="newImageAlpha" value="false"/>
+      <parameter id="newImageColorSpace" value="Gray"/>
+      <parameter id="newImageSampleFormat" value="SameAsTarget"/>
+      <table id="outputData" rows="0"/>
+   </instance>
+   <instance class="StarXTerminator" id="StarXterminator_instance">
+      <parameter id="stars" value="false"/>
+      <parameter id="linear" value="false"/>
+   </instance>
+   <instance class="StarNet2" id="StarNet2_instance">
+      <parameter id="stride" value="itemOne"/>
+      <parameter id="mask" value="false"/>
+   </instance>
+   <instance class="PixelMath" id="PM_Saturation_instance">
+      <parameter id="expression">S= 0.05 ; //&lt;--Satuation Amount, e.g.: 0.05 equals a 5% increase
+
+
+//  Drage arrow over to your target image to increase saturation
+
+
+
+
+
+
+
+
+
+
+//Equations
+L= (.5)*(max($T[0],$T[1],$T[2])+
+         min($T[0],$T[1],$T[2]));
+
+sRng= min(1-L,L);
+nMax= max($T[0],$T[1],$T[2]);
+nMin= min($T[0],$T[1],$T[2]);
+mChg= min(1-nMax,nMin);
+cM= min(mChg,sRng);
+hDif= L-nMax;
+mDif= L-iif( $T[0]!= nMax &amp;&amp; $T[0]!= nMin
+          || $T[1]!= nMax &amp;&amp; $T[1]!= nMin
+          || $T[2]!= nMax &amp;&amp; $T[2]!= nMin,$T,1);
+nRat= mDif/hDif;
+nMid= L+((nMax*(1+S))-L)*nRat;
+
+nMid</parameter>
+      <parameter id="expression1"></parameter>
+      <parameter id="expression2"></parameter>
+      <parameter id="expression3"></parameter>
+      <parameter id="useSingleExpression" value="true"/>
+      <parameter id="symbols">S,L,nMax,nMin,hDif,mDif,sRng,mChg,cM,nRat,nMid,</parameter>
+      <parameter id="clearImageCacheAndExit" value="false"/>
+      <parameter id="cacheGeneratedImages" value="false"/>
+      <parameter id="generateOutput" value="true"/>
+      <parameter id="singleThreaded" value="false"/>
+      <parameter id="optimization" value="true"/>
+      <parameter id="use64BitWorkingImage" value="false"/>
+      <parameter id="rescale" value="false"/>
+      <parameter id="rescaleLower" value="0"/>
+      <parameter id="rescaleUpper" value="1"/>
+      <parameter id="truncate" value="true"/>
+      <parameter id="truncateLower" value="0"/>
+      <parameter id="truncateUpper" value="1"/>
+      <parameter id="createNewImage" value="false"/>
+      <parameter id="showNewImage" value="true"/>
+      <parameter id="newImageId"></parameter>
+      <parameter id="newImageWidth" value="0"/>
+      <parameter id="newImageHeight" value="0"/>
+      <parameter id="newImageAlpha" value="false"/>
+      <parameter id="newImageColorSpace" value="SameAsTarget"/>
+      <parameter id="newImageSampleFormat" value="SameAsTarget"/>
+      <table id="outputData" rows="0"/>
+   </instance>
+   <instance class="ProcessContainer" id="Bills_BGNeutral_instance">
+      <instance class="PixelMath" enabled="true">
+         <time start="2022-02-04T09:00:28.431Z" span="1.1888313"/>
+         <parameter id="expression">$T</parameter>
+         <parameter id="expression1"></parameter>
+         <parameter id="expression2"></parameter>
+         <parameter id="expression3"></parameter>
+         <parameter id="useSingleExpression" value="true"/>
+         <parameter id="symbols"></parameter>
+         <parameter id="clearImageCacheAndExit" value="false"/>
+         <parameter id="cacheGeneratedImages" value="false"/>
+         <parameter id="generateOutput" value="true"/>
+         <parameter id="singleThreaded" value="false"/>
+         <parameter id="optimization" value="true"/>
+         <parameter id="use64BitWorkingImage" value="false"/>
+         <parameter id="rescale" value="false"/>
+         <parameter id="rescaleLower" value="0"/>
+         <parameter id="rescaleUpper" value="1"/>
+         <parameter id="truncate" value="true"/>
+         <parameter id="truncateLower" value="0"/>
+         <parameter id="truncateUpper" value="1"/>
+         <parameter id="createNewImage" value="true"/>
+         <parameter id="showNewImage" value="true"/>
+         <parameter id="newImageId">DeleteMe</parameter>
+         <parameter id="newImageWidth" value="0"/>
+         <parameter id="newImageHeight" value="0"/>
+         <parameter id="newImageAlpha" value="false"/>
+         <parameter id="newImageColorSpace" value="SameAsTarget"/>
+         <parameter id="newImageSampleFormat" value="SameAsTarget"/>
+         <table id="outputData" rows="0"/>
+      </instance>
+      <instance class="PixelMath" enabled="true">
+         <parameter id="expression">gconv( $T, 7,1,0)</parameter>
+         <parameter id="expression1"></parameter>
+         <parameter id="expression2"></parameter>
+         <parameter id="expression3"></parameter>
+         <parameter id="useSingleExpression" value="true"/>
+         <parameter id="symbols">E1,E2,E3,E4</parameter>
+         <parameter id="clearImageCacheAndExit" value="false"/>
+         <parameter id="cacheGeneratedImages" value="false"/>
+         <parameter id="generateOutput" value="true"/>
+         <parameter id="singleThreaded" value="false"/>
+         <parameter id="optimization" value="true"/>
+         <parameter id="use64BitWorkingImage" value="false"/>
+         <parameter id="rescale" value="false"/>
+         <parameter id="rescaleLower" value="0"/>
+         <parameter id="rescaleUpper" value="1"/>
+         <parameter id="truncate" value="true"/>
+         <parameter id="truncateLower" value="0"/>
+         <parameter id="truncateUpper" value="1"/>
+         <parameter id="createNewImage" value="false"/>
+         <parameter id="showNewImage" value="true"/>
+         <parameter id="newImageId"></parameter>
+         <parameter id="newImageWidth" value="0"/>
+         <parameter id="newImageHeight" value="0"/>
+         <parameter id="newImageAlpha" value="false"/>
+         <parameter id="newImageColorSpace" value="SameAsTarget"/>
+         <parameter id="newImageSampleFormat" value="SameAsTarget"/>
+         <table id="outputData" rows="0"/>
+      </instance>
+      <instance class="PixelMath" enabled="true">
+         <parameter id="expression">~(
+~min(min($T[0]),min($T[1]),min($T[2]))/
+~min($T[0])*
+~DeleteMe[0]
+)</parameter>
+         <parameter id="expression1">~(
+~min(min($T[0]),min($T[1]),min($T[2]))/
+~min($T[1])*
+~DeleteMe[1]
+)</parameter>
+         <parameter id="expression2">~(
+~min(min($T[0]),min($T[1]),min($T[2]))/
+~min($T[2])*
+~DeleteMe[2]
+)</parameter>
+         <parameter id="expression3"></parameter>
+         <parameter id="useSingleExpression" value="false"/>
+         <parameter id="symbols">E1,E2,E3,E4</parameter>
+         <parameter id="clearImageCacheAndExit" value="false"/>
+         <parameter id="cacheGeneratedImages" value="false"/>
+         <parameter id="generateOutput" value="true"/>
+         <parameter id="singleThreaded" value="false"/>
+         <parameter id="optimization" value="true"/>
+         <parameter id="use64BitWorkingImage" value="false"/>
+         <parameter id="rescale" value="false"/>
+         <parameter id="rescaleLower" value="0"/>
+         <parameter id="rescaleUpper" value="1"/>
+         <parameter id="truncate" value="true"/>
+         <parameter id="truncateLower" value="0"/>
+         <parameter id="truncateUpper" value="1"/>
+         <parameter id="createNewImage" value="false"/>
+         <parameter id="showNewImage" value="true"/>
+         <parameter id="newImageId"></parameter>
+         <parameter id="newImageWidth" value="0"/>
+         <parameter id="newImageHeight" value="0"/>
+         <parameter id="newImageAlpha" value="false"/>
+         <parameter id="newImageColorSpace" value="SameAsTarget"/>
+         <parameter id="newImageSampleFormat" value="SameAsTarget"/>
+         <table id="outputData" rows="0"/>
+      </instance>
+   </instance>
+   <icon id="dynamiccrop" instance="dynamiccrop_instance" xpos="1256" ypos="360" workspace="Workspace01"/>
+   <icon id="ABE" instance="ABE_instance" xpos="1256" ypos="392" workspace="Workspace01"/>
+   <icon id="DBE" instance="DBE_instance" xpos="1256" ypos="424" workspace="Workspace01"/>
+   <icon id="curves" instance="curves_instance" xpos="1256" ypos="488" workspace="Workspace01"/>
+   <icon id="hist" instance="hist_instance" xpos="1256" ypos="456" workspace="Workspace01"/>
+   <icon id="STF" instance="STF_instance" xpos="1256" ypos="328" workspace="Workspace01"/>
+   <icon id="scnr" instance="scnr_instance" xpos="1256" ypos="584" workspace="Workspace01"/>
+   <icon id="bgneutralization" instance="bgneutralization_instance" xpos="1256" ypos="520" workspace="Workspace01"/>
+   <icon id="colourcal" instance="colourcal_instance" xpos="1256" ypos="552" workspace="Workspace01"/>
+   <icon id="SatCurve" instance="SatCurve_instance" xpos="1256" ypos="616" workspace="Workspace01"/>
+   <icon id="LRGB" instance="LRGB_instance" xpos="1256" ypos="648" workspace="Workspace01"/>
+   <icon id="MagentaMask" instance="MagentaMask_instance" xpos="1256" ypos="840" workspace="Workspace01"/>
+   <icon id="GreenMask" instance="GreenMask_instance" xpos="1256" ypos="744" workspace="Workspace01"/>
+   <icon id="CyanMask" instance="CyanMask_instance" xpos="1256" ypos="776" workspace="Workspace01"/>
+   <icon id="BlueMask" instance="BlueMask_instance" xpos="1256" ypos="808" workspace="Workspace01"/>
+   <icon id="RedMask" instance="RedMask_instance" xpos="1256" ypos="680" workspace="Workspace01"/>
+   <icon id="MaskBlur" instance="MaskBlur_instance" xpos="1256" ypos="872" workspace="Workspace01"/>
+   <icon id="YellowMask" instance="YellowMask_instance" xpos="1256" ypos="712" workspace="Workspace01"/>
+   <icon id="BillsStarReduction_V1" instance="BillsStarReduction_V1_instance" xpos="2352" ypos="584" workspace="Workspace01"/>
+   <icon id="ExtractLightness" instance="ExtractLightness_instance" xpos="2352" ypos="744" workspace="Workspace01"/>
+   <icon id="SuperStretch" instance="SuperStretch_instance" xpos="2352" ypos="680" workspace="Workspace01"/>
+   <icon id="Stretch_Linked_RGB" instance="Stretch_Linked_RGB_instance" xpos="2352" ypos="648" workspace="Workspace01"/>
+   <icon id="Stretch_Unlinked" instance="Stretch_Unlinked_instance" xpos="2352" ypos="616" workspace="Workspace01"/>
+   <icon id="BillsHDRStretch" instance="BillsHDRStretch_instance" xpos="2352" ypos="712" workspace="Workspace01"/>
+   <icon id="RangeMask" instance="RangeMask_instance" xpos="2352" ypos="808" workspace="Workspace01"/>
+   <icon id="StarXterminator" instance="StarXterminator_instance" xpos="2352" ypos="840" workspace="Workspace01"/>
+   <icon id="StarNet2" instance="StarNet2_instance" xpos="2352" ypos="776" workspace="Workspace01"/>
+   <icon id="PM_Saturation" instance="PM_Saturation_instance" xpos="2352" ypos="904" workspace="Workspace01"/>
+   <icon id="Bills_BGNeutral" instance="Bills_BGNeutral_instance" xpos="2352" ypos="872" workspace="Workspace01"/>
+</xpsm>

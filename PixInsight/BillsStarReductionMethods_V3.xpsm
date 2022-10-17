@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+********************************************************************
+PixInsight XML Process Serialization Module - XPSM 1.0
+********************************************************************
+Generated on 2022-09-15T05:31:40.026Z
+PixInsight Core 1.8.9-1 (x64)
+Copyright (c) 2003-2022 Pleiades Astrophoto
+********************************************************************
+-->
+<xpsm version="1.0" xmlns="http://www.pixinsight.com/xpsm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pixinsight.com/xpsm http://pixinsight.com/xpsm/xpsm-1.0.xsd">
+   <instance class="PixelMath" version="256" id="CloneForStarless_instance">
+      <time start="2022-07-18T20:18:56.841Z" span="0.604877"/>
+      <parameter id="expression">$T</parameter>
+      <parameter id="expression1"></parameter>
+      <parameter id="expression2"></parameter>
+      <parameter id="expression3"></parameter>
+      <parameter id="useSingleExpression" value="true"/>
+      <parameter id="symbols"></parameter>
+      <parameter id="clearImageCacheAndExit" value="false"/>
+      <parameter id="cacheGeneratedImages" value="false"/>
+      <parameter id="generateOutput" value="true"/>
+      <parameter id="singleThreaded" value="false"/>
+      <parameter id="optimization" value="true"/>
+      <parameter id="use64BitWorkingImage" value="false"/>
+      <parameter id="rescale" value="false"/>
+      <parameter id="rescaleLower" value="0"/>
+      <parameter id="rescaleUpper" value="1"/>
+      <parameter id="truncate" value="true"/>
+      <parameter id="truncateLower" value="0"/>
+      <parameter id="truncateUpper" value="1"/>
+      <parameter id="createNewImage" value="true"/>
+      <parameter id="showNewImage" value="true"/>
+      <parameter id="newImageId">Starless</parameter>
+      <parameter id="newImageWidth" value="0"/>
+      <parameter id="newImageHeight" value="0"/>
+      <parameter id="newImageAlpha" value="false"/>
+      <parameter id="newImageColorSpace" value="SameAsTarget"/>
+      <parameter id="newImageSampleFormat" value="SameAsTarget"/>
+      <table id="outputData" rows="0"/>
+   </instance>
+   <instance class="PixelMath" version="256" id="StarReductionMethod1_V3_instance">
+      <parameter id="expression">/*      Star Reduction using PixelMath, by Bill Blanshan -
+                      Transfer Method - V3                          */
+
+S=   0.20       ;// &lt;--To reduce stars size more, lower &quot;S&quot; value
+Img1= Starless  ;// &lt;--Starless image name, yours must match
+
+/*
+
+Drag bottom left arrow over to the image you require star reduction
+
+Enjoy!!
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+//equations
+~((~mtf(~S,$T)/~mtf(~S,Img1))*~Img1); //Transfer method</parameter>
+      <parameter id="expression1"></parameter>
+      <parameter id="expression2"></parameter>
+      <parameter id="expression3"></parameter>
+      <parameter id="useSingleExpression" value="true"/>
+      <parameter id="symbols">S,B,Img1,Img2,f1</parameter>
+      <parameter id="clearImageCacheAndExit" value="false"/>
+      <parameter id="cacheGeneratedImages" value="false"/>
+      <parameter id="generateOutput" value="true"/>
+      <parameter id="singleThreaded" value="false"/>
+      <parameter id="optimization" value="true"/>
+      <parameter id="use64BitWorkingImage" value="false"/>
+      <parameter id="rescale" value="false"/>
+      <parameter id="rescaleLower" value="0"/>
+      <parameter id="rescaleUpper" value="1"/>
+      <parameter id="truncate" value="true"/>
+      <parameter id="truncateLower" value="0"/>
+      <parameter id="truncateUpper" value="1"/>
+      <parameter id="createNewImage" value="false"/>
+      <parameter id="showNewImage" value="true"/>
+      <parameter id="newImageId">StarsReduced</parameter>
+      <parameter id="newImageWidth" value="0"/>
+      <parameter id="newImageHeight" value="0"/>
+      <parameter id="newImageAlpha" value="false"/>
+      <parameter id="newImageColorSpace" value="SameAsTarget"/>
+      <parameter id="newImageSampleFormat" value="SameAsTarget"/>
+      <table id="outputData" rows="0"/>
+   </instance>
+   <instance class="PixelMath" version="256" id="StarReductionMethod2_V3_instance">
+      <parameter id="expression">/*      Star Reduction using PixelMath, by Bill Blanshan -
+                      Halo Method - V3                            */
+
+S=   0.20        ;// &lt;--To reduce stars size more, lower &quot;S&quot; value
+Img1= Starless   ;// &lt;--Starless image name, yours must match
+
+
+/*
+
+Drag bottom left arrow over to the image you require star reduction
+
+
+Enjoy!!
+
+
+*/
+
+
+
+
+
+
+
+//equations
+
+f2= ((~(~$T/~Img1)-~(~mtf(~S,$T)/~mtf(~S,Img1)))*~Img1);
+f3= (~(~$T/~Img1)-~(~mtf(~S,$T)/~mtf(~S,Img1)));
+
+mean($T-mean(f2,f3),$T*~mean(f2,f3))</parameter>
+      <parameter id="expression1"></parameter>
+      <parameter id="expression2"></parameter>
+      <parameter id="expression3"></parameter>
+      <parameter id="useSingleExpression" value="true"/>
+      <parameter id="symbols">S,B,Img1,f2,f3,</parameter>
+      <parameter id="clearImageCacheAndExit" value="false"/>
+      <parameter id="cacheGeneratedImages" value="false"/>
+      <parameter id="generateOutput" value="true"/>
+      <parameter id="singleThreaded" value="false"/>
+      <parameter id="optimization" value="true"/>
+      <parameter id="use64BitWorkingImage" value="false"/>
+      <parameter id="rescale" value="false"/>
+      <parameter id="rescaleLower" value="0"/>
+      <parameter id="rescaleUpper" value="1"/>
+      <parameter id="truncate" value="true"/>
+      <parameter id="truncateLower" value="0"/>
+      <parameter id="truncateUpper" value="1"/>
+      <parameter id="createNewImage" value="false"/>
+      <parameter id="showNewImage" value="true"/>
+      <parameter id="newImageId">StarsReduced</parameter>
+      <parameter id="newImageWidth" value="0"/>
+      <parameter id="newImageHeight" value="0"/>
+      <parameter id="newImageAlpha" value="false"/>
+      <parameter id="newImageColorSpace" value="SameAsTarget"/>
+      <parameter id="newImageSampleFormat" value="SameAsTarget"/>
+      <table id="outputData" rows="0"/>
+   </instance>
+   <instance class="PixelMath" version="256" id="StarReductionMethod3_V3_instance">
+      <parameter id="expression">/*      Star Reduction using PixelMath, by Bill Blanshan -
+                      Star Method - V3                            */
+
+Img1= Starless  ;// &lt;--Starless Image name
+
+I=   1  ;// &lt;--number of iterations, between 1-3
+M=   3  ;// &lt;--Method mode; 1=Strong; 2=Moderate; 3=Soft reductions
+
+/*  Drag bottom left arrow over to the image you require star reduction
+
+Note:
+   Strong mode produces smaller sharp stars while removing small stars
+   Moderate mode still has sharp stars and some smaller stars
+   Soft mode is a simple star reduction of the original image       */
+
+
+
+
+
+
+
+
+
+
+
+//equations:
+E1= $T*~(~(max(0,min(1,Img1/$T)))*~$T);  //iteration-1
+E2= max(E1,($T*E1)+(E1*~E1));
+
+E3= E1*~(~(max(0,min(1,Img1/E1)))*~E1);  //iteration-2
+E4= max(E3,($T*E3)+(E3*~E3));
+
+E5= E3*~(~(max(0,min(1,Img1/E3)))*~E3);  //iteration-3
+E6= max(E5,($T*E5)+(E5*~E5));
+
+E7= iif(I==1,E1,iif(I==2,E3,E5)); // Strong reduction mode
+E8= iif(I==1,E2,iif(I==2,E4,E6)); // Moderate reduction mode
+
+E9= mean(
+$T-($T-iif(I==1,E2,iif(I==2,E4,E6))), 
+$T*~($T-iif(I==1,E2,iif(I==2,E4,E6)))); //soft reduction mode
+
+iif(M==1,E7,iif(M==2,E8,E9))</parameter>
+      <parameter id="expression1"></parameter>
+      <parameter id="expression2"></parameter>
+      <parameter id="expression3"></parameter>
+      <parameter id="useSingleExpression" value="true"/>
+      <parameter id="symbols">I,M,Img1,E1,E2,E3,E4,E5,E6,E7,E8,E9,E10,</parameter>
+      <parameter id="clearImageCacheAndExit" value="false"/>
+      <parameter id="cacheGeneratedImages" value="false"/>
+      <parameter id="generateOutput" value="true"/>
+      <parameter id="singleThreaded" value="false"/>
+      <parameter id="optimization" value="true"/>
+      <parameter id="use64BitWorkingImage" value="false"/>
+      <parameter id="rescale" value="false"/>
+      <parameter id="rescaleLower" value="0"/>
+      <parameter id="rescaleUpper" value="1"/>
+      <parameter id="truncate" value="true"/>
+      <parameter id="truncateLower" value="0"/>
+      <parameter id="truncateUpper" value="1"/>
+      <parameter id="createNewImage" value="false"/>
+      <parameter id="showNewImage" value="true"/>
+      <parameter id="newImageId">StarReduction</parameter>
+      <parameter id="newImageWidth" value="0"/>
+      <parameter id="newImageHeight" value="0"/>
+      <parameter id="newImageAlpha" value="false"/>
+      <parameter id="newImageColorSpace" value="SameAsTarget"/>
+      <parameter id="newImageSampleFormat" value="i8"/>
+      <table id="outputData" rows="0"/>
+   </instance>
+   <icon id="CloneForStarless" instance="CloneForStarless_instance" xpos="8" ypos="337" workspace="Workspace01"/>
+   <icon id="StarReductionMethod1_V3" instance="StarReductionMethod1_V3_instance" xpos="8" ypos="361" workspace="Workspace01"/>
+   <icon id="StarReductionMethod2_V3" instance="StarReductionMethod2_V3_instance" xpos="8" ypos="385" workspace="Workspace01"/>
+   <icon id="StarReductionMethod3_V3" instance="StarReductionMethod3_V3_instance" xpos="8" ypos="409" workspace="Workspace01"/>
+</xpsm>

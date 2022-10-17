@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+********************************************************************
+PixInsight XML Process Serialization Module - XPSM 1.0
+********************************************************************
+Generated on 2022-09-12T01:40:16.393Z
+PixInsight Core 1.8.9-1 (x64)
+Copyright (c) 2003-2022 Pleiades Astrophoto
+********************************************************************
+-->
+<xpsm version="1.0" xmlns="http://www.pixinsight.com/xpsm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pixinsight.com/xpsm http://pixinsight.com/xpsm/xpsm-1.0.xsd">
+   <instance class="PixelMath" version="256" id="MaskBlur_instance">
+      <time start="2022-09-09T21:52:56.947Z" span="0.1413036"/>
+      <parameter id="expression">gconv($T,  //Image name
+
+15,         //sigma -  Increase to add more blur
+1,         //aspectRatio - Default: 1
+0 )        //rotationAngle - Default: 0</parameter>
+      <parameter id="expression1"></parameter>
+      <parameter id="expression2"></parameter>
+      <parameter id="expression3"></parameter>
+      <parameter id="useSingleExpression" value="true"/>
+      <parameter id="symbols"></parameter>
+      <parameter id="clearImageCacheAndExit" value="false"/>
+      <parameter id="cacheGeneratedImages" value="false"/>
+      <parameter id="generateOutput" value="true"/>
+      <parameter id="singleThreaded" value="false"/>
+      <parameter id="optimization" value="true"/>
+      <parameter id="use64BitWorkingImage" value="false"/>
+      <parameter id="rescale" value="false"/>
+      <parameter id="rescaleLower" value="0"/>
+      <parameter id="rescaleUpper" value="1"/>
+      <parameter id="truncate" value="true"/>
+      <parameter id="truncateLower" value="0"/>
+      <parameter id="truncateUpper" value="1"/>
+      <parameter id="createNewImage" value="false"/>
+      <parameter id="showNewImage" value="true"/>
+      <parameter id="newImageId"></parameter>
+      <parameter id="newImageWidth" value="0"/>
+      <parameter id="newImageHeight" value="0"/>
+      <parameter id="newImageAlpha" value="false"/>
+      <parameter id="newImageColorSpace" value="SameAsTarget"/>
+      <parameter id="newImageSampleFormat" value="SameAsTarget"/>
+      <table id="outputData" rows="0"/>
+   </instance>
+   <instance class="PixelMath" version="256" id="GreenMask_instance">
+      <parameter id="expression">//  Simple Green Color Mask
+
+E1= 0   ;//  Chrominance Mask= 0, Lightness Mask= 1
+E2= 1.0 ;//  Mask Strength (Range= 0 to 1)
+
+
+
+
+ 
+
+
+
+
+
+
+//Equations:
+E3= iif(CIEh($T)&lt;0.2778,0,iif(CIEh($T)&lt;=0.4111,~mtf((CIEh($T)-
+0.2778)/0.1333,0)*CIEc($T),iif(CIEh($T)&lt;=0.5444,~mtf((0.5444-
+CIEh($T))/0.1333,0)*CIEc($T),0)));
+
+E4= iif(CIEh($T)&lt;0.2778,0,iif(CIEh($T)&lt;=0.4111,~mtf((CIEh($T)-
+0.2778)/0.1333,0)*CIEL($T),iif(CIEh($T)&lt;=0.5444,~mtf((0.5444-
+CIEh($T))/0.1333,0)*CIEL($T),0)));
+
+iif(E1==0,E3,E4)</parameter>
+      <parameter id="expression1"></parameter>
+      <parameter id="expression2"></parameter>
+      <parameter id="expression3"></parameter>
+      <parameter id="useSingleExpression" value="true"/>
+      <parameter id="symbols">E1,E2,E3,E4,E5,</parameter>
+      <parameter id="clearImageCacheAndExit" value="false"/>
+      <parameter id="cacheGeneratedImages" value="false"/>
+      <parameter id="generateOutput" value="true"/>
+      <parameter id="singleThreaded" value="false"/>
+      <parameter id="optimization" value="true"/>
+      <parameter id="use64BitWorkingImage" value="false"/>
+      <parameter id="rescale" value="true"/>
+      <parameter id="rescaleLower" value="0"/>
+      <parameter id="rescaleUpper" value="1"/>
+      <parameter id="truncate" value="true"/>
+      <parameter id="truncateLower" value="0"/>
+      <parameter id="truncateUpper" value="1"/>
+      <parameter id="createNewImage" value="true"/>
+      <parameter id="showNewImage" value="true"/>
+      <parameter id="newImageId">GreenMask</parameter>
+      <parameter id="newImageWidth" value="0"/>
+      <parameter id="newImageHeight" value="0"/>
+      <parameter id="newImageAlpha" value="false"/>
+      <parameter id="newImageColorSpace" value="Gray"/>
+      <parameter id="newImageSampleFormat" value="i8"/>
+      <table id="outputData" rows="0"/>
+   </instance>
+   <instance class="PixelMath" version="256" id="MagentaMask_instance">
+      <parameter id="expression">//  Simple Magenta Color Mask
+
+E1= 0   ;//  Chrominance Mask= 0, Lightness Mask= 1
+E2= 1.0 ;//  Mask Strength (Range= 0 to 1)
+
+
+
+
+
+
+
+
+
+
+
+//Equations:
+E3= iif(CIEh($T)&lt;=0.1,~mtf((0.1-CIEh($T))/0.1333,0)*CIEc($T),
+iif(CIEh($T)&lt;0.8333,0,iif(CIEh($T)&lt;=0.9666,~mtf((CIEh($T)-
+0.8333)/0.1333,0)*CIEc($T),~mtf((1+0.1-CIEh($T))/0.1333,0)*
+CIEc($T))));
+
+E4= iif(CIEh($T)&lt;=0.1,~mtf((0.1-CIEh($T))/0.1333,0)*CIEL($T),
+iif(CIEh($T)&lt;0.8333,0,iif(CIEh($T)&lt;=0.9666,~mtf((CIEh($T)-
+0.8333)/0.1333,0)*CIEL($T),~mtf((1+0.1-CIEh($T))/0.1333,0)*
+CIEL($T))));
+
+iif(E1==0,E3,E4)</parameter>
+      <parameter id="expression1"></parameter>
+      <parameter id="expression2"></parameter>
+      <parameter id="expression3"></parameter>
+      <parameter id="useSingleExpression" value="true"/>
+      <parameter id="symbols">E1,E2,E3,E4,E5,</parameter>
+      <parameter id="clearImageCacheAndExit" value="false"/>
+      <parameter id="cacheGeneratedImages" value="false"/>
+      <parameter id="generateOutput" value="true"/>
+      <parameter id="singleThreaded" value="false"/>
+      <parameter id="optimization" value="true"/>
+      <parameter id="use64BitWorkingImage" value="false"/>
+      <parameter id="rescale" value="true"/>
+      <parameter id="rescaleLower" value="0"/>
+      <parameter id="rescaleUpper" value="1"/>
+      <parameter id="truncate" value="true"/>
+      <parameter id="truncateLower" value="0"/>
+      <parameter id="truncateUpper" value="1"/>
+      <parameter id="createNewImage" value="true"/>
+      <parameter id="showNewImage" value="true"/>
+      <parameter id="newImageId">MagentaMask</parameter>
+      <parameter id="newImageWidth" value="0"/>
+      <parameter id="newImageHeight" value="0"/>
+      <parameter id="newImageAlpha" value="false"/>
+      <parameter id="newImageColorSpace" value="Gray"/>
+      <parameter id="newImageSampleFormat" value="i8"/>
+      <table id="outputData" rows="0"/>
+   </instance>
+   <instance class="PixelMath" version="256" id="YellowMask_instance">
+      <time start="2022-09-12T01:33:35.009Z" span="0.7065347"/>
+      <parameter id="expression">//  Simple Yellow Color Mask
+
+E1= 0   ;//  Chrominance Mask= 0, Lightness Mask= 1
+E2= 1.0 ;//  Mask Strength (Range= 0 to 1)
+
+
+
+
+
+
+
+
+
+
+
+//Equations:
+E3= iif(CIEh($T)&lt;0.1,0,iif(CIEh($T)&lt;=0.2375,~mtf((CIEh($T)-0.1)/
+0.1375,0)*CIEc($T),iif(CIEh($T)&lt;=0.375,~mtf((0.375-CIEh($T))/
+0.1375,0)*CIEc($T),0)));
+
+E4= iif(CIEh($T)&lt;0.1,0,iif(CIEh($T)&lt;=0.2375,~mtf((CIEh($T)-0.1)/
+0.1375,0)*CIEL($T),iif(CIEh($T)&lt;=0.375,~mtf((0.375-CIEh($T))/
+0.1375,0)*CIEL($T),0)));
+
+iif(E1==0,E3,E4)</parameter>
+      <parameter id="expression1"></parameter>
+      <parameter id="expression2"></parameter>
+      <parameter id="expression3"></parameter>
+      <parameter id="useSingleExpression" value="true"/>
+      <parameter id="symbols">E1,E2,E3,E4,E5,</parameter>
+      <parameter id="clearImageCacheAndExit" value="false"/>
+      <parameter id="cacheGeneratedImages" value="false"/>
+      <parameter id="generateOutput" value="true"/>
+      <parameter id="singleThreaded" value="false"/>
+      <parameter id="optimization" value="true"/>
+      <parameter id="use64BitWorkingImage" value="false"/>
+      <parameter id="rescale" value="true"/>
+      <parameter id="rescaleLower" value="0"/>
+      <parameter id="rescaleUpper" value="1"/>
+      <parameter id="truncate" value="true"/>
+      <parameter id="truncateLower" value="0"/>
+      <parameter id="truncateUpper" value="1"/>
+      <parameter id="createNewImage" value="true"/>
+      <parameter id="showNewImage" value="true"/>
+      <parameter id="newImageId">YellowMask</parameter>
+      <parameter id="newImageWidth" value="0"/>
+      <parameter id="newImageHeight" value="0"/>
+      <parameter id="newImageAlpha" value="false"/>
+      <parameter id="newImageColorSpace" value="Gray"/>
+      <parameter id="newImageSampleFormat" value="i8"/>
+      <table id="outputData" rows="0"/>
+   </instance>
+   <instance class="PixelMath" version="256" id="CyanMask_instance">
+      <time start="2022-09-12T01:33:54.624Z" span="0.7346796"/>
+      <parameter id="expression">//  Simple Cyan Color Mask
+
+E1= 0   ;//  Chrominance Mask= 0, Lightness Mask= 1
+E2= 1.0 ;//  Mask Strength (Range= 0 to 1)
+
+
+
+
+
+
+
+
+
+
+
+//Equations:
+E3= iif(CIEh($T)&lt;0.375,0,iif(CIEh($T)&lt;=0.6041,~mtf((CIEh($T)-0.375)/
+0.2291,0)*CIEc($T),iif(CIEh($T)&lt;=0.8334,~mtf((0.8334-CIEh($T))/
+0.2291,0)*CIEc($T),0)));
+
+E4= iif(CIEh($T)&lt;0.375,0,iif(CIEh($T)&lt;=0.6041,~mtf((CIEh($T)-0.375)/
+0.2291,0)*CIEL($T),iif(CIEh($T)&lt;=0.8334,~mtf((0.8334-CIEh($T))/
+0.2291,0)*CIEL($T),0)));
+
+iif(E1==0,E3,E4)</parameter>
+      <parameter id="expression1"></parameter>
+      <parameter id="expression2"></parameter>
+      <parameter id="expression3"></parameter>
+      <parameter id="useSingleExpression" value="true"/>
+      <parameter id="symbols">E1,E2,E3,E4,E5,</parameter>
+      <parameter id="clearImageCacheAndExit" value="false"/>
+      <parameter id="cacheGeneratedImages" value="false"/>
+      <parameter id="generateOutput" value="true"/>
+      <parameter id="singleThreaded" value="false"/>
+      <parameter id="optimization" value="true"/>
+      <parameter id="use64BitWorkingImage" value="false"/>
+      <parameter id="rescale" value="true"/>
+      <parameter id="rescaleLower" value="0"/>
+      <parameter id="rescaleUpper" value="1"/>
+      <parameter id="truncate" value="true"/>
+      <parameter id="truncateLower" value="0"/>
+      <parameter id="truncateUpper" value="1"/>
+      <parameter id="createNewImage" value="true"/>
+      <parameter id="showNewImage" value="true"/>
+      <parameter id="newImageId">CyanMask</parameter>
+      <parameter id="newImageWidth" value="0"/>
+      <parameter id="newImageHeight" value="0"/>
+      <parameter id="newImageAlpha" value="false"/>
+      <parameter id="newImageColorSpace" value="Gray"/>
+      <parameter id="newImageSampleFormat" value="i8"/>
+      <table id="outputData" rows="0"/>
+   </instance>
+   <instance class="PixelMath" version="256" id="BlueMask_instance">
+      <parameter id="expression">//  Simple Blue Color Mask
+
+E1= 0   ;//  Chrominance Mask= 0, Lightness Mask= 1
+E2= 1.0 ;//  Mask Strength (Range= 0 to 1)
+
+
+
+
+
+
+
+
+
+
+
+//Equations:
+E3= iif(CIEh($T)&lt;0.5444,0,iif(CIEh($T)&lt;=0.7375,~mtf((CIEh($T)-
+0.5444)/0.1930,0)*CIEc($T),iif(CIEh($T)&lt;=0.9305,~mtf((0.9305-
+CIEh($T))/0.1930,0)*CIEc($T),0)));
+
+E4= iif(CIEh($T)&lt;0.5444,0,iif(CIEh($T)&lt;=0.7375,~mtf((CIEh($T)-
+0.5444)/0.1930,0)*CIEL($T),iif(CIEh($T)&lt;=0.9305,~mtf((0.9305-
+CIEh($T))/0.1930,0)*CIEL($T),0)));
+
+iif(E1==0,E3,E4)</parameter>
+      <parameter id="expression1"></parameter>
+      <parameter id="expression2"></parameter>
+      <parameter id="expression3"></parameter>
+      <parameter id="useSingleExpression" value="true"/>
+      <parameter id="symbols">E1,E2,E3,E4,E5,</parameter>
+      <parameter id="clearImageCacheAndExit" value="false"/>
+      <parameter id="cacheGeneratedImages" value="false"/>
+      <parameter id="generateOutput" value="true"/>
+      <parameter id="singleThreaded" value="false"/>
+      <parameter id="optimization" value="true"/>
+      <parameter id="use64BitWorkingImage" value="false"/>
+      <parameter id="rescale" value="true"/>
+      <parameter id="rescaleLower" value="0"/>
+      <parameter id="rescaleUpper" value="1"/>
+      <parameter id="truncate" value="true"/>
+      <parameter id="truncateLower" value="0"/>
+      <parameter id="truncateUpper" value="1"/>
+      <parameter id="createNewImage" value="true"/>
+      <parameter id="showNewImage" value="true"/>
+      <parameter id="newImageId">BlueMask</parameter>
+      <parameter id="newImageWidth" value="0"/>
+      <parameter id="newImageHeight" value="0"/>
+      <parameter id="newImageAlpha" value="false"/>
+      <parameter id="newImageColorSpace" value="Gray"/>
+      <parameter id="newImageSampleFormat" value="i8"/>
+      <table id="outputData" rows="0"/>
+   </instance>
+   <instance class="PixelMath" version="256" id="RedMask_instance">
+      <time start="2022-09-12T01:36:45.998Z" span="0.9977033"/>
+      <parameter id="expression">//  Simple Red Color Mask
+
+E1= 0   ;//  Chrominance Mask= 0, Lightness Mask= 1
+E2= 1.0 ;//  Mask Strength (Range= 0 to 1)
+
+
+
+
+
+
+
+
+
+
+
+//Equations:
+E3= iif(CIEh($T)&lt;=0.104,~mtf((CIEh($T)+1-0.930)/0.1736,0)*
+CIEc($T),iif(CIEh($T)&lt;=0.277,~mtf((0.277-CIEh($T))/
+0.1736,0)*CIEc($T),iif(CIEh($T)&lt;0.9305,0,~mtf((CIEh($T)-0.930)/
+0.173,0)*CIEc($T))));
+
+E4= iif(CIEh($T)&lt;=0.104,~mtf((CIEh($T)+1-0.930)/0.1736,0)*
+CIEL($T),iif(CIEh($T)&lt;=0.277,~mtf((0.277-CIEh($T))/
+0.1736,0)*CIEL($T),iif(CIEh($T)&lt;0.9305,0,~mtf((CIEh($T)-0.930)/
+0.173,0)*CIEL($T))));
+
+iif(E1==0,E3,E4)</parameter>
+      <parameter id="expression1"></parameter>
+      <parameter id="expression2"></parameter>
+      <parameter id="expression3"></parameter>
+      <parameter id="useSingleExpression" value="true"/>
+      <parameter id="symbols">E1,E2,E3,E4,E5,</parameter>
+      <parameter id="clearImageCacheAndExit" value="false"/>
+      <parameter id="cacheGeneratedImages" value="false"/>
+      <parameter id="generateOutput" value="true"/>
+      <parameter id="singleThreaded" value="false"/>
+      <parameter id="optimization" value="true"/>
+      <parameter id="use64BitWorkingImage" value="false"/>
+      <parameter id="rescale" value="true"/>
+      <parameter id="rescaleLower" value="0"/>
+      <parameter id="rescaleUpper" value="1"/>
+      <parameter id="truncate" value="true"/>
+      <parameter id="truncateLower" value="0"/>
+      <parameter id="truncateUpper" value="1"/>
+      <parameter id="createNewImage" value="true"/>
+      <parameter id="showNewImage" value="true"/>
+      <parameter id="newImageId">RedMask</parameter>
+      <parameter id="newImageWidth" value="0"/>
+      <parameter id="newImageHeight" value="0"/>
+      <parameter id="newImageAlpha" value="false"/>
+      <parameter id="newImageColorSpace" value="Gray"/>
+      <parameter id="newImageSampleFormat" value="i8"/>
+      <table id="outputData" rows="0"/>
+   </instance>
+   <icon id="MaskBlur" instance="MaskBlur_instance" xpos="40" ypos="704" workspace="Workspace01"/>
+   <icon id="GreenMask" instance="GreenMask_instance" xpos="40" ypos="600" workspace="Workspace01"/>
+   <icon id="MagentaMask" instance="MagentaMask_instance" xpos="40" ypos="672" workspace="Workspace01"/>
+   <icon id="YellowMask" instance="YellowMask_instance" xpos="40" ypos="576" workspace="Workspace01"/>
+   <icon id="CyanMask" instance="CyanMask_instance" xpos="40" ypos="624" workspace="Workspace01"/>
+   <icon id="BlueMask" instance="BlueMask_instance" xpos="40" ypos="648" workspace="Workspace01"/>
+   <icon id="RedMask" instance="RedMask_instance" xpos="40" ypos="552" workspace="Workspace01"/>
+</xpsm>

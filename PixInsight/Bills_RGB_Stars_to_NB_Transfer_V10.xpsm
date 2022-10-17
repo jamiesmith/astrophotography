@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+********************************************************************
+PixInsight XML Process Serialization Module - XPSM 1.0
+********************************************************************
+Generated on 2022-09-17T02:45:40.530Z
+PixInsight Core 1.8.9-1 (x64)
+Copyright (c) 2003-2022 Pleiades Astrophoto
+********************************************************************
+-->
+<xpsm version="1.0" xmlns="http://www.pixinsight.com/xpsm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pixinsight.com/xpsm http://pixinsight.com/xpsm/xpsm-1.0.xsd">
+   <instance class="PixelMath" version="256" id="CloneForStarless_NB_instance">
+      <time start="2022-09-16T21:38:36.158Z" span="0.5993432"/>
+      <parameter id="expression">$T</parameter>
+      <parameter id="expression1"></parameter>
+      <parameter id="expression2"></parameter>
+      <parameter id="expression3"></parameter>
+      <parameter id="useSingleExpression" value="true"/>
+      <parameter id="symbols"></parameter>
+      <parameter id="clearImageCacheAndExit" value="false"/>
+      <parameter id="cacheGeneratedImages" value="false"/>
+      <parameter id="generateOutput" value="true"/>
+      <parameter id="singleThreaded" value="false"/>
+      <parameter id="optimization" value="true"/>
+      <parameter id="use64BitWorkingImage" value="false"/>
+      <parameter id="rescale" value="false"/>
+      <parameter id="rescaleLower" value="0"/>
+      <parameter id="rescaleUpper" value="1"/>
+      <parameter id="truncate" value="true"/>
+      <parameter id="truncateLower" value="0"/>
+      <parameter id="truncateUpper" value="1"/>
+      <parameter id="createNewImage" value="true"/>
+      <parameter id="showNewImage" value="true"/>
+      <parameter id="newImageId">Starless_NB</parameter>
+      <parameter id="newImageWidth" value="0"/>
+      <parameter id="newImageHeight" value="0"/>
+      <parameter id="newImageAlpha" value="false"/>
+      <parameter id="newImageColorSpace" value="SameAsTarget"/>
+      <parameter id="newImageSampleFormat" value="SameAsTarget"/>
+      <table id="outputData" rows="0"/>
+   </instance>
+   <instance class="PixelMath" version="256" id="CloneForStarless_RGB_instance">
+      <time start="2022-09-16T21:40:42.216Z" span="0.5928899"/>
+      <parameter id="expression">$T</parameter>
+      <parameter id="expression1"></parameter>
+      <parameter id="expression2"></parameter>
+      <parameter id="expression3"></parameter>
+      <parameter id="useSingleExpression" value="true"/>
+      <parameter id="symbols"></parameter>
+      <parameter id="clearImageCacheAndExit" value="false"/>
+      <parameter id="cacheGeneratedImages" value="false"/>
+      <parameter id="generateOutput" value="true"/>
+      <parameter id="singleThreaded" value="false"/>
+      <parameter id="optimization" value="true"/>
+      <parameter id="use64BitWorkingImage" value="false"/>
+      <parameter id="rescale" value="false"/>
+      <parameter id="rescaleLower" value="0"/>
+      <parameter id="rescaleUpper" value="1"/>
+      <parameter id="truncate" value="true"/>
+      <parameter id="truncateLower" value="0"/>
+      <parameter id="truncateUpper" value="1"/>
+      <parameter id="createNewImage" value="true"/>
+      <parameter id="showNewImage" value="true"/>
+      <parameter id="newImageId">Starless_RGB</parameter>
+      <parameter id="newImageWidth" value="0"/>
+      <parameter id="newImageHeight" value="0"/>
+      <parameter id="newImageAlpha" value="false"/>
+      <parameter id="newImageColorSpace" value="SameAsTarget"/>
+      <parameter id="newImageSampleFormat" value="SameAsTarget"/>
+      <table id="outputData" rows="0"/>
+   </instance>
+   <instance class="PixelMath" version="256" id="RGBstars_to_NB_V10_instance">
+      <parameter id="expression">/*      RGB Stars-to-Narrowband Transfer using PixelMath - V10 
+                     by Bill Blanshan                          */
+                    
+//Drag the bottom left arrow over to your RGB image with stars
+
+Img1= Starless_RGB   ;// &lt;-- RGB Starless Image name
+Img2= Starless_NB    ;// &lt;-- Narrowband Starless Image name
+M= 5                 ;//&lt;-- &lt;Method (1-4) &amp; 5 is a blend
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Equations.....
+S= 0.05;  //Forward and reverse stretch control
+I1= min(.999,$T);//&lt;--Protects image when dividing
+I2= min(.999,Img1);//&lt;--Protects image when dividing
+I3= min(.999,Img2);//&lt;--Protects image when dividing
+E1= mtf(~S,I1); //&lt;--Reverse Stretch-RGB image
+E2= mtf(~S,I2); //&lt;--Reverse Stretch-RGB Starless image
+E3= mtf(~S,I3);  //&lt;--Reverse Stretch-NB Starless image
+E4= max(0,min(1,~(~E1/~E2))); //&lt;--Reverse Stretch-Unscreen Stars
+E5= max(0,min(1,~(~I1/~I2)));  //&lt;--Unscreen Stars
+E6= mean(I1[0],I1[1],I1[2]); //&lt;--RGB mask
+E7= mean(I2[0],I2[1],I2[2]); //&lt;--RGB Starless mask
+E8= mean(I3[0],I3[1],I3[2]); //&lt;--NB Starless mask
+E9= max(E5[0],E5[1],E5[2]); //&lt;-Star mask
+E10= ~(max(0,min(.999,(~E6/~E7)))*~E8); //&lt;--Transfer Mask
+E11= min(0.999,(I3*(E7/E8)));// Scaled NB Starless Image
+
+E12= min(1,E9*2);
+E13= min(1,E12*4);
+E14= max(0,min(1,(E9*E12)+(E9*~E9)));
+E15= I1*max(0,min(1,(E13*E14)+(E14*~E14))); //Masked RGB Stars
+
+//Methods
+E16= mtf(S,~(~E4* ~(E4*~(~E2/~E3)) *~E3) );//&lt;--Transfer-1
+E17= mtf(S, max(0,min(1,((E1-E2)*(~E3/~E2))))+E3);//&lt;--Transfer-2
+E18= ~(~E15*~(I3*~E9));//&lt;-E&amp;S-1
+E19= ~(~E15*~(E11*~E15));//&lt;-E&amp;S-2
+
+// Luminance masks
+E20= mean(E16[0],E16[1],E16[2]); //&lt;--E16 Mask
+E21= mean(E17[0],E17[1],E17[2]); //&lt;--E17 Mask
+E22= mean(E18[0],E18[1],E18[2]); //&lt;--E18 Mask
+E23= mean(E19[0],E19[1],E19[2]); //&lt;--E19 Mask
+
+// Methods with star protection
+E24= (E16*(E10/E20)); //&lt;-Transfer-1 with star protection
+E25= (E17*(E10/E21)); //&lt;-Transfer-2 with star protection
+E26= (E18*(E10/E22)); //&lt;-E&amp;S with star protection
+E27= (E19*(E10/E23)); //&lt;-E&amp;S with star protection
+
+//Blend
+E28= med($T,E24,E25,E26,E27);
+E29= iswitch(M==1,E24,M==2,E25,M==3,E26,M==4,E27,E28);
+
+E29  ;//&lt;--Executes the math line</parameter>
+      <parameter id="expression1"></parameter>
+      <parameter id="expression2"></parameter>
+      <parameter id="expression3"></parameter>
+      <parameter id="useSingleExpression" value="true"/>
+      <parameter id="symbols">Img1,Img2,S,M,I1,I2,I3,
+E0,E1,E2,E3,E4,E5,E6,E7,E8,E9,E10,E11,E12,E13,E14,E15,E16,E17,E18,E19,
+E20,E21,E22,E23,E24,E25,E26,E27,E28,E29,E30,E31,E32,E33,E34,E35,</parameter>
+      <parameter id="clearImageCacheAndExit" value="false"/>
+      <parameter id="cacheGeneratedImages" value="false"/>
+      <parameter id="generateOutput" value="true"/>
+      <parameter id="singleThreaded" value="false"/>
+      <parameter id="optimization" value="true"/>
+      <parameter id="use64BitWorkingImage" value="false"/>
+      <parameter id="rescale" value="false"/>
+      <parameter id="rescaleLower" value="0"/>
+      <parameter id="rescaleUpper" value="1"/>
+      <parameter id="truncate" value="true"/>
+      <parameter id="truncateLower" value="0"/>
+      <parameter id="truncateUpper" value="1"/>
+      <parameter id="createNewImage" value="true"/>
+      <parameter id="showNewImage" value="true"/>
+      <parameter id="newImageId">RGB_NB</parameter>
+      <parameter id="newImageWidth" value="0"/>
+      <parameter id="newImageHeight" value="0"/>
+      <parameter id="newImageAlpha" value="false"/>
+      <parameter id="newImageColorSpace" value="SameAsTarget"/>
+      <parameter id="newImageSampleFormat" value="SameAsTarget"/>
+      <table id="outputData" rows="0"/>
+   </instance>
+   <icon id="CloneForStarless_NB" instance="CloneForStarless_NB_instance" xpos="8" ypos="72" workspace="Workspace01"/>
+   <icon id="CloneForStarless_RGB" instance="CloneForStarless_RGB_instance" xpos="8" ypos="48" workspace="Workspace01"/>
+   <icon id="RGBstars_to_NB_V10" instance="RGBstars_to_NB_V10_instance" xpos="8" ypos="112" workspace="Workspace01"/>
+</xpsm>

@@ -7,6 +7,10 @@
 from library.PySkyX_ks import *
 from library.PySkyX_jrs import *
 
+import os
+from slack_sdk import WebClient 
+from slack_sdk.errors import SlackApiError 
+
 import time
 import socket
 import sys
@@ -24,6 +28,24 @@ NUM_FILTERS = len(FILTER_NAMES)
 
 def promptToExit():
     done = input("Press enter to exit")
+
+def sendToSlack(channel, message):
+    # From https://python.plainenglish.io/lets-create-a-slackbot-cause-why-not-2972474bf5c1
+    # install sdk via:
+    # pip3 install slack_sdk
+    #
+    slack_token = os.environ.get('SLACK_BOT_NOTIFICATION_TOKEN')
+
+    # Creating an instance of the Webclient class
+    client = WebClient(token=slack_token)
+
+    try:
+        response = client.chat_postMessage(
+            channel=channel,
+            text=message)
+	
+    except SlackApiError as e:
+    	assert e.response["error"]
 
 
 def abort(message):
@@ -283,16 +305,6 @@ def takeFauxDark(exposure, numFrames):
     timeStamp("Finished.")
 
 
-def setFlatPanel(filterNum, binning):
-    
-    brightness = getBrightnessForFilter(filterNum, binning)
-
-    print("     ----")
-    writeNote(f"Adjusting the panel for filter: {getFilterAtSlot(filCounter)} @ {binning}x{binning} to {brightness}")
-    print("     ----")
-
-    myFMPanel.Brightness(brightness)
-
 def takeFlats(filterNum, exposure, numFlats, takeDarks = "N", binning = 1, targetBrightness = 0.45, tolerance = .02):
 
 # This function takes an appropriately exposed flat.
@@ -360,7 +372,7 @@ def takeFlats(filterNum, exposure, numFlats, takeDarks = "N", binning = 1, targe
                 
                 # I want to see if this helps when they're not good enough, possible drift
                 #
-                setFlatPanel(filterNum, binning)
+                # setFlatPanel(filterNum, binning)
                 os.remove(imgPath)            
 
         timeStamp("")
