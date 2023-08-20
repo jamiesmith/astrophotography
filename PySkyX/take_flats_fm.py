@@ -110,8 +110,8 @@ while (filCounter < target):
                     numFlats = str(numFrames), 
                     binning = binning,
                     takeDarks = "No",
-                    targetBrightness = .45, 
-                    tolerance = .04)
+                    targetBrightness = .44, 
+                    tolerance = .05)
                         
     filCounter = filCounter + 1
 
