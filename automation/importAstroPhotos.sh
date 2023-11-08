@@ -5,6 +5,8 @@ shopt -s globstar
 baseDestDir="/Volumes/Astrophotography/AstroImages"
 sourceDir=""
 
+ECHO=""
+ECHO="/bin/echo"
 
 function die_usage
 {
@@ -35,59 +37,69 @@ shift `expr $OPTIND - 1`
 
 cd ${sourceDir}
 
+baseDateDir=""
+
 for dateDir in $(ls -d 20??-??-??) 
 do
-    pwd
-    echo ${dateDir}
     cd ${dateDir}
 
     # first the light frames
     #        
-    find . -type f \( -iname "*Light*.fit" ! -iname ".*" \) -print0 | sed 's|./||g' | while IFS= read -r -d '' file
+    find . -type f \( -iname "*LIGHT*.fits" ! -iname ".*" \) -print0 | sed 's|./||g' | while IFS= read -r -d '' file
     do
-       oldName="${file}"
-       target="${file%%-*}"
-    
-       newName="$(echo ${file} | sed "s|-NoTarget||g;s|${target}-${target}|${target}|g;s|${target}-FlatField|FlatField|g")"
-    
-       destDir="${baseDestDir}/${target}/${dateDir}"
+		oldName="${file}"
+		target="${file%%_*}"
+		
+		newName="$(echo ${file} | sed 's| ||g;s|_NoTarget||g;s|${target}_${target}|${target}|g;s|${target}_FlatField|FlatField|g')"
+		target="$(echo ${target} | sed 's| ||g')"
 
-       echo "Copying ${newName} to ${target}/${dateDir}"
-    
-       mkdir -p "${destDir}"
-       mkdir -p "${destDir}/processed"
-       cp -p "${file}" "${destDir}/${newName}"
+		destDir="${baseDestDir}/${target}/${dateDir}"
+
+		echo "Copying ${newName} to ${target}/${dateDir}"
+
+		# echo "target  : [${target}]"
+		# echo "oldName : [${oldName}]"
+		# echo "destDir : [${destDir}]"
+		# echo "newName : [${newName}]"
+		# echo ""
+
+		mkdir -p "${destDir}"
+		mkdir -p "${destDir}/processed"
+		cp -p "${file}" "${destDir}/${newName}"
     done
 
-    find . -type f \( -iname "*FlatField*.fit" ! -iname ".*" \) -print0 | sed 's|./||g' | while IFS= read -r -d '' file    
+    # Then the flats (this will need to change with NINA)
+    #     
+    find . -type f \( -iname "FLAT_*.fits" ! -iname ".*" \) -print0 | while IFS= read -r -d '' file    
     do
-        oldName="${file}"
-        newName="FlatField_${file##*FlatField_}"
+		oldName="${file}"
+		newName="FLAT_${file##*FLAT_}"
+		destDir="${baseDestDir}/${dateDir}/FLATS"
 
-        if [[ "${file}" == *"adu"* ]]
-        then
-            destDir="${baseDestDir}/${dateDir}"
-            echo "Copying ${newName} to ${dateDir}"
+		# echo "file    : [${file}]"
+		# echo "oldName : [${oldName}]"
+		# echo "newName : [${newName}]"
+		# echo "destDir : [${destDir}]"
+		# echo ""
+		# exit
+		echo "Copying ${newName} to ${dateDir}"
 
-            mkdir -p "${destDir}"
-            cp -p "${file}" "${destDir}/${newName}"
-        else
-            echo "#### Skipping bad flat ${file}"
-        fi
-        
+		mkdir -p "${destDir}"
+		cp -p "${file}" "${destDir}/${newName}"
     done
-    
-    find . -type f \( -iname "*Dark*.fit" ! -iname ".*" \) -print0 | sed 's|./||g' | while IFS= read -r -d '' file    
-    do
-        oldName="${file}"
-        newName="Dark_${file##*Dark_}"
 
-        destDir="${baseDestDir}/${dateDir}"
-        echo "Copying ${newName} to ${dateDir}"
-
-        mkdir -p "${destDir}"
-        cp -p "${file}" "${destDir}/${newName}"
-    done
+	echo DARK COPY IS NOT IMPLEMENTED
+    # find . -type f \( -iname "*Dark*.fit" ! -iname ".*" \) -print0 | sed 's|./||g' | while IFS= read -r -d '' file
+    # do
+    #     oldName="${file}"
+    #     newName="Dark_${file##*Dark_}"
+    #
+    #     destDir="${baseDestDir}/${dateDir}"
+    #     echo "Copying ${newName} to ${dateDir}"
+    #
+    #     $ECHO mkdir -p "${destDir}"
+    #     $ECHO cp -p "${file}" "${destDir}/${newName}"
+    # done
     
     cd - > /dev/null   
 done
