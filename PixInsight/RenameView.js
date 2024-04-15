@@ -1,50 +1,18 @@
-function getFilter(view)
-{
-   newId = "WTH";
-
-   if (view.id.indexOf("Lum") > 0)
-   {
-       newId = "Lum"
-   }
-   else if (view.id.indexOf("Red") > 0)
-   {
-       newId = "Red"
-       Console.writeln("ZZZZ");
-   }
-   else if (view.id.indexOf("Green") > 0)
-   {
-       newId = "Green"
-   }
-   else if (view.id.indexOf("Blue") > 0)
-   {
-       newId = "Blue"
-   }
-   else if (view.id.indexOf("Sii") > 0)
-   {
-       newId = "Sii"
-   }
-   else if (view.id.indexOf("Ha") > 0)
-   {
-       newId = "Ha"
-   }
-   else if (view.id.indexOf("Oiii") > 0)
-   {
-       newId = "Oiii"
-   }
-   else
-   {
-      newId = "WTH";
-   }
-
-   return newId;
-}
-
 function main()
 {
-   if (Parameters.isViewTarget)
+    if (Parameters.isViewTarget)
     {
-        filter = getFilter(Parameters.targetView);
-        Parameters.targetView.id = filter;
+        var filterProperty = "Instrument:Filter:Name"
+        targetView = Parameters.targetView;
+        if (targetView.hasProperty(filterProperty))
+        {
+            targetView.id = targetView.propertyValue(filterProperty);
+        }
+        else
+        {
+            console.show();
+            console.warningln("Unable to determine filter, Instrument:Filter:Name not set");
+        }
     }
 }
 
