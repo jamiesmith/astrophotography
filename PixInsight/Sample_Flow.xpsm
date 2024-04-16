@@ -3,7 +3,7 @@
 ********************************************************************
 PixInsight XML Process Serialization Module - XPSM 1.0
 ********************************************************************
-Generated on 2024-04-15T19:49:23.273Z
+Generated on 2024-04-16T17:35:27.766Z
 PixInsight Core 1.8.9-2 (x64)
 Copyright (c) 2003-2024 Pleiades Astrophoto
 ********************************************************************
@@ -691,7 +691,7 @@ Copyright (c) 2003-2024 Pleiades Astrophoto
       <parameter id="information"></parameter>
    </instance>
    <instance class="StarXTerminator" version="256" id="StarXTerminator_instance">
-      <time start="2024-04-14T16:08:26.329Z" span="18.982014"/>
+      <time start="2024-04-15T19:52:43.818Z" span="31.202926"/>
       <parameter id="ai_file">StarXTerminator.lite.nonoise.11.mlpackage</parameter>
       <parameter id="stars" value="true"/>
       <parameter id="unscreen" value="true"/>
@@ -734,35 +734,6 @@ Copyright (c) 2003-2024 Pleiades Astrophoto
             <td id="mask">0x01,0x01,0x01,0x01,0x01,0x01,0x01,0x01,0x01</td>
          </tr>
       </table>
-   </instance>
-   <instance class="PixelMath" version="256" id="Rescreen_Stars_To_MORPHED_Image_instance">
-      <parameter id="expression">~((~starless)*(~stars))</parameter>
-      <parameter id="expression1">0.2 * Oiii + 0.6* Ha + 0.2 * Sii</parameter>
-      <parameter id="expression2">2*Oiii</parameter>
-      <parameter id="expression3"></parameter>
-      <parameter id="useSingleExpression" value="true"/>
-      <parameter id="symbols"></parameter>
-      <parameter id="clearImageCacheAndExit" value="false"/>
-      <parameter id="cacheGeneratedImages" value="false"/>
-      <parameter id="generateOutput" value="true"/>
-      <parameter id="singleThreaded" value="false"/>
-      <parameter id="optimization" value="true"/>
-      <parameter id="use64BitWorkingImage" value="false"/>
-      <parameter id="rescale" value="false"/>
-      <parameter id="rescaleLower" value="0"/>
-      <parameter id="rescaleUpper" value="1"/>
-      <parameter id="truncate" value="true"/>
-      <parameter id="truncateLower" value="0"/>
-      <parameter id="truncateUpper" value="1"/>
-      <parameter id="createNewImage" value="true"/>
-      <parameter id="showNewImage" value="true"/>
-      <parameter id="newImageId"></parameter>
-      <parameter id="newImageWidth" value="0"/>
-      <parameter id="newImageHeight" value="0"/>
-      <parameter id="newImageAlpha" value="false"/>
-      <parameter id="newImageColorSpace" value="RGB"/>
-      <parameter id="newImageSampleFormat" value="SameAsTarget"/>
-      <table id="outputData" rows="0"/>
    </instance>
    <instance class="LRGBCombination" version="256" id="LRGB_Combo_instance">
       <table id="channels" rows="4">
@@ -1188,6 +1159,21 @@ Copyright (c) 2003-2024 Pleiades Astrophoto
       <parameter id="generateProtectionMasks" value="false"/>
       <parameter id="gridSamplingDelta" value="16"/>
    </instance>
+   <instance class="BlurXTerminator" version="256" id="BlurXTerminator_Full_instance">
+      <parameter id="ai_file">BlurXTerminator.4.mlpackage</parameter>
+      <parameter id="correct_only" value="false"/>
+      <parameter id="correct_first" value="false"/>
+      <parameter id="nonstellar_then_stellar" value="false"/>
+      <parameter id="lum_only" value="false"/>
+      <parameter id="sharpen_stars" value="0.50"/>
+      <parameter id="adjust_halos" value="0.00"/>
+      <parameter id="nonstellar_psf_diameter" value="0.00"/>
+      <parameter id="auto_nonstellar_psf" value="true"/>
+      <parameter id="sharpen_nonstellar" value="0.50"/>
+   </instance>
+   <instance class="ImageIdentifier" version="256" id="RenameViewToStarless_instance">
+      <parameter id="id">starless</parameter>
+   </instance>
    <instance class="Script" version="256" id="ScreenStarsAndStarless_instance">
       <parameter id="filePath">$PXI_SRCDIR/scripts/ImageBlend/ImageBlend.js</parameter>
       <parameter id="md5sum">db397b815422333887028f2d61938104</parameter>
@@ -1214,7 +1200,7 @@ Copyright (c) 2003-2024 Pleiades Astrophoto
          </tr>
          <tr>
             <td id="id">bBlackpoint</td>
-            <td id="value">0.03252</td>
+            <td id="value">0.04065</td>
          </tr>
          <tr>
             <td id="id">bHighlights</td>
@@ -1259,41 +1245,38 @@ Copyright (c) 2003-2024 Pleiades Astrophoto
       </table>
       <parameter id="information"></parameter>
    </instance>
-   <instance class="Script" version="256" id="SmartRenameView_instance">
-      <time start="2024-04-15T19:47:05.782Z" span="1.5460418"/>
-      <parameter id="filePath">/Users/jamie/Dropbox/GitRepo/astrophotography/PixInsight/RenameView.js</parameter>
-      <parameter id="md5sum"></parameter>
-      <table id="parameters" rows="0"/>
+   <instance class="NoOperation" version="256" id="Optional_morph_transform_experiment_instance"/>
+   <instance class="Script" version="256" id="SmartRenameViews_ExecGlobalThenRun_instance">
+      <time start="2024-04-16T17:34:56.343Z" span="8.0160877"/>
+      <parameter id="filePath">/Users/jamie/Dropbox/GitRepo/astrophotography/PixInsightScripts/SmartRenameView.js</parameter>
+      <parameter id="md5sum">148f453d3445aca0778901a2c51232f0</parameter>
+      <table id="parameters" rows="2">
+         <tr>
+            <td id="id">prefix</td>
+            <td id="value"></td>
+         </tr>
+         <tr>
+            <td id="id">suffix</td>
+            <td id="value"></td>
+         </tr>
+      </table>
       <parameter id="information"></parameter>
-   </instance>
-   <instance class="BlurXTerminator" version="256" id="BlurXTerminator_Full_instance">
-      <parameter id="ai_file">BlurXTerminator.4.mlpackage</parameter>
-      <parameter id="correct_only" value="false"/>
-      <parameter id="correct_first" value="false"/>
-      <parameter id="nonstellar_then_stellar" value="false"/>
-      <parameter id="lum_only" value="false"/>
-      <parameter id="sharpen_stars" value="0.50"/>
-      <parameter id="adjust_halos" value="0.00"/>
-      <parameter id="nonstellar_psf_diameter" value="0.00"/>
-      <parameter id="auto_nonstellar_psf" value="true"/>
-      <parameter id="sharpen_nonstellar" value="0.50"/>
    </instance>
    <icon id="Crop" instance="Crop_instance" xpos="2688" ypos="136" workspace="Workspace01"/>
    <icon id="STF" instance="STF_instance" xpos="2688" ypos="8" workspace="Workspace01"/>
-   <icon id="Scripts_utilities_dark_structure_enhance" instance="Scripts_utilities_dark_structure_enhance_instance" xpos="2688" ypos="712" workspace="Workspace01"/>
+   <icon id="Scripts_utilities_dark_structure_enhance" instance="Scripts_utilities_dark_structure_enhance_instance" xpos="2688" ypos="744" workspace="Workspace01"/>
    <icon id="WBPP" instance="WBPP_instance" xpos="2688" ypos="72" workspace="Workspace01"/>
    <icon id="CosmeticCorrection_Auto_3" instance="CosmeticCorrection_Auto_3_instance" xpos="2688" ypos="40" workspace="Workspace01"/>
    <icon id="LRGB_combo_HSHO" instance="LRGB_combo_HSHO_instance" xpos="2688" ypos="232" workspace="Workspace01"/>
    <icon id="SCNR_if_too_green" instance="SCNR_if_too_green_instance" xpos="2688" ypos="424" workspace="Workspace01"/>
    <icon id="CorrectMagentaStars_script" instance="CorrectMagentaStars_script_instance" xpos="2688" ypos="456" workspace="Workspace01"/>
-   <icon id="StarXTerminator" instance="StarXTerminator_instance" xpos="2688" ypos="552" workspace="Workspace01"/>
-   <icon id="CorrectMagentaStars_script_if_needed" instance="CorrectMagentaStars_script_if_needed_instance" xpos="2688" ypos="648" workspace="Workspace01"/>
-   <icon id="SCNR_again_if_needed" instance="SCNR_again_if_needed_instance" xpos="2688" ypos="680" workspace="Workspace01"/>
-   <icon id="Morphological_Transform_experiment" instance="Morphological_Transform_experiment_instance" xpos="2688" ypos="744" workspace="Workspace01"/>
-   <icon id="Rescreen_Stars_To_MORPHED_Image" instance="Rescreen_Stars_To_MORPHED_Image_instance" xpos="2688" ypos="776" workspace="Workspace01"/>
+   <icon id="StarXTerminator" instance="StarXTerminator_instance" xpos="2688" ypos="584" workspace="Workspace01"/>
+   <icon id="CorrectMagentaStars_script_if_needed" instance="CorrectMagentaStars_script_if_needed_instance" xpos="2688" ypos="680" workspace="Workspace01"/>
+   <icon id="SCNR_again_if_needed" instance="SCNR_again_if_needed_instance" xpos="2688" ypos="712" workspace="Workspace01"/>
+   <icon id="Morphological_Transform_experiment" instance="Morphological_Transform_experiment_instance" xpos="2688" ypos="776" workspace="Workspace01"/>
    <icon id="LRGB_Combo" instance="LRGB_Combo_instance" xpos="2688" ypos="200" workspace="Workspace01"/>
-   <icon id="NarrowbandNormalization" instance="NarrowbandNormalization_instance" xpos="2688" ypos="808" workspace="Workspace01"/>
-   <icon id="GeneralHyperbolicStretch" instance="GeneralHyperbolicStretch_instance" xpos="2688" ypos="584" workspace="Workspace01"/>
+   <icon id="NarrowbandNormalization" instance="NarrowbandNormalization_instance" xpos="2688" ypos="840" workspace="Workspace01"/>
+   <icon id="GeneralHyperbolicStretch" instance="GeneralHyperbolicStretch_instance" xpos="2688" ypos="616" workspace="Workspace01"/>
    <icon id="SpectroColorCalibration_RGB" instance="SpectroColorCalibration_RGB_instance" xpos="2688" ypos="360" workspace="Workspace01"/>
    <icon id="PlateSolveForSCC" instance="PlateSolveForSCC_instance" xpos="2688" ypos="328" workspace="Workspace01"/>
    <icon id="SpectroColorCalibration_SHO" instance="SpectroColorCalibration_SHO_instance" xpos="2688" ypos="392" workspace="Workspace01"/>
@@ -1301,7 +1284,9 @@ Copyright (c) 2003-2024 Pleiades Astrophoto
    <icon id="NoiseXTerminator" instance="NoiseXTerminator_instance" xpos="2688" ypos="520" workspace="Workspace01"/>
    <icon id="LinearFit" instance="LinearFit_instance" xpos="2688" ypos="168" workspace="Workspace01"/>
    <icon id="GradientCorrection" instance="GradientCorrection_instance" xpos="2688" ypos="264" workspace="Workspace01"/>
-   <icon id="ScreenStarsAndStarless" instance="ScreenStarsAndStarless_instance" xpos="2688" ypos="616" workspace="Workspace01"/>
-   <icon id="SmartRenameView" instance="SmartRenameView_instance" xpos="2688" ypos="104" workspace="Workspace01"/>
    <icon id="BlurXTerminator_Full" instance="BlurXTerminator_Full_instance" xpos="2688" ypos="488" workspace="Workspace01"/>
+   <icon id="RenameViewToStarless" instance="RenameViewToStarless_instance" xpos="2688" ypos="552" workspace="Workspace01"/>
+   <icon id="ScreenStarsAndStarless" instance="ScreenStarsAndStarless_instance" xpos="2688" ypos="648" workspace="Workspace01"/>
+   <icon id="Optional_morph_transform_experiment" instance="Optional_morph_transform_experiment_instance" xpos="2688" ypos="808" workspace="Workspace01"/>
+   <icon id="SmartRenameViews_ExecGlobalThenRun" instance="SmartRenameViews_ExecGlobalThenRun_instance" xpos="2688" ypos="104" workspace="Workspace01"/>
 </xpsm>

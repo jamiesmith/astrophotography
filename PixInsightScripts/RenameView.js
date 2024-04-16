@@ -1,3 +1,6 @@
+#feature-id    Utilities > Smart Rename View
+#feature-info  This script renames the target view after the filter name
+
 function main()
 {
     if (Parameters.isViewTarget)
