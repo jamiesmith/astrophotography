@@ -33,9 +33,9 @@
 
 #include <pjsr/TextAlign.jsh>
 #include <pjsr/Sizer.jsh>          // needed to instantiate the VerticalSizer and HorizontalSizer objects
-
-// #include <pjsr/Sizer.jsh>          // needed to instantiate the VerticalSizer and HorizontalSizer objects
-// #include <pjsr/NumericControl.jsh> // needed to instantiate the NumericControl control
+#include <pjsr/UndoFlag.jsh>
+#include <pjsr/StdIcon.jsh>
+#include <pjsr/StdButton.jsh>
 
 // define a global variable containing script's parameters
 var SmartRenameViewParameters = {
@@ -67,6 +67,9 @@ function renameView(view, prefix = "", suffix = "")
     var filterProperty = "Instrument:Filter:Name"
     if (view.hasProperty(filterProperty))
     {
+        // Without this set there's sometimes no history
+        //
+        let undoFlag = UndoFlag_DefaultMode;
         view.id = prefix + view.propertyValue(filterProperty) + suffix;
     }
     else
@@ -86,7 +89,6 @@ function getAllMainViews()
    }
    return mainViews;
 }
-
 
 /*
  * Construct the script dialog interface
@@ -110,10 +112,7 @@ function SmartRenameViewDialog()
     this.scaledMaxheight = 300;
 
     // create a title area
-    // 1. sets the formatted text
-    // 2. sets read only, we don't want to modify it
-    // 3. sets the background color
-    // 4. sets a fixed height, the control can't expand or contract
+    //
     this.title = new TextBox(this);
     this.title.text = "<b>Smart Rename View</b><br><br>Rename the view based on the filter" +
                     "<br><br>don't forget delimiters if you use prefix and/or suffix";
@@ -123,9 +122,7 @@ function SmartRenameViewDialog()
     this.title.maxHeight = 120;
 
     // add a view picker
-    // 1. retrieve the whole view list (images and previews)
-    // 2. sets the initially selected view
-    // 3. sets the selection callback: the target view becomes the selected view
+    //
     this.viewList = new ViewList(this);
     this.viewList.getAll();
     SmartRenameViewParameters.targetView = this.viewList.currentView;
@@ -133,15 +130,21 @@ function SmartRenameViewDialog()
         SmartRenameViewParameters.targetView = view;
     }
 
-    // prepare the execution button
-    // 1. sets the text
-    // 2. sets a fixed width
-    // 3. sets the onClick function
-    this.execButton = new PushButton(this);
-    this.execButton.text = "Execute";
-    this.execButton.width = 40;
-    this.execButton.onClick = () => {
-        this.ok();
+    this.applyButton = new ToolButton( this );
+    this.applyButton.icon = this.scaledResource( ":/process-interface/apply.png" );
+    this.applyButton.setScaledFixedSize( 24, 24 );
+    this.applyButton.toolTip = "Execute against selected view";
+    this.applyButton.onMousePress = () => {
+        // this.ok();
+        if (SmartRenameViewParameters.targetView && SmartRenameViewParameters.targetView.id) 
+        {
+            renameView(SmartRenameViewParameters.targetView, SmartRenameViewParameters.prefix, SmartRenameViewParameters.suffix);
+        } 
+        else 
+        {
+            console.show();
+            console.warningln("No target view is specified ");
+        }        
     };
 
     // Add create instance button
@@ -149,7 +152,7 @@ function SmartRenameViewDialog()
     this.newInstanceButton = new ToolButton( this );
     this.newInstanceButton.icon = this.scaledResource( ":/process-interface/new-instance.png" );
     this.newInstanceButton.setScaledFixedSize( 24, 24 );
-    this.newInstanceButton.toolTip = "New Instance";
+    this.newInstanceButton.toolTip = "Save Instance";
     this.newInstanceButton.onMousePress = () => {
         // stores the parameters
         SmartRenameViewParameters.save();
@@ -162,22 +165,26 @@ function SmartRenameViewDialog()
     this.applyGlobalButton = new ToolButton( this );
     this.applyGlobalButton.icon = this.scaledResource( ":/process-interface/apply-global.png" );
     this.applyGlobalButton.setScaledFixedSize( 24, 24 );
-    this.applyGlobalButton.toolTip = "Apply to all views in current workspace";
+    this.applyGlobalButton.toolTip = "Apply Global";
     this.applyGlobalButton.onMousePress = () => {
         var vl = new getAllMainViews();
+    
         for (var i = 0; i < vl.length; i++)
         {
             renameView(vl[i], SmartRenameViewParameters.prefix, SmartRenameViewParameters.suffix);            
         }
+        new MessageBox("Executed", "Complete", StdIcon_Information, StdButton_Ok).execute();
+        
     };
 
-    this.execButtonSizer = new HorizontalSizer;
-    this.execButtonSizer.margin = 8;
-    this.execButtonSizer.add(this.newInstanceButton)
-    this.execButtonSizer.addSpacing( 8 );
-    this.execButtonSizer.add(this.applyGlobalButton)
-    this.execButtonSizer.addStretch();
-    this.execButtonSizer.add(this.execButton)
+    this.buttonSizer = new HorizontalSizer;
+    this.buttonSizer.margin = 8;
+    this.buttonSizer.add(this.newInstanceButton)
+    this.buttonSizer.addSpacing( 8 );
+    this.buttonSizer.add(this.applyButton)
+    this.buttonSizer.addSpacing( 8 );
+    this.buttonSizer.add(this.applyGlobalButton)
+    this.buttonSizer.addStretch();
 
     // Set up the prefix field
     //
@@ -237,7 +244,7 @@ function SmartRenameViewDialog()
     this.sizer.addSpacing(8);
     this.sizer.add(this.viewList);
     this.sizer.addSpacing(8);
-    this.sizer.add(this.execButtonSizer);
+    this.sizer.add(this.buttonSizer);
     this.sizer.addStretch();
 }
 
@@ -245,20 +252,24 @@ SmartRenameViewDialog.prototype = new Dialog;
 
 function main() 
 {
-    // hide the console, we don't need it
+    // hide the console until we need it
+    //
     console.hide();
 
     // perform the script on the target view
+    //
     if (Parameters.isViewTarget) 
     {
-    // load parameters
+        // load parameters
+        //
         SmartRenameViewParameters.load();
         renameView(Parameters.targetView, SmartRenameViewParameters.prefix, SmartRenameViewParameters.suffix);
 
         return;
     }
 
-    // is script started from an instance in global context?
+    // is script started from an instance in global context
+    //
     if (Parameters.isGlobalTarget) 
     {
         // load the parameters from the instance
@@ -266,19 +277,10 @@ function main()
     }
 
     // direct contect, create and show the dialog
+    //
     let dialog = new SmartRenameViewDialog;
-    dialog.execute();
 
-    // check if a valid target view has been selected
-    if (SmartRenameViewParameters.targetView && SmartRenameViewParameters.targetView.id) 
-    {
-        renameView(SmartRenameViewParameters.targetView, SmartRenameViewParameters.prefix, SmartRenameViewParameters.suffix);
-    } 
-    else 
-    {
-        console.show();
-        console.warningln("No target view is specified ");
-    }
+    dialog.execute();
 }
 
 main();
