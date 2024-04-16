@@ -1,19 +1,9 @@
 /* PURPOSE
-   Add the information to let PixInsight recognize the script name and installation path
-   within the Scripts menu
-
-   NOTES
-   With respect script "07. CreateScriptInstanceGUI.js", this script contains:
-   1. load/save functions inside the parameters object to store and load the
-      instance parameters
-   2. the draggable ToolButton to create the script instance
-   3. execution context control flow in the main function
-
-
    LICENSE
-   This script is part of the "An Introduction to PixInsight PJSR Scripting" workshop.
-
+   This script based on the "An Introduction to PixInsight PJSR Scripting" workshop.
+   See: https://gitlab.com/roberto.sartori/pixinsight-introduction-scripts
    Copyright (C) 2020 Roberto Sartori.
+   Copyright (C) 2024 Jamie Smith.
 
    This program is free software: you can redistribute it and/or modify it
    under the terms of the GNU General Public License as published by the
@@ -115,11 +105,16 @@ function SmartRenameViewDialog()
     //
     this.title = new TextBox(this);
     this.title.text = "<b>Smart Rename View</b><br><br>Rename the view based on the filter" +
-                    "<br><br>don't forget delimiters if you use prefix and/or suffix";
+                    "<br><br>don't forget delimiters if you use prefix and/or suffix " +
+                    "<br><br><b>Usage:</b>" +
+                    "<br> - Drag a new instance onto your workspace, then drop that Script Process Icon on a single image to rename" +
+                    "<br> - Select a view in the dropdown and 'Apply' (square)" +
+                    "<br> - To apply to ALL windows hit 'Apply Global' (circle)";
+    ;
     this.title.readOnly = true;
     this.title.backroundColor = 0x333333ff;
-    this.title.minHeight = 120;
-    this.title.maxHeight = 120;
+    this.title.minHeight = 180;
+    this.title.maxHeight = 180;
 
     // add a view picker
     //

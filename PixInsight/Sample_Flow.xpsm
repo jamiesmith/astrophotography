@@ -3,7 +3,7 @@
 ********************************************************************
 PixInsight XML Process Serialization Module - XPSM 1.0
 ********************************************************************
-Generated on 2024-04-16T17:35:27.766Z
+Generated on 2024-04-16T20:16:10.684Z
 PixInsight Core 1.8.9-2 (x64)
 Copyright (c) 2003-2024 Pleiades Astrophoto
 ********************************************************************
@@ -1246,10 +1246,9 @@ Copyright (c) 2003-2024 Pleiades Astrophoto
       <parameter id="information"></parameter>
    </instance>
    <instance class="NoOperation" version="256" id="Optional_morph_transform_experiment_instance"/>
-   <instance class="Script" version="256" id="SmartRenameViews_ExecGlobalThenRun_instance">
-      <time start="2024-04-16T17:34:56.343Z" span="8.0160877"/>
+   <instance class="Script" version="256" id="SmartRenameGlobalOrSingle_instance">
       <parameter id="filePath">/Users/jamie/Dropbox/GitRepo/astrophotography/PixInsightScripts/SmartRenameView.js</parameter>
-      <parameter id="md5sum">148f453d3445aca0778901a2c51232f0</parameter>
+      <parameter id="md5sum">f67fad8b7926dc342292a1ca57467dfd</parameter>
       <table id="parameters" rows="2">
          <tr>
             <td id="id">prefix</td>
@@ -1288,5 +1287,5 @@ Copyright (c) 2003-2024 Pleiades Astrophoto
    <icon id="RenameViewToStarless" instance="RenameViewToStarless_instance" xpos="2688" ypos="552" workspace="Workspace01"/>
    <icon id="ScreenStarsAndStarless" instance="ScreenStarsAndStarless_instance" xpos="2688" ypos="648" workspace="Workspace01"/>
    <icon id="Optional_morph_transform_experiment" instance="Optional_morph_transform_experiment_instance" xpos="2688" ypos="808" workspace="Workspace01"/>
-   <icon id="SmartRenameViews_ExecGlobalThenRun" instance="SmartRenameViews_ExecGlobalThenRun_instance" xpos="2688" ypos="104" workspace="Workspace01"/>
+   <icon id="SmartRenameGlobalOrSingle" instance="SmartRenameGlobalOrSingle_instance" xpos="2688" ypos="104" workspace="Workspace01"/>
 </xpsm>
