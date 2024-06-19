@@ -168,8 +168,6 @@ function SmartRenameViewDialog()
         {
             renameView(vl[i], SmartRenameViewParameters.prefix, SmartRenameViewParameters.suffix);            
         }
-        new MessageBox("Executed", "Complete", StdIcon_Information, StdButton_Ok).execute();
-        
     };
 
     this.buttonSizer = new HorizontalSizer;

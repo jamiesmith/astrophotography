@@ -59,21 +59,25 @@ sessionDateDir=""
 # │   ├── 2023-11-18
 # │   │   ├── LIGHTS
 # │   │   │   └── < LIGHTS GO HERE >
-# │   │   ├── WBPP
-# │   │   └── calibration
+# │   │   └── WBPP
 # │   └── M42-Project
-# │       ├── 2023-11-18-CALIBRATED
-# │       │   └── < CALIBRATED LIGHTS GO HERE >
+# │       ├── CALIBRATED
+# │       │   ├── 2023-11-18
+# │       │   │   └── < CALIBRATED LIGHTS GO HERE >
+# │       │   └── 2023-11-19
+# │       │       └── < CALIBRATED LIGHTS GO HERE >
 # │       └── WORK_AREA
 # ├── M45
 # │   ├── 2023-11-18
 # │   │   ├── LIGHTS
 # │   │   │   └── < LIGHTS GO HERE >
-# │   │   ├── WBPP
-# │   │   └── calibration
+# │   │   └── WBPP
 # │   └── M45-Project
-# │       ├── 2023-11-18-CALIBRATED
-# │       │   └── < CALIBRATED LIGHTS GO HERE >
+# │       ├── CALIBRATED
+# │       │   ├── 2023-11-18
+# │       │   │   └── < CALIBRATED LIGHTS GO HERE >
+# │       │   └── 2023-11-19
+# │       │       └── < CALIBRATED LIGHTS GO HERE >
 # │       └── WORK_AREA
 # └── RAW_CALIBRATION
 #     └── 2023-11-18
@@ -97,26 +101,26 @@ do
         oldName="${file}"
         target="${file%%_*}"
         
-        newName="$(echo ${file} | sed 's| ||g;s|_NoTarget||g;s|${target}_${target}|${target}|g;s|${target}_FlatField|FlatField|g')"
-        target="$(echo ${target} | sed 's| ||g')"
+        # newName="$(echo ${file} | sed 's| ||g;s|\x27||g;s|_NoTarget||g;s|${target}_${target}|${target}|g;s|${target}_FlatField|FlatField|g')"
+        newName="$(echo ${file} | sed 's| ||g;s|\x27||g;s|${target}_FlatField|FlatField|g')"
+        target="$(echo ${target} | sed "s| ||g;s|'||g")"
 
         destDir="${baseDestDir}/${target}/${sessionDateDir}"
         projectDir="${baseDestDir}/${target}/${target}-${projectDirPrefix}/"        
 
 
         mkdir -p "${destDir}/LIGHTS"
-        mkdir -p "${destDir}/calibration"
         mkdir -p "${destDir}/WBPP"
 
         # this is to store longer, calibrated datasets
         #
-        mkdir -p "${projectDir}/${sessionDateDir}-CALIBRATED"
+        mkdir -p "${projectDir}/CALIBRATED/${sessionDateDir}"
         mkdir -p "${projectDir}/WORK_AREA"
         
         if [ -n "$treeOnly" ]
         then
             touch "${destDir}/LIGHTS/< LIGHTS GO HERE >"
-            touch "${projectDir}/${sessionDateDir}-CALIBRATED/< CALIBRATED LIGHTS GO HERE >"
+            touch "${projectDir}/CALIBRATED/${sessionDateDir}/< CALIBRATED LIGHTS GO HERE >"
         else
             echo "Copying ${newName} to ${target}/${sessionDateDir}"
             cp -p "${file}" "${destDir}/LIGHTS/${newName}"
