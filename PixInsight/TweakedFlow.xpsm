@@ -3,73 +3,35 @@
 ********************************************************************
 PixInsight XML Process Serialization Module - XPSM 1.0
 ********************************************************************
-Generated on 2024-06-19T17:52:55.055Z
-PixInsight Core 1.8.9-2 (x64)
+Generated on 2024-06-25T17:53:00.067Z
+PixInsight Core 1.8.9-3 (x64)
 Copyright (c) 2003-2024 Pleiades Astrophoto
 ********************************************************************
 -->
 <xpsm version="1.0" xmlns="http://www.pixinsight.com/xpsm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pixinsight.com/xpsm http://pixinsight.com/xpsm/xpsm-1.0.xsd">
-   <instance class="DynamicCrop" version="2" id="Crop_instance">
-      <parameter id="refWidth" value="1"/>
-      <parameter id="refHeight" value="1"/>
-      <parameter id="outWidth" value="1.00"/>
-      <parameter id="outHeight" value="1.00"/>
-      <parameter id="centerX" value="0.50000000"/>
-      <parameter id="centerY" value="0.50000000"/>
-      <parameter id="width" value="1.00000000"/>
-      <parameter id="height" value="1.00000000"/>
-      <parameter id="angle" value="0.0000000000"/>
-      <parameter id="scaleX" value="1.00000000"/>
-      <parameter id="scaleY" value="1.00000000"/>
-      <parameter id="optimizeFast" value="true"/>
-      <parameter id="interpolation" value="Auto"/>
-      <parameter id="clampingThreshold" value="0.30"/>
-      <parameter id="smoothness" value="1.50"/>
-      <parameter id="gammaCorrection" value="false"/>
-      <parameter id="xResolution" value="72.000"/>
-      <parameter id="yResolution" value="72.000"/>
-      <parameter id="metric" value="false"/>
-      <parameter id="forceResolution" value="false"/>
-      <parameter id="red" value="0.000000"/>
-      <parameter id="green" value="0.000000"/>
-      <parameter id="blue" value="0.000000"/>
-      <parameter id="alpha" value="1.000000"/>
-      <parameter id="noGUIMessages" value="false"/>
+   <instance class="CosmeticCorrection" version="256" id="CC_Auto_3_instance">
+      <table id="targetFrames" rows="0"/>
+      <parameter id="masterDarkPath"></parameter>
+      <parameter id="outputDir"></parameter>
+      <parameter id="outputExtension">.xisf</parameter>
+      <parameter id="prefix"></parameter>
+      <parameter id="postfix">_cc</parameter>
+      <parameter id="overwrite" value="false"/>
+      <parameter id="amount" value="1.00"/>
+      <parameter id="cfa" value="false"/>
+      <parameter id="useMasterDark" value="false"/>
+      <parameter id="hotDarkCheck" value="false"/>
+      <parameter id="hotDarkLevel" value="1.0000000"/>
+      <parameter id="coldDarkCheck" value="false"/>
+      <parameter id="coldDarkLevel" value="0.0000000"/>
+      <parameter id="useAutoDetect" value="true"/>
+      <parameter id="hotAutoCheck" value="true"/>
+      <parameter id="hotAutoValue" value="3.0"/>
+      <parameter id="coldAutoCheck" value="false"/>
+      <parameter id="coldAutoValue" value="3.0"/>
+      <parameter id="useDefectList" value="false"/>
+      <table id="defects" rows="0"/>
    </instance>
-   <instance class="ScreenTransferFunction" version="256" id="STF_instance">
-      <table id="STF" rows="4">
-         <tr>
-            <td id="c0" value="0.00391"/>
-            <td id="c1" value="1.00000"/>
-            <td id="m" value="0.00237"/>
-            <td id="r0" value="0.00000"/>
-            <td id="r1" value="1.00000"/>
-         </tr>
-         <tr>
-            <td id="c0" value="0.00407"/>
-            <td id="c1" value="1.00000"/>
-            <td id="m" value="0.00173"/>
-            <td id="r0" value="0.00000"/>
-            <td id="r1" value="1.00000"/>
-         </tr>
-         <tr>
-            <td id="c0" value="0.00382"/>
-            <td id="c1" value="1.00000"/>
-            <td id="m" value="0.00263"/>
-            <td id="r0" value="0.00000"/>
-            <td id="r1" value="1.00000"/>
-         </tr>
-         <tr>
-            <td id="c0" value="0.00000"/>
-            <td id="c1" value="1.00000"/>
-            <td id="m" value="0.50000"/>
-            <td id="r0" value="0.00000"/>
-            <td id="r1" value="1.00000"/>
-         </tr>
-      </table>
-      <parameter id="interaction" value="SeparateChannels"/>
-   </instance>
-   <instance class="NoOperation" version="256" id="Scripts_utilities_dark_structure_enhance_instance"/>
    <instance class="Script" version="256" id="WBPP_instance">
       <time start="2020-04-13T17:05:07.538Z" span="4219.6138"/>
       <parameter id="filePath">$PXI_SRCDIR/scripts/WeightedBatchPreprocessing/WeightedBatchPreprocessing.js</parameter>
@@ -614,149 +576,47 @@ Copyright (c) 2003-2024 Pleiades Astrophoto
       </table>
       <parameter id="information"></parameter>
    </instance>
-   <instance class="CosmeticCorrection" version="256" id="CosmeticCorrection_Auto_3_instance">
-      <table id="targetFrames" rows="0"/>
-      <parameter id="masterDarkPath"></parameter>
-      <parameter id="outputDir"></parameter>
-      <parameter id="outputExtension">.xisf</parameter>
-      <parameter id="prefix"></parameter>
-      <parameter id="postfix">_cc</parameter>
-      <parameter id="overwrite" value="false"/>
-      <parameter id="amount" value="1.00"/>
-      <parameter id="cfa" value="false"/>
-      <parameter id="useMasterDark" value="false"/>
-      <parameter id="hotDarkCheck" value="false"/>
-      <parameter id="hotDarkLevel" value="1.0000000"/>
-      <parameter id="coldDarkCheck" value="false"/>
-      <parameter id="coldDarkLevel" value="0.0000000"/>
-      <parameter id="useAutoDetect" value="true"/>
-      <parameter id="hotAutoCheck" value="true"/>
-      <parameter id="hotAutoValue" value="3.0"/>
-      <parameter id="coldAutoCheck" value="false"/>
-      <parameter id="coldAutoValue" value="3.0"/>
-      <parameter id="useDefectList" value="false"/>
-      <table id="defects" rows="0"/>
+   <instance class="DynamicCrop" version="2" id="Crop_instance">
+      <parameter id="refWidth" value="1"/>
+      <parameter id="refHeight" value="1"/>
+      <parameter id="outWidth" value="1.00"/>
+      <parameter id="outHeight" value="1.00"/>
+      <parameter id="centerX" value="0.50000000"/>
+      <parameter id="centerY" value="0.50000000"/>
+      <parameter id="width" value="1.00000000"/>
+      <parameter id="height" value="1.00000000"/>
+      <parameter id="angle" value="0.0000000000"/>
+      <parameter id="scaleX" value="1.00000000"/>
+      <parameter id="scaleY" value="1.00000000"/>
+      <parameter id="optimizeFast" value="true"/>
+      <parameter id="interpolation" value="Auto"/>
+      <parameter id="clampingThreshold" value="0.30"/>
+      <parameter id="smoothness" value="1.50"/>
+      <parameter id="gammaCorrection" value="false"/>
+      <parameter id="xResolution" value="72.000"/>
+      <parameter id="yResolution" value="72.000"/>
+      <parameter id="metric" value="false"/>
+      <parameter id="forceResolution" value="false"/>
+      <parameter id="red" value="0.000000"/>
+      <parameter id="green" value="0.000000"/>
+      <parameter id="blue" value="0.000000"/>
+      <parameter id="alpha" value="1.000000"/>
+      <parameter id="noGUIMessages" value="false"/>
    </instance>
-   <instance class="LRGBCombination" version="256" id="LRGB_combo_HSHO_instance">
-      <table id="channels" rows="4">
-         <tr>
-            <td id="enabled" value="true"/>
-            <td id="id">Sii</td>
-            <td id="k" value="1.00000"/>
-         </tr>
-         <tr>
-            <td id="enabled" value="true"/>
-            <td id="id">Ha</td>
-            <td id="k" value="1.00000"/>
-         </tr>
-         <tr>
-            <td id="enabled" value="true"/>
-            <td id="id">Oiii</td>
-            <td id="k" value="1.00000"/>
-         </tr>
-         <tr>
-            <td id="enabled" value="true"/>
-            <td id="id">Ha</td>
-            <td id="k" value="1.00000"/>
-         </tr>
-      </table>
-      <parameter id="mL" value="0.500"/>
-      <parameter id="mc" value="0.500"/>
-      <parameter id="clipHighlights" value="true"/>
-      <parameter id="noiseReduction" value="false"/>
-      <parameter id="layersRemoved" value="4"/>
-      <parameter id="layersProtected" value="2"/>
-      <parameter id="inheritAstrometricSolution" value="true"/>
+   <instance class="BlurXTerminator" version="256" id="BlurX_CorrectOnly_instance">
+      <time start="2024-06-22T14:24:07.620Z" span="9.0581259"/>
+      <parameter id="ai_file">BlurXTerminator.4.mlpackage</parameter>
+      <parameter id="correct_only" value="true"/>
+      <parameter id="correct_first" value="false"/>
+      <parameter id="nonstellar_then_stellar" value="false"/>
+      <parameter id="lum_only" value="false"/>
+      <parameter id="sharpen_stars" value="0.50"/>
+      <parameter id="adjust_halos" value="0.00"/>
+      <parameter id="nonstellar_psf_diameter" value="0.00"/>
+      <parameter id="auto_nonstellar_psf" value="true"/>
+      <parameter id="sharpen_nonstellar" value="0.50"/>
    </instance>
-   <instance class="SCNR" version="256" id="SCNR_if_too_green_instance">
-      <parameter id="amount" value="0.30"/>
-      <parameter id="protectionMethod" value="AverageNeutral"/>
-      <parameter id="colorToRemove" value="Green"/>
-      <parameter id="preserveLightness" value="true"/>
-   </instance>
-   <instance class="Script" version="256" id="CorrectMagentaStars_script_instance">
-      <time start="2024-06-19T17:42:48.828Z" span="2.3497912"/>
-      <parameter id="filePath">$PXI_SRCDIR/scripts/CorrectMagentaStars/CorrectMagentaStars.js</parameter>
-      <parameter id="md5sum">31bdf816791092b80b5344db2d2f7ce2</parameter>
-      <table id="parameters" rows="2">
-         <tr>
-            <td id="id">scnrAmount</td>
-            <td id="value">0.8</td>
-         </tr>
-         <tr>
-            <td id="id">scnrPresLight</td>
-            <td id="value">true</td>
-         </tr>
-      </table>
-      <parameter id="information"></parameter>
-   </instance>
-   <instance class="StarXTerminator" version="256" id="StarXTerminator_instance">
-      <time start="2024-06-19T13:19:34.665Z" span="30.003645"/>
-      <parameter id="ai_file">StarXTerminator.lite.nonoise.11.mlpackage</parameter>
-      <parameter id="stars" value="true"/>
-      <parameter id="unscreen" value="true"/>
-      <parameter id="overlap" value="0.20"/>
-   </instance>
-   <instance class="LRGBCombination" version="256" id="RGB_Combo_instance">
-      <table id="channels" rows="4">
-         <tr>
-            <td id="enabled" value="true"/>
-            <td id="id">Red</td>
-            <td id="k" value="1.00000"/>
-         </tr>
-         <tr>
-            <td id="enabled" value="true"/>
-            <td id="id">Green</td>
-            <td id="k" value="1.00000"/>
-         </tr>
-         <tr>
-            <td id="enabled" value="true"/>
-            <td id="id">Blue</td>
-            <td id="k" value="1.00000"/>
-         </tr>
-         <tr>
-            <td id="enabled" value="false"/>
-            <td id="id">Lum</td>
-            <td id="k" value="1.00000"/>
-         </tr>
-      </table>
-      <parameter id="mL" value="0.500"/>
-      <parameter id="mc" value="0.500"/>
-      <parameter id="clipHighlights" value="true"/>
-      <parameter id="noiseReduction" value="false"/>
-      <parameter id="layersRemoved" value="4"/>
-      <parameter id="layersProtected" value="2"/>
-      <parameter id="inheritAstrometricSolution" value="true"/>
-   </instance>
-   <instance class="NarrowbandNormalization" version="256" id="NarrowbandNormalization_instance">
-      <parameter id="palette" value="Palette_HOO"/>
-      <parameter id="lightness" value="Lightness_Off"/>
-      <parameter id="blendMode" value="Blend_Mode1"/>
-      <parameter id="haBlend" value="0.000"/>
-      <parameter id="scnr" value="0.000"/>
-      <parameter id="o3Boost" value="0.000"/>
-      <parameter id="s2Boost" value="0.000"/>
-      <parameter id="ShadowPointment" value="0.000"/>
-      <parameter id="highlightReduction" value="0.000"/>
-      <parameter id="brightness" value="0.000"/>
-   </instance>
-   <instance class="GeneralizedHyperbolicStretch" version="256" id="GeneralHyperbolicStretch_instance">
-      <parameter id="stretchType" value="ST_GeneralisedHyperbolic"/>
-      <parameter id="stretchChannel" value="SC_RGB"/>
-      <parameter id="inverse" value="false"/>
-      <parameter id="stretchFactor" value="0.000"/>
-      <parameter id="localIntensity" value="0.000"/>
-      <parameter id="symmetryPoint" value="0.000000"/>
-      <parameter id="highlightProtection" value="1.000000"/>
-      <parameter id="shadowProtection" value="0.000000"/>
-      <parameter id="blackPoint" value="0.000000"/>
-      <parameter id="whitePoint" value="1.000000"/>
-      <parameter id="colourBlend" value="1.000"/>
-      <parameter id="clipType" value="CT_RGBBlend"/>
-      <parameter id="useRGBWorkingSpace" value="false"/>
-   </instance>
-   <instance class="SpectrophotometricColorCalibration" version="1" id="SpectroColorCalibration_RGB_instance">
-      <time start="2024-06-19T13:16:12.817Z" span="39.660716"/>
+   <instance class="SpectrophotometricColorCalibration" version="1" id="SPCC_RGB_ASG_instance">
       <parameter id="applyCalibration" value="true"/>
       <parameter id="narrowbandMode" value="false"/>
       <parameter id="narrowbandOptimizeStars" value="false"/>
@@ -774,8 +634,8 @@ Copyright (c) 2003-2024 Pleiades Astrophoto
       <parameter id="greenFilterBandwidth" value="3.0"/>
       <parameter id="blueFilterWavelength" value="500.7"/>
       <parameter id="blueFilterBandwidth" value="3.0"/>
-      <parameter id="deviceQECurve">1,1.0,500,1.0,1000,1.0,1500,1.0,2000,1.0,2500,1.0</parameter>
-      <parameter id="deviceQECurveName">Ideal QE curve</parameter>
+      <parameter id="deviceQECurve">402,0.7219,404,0.7367,406,0.75,408,0.7618,410,0.7751,412,0.787,414,0.7944,416,0.8018,418,0.8112,420,0.8214,422,0.8343,424,0.8462,426,0.8536,428,0.8595,430,0.8639,432,0.8713,434,0.8757,436,0.8802,438,0.8861,440,0.8905,442,0.895,444,0.8994,446,0.9038,448,0.9068,450,0.9112,452,0.9142,454,0.9172,456,0.9168,458,0.9151,460,0.9134,462,0.9117,464,0.91,466,0.9083,468,0.9066,470,0.9049,472,0.9032,474,0.9015,476,0.8997,478,0.898,480,0.8963,482,0.8946,484,0.8929,486,0.8912,488,0.8876,490,0.8846,492,0.8877,494,0.8904,496,0.893,498,0.8964,500,0.8964,502,0.895,504,0.8945,506,0.8922,508,0.8899,510,0.8876,512,0.8853,514,0.883,516,0.8807,518,0.8784,520,0.8761,522,0.8743,524,0.8728,526,0.8698,528,0.8669,530,0.8624,532,0.858,534,0.855,536,0.8506,538,0.8476,540,0.8432,542,0.8402,544,0.8358,546,0.8328,548,0.8284,550,0.8254,552,0.821,554,0.8166,556,0.8136,558,0.8092,560,0.8062,562,0.8023,564,0.7983,566,0.7944,568,0.7899,570,0.787,572,0.7825,574,0.7781,576,0.7751,578,0.7707,580,0.7663,582,0.7618,584,0.7559,586,0.75,588,0.7441,590,0.7396,592,0.7337,594,0.7278,596,0.7219,598,0.716,600,0.7101,602,0.7056,604,0.6997,606,0.695,608,0.6905,610,0.6852,612,0.6808,614,0.6763,616,0.6719,618,0.6675,620,0.663,622,0.6583,624,0.6553,626,0.6509,628,0.6464,630,0.642,632,0.6376,634,0.6317,636,0.6272,638,0.6213,640,0.6154,642,0.6109,644,0.6036,646,0.5962,648,0.5902,650,0.5843,652,0.5799,654,0.574,656,0.5695,658,0.5636,660,0.5592,662,0.5545,664,0.5504,666,0.5462,668,0.542,670,0.5378,672,0.5328,674,0.5286,676,0.5244,678,0.5203,680,0.5163,682,0.5133,684,0.5089,686,0.5044,688,0.4985,690,0.4926,692,0.4867,694,0.4793,696,0.4719,698,0.4645,700,0.4586,702,0.4541,704,0.4497,706,0.4453,708,0.4408,710,0.4364,712,0.432,714,0.4275,716,0.4216,718,0.4186,720,0.4142,722,0.4127,724,0.4103,726,0.4078,728,0.4053,730,0.4024,732,0.3979,734,0.3935,736,0.3891,738,0.3831,740,0.3802,742,0.3772,744,0.3743,746,0.3713,748,0.3669,750,0.3624,752,0.3595,754,0.3559,756,0.3526,758,0.3494,760,0.3462,762,0.3429,764,0.3397,766,0.3364,768,0.3332,770,0.33,772,0.3267,774,0.3235,776,0.3203,778,0.317,780,0.3138,782,0.3106,784,0.3073,786,0.3041,788,0.3009,790,0.2976,792,0.2937,794,0.2905,796,0.2873,798,0.284,800,0.2808,802,0.2776,804,0.2743,806,0.2731,808,0.2703,810,0.2674,812,0.2646,814,0.2618,816,0.2589,818,0.2561,820,0.2533,822,0.2504,824,0.2476,826,0.2456,828,0.2439,830,0.2433,832,0.2427,834,0.2421,836,0.2416,838,0.2411,840,0.2382,842,0.2322,844,0.2278,846,0.2219,848,0.2175,850,0.2114,852,0.2069,854,0.2023,856,0.1978,858,0.1932,860,0.1918,862,0.1911,864,0.1904,866,0.1897,868,0.189,870,0.1883,872,0.1879,874,0.1834,876,0.179,878,0.1731,880,0.1672,882,0.1612,884,0.1568,886,0.1524,888,0.1479,890,0.1464,892,0.1464,894,0.1464,896,0.1464,898,0.1481,900,0.1494,902,0.1494,904,0.1494,906,0.1464,908,0.1435,910,0.1391,912,0.1346,914,0.1302,916,0.1257,918,0.1228,920,0.1183,922,0.1139,924,0.1109,926,0.1093,928,0.1085,930,0.108,932,0.108,934,0.108,936,0.108,938,0.108,940,0.1058,942,0.1039,944,0.1021,946,0.0998,948,0.0958,950,0.0918,952,0.0888,954,0.0828,956,0.0769,958,0.074,960,0.0714,962,0.0695,964,0.0677,966,0.0658,968,0.0651,970,0.0636,972,0.0626,974,0.0616,976,0.0606,978,0.0596,980,0.0586,982,0.0576,984,0.0567,986,0.0557,988,0.0547,990,0.0537,992,0.0527,994,0.0517,996,0.0507</parameter>
+      <parameter id="deviceQECurveName">Sony IMX411/455/461/533/571</parameter>
       <parameter id="broadbandIntegrationStepSize" value="0.50"/>
       <parameter id="narrowbandIntegrationSteps" value="10"/>
       <parameter id="catalogId">GaiaDR3SP</parameter>
@@ -811,119 +671,407 @@ Copyright (c) 2003-2024 Pleiades Astrophoto
       <parameter id="generateTextFiles" value="false"/>
       <parameter id="outputDirectory"></parameter>
    </instance>
-   <instance class="SpectrophotometricColorCalibration" version="1" id="SpectroColorCalibration_SHO_instance">
-      <time start="2024-06-16T16:02:34.641Z" span="111.40848"/>
-      <parameter id="applyCalibration" value="true"/>
-      <parameter id="narrowbandMode" value="true"/>
-      <parameter id="narrowbandOptimizeStars" value="false"/>
-      <parameter id="whiteReferenceSpectrum">200.5,0.0715066,201.5,0.0689827,202.5,0.0720216,203.5,0.0685511,204.5,0.0712370,205.5,0.0680646,206.5,0.0683024,207.4,0.0729174,207.8,0.0702124,208.5,0.0727025,209.5,0.0688880,210.5,0.0690528,211.5,0.0697566,212.5,0.0705508,213.5,0.0654581,214.5,0.0676317,215.5,0.0699038,216.5,0.0674922,217.5,0.0668344,218.5,0.0661763,219.5,0.0690803,220.5,0.0670864,221.5,0.0635644,222.5,0.0619833,223.5,0.0668687,224.5,0.0640725,225.5,0.0614358,226.5,0.0628698,227.5,0.0649014,228.5,0.0673391,229.5,0.0638038,230.5,0.0643234,231.5,0.0614849,232.5,0.0493110,233.5,0.0574873,234.5,0.0555616,235.5,0.0609369,236.5,0.0557384,237.5,0.0578991,238.5,0.0536321,239.5,0.0575370,240.5,0.0555389,241.5,0.0571506,242.5,0.0615309,243.5,0.0595363,244.5,0.0634798,245.5,0.0628886,246.5,0.0622975,247.5,0.0600475,248.5,0.0608933,249.5,0.0580972,250.5,0.0653082,251.3,0.0576207,251.8,0.0588533,252.5,0.0566401,253.5,0.0582714,254.5,0.0575809,255.5,0.0633762,256.5,0.0610093,257.5,0.0652874,258.5,0.0642648,259.5,0.0632596,260.5,0.0609384,261.5,0.0600490,262.5,0.0636409,263.5,0.0682040,264.5,0.0754600,265.5,0.0806341,266.5,0.0699754,267.5,0.0739405,268.5,0.0755243,269.5,0.0697483,270.5,0.0736132,271.5,0.0678854,272.5,0.0663086,273.5,0.0709825,274.5,0.0602999,275.5,0.0630128,276.5,0.0669431,277.5,0.0701399,278.5,0.0641577,279.5,0.0511231,280.5,0.0550197,281.5,0.0692974,282.5,0.0753517,283.5,0.0723537,284.5,0.0679725,285.5,0.0634174,286.5,0.0742486,287.5,0.0783316,288.5,0.0771108,289.5,0.0801337,291,0.0914252,293,0.0862422,295,0.0838485,297,0.0858467,299,0.0865643,301,0.0875161,303,0.0893837,305,0.0905257,307,0.0935800,309,0.0934870,311,0.0982195,313,0.0953176,315,0.0961554,317,0.0995933,319,0.0924967,321,0.0978345,323,0.0907337,325,0.1054383,327,0.1143168,329,0.1135342,331,0.1106139,333,0.1119505,335,0.1099062,337,0.0967928,339,0.1022504,341,0.1039447,343,0.1063681,345,0.1091599,347,0.1109753,349,0.1181664,351,0.1232860,353,0.1163073,355,0.1267769,357,0.1035215,359,0.1042786,361,0.1176823,363,0.1219479,364,0.1250342,365,0.1363934,367,0.1407033,369,0.1288466,371,0.1379791,373,0.1127623,375,0.1318217,377,0.1528880,379,0.1670432,381,0.1727864,383,0.1243124,385,0.1639393,387,0.1724457,389,0.1520460,391,0.2043430,393,0.1427526,395,0.1870668,397,0.1244026,399,0.2329267,401,0.2556144,403,0.2542109,405,0.2491356,407,0.2379803,409,0.2541684,411,0.2279309,413,0.2533629,415,0.2557223,417,0.2584198,419,0.2560216,421,0.2587210,423,0.2498130,425,0.2609755,427,0.2495886,429,0.2412927,431,0.2182856,433,0.2579985,435,0.2483036,437,0.2928112,439,0.2713431,441,0.2828921,443,0.2975108,445,0.3012513,447,0.3161393,449,0.3221464,451,0.3585586,453,0.3219299,455,0.3334392,457,0.3568741,459,0.3412296,461,0.3498501,463,0.3424920,465,0.3478877,467,0.3611478,469,0.3560448,471,0.3456585,473,0.3587672,475,0.3690553,477,0.3657369,479,0.3671625,481,0.3666357,483,0.3761265,485,0.3466382,487,0.3121751,489,0.3651561,491,0.3688824,493,0.3627420,495,0.3786295,497,0.3733906,499,0.3510300,501,0.3338136,503,0.3540298,505,0.3527861,507,0.3680833,509,0.3507047,511,0.3597249,513,0.3486136,515,0.3372089,517,0.3152444,519,0.3257755,521,0.3499922,523,0.3744245,525,0.3907778,527,0.3490228,529,0.3972061,531,0.4203442,533,0.3740999,535,0.4084084,537,0.4070036,539,0.3993480,541,0.3942389,543,0.4010466,545,0.4128880,547,0.4055525,549,0.4094232,551,0.4053814,553,0.4201633,555,0.4269231,557,0.4193749,559,0.4105311,561,0.4257824,563,0.4239540,565,0.4310873,567,0.4218358,569,0.4360353,571,0.4229342,573,0.4583894,575,0.4425389,577,0.4481210,579,0.4320856,581,0.4507180,583,0.4645862,585,0.4513373,587,0.4516404,589,0.4033701,591,0.4466167,593,0.4513267,595,0.4524209,597,0.4613319,599,0.4546841,601,0.4499895,603,0.4631190,605,0.4724762,607,0.4724962,609,0.4569794,611,0.4599737,613,0.4363290,615,0.4488329,617,0.4267759,619,0.4545143,621,0.4514890,623,0.4384229,625,0.4256613,627,0.4470943,629,0.4565981,631,0.4458333,633,0.4533333,635,0.4546457,637,0.4535446,639,0.4638791,641,0.4561002,643,0.4617287,645,0.4594083,647,0.4597119,649,0.4517238,651,0.4686735,653,0.4686423,655,0.4544898,657,0.4255737,659,0.4640177,661,0.4711876,663,0.4679153,665,0.4689913,667,0.4592265,669,0.4668144,671,0.4498947,673,0.4629239,675,0.4559567,677,0.4596584,679,0.4549789,681,0.4586439,683,0.4653622,685,0.4543475,687,0.4632128,689,0.4711164,691,0.4709973,693,0.4685415,695,0.4696455,697,0.4769241,699,0.4760169,701,0.4701294,703,0.4815669,705,0.4850302,707,0.4707895,709,0.4570604,711,0.4465777,713,0.4382957,715,0.4379654,717,0.4446168,719,0.4350767,721,0.4466714,723,0.4579113,725,0.4625222,727,0.4669903,729,0.4615551,731,0.4763299,733,0.4793147,735,0.4857778,737,0.4997366,739,0.4915129,741,0.4926212,743,0.5062475,745,0.5072637,747,0.5170334,749,0.5173594,751,0.5244106,753,0.5344788,755,0.5397524,757,0.5387203,759,0.5280215,761,0.5191969,763,0.5085395,765,0.4984095,767,0.4749347,769,0.4878839,771,0.4798119,773,0.4821991,775,0.4799906,777,0.4870453,779,0.4928744,781,0.4934236,783,0.4904677,785,0.4849491,787,0.4947343,789,0.4890020,791,0.4789132,793,0.4822390,795,0.4795733,797,0.4973323,799,0.4988779,801,0.5054210,803,0.5087054,805,0.5103235,807,0.5187602,809,0.5151330,811,0.5223530,813,0.5396030,815,0.5475528,817,0.5543915,819,0.5380259,821,0.5321401,823,0.5366753,825,0.5372011,827,0.5440262,829,0.5390591,831,0.5212784,833,0.5187033,835,0.5197124,837,0.5241092,839,0.5070799,841,0.5253056,843,0.5003658,845,0.4896143,847,0.4910508,849,0.4964088,851,0.4753377,853,0.4986498,855,0.4604553,857,0.5174022,859,0.5105171,861,0.5175606,863,0.5322153,865,0.5335880,867,0.4811849,869,0.5241390,871,0.5458069,873,0.5508025,875,0.5423946,877,0.5580108,879,0.5677047,881,0.5580099,883,0.5649928,885,0.5629494,887,0.5384574,889,0.5523318,891,0.5614248,893,0.5521309,895,0.5550786,897,0.5583751,899,0.5597844,901,0.5394855,903,0.5638478,905,0.5862635,907,0.5877920,909,0.5774965,911,0.5866240,913,0.5989106,915,0.5958623,917,0.5964975,919,0.6041389,921,0.5797449,923,0.5607401,925,0.5640816,927,0.5704267,929,0.5642119,931,0.5694372,933,0.5716141,935,0.5705180,937,0.5618458,939,0.5736730,941,0.5630236,943,0.5796418,945,0.5720721,947,0.5873186,949,0.5896322,951,0.5794164,953,0.5828271,955,0.5692468,957,0.5808756,959,0.5949017,961,0.5875516,963,0.5923656,965,0.5824188,967,0.5838008,969,0.5948942,971,0.5865689,973,0.5818128,975,0.5807992,977,0.5851036,979,0.5775164,981,0.5938626,983,0.5885816,985,0.5943664,987,0.5911885,989,0.5916490,991,0.5868101,993,0.5919505,995,0.5945270,997,0.5960248,999,0.5950870,1003,0.5948938,1007,0.5888742,1013,0.6006343,1017,0.5958836,1022,0.6004154,1028,0.6050616,1032,0.5995678,1038,0.5984462,1043,0.6035475,1048,0.5973678,1052,0.5940806,1058,0.5854267,1063,0.5827191,1068,0.5788137,1072,0.5843356,1078,0.5830553,1082,0.5762549,1087,0.5766769,1092,0.5759526,1098,0.5726978,1102,0.5718654,1108,0.5658845,1113,0.5661672,1117,0.5637793,1122,0.5660178,1128,0.5608876,1133,0.5622964,1138,0.5603359,1143,0.5563605,1147,0.5652205,1153,0.5656560,1157,0.5607483,1162,0.5540304,1167,0.5556068,1173,0.5604768,1177,0.5492890,1183,0.5464411,1187,0.5385652,1192,0.5489344,1198,0.5331419,1203,0.5451093,1207,0.5419047,1212,0.5443417,1218,0.5477119,1223,0.5460783,1227,0.5435469,1232,0.5413216,1237,0.5419156,1243,0.5360791,1248,0.5363784,1253,0.5330056,1258,0.5330475,1262,0.5312735,1267,0.5282075,1272,0.5301258,1278,0.5318302,1283,0.5143390,1288,0.5259125,1292,0.5214670,1298,0.5287547,1302,0.5231621,1308,0.5267800,1313,0.5167545,1318,0.5170787,1323,0.5186867,1328,0.5111090,1332,0.5122823,1338,0.5085013,1343,0.5118057,1347,0.5086671,1352,0.5063367,1357,0.5007655,1363,0.5001648,1367,0.5036531,1373,0.5066053,1377,0.5064235,1382,0.5083958,1388,0.5053201,1393,0.4855558,1397,0.4835752,1402,0.4799809,1408,0.4854351,1412,0.4802711,1418,0.4867642,1423,0.4831264,1428,0.4768633,1433,0.4864127,1438,0.4916220,1442,0.4807589,1448,0.4908799,1452,0.4878666,1457,0.4919060,1462,0.4832121,1467,0.4817380,1472,0.4788120,1477,0.4832511,1483,0.4873623,1488,0.4833546,1492,0.4970729,1498,0.4941945,1503,0.4882672,1507,0.4906435,1512,0.5011545,1517,0.5042579,1522,0.5053326,1528,0.5103188,1533,0.5104235,1537,0.5109443,1543,0.5088747,1548,0.5114602,1552,0.5078479,1557,0.4955375,1562,0.5020681,1567,0.5009384,1572,0.5130484,1578,0.4843262,1583,0.4878957,1587,0.4869790,1593,0.5039261,1598,0.4961504,1605,0.5016433,1615,0.5109383,1625,0.5010374,1635,0.5166810,1645,0.4997573,1655,0.5132085,1665,0.5045445,1675,0.5038381,1685,0.4979366,1695,0.5024966,1705,0.4946397,1715,0.4900714,1725,0.4820987,1735,0.4704836,1745,0.4675962,1755,0.4610580,1765,0.4542064,1775,0.4442880,1785,0.4394009,1795,0.4305704,1805,0.4214249,1815,0.4154385,1825,0.4121445,1835,0.4087068,1845,0.4004347,1855,0.3981439,1865,0.3898276,1875,0.3819086,1885,0.3837946,1895,0.3719080,1905,0.3783857,1915,0.3734775,1925,0.3706359,1935,0.3625896,1945,0.3552610,1955,0.3559292,1965,0.3516581,1975,0.3442642,1985,0.3424439,1995,0.3401458,2005,0.3400624,2015,0.3370426,2025,0.3310865,2035,0.3294150,2045,0.3300824,2055,0.3263510,2065,0.3238343,2075,0.3226433,2085,0.3196882,2095,0.3156795,2105,0.3170735,2115,0.3129192,2125,0.3107151,2135,0.3111934,2145,0.3083829,2155,0.3053164,2165,0.3011248,2175,0.2987932,2185,0.2973707,2195,0.2953015,2205,0.2894185,2215,0.2910636,2225,0.2855524,2235,0.2835412,2245,0.2813240,2255,0.2794243,2265,0.2746838,2275,0.2752567,2285,0.2700351,2295,0.2315953,2305,0.2464873,2315,0.2460988,2325,0.2138361,2335,0.2290047,2345,0.2216595,2355,0.1997312,2365,0.2151513,2375,0.2079374,2385,0.1903472,2395,0.2020694,2405,0.1988067,2415,0.1834113,2425,0.1912983,2435,0.1873909,2445,0.1783537,2455,0.1759682,2465,0.1784857,2475,0.1715942,2485,0.1573562,2495,0.1568707,2505,0.1598265</parameter>
-      <parameter id="whiteReferenceName">Average Spiral Galaxy</parameter>
-      <parameter id="redFilterTrCurve">576,0.007,578,0.012,580,0.019,582,0.025,584,0.033,586,0.040,588,0.047,590,0.054,592,0.060,594,0.067,596,0.073,598,0.079,600,0.085,602,0.092,604,0.099,606,0.108,608,0.118,610,0.129,612,0.144,614,0.162,616,0.196,618,0.252,620,0.310,622,0.370,624,0.430,626,0.492,628,0.554,630,0.618,632,0.683,634,0.748,636,0.815,638,0.883,640,0.952,642,0.960,644,0.970,646,0.970,648,0.980,650,0.980,652,0.980,654,0.980,656,0.980,658,0.970,660,0.960,662,0.960,664,0.960,666,0.950,668,0.940,670,0.930,672,0.890,674,0.850,676,0.807,678,0.767,680,0.719,682,0.664,684,0.605,686,0.543,688,0.479,690,0.414,692,0.352,694,0.292,696,0.236,698,0.187,700,0.145,702,0.113,704,0.083,706,0.059,708,0.041,710,0.030,712,0.028,714,0.027,716,0.026,718,0.025,720,0.024,722,0.023,724,0.022,726,0.021,728,0.020,730,0.019,732,0.018,734,0.017,736,0.016,738,0.015,740,0.014,742,0.012,744,0.011,746,0.010,748,0.009,750,0.008</parameter>
-      <parameter id="redFilterName">Astrodon E-series R</parameter>
-      <parameter id="greenFilterTrCurve">492,0.010,494,0.072,496,0.470,498,0.810,500,0.820,502,0.830,504,0.840,506,0.910,508,0.940,510,0.970,512,0.970,514,0.970,516,0.970,518,0.970,520,0.980,522,0.980,524,0.980,526,0.980,528,0.980,530,0.980,532,0.980,534,0.980,536,0.973,538,0.951,540,0.920,542,0.879,544,0.829,546,0.779,548,0.742,550,0.704,552,0.665,554,0.625,556,0.583,558,0.539,560,0.495,562,0.449,564,0.402,566,0.353,568,0.304,570,0.253,572,0.216,574,0.192,576,0.170,578,0.149,580,0.129,582,0.111,584,0.094,586,0.079,588,0.065,590,0.053,592,0.042,594,0.033,596,0.025,598,0.018,600,0.013</parameter>
-      <parameter id="greenFilterName">Astrodon E-series G</parameter>
-      <parameter id="blueFilterTrCurve">386,0.010,388,0.048,390,0.151,392,0.291,394,0.450,396,0.614,398,0.767,400,0.891,402,0.972,404,0.980,406,0.980,408,0.980,410,0.980,412,0.980,414,0.990,416,0.990,418,0.990,420,0.990,422,0.990,424,0.990,426,0.990,428,0.990,430,0.990,432,0.990,434,0.990,436,0.990,438,0.990,440,0.990,442,0.990,444,0.990,446,0.990,448,0.990,450,0.990,452,0.990,454,0.990,456,0.990,458,0.990,460,0.990,462,0.990,464,0.990,466,0.990,468,0.990,470,0.990,472,0.990,474,0.990,476,0.990,478,0.990,480,0.990,482,0.990,484,0.980,486,0.980,488,0.970,490,0.970,492,0.890,494,0.810,496,0.790,498,0.810,500,0.830,502,0.794,504,0.710,506,0.578,508,0.398,510,0.170,512,0.114,514,0.068,516,0.034,518,0.012</parameter>
-      <parameter id="blueFilterName">Astrodon E-series B</parameter>
-      <parameter id="redFilterWavelength" value="672.4"/>
-      <parameter id="redFilterBandwidth" value="5.0"/>
-      <parameter id="greenFilterWavelength" value="656.3"/>
-      <parameter id="greenFilterBandwidth" value="5.0"/>
-      <parameter id="blueFilterWavelength" value="500.7"/>
-      <parameter id="blueFilterBandwidth" value="5.0"/>
-      <parameter id="deviceQECurve">1,1.0,500,1.0,1000,1.0,1500,1.0,2000,1.0,2500,1.0</parameter>
-      <parameter id="deviceQECurveName">Ideal QE curve</parameter>
-      <parameter id="broadbandIntegrationStepSize" value="0.50"/>
-      <parameter id="narrowbandIntegrationSteps" value="10"/>
-      <parameter id="catalogId">GaiaDR3SP</parameter>
-      <parameter id="limitMagnitude" value="12.00"/>
-      <parameter id="autoLimitMagnitude" value="true"/>
-      <parameter id="targetSourceCount" value="8000"/>
-      <parameter id="psfStructureLayers" value="5"/>
-      <parameter id="saturationThreshold" value="0.75"/>
-      <parameter id="saturationRelative" value="true"/>
-      <parameter id="saturationShrinkFactor" value="0.10"/>
-      <parameter id="psfNoiseLayers" value="1"/>
-      <parameter id="psfHotPixelFilterRadius" value="1"/>
-      <parameter id="psfNoiseReductionFilterRadius" value="0"/>
-      <parameter id="psfMinStructureSize" value="0"/>
-      <parameter id="psfMinSNR" value="40.00"/>
-      <parameter id="psfAllowClusteredSources" value="true"/>
-      <parameter id="psfType" value="PSFType_Auto"/>
-      <parameter id="psfGrowth" value="1.25"/>
-      <parameter id="psfMaxStars" value="24576"/>
-      <parameter id="psfSearchTolerance" value="4.00"/>
-      <parameter id="psfChannelSearchTolerance" value="2.00"/>
-      <parameter id="neutralizeBackground" value="true"/>
-      <parameter id="backgroundReferenceViewId"></parameter>
-      <parameter id="backgroundLow" value="-2.80"/>
-      <parameter id="backgroundHigh" value="2.00"/>
-      <parameter id="backgroundUseROI" value="false"/>
-      <parameter id="backgroundROIX0" value="0"/>
-      <parameter id="backgroundROIY0" value="0"/>
-      <parameter id="backgroundROIX1" value="0"/>
-      <parameter id="backgroundROIY1" value="0"/>
-      <parameter id="generateGraphs" value="true"/>
-      <parameter id="generateStarMaps" value="false"/>
-      <parameter id="generateTextFiles" value="false"/>
-      <parameter id="outputDirectory"></parameter>
-   </instance>
-   <instance class="NoiseXTerminator" version="256" id="NoiseXTerminator_TWEAK_instance">
-      <time start="2024-06-19T13:18:59.281Z" span="15.886039"/>
-      <parameter id="ai_file">NoiseXTerminator.2.mlpackage</parameter>
-      <parameter id="denoise" value="0.90"/>
-      <parameter id="detail" value="0.15"/>
-   </instance>
-   <instance class="LinearFit" version="256" id="LinearFit_instance">
-      <parameter id="referenceViewId"></parameter>
-      <parameter id="rejectLow" value="0.000000"/>
-      <parameter id="rejectHigh" value="0.920000"/>
-   </instance>
-   <instance class="GradientCorrection" version="1" id="GradientCorrection_instance">
-      <time start="2024-06-19T12:49:14.684Z" span="17.395569"/>
-      <parameter id="reference" value="0.50"/>
-      <parameter id="lowThreshold" value="0.20"/>
-      <parameter id="lowTolerance" value="0.50"/>
-      <parameter id="highThreshold" value="0.05"/>
-      <parameter id="highTolerance" value="0.00"/>
-      <parameter id="iterations" value="15"/>
-      <parameter id="scale" value="5.00"/>
-      <parameter id="smoothness" value="0.40"/>
-      <parameter id="downsamplingFactor" value="16"/>
-      <parameter id="protection" value="true"/>
-      <parameter id="protectionThreshold" value="0.10"/>
-      <parameter id="protectionAmount" value="0.50"/>
-      <parameter id="protectionSmoothingFactor" value="16"/>
-      <parameter id="lowClippingLevel" value="0.000076"/>
-      <parameter id="automaticConvergence" value="false"/>
-      <parameter id="convergenceLimit" value="0.00001000"/>
-      <parameter id="maxIterations" value="10"/>
-      <parameter id="useSimplification" value="false"/>
-      <parameter id="simplificationDegree" value="1"/>
-      <parameter id="simplificationScale" value="1024"/>
-      <parameter id="generateSimpleModel" value="false"/>
-      <parameter id="generateGradientModel" value="true"/>
-      <parameter id="generateProtectionMasks" value="false"/>
-      <parameter id="gridSamplingDelta" value="16"/>
-   </instance>
-   <instance class="BlurXTerminator" version="256" id="BlurXTerminator_Full_instance">
-      <time start="2024-06-19T13:18:07.316Z" span="41.939995"/>
-      <parameter id="ai_file">BlurXTerminator.4.mlpackage</parameter>
-      <parameter id="correct_only" value="false"/>
-      <parameter id="correct_first" value="false"/>
-      <parameter id="nonstellar_then_stellar" value="false"/>
-      <parameter id="lum_only" value="false"/>
-      <parameter id="sharpen_stars" value="0.50"/>
-      <parameter id="adjust_halos" value="0.00"/>
-      <parameter id="nonstellar_psf_diameter" value="0.00"/>
-      <parameter id="auto_nonstellar_psf" value="true"/>
-      <parameter id="sharpen_nonstellar" value="0.50"/>
+   <instance class="Script" version="256" id="FixMagentaStars_instance">
+      <time start="2024-06-19T17:42:48.828Z" span="2.3497912"/>
+      <parameter id="filePath">$PXI_SRCDIR/scripts/CorrectMagentaStars/CorrectMagentaStars.js</parameter>
+      <parameter id="md5sum">31bdf816791092b80b5344db2d2f7ce2</parameter>
+      <table id="parameters" rows="2">
+         <tr>
+            <td id="id">scnrAmount</td>
+            <td id="value">0.8</td>
+         </tr>
+         <tr>
+            <td id="id">scnrPresLight</td>
+            <td id="value">true</td>
+         </tr>
+      </table>
+      <parameter id="information"></parameter>
    </instance>
    <instance class="ImageIdentifier" version="256" id="RenameViewToStarless_instance">
-      <time start="2024-06-19T13:19:29.947Z" span="0.031045037"/>
+      <time start="2024-06-24T18:29:26.585Z" span="0.041742633"/>
       <parameter id="id">starless</parameter>
    </instance>
+   <instance class="StarXTerminator" version="256" id="StarX_instance">
+      <time start="2024-06-24T18:34:15.008Z" span="29.460723"/>
+      <parameter id="ai_file">StarXTerminator.lite.nonoise.11.mlpackage</parameter>
+      <parameter id="stars" value="true"/>
+      <parameter id="unscreen" value="true"/>
+      <parameter id="overlap" value="0.20"/>
+   </instance>
+   <instance class="GeneralizedHyperbolicStretch" version="256" id="GeneralHyperbolicStretch_instance">
+      <parameter id="stretchType" value="ST_GeneralisedHyperbolic"/>
+      <parameter id="stretchChannel" value="SC_RGB"/>
+      <parameter id="inverse" value="false"/>
+      <parameter id="stretchFactor" value="0.000"/>
+      <parameter id="localIntensity" value="0.000"/>
+      <parameter id="symmetryPoint" value="0.000000"/>
+      <parameter id="highlightProtection" value="1.000000"/>
+      <parameter id="shadowProtection" value="0.000000"/>
+      <parameter id="blackPoint" value="0.000000"/>
+      <parameter id="whitePoint" value="1.000000"/>
+      <parameter id="colourBlend" value="1.000"/>
+      <parameter id="clipType" value="CT_RGBBlend"/>
+      <parameter id="useRGBWorkingSpace" value="false"/>
+   </instance>
+   <instance class="SCNR" version="256" id="SCNR_if_too_green_instance">
+      <time start="2024-06-24T20:56:26.647Z" span="1.7984144"/>
+      <parameter id="amount" value="0.30"/>
+      <parameter id="protectionMethod" value="AverageNeutral"/>
+      <parameter id="colorToRemove" value="Green"/>
+      <parameter id="preserveLightness" value="true"/>
+   </instance>
+   <instance class="PixelMath" version="256" id="LumMaskForStarless_instance">
+      <parameter id="expression">CIEL($T)</parameter>
+      <parameter id="expression1"></parameter>
+      <parameter id="expression2"></parameter>
+      <parameter id="expression3"></parameter>
+      <parameter id="useSingleExpression" value="true"/>
+      <parameter id="symbols"></parameter>
+      <parameter id="clearImageCacheAndExit" value="false"/>
+      <parameter id="cacheGeneratedImages" value="false"/>
+      <parameter id="generateOutput" value="true"/>
+      <parameter id="singleThreaded" value="false"/>
+      <parameter id="optimization" value="true"/>
+      <parameter id="use64BitWorkingImage" value="false"/>
+      <parameter id="rescale" value="false"/>
+      <parameter id="rescaleLower" value="0"/>
+      <parameter id="rescaleUpper" value="1"/>
+      <parameter id="truncate" value="true"/>
+      <parameter id="truncateLower" value="0"/>
+      <parameter id="truncateUpper" value="1"/>
+      <parameter id="createNewImage" value="true"/>
+      <parameter id="showNewImage" value="true"/>
+      <parameter id="newImageId">Use for mask</parameter>
+      <parameter id="newImageWidth" value="0"/>
+      <parameter id="newImageHeight" value="0"/>
+      <parameter id="newImageAlpha" value="false"/>
+      <parameter id="newImageColorSpace" value="SameAsTarget"/>
+      <parameter id="newImageSampleFormat" value="SameAsTarget"/>
+      <table id="outputData" rows="0"/>
+   </instance>
+   <instance class="HDRMultiscaleTransform" version="256" id="HDR_MX_MAYBE_instance">
+      <parameter id="numberOfLayers" value="6"/>
+      <parameter id="numberOfIterations" value="1"/>
+      <parameter id="invertedIterations" value="true"/>
+      <parameter id="overdrive" value="0.000"/>
+      <parameter id="medianTransform" value="false"/>
+      <parameter id="scalingFunctionData">0.003906,0.015625,0.023438,0.015625,0.003906,0.015625,0.0625,0.09375,0.0625,0.015625,0.023438,0.09375,0.140625,0.09375,0.023438,0.015625,0.0625,0.09375,0.0625,0.015625,0.003906,0.015625,0.023438,0.015625,0.003906</parameter>
+      <parameter id="scalingFunctionRowFilter">0.0625,0.25,0.375,0.25,0.0625</parameter>
+      <parameter id="scalingFunctionColFilter">0.0625,0.25,0.375,0.25,0.0625</parameter>
+      <parameter id="scalingFunctionName">B3 Spline (5)</parameter>
+      <parameter id="deringing" value="false"/>
+      <parameter id="smallScaleDeringing" value="0.000"/>
+      <parameter id="largeScaleDeringing" value="0.250"/>
+      <parameter id="outputDeringingMaps" value="false"/>
+      <parameter id="midtonesBalanceMode" value="Automatic"/>
+      <parameter id="midtonesBalance" value="0.500000"/>
+      <parameter id="toIntensity" value="false"/>
+      <parameter id="toLightness" value="false"/>
+      <parameter id="preserveHue" value="false"/>
+      <parameter id="lightnessMask" value="false"/>
+   </instance>
+   <instance class="LocalHistogramEqualization" version="256" id="LocalHistEQ_TWEAK_instance">
+      <parameter id="radius" value="64"/>
+      <parameter id="histogramBins" value="Bit8"/>
+      <parameter id="slopeLimit" value="2.0"/>
+      <parameter id="amount" value="1.000"/>
+      <parameter id="circularKernel" value="true"/>
+   </instance>
+   <instance class="CurvesTransformation" version="256" id="CurvesForColorAndSat_instance">
+      <table id="R" rows="2">
+         <tr>
+            <td id="x" value="0.00000"/>
+            <td id="y" value="0.00000"/>
+         </tr>
+         <tr>
+            <td id="x" value="1.00000"/>
+            <td id="y" value="1.00000"/>
+         </tr>
+      </table>
+      <parameter id="Rt" value="AkimaSubsplines"/>
+      <table id="G" rows="2">
+         <tr>
+            <td id="x" value="0.00000"/>
+            <td id="y" value="0.00000"/>
+         </tr>
+         <tr>
+            <td id="x" value="1.00000"/>
+            <td id="y" value="1.00000"/>
+         </tr>
+      </table>
+      <parameter id="Gt" value="AkimaSubsplines"/>
+      <table id="B" rows="2">
+         <tr>
+            <td id="x" value="0.00000"/>
+            <td id="y" value="0.00000"/>
+         </tr>
+         <tr>
+            <td id="x" value="1.00000"/>
+            <td id="y" value="1.00000"/>
+         </tr>
+      </table>
+      <parameter id="Bt" value="AkimaSubsplines"/>
+      <table id="K" rows="2">
+         <tr>
+            <td id="x" value="0.00000"/>
+            <td id="y" value="0.00000"/>
+         </tr>
+         <tr>
+            <td id="x" value="1.00000"/>
+            <td id="y" value="1.00000"/>
+         </tr>
+      </table>
+      <parameter id="Kt" value="AkimaSubsplines"/>
+      <table id="A" rows="2">
+         <tr>
+            <td id="x" value="0.00000"/>
+            <td id="y" value="0.00000"/>
+         </tr>
+         <tr>
+            <td id="x" value="1.00000"/>
+            <td id="y" value="1.00000"/>
+         </tr>
+      </table>
+      <parameter id="At" value="AkimaSubsplines"/>
+      <table id="L" rows="2">
+         <tr>
+            <td id="x" value="0.00000"/>
+            <td id="y" value="0.00000"/>
+         </tr>
+         <tr>
+            <td id="x" value="1.00000"/>
+            <td id="y" value="1.00000"/>
+         </tr>
+      </table>
+      <parameter id="Lt" value="AkimaSubsplines"/>
+      <table id="a" rows="2">
+         <tr>
+            <td id="x" value="0.00000"/>
+            <td id="y" value="0.00000"/>
+         </tr>
+         <tr>
+            <td id="x" value="1.00000"/>
+            <td id="y" value="1.00000"/>
+         </tr>
+      </table>
+      <parameter id="at" value="AkimaSubsplines"/>
+      <table id="b" rows="2">
+         <tr>
+            <td id="x" value="0.00000"/>
+            <td id="y" value="0.00000"/>
+         </tr>
+         <tr>
+            <td id="x" value="1.00000"/>
+            <td id="y" value="1.00000"/>
+         </tr>
+      </table>
+      <parameter id="bt" value="AkimaSubsplines"/>
+      <table id="c" rows="2">
+         <tr>
+            <td id="x" value="0.00000"/>
+            <td id="y" value="0.00000"/>
+         </tr>
+         <tr>
+            <td id="x" value="1.00000"/>
+            <td id="y" value="1.00000"/>
+         </tr>
+      </table>
+      <parameter id="ct" value="AkimaSubsplines"/>
+      <table id="H" rows="2">
+         <tr>
+            <td id="x" value="0.00000"/>
+            <td id="y" value="0.00000"/>
+         </tr>
+         <tr>
+            <td id="x" value="1.00000"/>
+            <td id="y" value="1.00000"/>
+         </tr>
+      </table>
+      <parameter id="Ht" value="AkimaSubsplines"/>
+      <table id="S" rows="2">
+         <tr>
+            <td id="x" value="0.00000"/>
+            <td id="y" value="0.00000"/>
+         </tr>
+         <tr>
+            <td id="x" value="1.00000"/>
+            <td id="y" value="1.00000"/>
+         </tr>
+      </table>
+      <parameter id="St" value="AkimaSubsplines"/>
+   </instance>
+   <instance class="BackgroundNeutralization" version="256" id="BackgroundNeutralization_MAYBE_instance">
+      <parameter id="backgroundReferenceViewId"></parameter>
+      <parameter id="backgroundLow" value="0.0000000"/>
+      <parameter id="backgroundHigh" value="0.1000000"/>
+      <parameter id="useROI" value="false"/>
+      <parameter id="roiX0" value="0"/>
+      <parameter id="roiY0" value="0"/>
+      <parameter id="roiX1" value="0"/>
+      <parameter id="roiY1" value="0"/>
+      <parameter id="mode" value="RescaleAsNeeded"/>
+      <parameter id="targetBackground" value="0.0010000"/>
+   </instance>
+   <instance class="NoOperation" version="256" id="Scripts_utilities_DSE_instance"/>
+   <instance class="GeneralizedHyperbolicStretch" version="256" id="GHS_for_stars_instance">
+      <parameter id="stretchType" value="ST_GeneralisedHyperbolic"/>
+      <parameter id="stretchChannel" value="SC_RGB"/>
+      <parameter id="inverse" value="false"/>
+      <parameter id="stretchFactor" value="0.000"/>
+      <parameter id="localIntensity" value="0.000"/>
+      <parameter id="symmetryPoint" value="0.000000"/>
+      <parameter id="highlightProtection" value="1.000000"/>
+      <parameter id="shadowProtection" value="0.000000"/>
+      <parameter id="blackPoint" value="0.000000"/>
+      <parameter id="whitePoint" value="1.000000"/>
+      <parameter id="colourBlend" value="1.000"/>
+      <parameter id="clipType" value="CT_RGBBlend"/>
+      <parameter id="useRGBWorkingSpace" value="false"/>
+   </instance>
+   <instance class="CurvesTransformation" version="256" id="CurvesForStars_instance">
+      <table id="R" rows="2">
+         <tr>
+            <td id="x" value="0.00000"/>
+            <td id="y" value="0.00000"/>
+         </tr>
+         <tr>
+            <td id="x" value="1.00000"/>
+            <td id="y" value="1.00000"/>
+         </tr>
+      </table>
+      <parameter id="Rt" value="AkimaSubsplines"/>
+      <table id="G" rows="2">
+         <tr>
+            <td id="x" value="0.00000"/>
+            <td id="y" value="0.00000"/>
+         </tr>
+         <tr>
+            <td id="x" value="1.00000"/>
+            <td id="y" value="1.00000"/>
+         </tr>
+      </table>
+      <parameter id="Gt" value="AkimaSubsplines"/>
+      <table id="B" rows="2">
+         <tr>
+            <td id="x" value="0.00000"/>
+            <td id="y" value="0.00000"/>
+         </tr>
+         <tr>
+            <td id="x" value="1.00000"/>
+            <td id="y" value="1.00000"/>
+         </tr>
+      </table>
+      <parameter id="Bt" value="AkimaSubsplines"/>
+      <table id="K" rows="3">
+         <tr>
+            <td id="x" value="0.00000"/>
+            <td id="y" value="0.00000"/>
+         </tr>
+         <tr>
+            <td id="x" value="0.34517"/>
+            <td id="y" value="0.16512"/>
+         </tr>
+         <tr>
+            <td id="x" value="1.00000"/>
+            <td id="y" value="1.00000"/>
+         </tr>
+      </table>
+      <parameter id="Kt" value="AkimaSubsplines"/>
+      <table id="A" rows="2">
+         <tr>
+            <td id="x" value="0.00000"/>
+            <td id="y" value="0.00000"/>
+         </tr>
+         <tr>
+            <td id="x" value="1.00000"/>
+            <td id="y" value="1.00000"/>
+         </tr>
+      </table>
+      <parameter id="At" value="AkimaSubsplines"/>
+      <table id="L" rows="2">
+         <tr>
+            <td id="x" value="0.00000"/>
+            <td id="y" value="0.00000"/>
+         </tr>
+         <tr>
+            <td id="x" value="1.00000"/>
+            <td id="y" value="1.00000"/>
+         </tr>
+      </table>
+      <parameter id="Lt" value="AkimaSubsplines"/>
+      <table id="a" rows="2">
+         <tr>
+            <td id="x" value="0.00000"/>
+            <td id="y" value="0.00000"/>
+         </tr>
+         <tr>
+            <td id="x" value="1.00000"/>
+            <td id="y" value="1.00000"/>
+         </tr>
+      </table>
+      <parameter id="at" value="AkimaSubsplines"/>
+      <table id="b" rows="2">
+         <tr>
+            <td id="x" value="0.00000"/>
+            <td id="y" value="0.00000"/>
+         </tr>
+         <tr>
+            <td id="x" value="1.00000"/>
+            <td id="y" value="1.00000"/>
+         </tr>
+      </table>
+      <parameter id="bt" value="AkimaSubsplines"/>
+      <table id="c" rows="2">
+         <tr>
+            <td id="x" value="0.00000"/>
+            <td id="y" value="0.00000"/>
+         </tr>
+         <tr>
+            <td id="x" value="1.00000"/>
+            <td id="y" value="1.00000"/>
+         </tr>
+      </table>
+      <parameter id="ct" value="AkimaSubsplines"/>
+      <table id="H" rows="2">
+         <tr>
+            <td id="x" value="0.00000"/>
+            <td id="y" value="0.00000"/>
+         </tr>
+         <tr>
+            <td id="x" value="1.00000"/>
+            <td id="y" value="1.00000"/>
+         </tr>
+      </table>
+      <parameter id="Ht" value="AkimaSubsplines"/>
+      <table id="S" rows="2">
+         <tr>
+            <td id="x" value="0.00000"/>
+            <td id="y" value="0.00000"/>
+         </tr>
+         <tr>
+            <td id="x" value="1.00000"/>
+            <td id="y" value="1.00000"/>
+         </tr>
+      </table>
+      <parameter id="St" value="AkimaSubsplines"/>
+   </instance>
+   <instance class="ColorSaturation" version="256" id="OptionallySaturateStars_instance">
+      <time start="2024-06-19T17:50:42.814Z" span="0.32506084"/>
+      <table id="HS" rows="2">
+         <tr>
+            <td id="x" value="0.00000"/>
+            <td id="y" value="2.00000"/>
+         </tr>
+         <tr>
+            <td id="x" value="1.00000"/>
+            <td id="y" value="0.00000"/>
+         </tr>
+      </table>
+      <parameter id="HSt" value="AkimaSubsplines"/>
+      <parameter id="hueShift" value="0.000"/>
+   </instance>
    <instance class="Script" version="256" id="ScreenStars_BLEND_OR_instance">
-      <time start="2024-06-19T13:28:18.482Z" span="43.868769"/>
+      <time start="2024-06-24T17:26:29.999Z" span="55.040159"/>
       <parameter id="filePath">$PXI_SRCDIR/scripts/ImageBlend/ImageBlend.js</parameter>
       <parameter id="md5sum">db397b815422333887028f2d61938104</parameter>
       <table id="parameters" rows="16">
@@ -994,19 +1142,6 @@ Copyright (c) 2003-2024 Pleiades Astrophoto
       </table>
       <parameter id="information"></parameter>
    </instance>
-   <instance class="BlurXTerminator" version="256" id="BlurXTerminator_CorrectOnly_instance">
-      <time start="2024-06-16T15:57:55.777Z" span="40.489129"/>
-      <parameter id="ai_file">BlurXTerminator.4.mlpackage</parameter>
-      <parameter id="correct_only" value="true"/>
-      <parameter id="correct_first" value="false"/>
-      <parameter id="nonstellar_then_stellar" value="false"/>
-      <parameter id="lum_only" value="false"/>
-      <parameter id="sharpen_stars" value="0.50"/>
-      <parameter id="adjust_halos" value="0.00"/>
-      <parameter id="nonstellar_psf_diameter" value="0.00"/>
-      <parameter id="auto_nonstellar_psf" value="true"/>
-      <parameter id="sharpen_nonstellar" value="0.50"/>
-   </instance>
    <instance class="PixelMath" version="256" id="ScreenStars_PixelMath_instance">
       <parameter id="expression">combine($T,starless_stars,op_screen())</parameter>
       <parameter id="expression1"></parameter>
@@ -1036,8 +1171,175 @@ Copyright (c) 2003-2024 Pleiades Astrophoto
       <parameter id="newImageSampleFormat" value="SameAsTarget"/>
       <table id="outputData" rows="0"/>
    </instance>
+   <instance class="NarrowbandNormalization" version="256" id="NarrowbandNormalization_instance">
+      <parameter id="palette" value="Palette_HOO"/>
+      <parameter id="lightness" value="Lightness_Off"/>
+      <parameter id="blendMode" value="Blend_Mode1"/>
+      <parameter id="haBlend" value="0.000"/>
+      <parameter id="scnr" value="0.000"/>
+      <parameter id="o3Boost" value="0.000"/>
+      <parameter id="s2Boost" value="0.000"/>
+      <parameter id="ShadowPointment" value="0.000"/>
+      <parameter id="highlightReduction" value="0.000"/>
+      <parameter id="brightness" value="0.000"/>
+   </instance>
+   <instance class="Script" version="256" id="SmartRenameViews_instance">
+      <time start="2024-06-23T14:16:23.360Z" span="2.4896983"/>
+      <parameter id="filePath">$PXI_SRCDIR/scripts/SmartRenameView.js</parameter>
+      <parameter id="md5sum">df3d15b1932abe3a17f3acb64dfa7050</parameter>
+      <table id="parameters" rows="3">
+         <tr>
+            <td id="id">prefix</td>
+            <td id="value"></td>
+         </tr>
+         <tr>
+            <td id="id">suffix</td>
+            <td id="value"></td>
+         </tr>
+         <tr>
+            <td id="id">batchMode</td>
+            <td id="value">true</td>
+         </tr>
+      </table>
+      <parameter id="information"></parameter>
+   </instance>
+   <instance class="LinearFit" version="256" id="LinearFit_instance">
+      <parameter id="referenceViewId"></parameter>
+      <parameter id="rejectLow" value="0.000000"/>
+      <parameter id="rejectHigh" value="0.920000"/>
+   </instance>
+   <instance class="LRGBCombination" version="256" id="RGB_Combo_instance">
+      <table id="channels" rows="4">
+         <tr>
+            <td id="enabled" value="true"/>
+            <td id="id">Red</td>
+            <td id="k" value="1.00000"/>
+         </tr>
+         <tr>
+            <td id="enabled" value="true"/>
+            <td id="id">Green</td>
+            <td id="k" value="1.00000"/>
+         </tr>
+         <tr>
+            <td id="enabled" value="true"/>
+            <td id="id">Blue</td>
+            <td id="k" value="1.00000"/>
+         </tr>
+         <tr>
+            <td id="enabled" value="false"/>
+            <td id="id">Lum</td>
+            <td id="k" value="1.00000"/>
+         </tr>
+      </table>
+      <parameter id="mL" value="0.500"/>
+      <parameter id="mc" value="0.500"/>
+      <parameter id="clipHighlights" value="true"/>
+      <parameter id="noiseReduction" value="false"/>
+      <parameter id="layersRemoved" value="4"/>
+      <parameter id="layersProtected" value="2"/>
+      <parameter id="inheritAstrometricSolution" value="true"/>
+   </instance>
+   <instance class="ImageIdentifier" version="256" id="Rename_RGB_instance">
+      <time start="2024-06-24T18:17:45.891Z" span="0.038615729"/>
+      <parameter id="id">RGB</parameter>
+   </instance>
+   <instance class="LRGBCombination" version="256" id="SHO_combo_instance">
+      <table id="channels" rows="4">
+         <tr>
+            <td id="enabled" value="true"/>
+            <td id="id">Sii</td>
+            <td id="k" value="1.00000"/>
+         </tr>
+         <tr>
+            <td id="enabled" value="true"/>
+            <td id="id">Ha</td>
+            <td id="k" value="1.00000"/>
+         </tr>
+         <tr>
+            <td id="enabled" value="true"/>
+            <td id="id">Oiii</td>
+            <td id="k" value="1.00000"/>
+         </tr>
+         <tr>
+            <td id="enabled" value="false"/>
+            <td id="id">Ha</td>
+            <td id="k" value="1.00000"/>
+         </tr>
+      </table>
+      <parameter id="mL" value="0.500"/>
+      <parameter id="mc" value="0.500"/>
+      <parameter id="clipHighlights" value="true"/>
+      <parameter id="noiseReduction" value="false"/>
+      <parameter id="layersRemoved" value="4"/>
+      <parameter id="layersProtected" value="2"/>
+      <parameter id="inheritAstrometricSolution" value="true"/>
+   </instance>
+   <instance class="ImageIdentifier" version="256" id="Rename_SHO_instance">
+      <time start="2024-06-24T18:17:51.418Z" span="0.041553189"/>
+      <parameter id="id">SHO</parameter>
+   </instance>
+   <instance class="ScreenTransferFunction" version="256" id="STF_instance">
+      <table id="STF" rows="4">
+         <tr>
+            <td id="c0" value="0.00391"/>
+            <td id="c1" value="1.00000"/>
+            <td id="m" value="0.00237"/>
+            <td id="r0" value="0.00000"/>
+            <td id="r1" value="1.00000"/>
+         </tr>
+         <tr>
+            <td id="c0" value="0.00407"/>
+            <td id="c1" value="1.00000"/>
+            <td id="m" value="0.00173"/>
+            <td id="r0" value="0.00000"/>
+            <td id="r1" value="1.00000"/>
+         </tr>
+         <tr>
+            <td id="c0" value="0.00382"/>
+            <td id="c1" value="1.00000"/>
+            <td id="m" value="0.00263"/>
+            <td id="r0" value="0.00000"/>
+            <td id="r1" value="1.00000"/>
+         </tr>
+         <tr>
+            <td id="c0" value="0.00000"/>
+            <td id="c1" value="1.00000"/>
+            <td id="m" value="0.50000"/>
+            <td id="r0" value="0.00000"/>
+            <td id="r1" value="1.00000"/>
+         </tr>
+      </table>
+      <parameter id="interaction" value="SeparateChannels"/>
+   </instance>
+   <instance class="GradientCorrection" version="1" id="GradientCorrection_instance">
+      <time start="2024-06-22T15:56:45.700Z" span="17.059561"/>
+      <parameter id="reference" value="0.50"/>
+      <parameter id="lowThreshold" value="0.20"/>
+      <parameter id="lowTolerance" value="0.50"/>
+      <parameter id="highThreshold" value="0.05"/>
+      <parameter id="highTolerance" value="0.00"/>
+      <parameter id="iterations" value="15"/>
+      <parameter id="scale" value="5.00"/>
+      <parameter id="smoothness" value="0.40"/>
+      <parameter id="downsamplingFactor" value="16"/>
+      <parameter id="protection" value="true"/>
+      <parameter id="protectionThreshold" value="0.10"/>
+      <parameter id="protectionAmount" value="0.50"/>
+      <parameter id="protectionSmoothingFactor" value="16"/>
+      <parameter id="lowClippingLevel" value="0.000076"/>
+      <parameter id="automaticConvergence" value="false"/>
+      <parameter id="convergenceLimit" value="0.00001000"/>
+      <parameter id="maxIterations" value="10"/>
+      <parameter id="useSimplification" value="false"/>
+      <parameter id="simplificationDegree" value="1"/>
+      <parameter id="simplificationScale" value="1024"/>
+      <parameter id="generateSimpleModel" value="false"/>
+      <parameter id="generateGradientModel" value="true"/>
+      <parameter id="generateProtectionMasks" value="false"/>
+      <parameter id="gridSamplingDelta" value="16"/>
+   </instance>
    <instance class="Script" version="256" id="AutomaticDBE_SetiAstro_instance">
-      <time start="2024-06-19T12:46:11.613Z" span="53.069295"/>
+      <time start="2024-06-23T15:08:35.430Z" span="21.876259"/>
       <parameter id="filePath">$PXI_SRCDIR/scripts/AutoDBE.js</parameter>
       <parameter id="md5sum">49c68c772ca7111c46f52a530a4d36f9</parameter>
       <table id="parameters" rows="11">
@@ -1088,8 +1390,24 @@ Copyright (c) 2003-2024 Pleiades Astrophoto
       </table>
       <parameter id="information"></parameter>
    </instance>
+   <instance class="Script" version="256" id="ResizeAndStretch_instance">
+      <time start="2024-06-23T15:15:58.526Z" span="9.6713855"/>
+      <parameter id="filePath">$PXI_SRCDIR/scripts/FixTiledZoom.js</parameter>
+      <parameter id="md5sum">281d1f8e8bb1ffd789e190ff8a90f894</parameter>
+      <table id="parameters" rows="2">
+         <tr>
+            <td id="id">zoom</td>
+            <td id="value">9</td>
+         </tr>
+         <tr>
+            <td id="id">autoZoom</td>
+            <td id="value">true</td>
+         </tr>
+      </table>
+      <parameter id="information"></parameter>
+   </instance>
    <instance class="Script" version="256" id="PlateSolveForSCC_instance">
-      <time start="2024-06-19T13:12:23.579Z" span="83.178894"/>
+      <time start="2024-06-24T18:19:55.423Z" span="53.377852"/>
       <parameter id="filePath">$PXI_SRCDIR/scripts/AdP/ImageSolver.js</parameter>
       <parameter id="md5sum">92fcfb3d51643fc95e86822983e8e2a6</parameter>
       <table id="parameters" rows="53">
@@ -1308,207 +1626,250 @@ Copyright (c) 2003-2024 Pleiades Astrophoto
       </table>
       <parameter id="information">ImageSolver 6.2.4</parameter>
    </instance>
-   <instance class="Script" version="256" id="SmartRenameGlobalOrSingle_DND_instance">
-      <time start="2024-06-19T12:07:09.025Z" span="1.0133636"/>
-      <parameter id="filePath">/Users/jamie/Projects/GitRepo/pixinsight-utils/src/SmartRename/SmartRenameView.js</parameter>
-      <parameter id="md5sum">a3ec2b2ab70a939dc216ca077077c796</parameter>
-      <table id="parameters" rows="3">
+   <instance class="SpectrophotometricColorCalibration" version="1" id="SPCC_RGB_PF_instance">
+      <time start="2024-06-24T18:21:09.319Z" span="36.311152"/>
+      <parameter id="applyCalibration" value="true"/>
+      <parameter id="narrowbandMode" value="false"/>
+      <parameter id="narrowbandOptimizeStars" value="false"/>
+      <parameter id="whiteReferenceSpectrum">1,1.0,500,1.0,1000,1.0,1500,1.0,2000,1.0,2500,1.0</parameter>
+      <parameter id="whiteReferenceName">Photon Flux</parameter>
+      <parameter id="redFilterTrCurve">576,0.007,578,0.012,580,0.019,582,0.025,584,0.033,586,0.040,588,0.047,590,0.054,592,0.060,594,0.067,596,0.073,598,0.079,600,0.085,602,0.092,604,0.099,606,0.108,608,0.118,610,0.129,612,0.144,614,0.162,616,0.196,618,0.252,620,0.310,622,0.370,624,0.430,626,0.492,628,0.554,630,0.618,632,0.683,634,0.748,636,0.815,638,0.883,640,0.952,642,0.960,644,0.970,646,0.970,648,0.980,650,0.980,652,0.980,654,0.980,656,0.980,658,0.970,660,0.960,662,0.960,664,0.960,666,0.950,668,0.940,670,0.930,672,0.890,674,0.850,676,0.807,678,0.767,680,0.719,682,0.664,684,0.605,686,0.543,688,0.479,690,0.414,692,0.352,694,0.292,696,0.236,698,0.187,700,0.145,702,0.113,704,0.083,706,0.059,708,0.041,710,0.030,712,0.028,714,0.027,716,0.026,718,0.025,720,0.024,722,0.023,724,0.022,726,0.021,728,0.020,730,0.019,732,0.018,734,0.017,736,0.016,738,0.015,740,0.014,742,0.012,744,0.011,746,0.010,748,0.009,750,0.008</parameter>
+      <parameter id="redFilterName">Astrodon E-series R</parameter>
+      <parameter id="greenFilterTrCurve">492,0.010,494,0.072,496,0.470,498,0.810,500,0.820,502,0.830,504,0.840,506,0.910,508,0.940,510,0.970,512,0.970,514,0.970,516,0.970,518,0.970,520,0.980,522,0.980,524,0.980,526,0.980,528,0.980,530,0.980,532,0.980,534,0.980,536,0.973,538,0.951,540,0.920,542,0.879,544,0.829,546,0.779,548,0.742,550,0.704,552,0.665,554,0.625,556,0.583,558,0.539,560,0.495,562,0.449,564,0.402,566,0.353,568,0.304,570,0.253,572,0.216,574,0.192,576,0.170,578,0.149,580,0.129,582,0.111,584,0.094,586,0.079,588,0.065,590,0.053,592,0.042,594,0.033,596,0.025,598,0.018,600,0.013</parameter>
+      <parameter id="greenFilterName">Astrodon E-series G</parameter>
+      <parameter id="blueFilterTrCurve">386,0.010,388,0.048,390,0.151,392,0.291,394,0.450,396,0.614,398,0.767,400,0.891,402,0.972,404,0.980,406,0.980,408,0.980,410,0.980,412,0.980,414,0.990,416,0.990,418,0.990,420,0.990,422,0.990,424,0.990,426,0.990,428,0.990,430,0.990,432,0.990,434,0.990,436,0.990,438,0.990,440,0.990,442,0.990,444,0.990,446,0.990,448,0.990,450,0.990,452,0.990,454,0.990,456,0.990,458,0.990,460,0.990,462,0.990,464,0.990,466,0.990,468,0.990,470,0.990,472,0.990,474,0.990,476,0.990,478,0.990,480,0.990,482,0.990,484,0.980,486,0.980,488,0.970,490,0.970,492,0.890,494,0.810,496,0.790,498,0.810,500,0.830,502,0.794,504,0.710,506,0.578,508,0.398,510,0.170,512,0.114,514,0.068,516,0.034,518,0.012</parameter>
+      <parameter id="blueFilterName">Astrodon E-series B</parameter>
+      <parameter id="redFilterWavelength" value="656.3"/>
+      <parameter id="redFilterBandwidth" value="3.0"/>
+      <parameter id="greenFilterWavelength" value="500.7"/>
+      <parameter id="greenFilterBandwidth" value="3.0"/>
+      <parameter id="blueFilterWavelength" value="500.7"/>
+      <parameter id="blueFilterBandwidth" value="3.0"/>
+      <parameter id="deviceQECurve">402,0.7219,404,0.7367,406,0.75,408,0.7618,410,0.7751,412,0.787,414,0.7944,416,0.8018,418,0.8112,420,0.8214,422,0.8343,424,0.8462,426,0.8536,428,0.8595,430,0.8639,432,0.8713,434,0.8757,436,0.8802,438,0.8861,440,0.8905,442,0.895,444,0.8994,446,0.9038,448,0.9068,450,0.9112,452,0.9142,454,0.9172,456,0.9168,458,0.9151,460,0.9134,462,0.9117,464,0.91,466,0.9083,468,0.9066,470,0.9049,472,0.9032,474,0.9015,476,0.8997,478,0.898,480,0.8963,482,0.8946,484,0.8929,486,0.8912,488,0.8876,490,0.8846,492,0.8877,494,0.8904,496,0.893,498,0.8964,500,0.8964,502,0.895,504,0.8945,506,0.8922,508,0.8899,510,0.8876,512,0.8853,514,0.883,516,0.8807,518,0.8784,520,0.8761,522,0.8743,524,0.8728,526,0.8698,528,0.8669,530,0.8624,532,0.858,534,0.855,536,0.8506,538,0.8476,540,0.8432,542,0.8402,544,0.8358,546,0.8328,548,0.8284,550,0.8254,552,0.821,554,0.8166,556,0.8136,558,0.8092,560,0.8062,562,0.8023,564,0.7983,566,0.7944,568,0.7899,570,0.787,572,0.7825,574,0.7781,576,0.7751,578,0.7707,580,0.7663,582,0.7618,584,0.7559,586,0.75,588,0.7441,590,0.7396,592,0.7337,594,0.7278,596,0.7219,598,0.716,600,0.7101,602,0.7056,604,0.6997,606,0.695,608,0.6905,610,0.6852,612,0.6808,614,0.6763,616,0.6719,618,0.6675,620,0.663,622,0.6583,624,0.6553,626,0.6509,628,0.6464,630,0.642,632,0.6376,634,0.6317,636,0.6272,638,0.6213,640,0.6154,642,0.6109,644,0.6036,646,0.5962,648,0.5902,650,0.5843,652,0.5799,654,0.574,656,0.5695,658,0.5636,660,0.5592,662,0.5545,664,0.5504,666,0.5462,668,0.542,670,0.5378,672,0.5328,674,0.5286,676,0.5244,678,0.5203,680,0.5163,682,0.5133,684,0.5089,686,0.5044,688,0.4985,690,0.4926,692,0.4867,694,0.4793,696,0.4719,698,0.4645,700,0.4586,702,0.4541,704,0.4497,706,0.4453,708,0.4408,710,0.4364,712,0.432,714,0.4275,716,0.4216,718,0.4186,720,0.4142,722,0.4127,724,0.4103,726,0.4078,728,0.4053,730,0.4024,732,0.3979,734,0.3935,736,0.3891,738,0.3831,740,0.3802,742,0.3772,744,0.3743,746,0.3713,748,0.3669,750,0.3624,752,0.3595,754,0.3559,756,0.3526,758,0.3494,760,0.3462,762,0.3429,764,0.3397,766,0.3364,768,0.3332,770,0.33,772,0.3267,774,0.3235,776,0.3203,778,0.317,780,0.3138,782,0.3106,784,0.3073,786,0.3041,788,0.3009,790,0.2976,792,0.2937,794,0.2905,796,0.2873,798,0.284,800,0.2808,802,0.2776,804,0.2743,806,0.2731,808,0.2703,810,0.2674,812,0.2646,814,0.2618,816,0.2589,818,0.2561,820,0.2533,822,0.2504,824,0.2476,826,0.2456,828,0.2439,830,0.2433,832,0.2427,834,0.2421,836,0.2416,838,0.2411,840,0.2382,842,0.2322,844,0.2278,846,0.2219,848,0.2175,850,0.2114,852,0.2069,854,0.2023,856,0.1978,858,0.1932,860,0.1918,862,0.1911,864,0.1904,866,0.1897,868,0.189,870,0.1883,872,0.1879,874,0.1834,876,0.179,878,0.1731,880,0.1672,882,0.1612,884,0.1568,886,0.1524,888,0.1479,890,0.1464,892,0.1464,894,0.1464,896,0.1464,898,0.1481,900,0.1494,902,0.1494,904,0.1494,906,0.1464,908,0.1435,910,0.1391,912,0.1346,914,0.1302,916,0.1257,918,0.1228,920,0.1183,922,0.1139,924,0.1109,926,0.1093,928,0.1085,930,0.108,932,0.108,934,0.108,936,0.108,938,0.108,940,0.1058,942,0.1039,944,0.1021,946,0.0998,948,0.0958,950,0.0918,952,0.0888,954,0.0828,956,0.0769,958,0.074,960,0.0714,962,0.0695,964,0.0677,966,0.0658,968,0.0651,970,0.0636,972,0.0626,974,0.0616,976,0.0606,978,0.0596,980,0.0586,982,0.0576,984,0.0567,986,0.0557,988,0.0547,990,0.0537,992,0.0527,994,0.0517,996,0.0507</parameter>
+      <parameter id="deviceQECurveName">Sony IMX411/455/461/533/571</parameter>
+      <parameter id="broadbandIntegrationStepSize" value="0.50"/>
+      <parameter id="narrowbandIntegrationSteps" value="10"/>
+      <parameter id="catalogId">GaiaDR3SP</parameter>
+      <parameter id="limitMagnitude" value="12.00"/>
+      <parameter id="autoLimitMagnitude" value="true"/>
+      <parameter id="targetSourceCount" value="8000"/>
+      <parameter id="psfStructureLayers" value="5"/>
+      <parameter id="saturationThreshold" value="0.75"/>
+      <parameter id="saturationRelative" value="true"/>
+      <parameter id="saturationShrinkFactor" value="0.10"/>
+      <parameter id="psfNoiseLayers" value="1"/>
+      <parameter id="psfHotPixelFilterRadius" value="1"/>
+      <parameter id="psfNoiseReductionFilterRadius" value="0"/>
+      <parameter id="psfMinStructureSize" value="0"/>
+      <parameter id="psfMinSNR" value="40.00"/>
+      <parameter id="psfAllowClusteredSources" value="true"/>
+      <parameter id="psfType" value="PSFType_Auto"/>
+      <parameter id="psfGrowth" value="1.25"/>
+      <parameter id="psfMaxStars" value="24576"/>
+      <parameter id="psfSearchTolerance" value="4.00"/>
+      <parameter id="psfChannelSearchTolerance" value="2.00"/>
+      <parameter id="neutralizeBackground" value="true"/>
+      <parameter id="backgroundReferenceViewId"></parameter>
+      <parameter id="backgroundLow" value="-2.80"/>
+      <parameter id="backgroundHigh" value="2.00"/>
+      <parameter id="backgroundUseROI" value="false"/>
+      <parameter id="backgroundROIX0" value="0"/>
+      <parameter id="backgroundROIY0" value="0"/>
+      <parameter id="backgroundROIX1" value="0"/>
+      <parameter id="backgroundROIY1" value="0"/>
+      <parameter id="generateGraphs" value="true"/>
+      <parameter id="generateStarMaps" value="false"/>
+      <parameter id="generateTextFiles" value="false"/>
+      <parameter id="outputDirectory"></parameter>
+   </instance>
+   <instance class="BlurXTerminator" version="256" id="BlurX_Full_instance">
+      <time start="2024-06-24T18:26:29.965Z" span="39.551057"/>
+      <parameter id="ai_file">BlurXTerminator.4.mlpackage</parameter>
+      <parameter id="correct_only" value="false"/>
+      <parameter id="correct_first" value="false"/>
+      <parameter id="nonstellar_then_stellar" value="false"/>
+      <parameter id="lum_only" value="false"/>
+      <parameter id="sharpen_stars" value="0.50"/>
+      <parameter id="adjust_halos" value="0.00"/>
+      <parameter id="nonstellar_psf_diameter" value="0.00"/>
+      <parameter id="auto_nonstellar_psf" value="true"/>
+      <parameter id="sharpen_nonstellar" value="0.50"/>
+   </instance>
+   <instance class="NoiseXTerminator" version="256" id="NoiseX_TWEAK_instance">
+      <time start="2024-06-22T14:26:24.907Z" span="4.8650639"/>
+      <parameter id="ai_file">NoiseXTerminator.2.mlpackage</parameter>
+      <parameter id="denoise" value="0.90"/>
+      <parameter id="detail" value="0.15"/>
+   </instance>
+   <instance class="NoOperation" version="256" id="Gradient_Removal_Instructions_instance">
+      <description>Run through the various Gradient Correction tools and pick one, making sure that you apply it to the actual image</description>
+   </instance>
+   <instance class="Script" version="256" id="GraXpert_instance">
+      <parameter id="filePath">$PXI_SRCDIR/scripts/Toolbox/Graxpert.js</parameter>
+      <parameter id="md5sum">474440b6cddb9efa54931e12f66b6b28</parameter>
+      <table id="parameters" rows="6">
          <tr>
-            <td id="id">prefix</td>
-            <td id="value"></td>
+            <td id="id">correction</td>
+            <td id="value">0</td>
          </tr>
          <tr>
-            <td id="id">suffix</td>
-            <td id="value"></td>
+            <td id="id">smoothing</td>
+            <td id="value">0</td>
          </tr>
          <tr>
-            <td id="id">batchMode</td>
+            <td id="id">replaceTarget</td>
             <td id="value">true</td>
+         </tr>
+         <tr>
+            <td id="id">showBackground</td>
+            <td id="value">true</td>
+         </tr>
+         <tr>
+            <td id="id">isGlobalTarget</td>
+            <td id="value">true</td>
+         </tr>
+         <tr>
+            <td id="id">isViewTarget</td>
+            <td id="value">false</td>
          </tr>
       </table>
       <parameter id="information"></parameter>
    </instance>
-   <instance class="Script" version="256" id="ResizeAndStretchAfterTile_DND_instance">
-      <time start="2024-06-19T13:11:22.172Z" span="3.7261323"/>
-      <parameter id="filePath">/Users/jamie/Projects/GitRepo/pixinsight-utils/src/FixTiledZoom/FixTiledZoom.js</parameter>
-      <parameter id="md5sum">281d1f8e8bb1ffd789e190ff8a90f894</parameter>
-      <table id="parameters" rows="2">
-         <tr>
-            <td id="id">zoom</td>
-            <td id="value">12</td>
-         </tr>
-         <tr>
-            <td id="id">autoZoom</td>
-            <td id="value">true</td>
-         </tr>
-      </table>
-      <parameter id="information"></parameter>
+   <instance class="SpectrophotometricColorCalibration" version="1" id="SPCC_SHO_PF_instance">
+      <parameter id="applyCalibration" value="true"/>
+      <parameter id="narrowbandMode" value="true"/>
+      <parameter id="narrowbandOptimizeStars" value="false"/>
+      <parameter id="whiteReferenceSpectrum">1,1.0,500,1.0,1000,1.0,1500,1.0,2000,1.0,2500,1.0</parameter>
+      <parameter id="whiteReferenceName">Photon Flux</parameter>
+      <parameter id="redFilterTrCurve">576,0.007,578,0.012,580,0.019,582,0.025,584,0.033,586,0.040,588,0.047,590,0.054,592,0.060,594,0.067,596,0.073,598,0.079,600,0.085,602,0.092,604,0.099,606,0.108,608,0.118,610,0.129,612,0.144,614,0.162,616,0.196,618,0.252,620,0.310,622,0.370,624,0.430,626,0.492,628,0.554,630,0.618,632,0.683,634,0.748,636,0.815,638,0.883,640,0.952,642,0.960,644,0.970,646,0.970,648,0.980,650,0.980,652,0.980,654,0.980,656,0.980,658,0.970,660,0.960,662,0.960,664,0.960,666,0.950,668,0.940,670,0.930,672,0.890,674,0.850,676,0.807,678,0.767,680,0.719,682,0.664,684,0.605,686,0.543,688,0.479,690,0.414,692,0.352,694,0.292,696,0.236,698,0.187,700,0.145,702,0.113,704,0.083,706,0.059,708,0.041,710,0.030,712,0.028,714,0.027,716,0.026,718,0.025,720,0.024,722,0.023,724,0.022,726,0.021,728,0.020,730,0.019,732,0.018,734,0.017,736,0.016,738,0.015,740,0.014,742,0.012,744,0.011,746,0.010,748,0.009,750,0.008</parameter>
+      <parameter id="redFilterName">Astrodon E-series R</parameter>
+      <parameter id="greenFilterTrCurve">492,0.010,494,0.072,496,0.470,498,0.810,500,0.820,502,0.830,504,0.840,506,0.910,508,0.940,510,0.970,512,0.970,514,0.970,516,0.970,518,0.970,520,0.980,522,0.980,524,0.980,526,0.980,528,0.980,530,0.980,532,0.980,534,0.980,536,0.973,538,0.951,540,0.920,542,0.879,544,0.829,546,0.779,548,0.742,550,0.704,552,0.665,554,0.625,556,0.583,558,0.539,560,0.495,562,0.449,564,0.402,566,0.353,568,0.304,570,0.253,572,0.216,574,0.192,576,0.170,578,0.149,580,0.129,582,0.111,584,0.094,586,0.079,588,0.065,590,0.053,592,0.042,594,0.033,596,0.025,598,0.018,600,0.013</parameter>
+      <parameter id="greenFilterName">Astrodon E-series G</parameter>
+      <parameter id="blueFilterTrCurve">386,0.010,388,0.048,390,0.151,392,0.291,394,0.450,396,0.614,398,0.767,400,0.891,402,0.972,404,0.980,406,0.980,408,0.980,410,0.980,412,0.980,414,0.990,416,0.990,418,0.990,420,0.990,422,0.990,424,0.990,426,0.990,428,0.990,430,0.990,432,0.990,434,0.990,436,0.990,438,0.990,440,0.990,442,0.990,444,0.990,446,0.990,448,0.990,450,0.990,452,0.990,454,0.990,456,0.990,458,0.990,460,0.990,462,0.990,464,0.990,466,0.990,468,0.990,470,0.990,472,0.990,474,0.990,476,0.990,478,0.990,480,0.990,482,0.990,484,0.980,486,0.980,488,0.970,490,0.970,492,0.890,494,0.810,496,0.790,498,0.810,500,0.830,502,0.794,504,0.710,506,0.578,508,0.398,510,0.170,512,0.114,514,0.068,516,0.034,518,0.012</parameter>
+      <parameter id="blueFilterName">Astrodon E-series B</parameter>
+      <parameter id="redFilterWavelength" value="671.6"/>
+      <parameter id="redFilterBandwidth" value="5.0"/>
+      <parameter id="greenFilterWavelength" value="656.3"/>
+      <parameter id="greenFilterBandwidth" value="5.0"/>
+      <parameter id="blueFilterWavelength" value="500.7"/>
+      <parameter id="blueFilterBandwidth" value="5.0"/>
+      <parameter id="deviceQECurve">402,0.7219,404,0.7367,406,0.75,408,0.7618,410,0.7751,412,0.787,414,0.7944,416,0.8018,418,0.8112,420,0.8214,422,0.8343,424,0.8462,426,0.8536,428,0.8595,430,0.8639,432,0.8713,434,0.8757,436,0.8802,438,0.8861,440,0.8905,442,0.895,444,0.8994,446,0.9038,448,0.9068,450,0.9112,452,0.9142,454,0.9172,456,0.9168,458,0.9151,460,0.9134,462,0.9117,464,0.91,466,0.9083,468,0.9066,470,0.9049,472,0.9032,474,0.9015,476,0.8997,478,0.898,480,0.8963,482,0.8946,484,0.8929,486,0.8912,488,0.8876,490,0.8846,492,0.8877,494,0.8904,496,0.893,498,0.8964,500,0.8964,502,0.895,504,0.8945,506,0.8922,508,0.8899,510,0.8876,512,0.8853,514,0.883,516,0.8807,518,0.8784,520,0.8761,522,0.8743,524,0.8728,526,0.8698,528,0.8669,530,0.8624,532,0.858,534,0.855,536,0.8506,538,0.8476,540,0.8432,542,0.8402,544,0.8358,546,0.8328,548,0.8284,550,0.8254,552,0.821,554,0.8166,556,0.8136,558,0.8092,560,0.8062,562,0.8023,564,0.7983,566,0.7944,568,0.7899,570,0.787,572,0.7825,574,0.7781,576,0.7751,578,0.7707,580,0.7663,582,0.7618,584,0.7559,586,0.75,588,0.7441,590,0.7396,592,0.7337,594,0.7278,596,0.7219,598,0.716,600,0.7101,602,0.7056,604,0.6997,606,0.695,608,0.6905,610,0.6852,612,0.6808,614,0.6763,616,0.6719,618,0.6675,620,0.663,622,0.6583,624,0.6553,626,0.6509,628,0.6464,630,0.642,632,0.6376,634,0.6317,636,0.6272,638,0.6213,640,0.6154,642,0.6109,644,0.6036,646,0.5962,648,0.5902,650,0.5843,652,0.5799,654,0.574,656,0.5695,658,0.5636,660,0.5592,662,0.5545,664,0.5504,666,0.5462,668,0.542,670,0.5378,672,0.5328,674,0.5286,676,0.5244,678,0.5203,680,0.5163,682,0.5133,684,0.5089,686,0.5044,688,0.4985,690,0.4926,692,0.4867,694,0.4793,696,0.4719,698,0.4645,700,0.4586,702,0.4541,704,0.4497,706,0.4453,708,0.4408,710,0.4364,712,0.432,714,0.4275,716,0.4216,718,0.4186,720,0.4142,722,0.4127,724,0.4103,726,0.4078,728,0.4053,730,0.4024,732,0.3979,734,0.3935,736,0.3891,738,0.3831,740,0.3802,742,0.3772,744,0.3743,746,0.3713,748,0.3669,750,0.3624,752,0.3595,754,0.3559,756,0.3526,758,0.3494,760,0.3462,762,0.3429,764,0.3397,766,0.3364,768,0.3332,770,0.33,772,0.3267,774,0.3235,776,0.3203,778,0.317,780,0.3138,782,0.3106,784,0.3073,786,0.3041,788,0.3009,790,0.2976,792,0.2937,794,0.2905,796,0.2873,798,0.284,800,0.2808,802,0.2776,804,0.2743,806,0.2731,808,0.2703,810,0.2674,812,0.2646,814,0.2618,816,0.2589,818,0.2561,820,0.2533,822,0.2504,824,0.2476,826,0.2456,828,0.2439,830,0.2433,832,0.2427,834,0.2421,836,0.2416,838,0.2411,840,0.2382,842,0.2322,844,0.2278,846,0.2219,848,0.2175,850,0.2114,852,0.2069,854,0.2023,856,0.1978,858,0.1932,860,0.1918,862,0.1911,864,0.1904,866,0.1897,868,0.189,870,0.1883,872,0.1879,874,0.1834,876,0.179,878,0.1731,880,0.1672,882,0.1612,884,0.1568,886,0.1524,888,0.1479,890,0.1464,892,0.1464,894,0.1464,896,0.1464,898,0.1481,900,0.1494,902,0.1494,904,0.1494,906,0.1464,908,0.1435,910,0.1391,912,0.1346,914,0.1302,916,0.1257,918,0.1228,920,0.1183,922,0.1139,924,0.1109,926,0.1093,928,0.1085,930,0.108,932,0.108,934,0.108,936,0.108,938,0.108,940,0.1058,942,0.1039,944,0.1021,946,0.0998,948,0.0958,950,0.0918,952,0.0888,954,0.0828,956,0.0769,958,0.074,960,0.0714,962,0.0695,964,0.0677,966,0.0658,968,0.0651,970,0.0636,972,0.0626,974,0.0616,976,0.0606,978,0.0596,980,0.0586,982,0.0576,984,0.0567,986,0.0557,988,0.0547,990,0.0537,992,0.0527,994,0.0517,996,0.0507</parameter>
+      <parameter id="deviceQECurveName">Sony IMX411/455/461/533/571</parameter>
+      <parameter id="broadbandIntegrationStepSize" value="0.50"/>
+      <parameter id="narrowbandIntegrationSteps" value="10"/>
+      <parameter id="catalogId">GaiaDR3SP</parameter>
+      <parameter id="limitMagnitude" value="12.00"/>
+      <parameter id="autoLimitMagnitude" value="true"/>
+      <parameter id="targetSourceCount" value="8000"/>
+      <parameter id="psfStructureLayers" value="5"/>
+      <parameter id="saturationThreshold" value="0.75"/>
+      <parameter id="saturationRelative" value="true"/>
+      <parameter id="saturationShrinkFactor" value="0.10"/>
+      <parameter id="psfNoiseLayers" value="1"/>
+      <parameter id="psfHotPixelFilterRadius" value="1"/>
+      <parameter id="psfNoiseReductionFilterRadius" value="0"/>
+      <parameter id="psfMinStructureSize" value="0"/>
+      <parameter id="psfMinSNR" value="40.00"/>
+      <parameter id="psfAllowClusteredSources" value="true"/>
+      <parameter id="psfType" value="PSFType_Auto"/>
+      <parameter id="psfGrowth" value="1.25"/>
+      <parameter id="psfMaxStars" value="24576"/>
+      <parameter id="psfSearchTolerance" value="4.00"/>
+      <parameter id="psfChannelSearchTolerance" value="2.00"/>
+      <parameter id="neutralizeBackground" value="true"/>
+      <parameter id="backgroundReferenceViewId"></parameter>
+      <parameter id="backgroundLow" value="-2.80"/>
+      <parameter id="backgroundHigh" value="2.00"/>
+      <parameter id="backgroundUseROI" value="false"/>
+      <parameter id="backgroundROIX0" value="0"/>
+      <parameter id="backgroundROIY0" value="0"/>
+      <parameter id="backgroundROIX1" value="0"/>
+      <parameter id="backgroundROIY1" value="0"/>
+      <parameter id="generateGraphs" value="true"/>
+      <parameter id="generateStarMaps" value="false"/>
+      <parameter id="generateTextFiles" value="false"/>
+      <parameter id="outputDirectory"></parameter>
    </instance>
-   <instance class="ImageIdentifier" version="256" id="RenameViewTo_RGB_instance">
-      <time start="2024-06-19T13:12:13.818Z" span="0.033023231"/>
-      <parameter id="id">RGB</parameter>
+   <instance class="SpectrophotometricColorCalibration" version="1" id="SPCC_SHO_ASG_instance">
+      <parameter id="applyCalibration" value="true"/>
+      <parameter id="narrowbandMode" value="true"/>
+      <parameter id="narrowbandOptimizeStars" value="false"/>
+      <parameter id="whiteReferenceSpectrum">200.5,0.0038635,201.5,0.0039918,202.5,0.0036853,203.5,0.0041509,204.5,0.0044750,205.5,0.0043171,206.5,0.0042905,207.4,0.0048679,207.8,0.0056954,208.5,0.0061274,209.5,0.0058191,210.5,0.0056676,211.5,0.0062204,212.5,0.0058437,213.5,0.0055518,214.5,0.0065012,215.5,0.0064571,216.5,0.0058840,217.5,0.0059562,218.5,0.0069167,219.5,0.0072465,220.5,0.0070359,221.5,0.0060632,222.5,0.0067386,223.5,0.0082662,224.5,0.0078380,225.5,0.0065932,226.5,0.0062574,227.5,0.0067145,228.5,0.0081618,229.5,0.0071276,230.5,0.0082704,231.5,0.0076534,232.5,0.0065597,233.5,0.0062788,234.5,0.0049182,235.5,0.0076013,236.5,0.0053468,237.5,0.0065148,238.5,0.0045052,239.5,0.0054091,240.5,0.0053984,241.5,0.0059268,242.5,0.0087707,243.5,0.0086948,244.5,0.0099942,245.5,0.0103515,246.5,0.0095453,247.5,0.0084986,248.5,0.0062016,249.5,0.0069790,250.5,0.0097896,251.3,0.0060024,251.8,0.0049101,252.5,0.0051301,253.5,0.0071376,254.5,0.0075085,255.5,0.0115173,256.5,0.0094454,257.5,0.0116045,258.5,0.0106795,259.5,0.0099203,260.5,0.0088400,261.5,0.0080552,262.5,0.0105124,263.5,0.0159424,264.5,0.0208775,265.5,0.0277381,266.5,0.0192775,267.5,0.0215423,268.5,0.0246425,269.5,0.0183901,270.5,0.0220391,271.5,0.0165983,272.5,0.0139335,273.5,0.0171645,274.5,0.0109487,275.5,0.0142582,276.5,0.0181994,277.5,0.0193544,278.5,0.0130863,279.5,0.0059392,280.5,0.0073231,281.5,0.0180651,282.5,0.0238558,283.5,0.0222629,284.5,0.0167217,285.5,0.0105658,286.5,0.0217301,287.5,0.0285837,288.5,0.0269098,289.5,0.0323948,291,0.0431447,293,0.0384494,295,0.0357236,297,0.0368546,299,0.0377912,301,0.0378014,303,0.0408428,305,0.0431489,307,0.0469655,309,0.0455287,311,0.0532340,313,0.0495409,315,0.0499662,317,0.0556112,319,0.0492420,321,0.0543175,323,0.0474430,325,0.0656565,327,0.0769012,329,0.0763112,331,0.0714408,333,0.0739040,335,0.0716486,337,0.0540378,339,0.0623582,341,0.0646102,343,0.0700038,345,0.0725164,347,0.0758128,349,0.0854497,351,0.0920403,353,0.0835844,355,0.0972574,357,0.0689158,359,0.0697978,361,0.0870162,363,0.0919277,364,0.0965385,365,0.1078118,367,0.1151197,369,0.1053405,371,0.1121464,373,0.0783590,375,0.0896139,377,0.1140470,379,0.1184041,381,0.1135027,383,0.0708927,385,0.0947513,387,0.0935952,389,0.1101994,391,0.1337203,393,0.0720651,395,0.1208562,397,0.0855029,399,0.1723266,401,0.1892542,403,0.1871828,405,0.1812585,407,0.1725026,409,0.2098846,411,0.1977583,413,0.1959636,415,0.1921352,417,0.1969973,419,0.1922990,421,0.1948647,423,0.1863443,425,0.1971074,427,0.1870741,429,0.1757035,431,0.1528572,433,0.2215523,435,0.2204229,437,0.2399981,439,0.2156781,441,0.2305192,443,0.2519623,445,0.2542269,447,0.2721952,449,0.2805971,451,0.3173567,453,0.2805939,455,0.2954504,457,0.3185805,459,0.3042823,461,0.3135681,463,0.3098657,465,0.3140941,467,0.3289382,469,0.3260822,471,0.3183098,473,0.3285363,475,0.3393301,477,0.3354875,479,0.3381073,481,0.3409032,483,0.3517728,485,0.3378205,487,0.3119690,489,0.3455035,491,0.3474254,493,0.3411797,495,0.3561250,497,0.3524720,499,0.3306270,501,0.3147664,503,0.3356515,505,0.3344862,507,0.3493508,509,0.3328585,511,0.3421073,513,0.3323442,515,0.3203609,517,0.2979191,519,0.3106019,521,0.3363881,523,0.3646503,525,0.3825426,527,0.3403831,529,0.3902680,531,0.4151515,533,0.3689229,535,0.4035604,537,0.4020420,539,0.3957841,541,0.3910877,543,0.3973461,545,0.4088469,547,0.4044919,549,0.4092571,551,0.4055470,553,0.4217874,555,0.4291877,557,0.4207991,559,0.4119499,561,0.4273075,563,0.4285056,565,0.4365985,567,0.4273752,569,0.4415229,571,0.4280893,573,0.4636249,575,0.4506126,577,0.4557659,579,0.4412838,581,0.4589254,583,0.4719147,585,0.4593247,587,0.4600167,589,0.4082263,591,0.4547854,593,0.4606907,595,0.4626544,597,0.4715637,599,0.4666654,601,0.4622714,603,0.4747754,605,0.4847798,607,0.4842871,609,0.4712307,611,0.4745343,613,0.4508978,615,0.4649673,617,0.4407720,619,0.4685647,621,0.4662192,623,0.4539506,625,0.4423144,627,0.4633609,629,0.4724396,631,0.4634845,633,0.4713646,635,0.4758502,637,0.4750038,639,0.4825255,641,0.4751092,643,0.4808830,645,0.4794070,647,0.4793311,649,0.4720744,651,0.4902368,653,0.4930247,655,0.4816404,657,0.4552806,659,0.4879959,661,0.4937376,663,0.4910340,665,0.4916734,667,0.4824031,669,0.4900098,671,0.4736326,673,0.4862001,675,0.4796420,677,0.4836348,679,0.4801390,681,0.4834348,683,0.4903581,685,0.4802814,687,0.4886432,689,0.4965695,691,0.4969769,693,0.4954637,695,0.4967335,697,0.5045015,699,0.5038573,701,0.4996500,703,0.5108675,705,0.5132948,707,0.4992876,709,0.4860095,711,0.4769051,713,0.4683972,715,0.4675713,717,0.4751516,719,0.4658832,721,0.4765575,723,0.4891979,725,0.4936391,727,0.4992691,729,0.4950202,731,0.5099261,733,0.5128399,735,0.5193151,737,0.5334543,739,0.5263098,741,0.5261138,743,0.5406195,745,0.5419036,747,0.5514409,749,0.5519686,751,0.5581933,753,0.5674831,755,0.5728996,757,0.5718939,759,0.5611731,761,0.5530159,763,0.5426999,765,0.5328508,767,0.5090812,769,0.5228898,771,0.5142210,773,0.5181356,775,0.5157292,777,0.5239472,779,0.5280754,781,0.5298807,783,0.5270912,785,0.5229263,787,0.5325926,789,0.5284973,791,0.5188192,793,0.5219567,795,0.5200702,797,0.5373421,799,0.5389658,801,0.5474147,803,0.5511852,805,0.5523725,807,0.5614550,809,0.5589357,811,0.5661987,813,0.5814456,815,0.5892553,817,0.5946513,819,0.5763085,821,0.5743144,823,0.5781758,825,0.5792013,827,0.5849843,829,0.5805788,831,0.5660040,833,0.5613254,835,0.5639225,837,0.5671041,839,0.5491435,841,0.5684587,843,0.5446773,845,0.5370213,847,0.5372201,849,0.5413224,851,0.5210465,853,0.5433819,855,0.5004657,857,0.5610233,859,0.5570920,861,0.5632458,863,0.5736936,865,0.5760189,867,0.5223598,869,0.5652781,871,0.5857294,873,0.5910934,875,0.5876137,877,0.5976378,879,0.6045664,881,0.5949889,883,0.6009136,885,0.6021730,887,0.5831131,889,0.5915913,891,0.5979481,893,0.5904496,895,0.5918754,897,0.5955728,899,0.5979355,901,0.5820493,903,0.6032983,905,0.6197400,907,0.6202745,909,0.6104467,911,0.6191298,913,0.6285816,915,0.6263771,917,0.6272185,919,0.6336648,921,0.6149005,923,0.6028482,925,0.6019187,927,0.6059943,929,0.5993887,931,0.6038935,933,0.6059427,935,0.6044443,937,0.5962450,939,0.6075699,941,0.5988984,943,0.6127628,945,0.6059046,947,0.6189599,949,0.6208133,951,0.6133640,953,0.6175059,955,0.6083583,957,0.6149207,959,0.6253675,961,0.6182654,963,0.6227657,965,0.6118407,967,0.6136654,969,0.6236348,971,0.6160916,973,0.6114245,975,0.6111098,977,0.6149506,979,0.6070808,981,0.6224365,983,0.6185007,985,0.6229337,987,0.6197673,989,0.6201125,991,0.6140654,993,0.6189626,995,0.6215839,997,0.6223747,999,0.6220129,1003,0.6223095,1007,0.6171418,1013,0.6247831,1017,0.6194065,1022,0.6228045,1028,0.6265797,1032,0.6204644,1038,0.6192923,1043,0.6238361,1048,0.6182618,1052,0.6156561,1058,0.6082066,1063,0.6055746,1068,0.6014153,1072,0.6055188,1078,0.6035730,1082,0.5969691,1087,0.5976004,1092,0.5992176,1098,0.5945475,1102,0.5931617,1108,0.5883562,1113,0.5875519,1117,0.5846486,1122,0.5863622,1128,0.5811874,1133,0.5824594,1138,0.5788736,1143,0.5745751,1147,0.5825273,1153,0.5827868,1157,0.5777501,1162,0.5706160,1167,0.5721308,1173,0.5766929,1177,0.5659243,1183,0.5636347,1187,0.5559750,1192,0.5655899,1198,0.5496815,1203,0.5606996,1207,0.5574230,1212,0.5593138,1218,0.5620826,1223,0.5604484,1227,0.5576197,1232,0.5556384,1237,0.5556155,1243,0.5501546,1248,0.5505002,1253,0.5472241,1258,0.5473810,1262,0.5453438,1267,0.5423999,1272,0.5438083,1278,0.5453444,1283,0.5304939,1288,0.5393810,1292,0.5349588,1298,0.5411785,1302,0.5364009,1308,0.5388728,1313,0.5291439,1318,0.5294894,1323,0.5310414,1328,0.5237238,1332,0.5239220,1338,0.5207367,1343,0.5234556,1347,0.5205187,1352,0.5179372,1357,0.5131360,1363,0.5119529,1367,0.5151858,1373,0.5179210,1377,0.5176867,1382,0.5192481,1388,0.5160697,1393,0.4994896,1397,0.4975462,1402,0.4941624,1408,0.4991954,1412,0.4944364,1418,0.4999658,1423,0.4964868,1428,0.4906693,1433,0.4989855,1438,0.5040382,1442,0.4943187,1448,0.5030427,1452,0.5000860,1457,0.5034852,1462,0.4964627,1467,0.4949517,1472,0.4922335,1477,0.4962862,1483,0.5000094,1488,0.4955283,1492,0.5078525,1498,0.5054108,1503,0.4987934,1507,0.5011612,1512,0.5115275,1517,0.5137427,1522,0.5149106,1528,0.5188748,1533,0.5193372,1537,0.5196312,1543,0.5182846,1548,0.5206772,1552,0.5173770,1557,0.5072152,1562,0.5131587,1567,0.5122767,1572,0.5215116,1578,0.4968000,1583,0.5014709,1587,0.4999990,1593,0.5156411,1598,0.5080622,1605,0.5123208,1615,0.5192309,1625,0.5106617,1635,0.5239666,1645,0.5072900,1655,0.5189467,1665,0.5088573,1675,0.5076714,1685,0.5010042,1695,0.5045626,1705,0.4955665,1715,0.4903807,1725,0.4829144,1735,0.4713340,1745,0.4678229,1755,0.4612114,1765,0.4542914,1775,0.4448097,1785,0.4395067,1795,0.4314316,1805,0.4226147,1815,0.4166003,1825,0.4134328,1835,0.4099947,1845,0.4013982,1855,0.3990888,1865,0.3917951,1875,0.3833208,1885,0.3851474,1895,0.3736659,1905,0.3787084,1915,0.3738619,1925,0.3702745,1935,0.3623968,1945,0.3550907,1955,0.3551163,1965,0.3515036,1975,0.3439719,1985,0.3420581,1995,0.3396480,2005,0.3392727,2015,0.3360945,2025,0.3305355,2035,0.3286540,2045,0.3283861,2055,0.3247874,2065,0.3220895,2075,0.3205429,2085,0.3172876,2095,0.3132646,2105,0.3140333,2115,0.3099243,2125,0.3077205,2135,0.3076946,2145,0.3046917,2155,0.3016457,2165,0.2975640,2175,0.2951813,2185,0.2935216,2195,0.2910749,2205,0.2852927,2215,0.2868425,2225,0.2814773,2235,0.2793982,2245,0.2772908,2255,0.2751501,2265,0.2706339,2275,0.2707823,2285,0.2656592,2295,0.2305489,2305,0.2439988,2315,0.2435637,2325,0.2136796,2335,0.2273097,2345,0.2214288,2355,0.2003599,2365,0.2143058,2375,0.2084054,2385,0.1912452,2395,0.2018062,2405,0.1992427,2415,0.1844488,2425,0.1917726,2435,0.1885267,2445,0.1798725,2455,0.1775845,2465,0.1803222,2475,0.1736181,2485,0.1612183,2495,0.1615224,2505,0.1638712</parameter>
+      <parameter id="whiteReferenceName">Elliptical Galaxy</parameter>
+      <parameter id="redFilterTrCurve">576,0.007,578,0.012,580,0.019,582,0.025,584,0.033,586,0.040,588,0.047,590,0.054,592,0.060,594,0.067,596,0.073,598,0.079,600,0.085,602,0.092,604,0.099,606,0.108,608,0.118,610,0.129,612,0.144,614,0.162,616,0.196,618,0.252,620,0.310,622,0.370,624,0.430,626,0.492,628,0.554,630,0.618,632,0.683,634,0.748,636,0.815,638,0.883,640,0.952,642,0.960,644,0.970,646,0.970,648,0.980,650,0.980,652,0.980,654,0.980,656,0.980,658,0.970,660,0.960,662,0.960,664,0.960,666,0.950,668,0.940,670,0.930,672,0.890,674,0.850,676,0.807,678,0.767,680,0.719,682,0.664,684,0.605,686,0.543,688,0.479,690,0.414,692,0.352,694,0.292,696,0.236,698,0.187,700,0.145,702,0.113,704,0.083,706,0.059,708,0.041,710,0.030,712,0.028,714,0.027,716,0.026,718,0.025,720,0.024,722,0.023,724,0.022,726,0.021,728,0.020,730,0.019,732,0.018,734,0.017,736,0.016,738,0.015,740,0.014,742,0.012,744,0.011,746,0.010,748,0.009,750,0.008</parameter>
+      <parameter id="redFilterName">Astrodon E-series R</parameter>
+      <parameter id="greenFilterTrCurve">492,0.010,494,0.072,496,0.470,498,0.810,500,0.820,502,0.830,504,0.840,506,0.910,508,0.940,510,0.970,512,0.970,514,0.970,516,0.970,518,0.970,520,0.980,522,0.980,524,0.980,526,0.980,528,0.980,530,0.980,532,0.980,534,0.980,536,0.973,538,0.951,540,0.920,542,0.879,544,0.829,546,0.779,548,0.742,550,0.704,552,0.665,554,0.625,556,0.583,558,0.539,560,0.495,562,0.449,564,0.402,566,0.353,568,0.304,570,0.253,572,0.216,574,0.192,576,0.170,578,0.149,580,0.129,582,0.111,584,0.094,586,0.079,588,0.065,590,0.053,592,0.042,594,0.033,596,0.025,598,0.018,600,0.013</parameter>
+      <parameter id="greenFilterName">Astrodon E-series G</parameter>
+      <parameter id="blueFilterTrCurve">386,0.010,388,0.048,390,0.151,392,0.291,394,0.450,396,0.614,398,0.767,400,0.891,402,0.972,404,0.980,406,0.980,408,0.980,410,0.980,412,0.980,414,0.990,416,0.990,418,0.990,420,0.990,422,0.990,424,0.990,426,0.990,428,0.990,430,0.990,432,0.990,434,0.990,436,0.990,438,0.990,440,0.990,442,0.990,444,0.990,446,0.990,448,0.990,450,0.990,452,0.990,454,0.990,456,0.990,458,0.990,460,0.990,462,0.990,464,0.990,466,0.990,468,0.990,470,0.990,472,0.990,474,0.990,476,0.990,478,0.990,480,0.990,482,0.990,484,0.980,486,0.980,488,0.970,490,0.970,492,0.890,494,0.810,496,0.790,498,0.810,500,0.830,502,0.794,504,0.710,506,0.578,508,0.398,510,0.170,512,0.114,514,0.068,516,0.034,518,0.012</parameter>
+      <parameter id="blueFilterName">Astrodon E-series B</parameter>
+      <parameter id="redFilterWavelength" value="671.6"/>
+      <parameter id="redFilterBandwidth" value="5.0"/>
+      <parameter id="greenFilterWavelength" value="656.3"/>
+      <parameter id="greenFilterBandwidth" value="5.0"/>
+      <parameter id="blueFilterWavelength" value="500.7"/>
+      <parameter id="blueFilterBandwidth" value="5.0"/>
+      <parameter id="deviceQECurve">402,0.7219,404,0.7367,406,0.75,408,0.7618,410,0.7751,412,0.787,414,0.7944,416,0.8018,418,0.8112,420,0.8214,422,0.8343,424,0.8462,426,0.8536,428,0.8595,430,0.8639,432,0.8713,434,0.8757,436,0.8802,438,0.8861,440,0.8905,442,0.895,444,0.8994,446,0.9038,448,0.9068,450,0.9112,452,0.9142,454,0.9172,456,0.9168,458,0.9151,460,0.9134,462,0.9117,464,0.91,466,0.9083,468,0.9066,470,0.9049,472,0.9032,474,0.9015,476,0.8997,478,0.898,480,0.8963,482,0.8946,484,0.8929,486,0.8912,488,0.8876,490,0.8846,492,0.8877,494,0.8904,496,0.893,498,0.8964,500,0.8964,502,0.895,504,0.8945,506,0.8922,508,0.8899,510,0.8876,512,0.8853,514,0.883,516,0.8807,518,0.8784,520,0.8761,522,0.8743,524,0.8728,526,0.8698,528,0.8669,530,0.8624,532,0.858,534,0.855,536,0.8506,538,0.8476,540,0.8432,542,0.8402,544,0.8358,546,0.8328,548,0.8284,550,0.8254,552,0.821,554,0.8166,556,0.8136,558,0.8092,560,0.8062,562,0.8023,564,0.7983,566,0.7944,568,0.7899,570,0.787,572,0.7825,574,0.7781,576,0.7751,578,0.7707,580,0.7663,582,0.7618,584,0.7559,586,0.75,588,0.7441,590,0.7396,592,0.7337,594,0.7278,596,0.7219,598,0.716,600,0.7101,602,0.7056,604,0.6997,606,0.695,608,0.6905,610,0.6852,612,0.6808,614,0.6763,616,0.6719,618,0.6675,620,0.663,622,0.6583,624,0.6553,626,0.6509,628,0.6464,630,0.642,632,0.6376,634,0.6317,636,0.6272,638,0.6213,640,0.6154,642,0.6109,644,0.6036,646,0.5962,648,0.5902,650,0.5843,652,0.5799,654,0.574,656,0.5695,658,0.5636,660,0.5592,662,0.5545,664,0.5504,666,0.5462,668,0.542,670,0.5378,672,0.5328,674,0.5286,676,0.5244,678,0.5203,680,0.5163,682,0.5133,684,0.5089,686,0.5044,688,0.4985,690,0.4926,692,0.4867,694,0.4793,696,0.4719,698,0.4645,700,0.4586,702,0.4541,704,0.4497,706,0.4453,708,0.4408,710,0.4364,712,0.432,714,0.4275,716,0.4216,718,0.4186,720,0.4142,722,0.4127,724,0.4103,726,0.4078,728,0.4053,730,0.4024,732,0.3979,734,0.3935,736,0.3891,738,0.3831,740,0.3802,742,0.3772,744,0.3743,746,0.3713,748,0.3669,750,0.3624,752,0.3595,754,0.3559,756,0.3526,758,0.3494,760,0.3462,762,0.3429,764,0.3397,766,0.3364,768,0.3332,770,0.33,772,0.3267,774,0.3235,776,0.3203,778,0.317,780,0.3138,782,0.3106,784,0.3073,786,0.3041,788,0.3009,790,0.2976,792,0.2937,794,0.2905,796,0.2873,798,0.284,800,0.2808,802,0.2776,804,0.2743,806,0.2731,808,0.2703,810,0.2674,812,0.2646,814,0.2618,816,0.2589,818,0.2561,820,0.2533,822,0.2504,824,0.2476,826,0.2456,828,0.2439,830,0.2433,832,0.2427,834,0.2421,836,0.2416,838,0.2411,840,0.2382,842,0.2322,844,0.2278,846,0.2219,848,0.2175,850,0.2114,852,0.2069,854,0.2023,856,0.1978,858,0.1932,860,0.1918,862,0.1911,864,0.1904,866,0.1897,868,0.189,870,0.1883,872,0.1879,874,0.1834,876,0.179,878,0.1731,880,0.1672,882,0.1612,884,0.1568,886,0.1524,888,0.1479,890,0.1464,892,0.1464,894,0.1464,896,0.1464,898,0.1481,900,0.1494,902,0.1494,904,0.1494,906,0.1464,908,0.1435,910,0.1391,912,0.1346,914,0.1302,916,0.1257,918,0.1228,920,0.1183,922,0.1139,924,0.1109,926,0.1093,928,0.1085,930,0.108,932,0.108,934,0.108,936,0.108,938,0.108,940,0.1058,942,0.1039,944,0.1021,946,0.0998,948,0.0958,950,0.0918,952,0.0888,954,0.0828,956,0.0769,958,0.074,960,0.0714,962,0.0695,964,0.0677,966,0.0658,968,0.0651,970,0.0636,972,0.0626,974,0.0616,976,0.0606,978,0.0596,980,0.0586,982,0.0576,984,0.0567,986,0.0557,988,0.0547,990,0.0537,992,0.0527,994,0.0517,996,0.0507</parameter>
+      <parameter id="deviceQECurveName">Sony IMX411/455/461/533/571</parameter>
+      <parameter id="broadbandIntegrationStepSize" value="0.50"/>
+      <parameter id="narrowbandIntegrationSteps" value="10"/>
+      <parameter id="catalogId">GaiaDR3SP</parameter>
+      <parameter id="limitMagnitude" value="12.00"/>
+      <parameter id="autoLimitMagnitude" value="true"/>
+      <parameter id="targetSourceCount" value="8000"/>
+      <parameter id="psfStructureLayers" value="5"/>
+      <parameter id="saturationThreshold" value="0.75"/>
+      <parameter id="saturationRelative" value="true"/>
+      <parameter id="saturationShrinkFactor" value="0.10"/>
+      <parameter id="psfNoiseLayers" value="1"/>
+      <parameter id="psfHotPixelFilterRadius" value="1"/>
+      <parameter id="psfNoiseReductionFilterRadius" value="0"/>
+      <parameter id="psfMinStructureSize" value="0"/>
+      <parameter id="psfMinSNR" value="40.00"/>
+      <parameter id="psfAllowClusteredSources" value="true"/>
+      <parameter id="psfType" value="PSFType_Auto"/>
+      <parameter id="psfGrowth" value="1.25"/>
+      <parameter id="psfMaxStars" value="24576"/>
+      <parameter id="psfSearchTolerance" value="4.00"/>
+      <parameter id="psfChannelSearchTolerance" value="2.00"/>
+      <parameter id="neutralizeBackground" value="true"/>
+      <parameter id="backgroundReferenceViewId"></parameter>
+      <parameter id="backgroundLow" value="-2.80"/>
+      <parameter id="backgroundHigh" value="2.00"/>
+      <parameter id="backgroundUseROI" value="false"/>
+      <parameter id="backgroundROIX0" value="0"/>
+      <parameter id="backgroundROIY0" value="0"/>
+      <parameter id="backgroundROIX1" value="0"/>
+      <parameter id="backgroundROIY1" value="0"/>
+      <parameter id="generateGraphs" value="true"/>
+      <parameter id="generateStarMaps" value="false"/>
+      <parameter id="generateTextFiles" value="false"/>
+      <parameter id="outputDirectory"></parameter>
    </instance>
-   <instance class="ImageIdentifier" version="256" id="RenameViewTo_SHO_instance">
-      <parameter id="id">SHO</parameter>
-   </instance>
-   <instance class="LocalHistogramEqualization" version="256" id="LocalHistogramEqualization_TWEAK_instance">
-      <parameter id="radius" value="64"/>
-      <parameter id="histogramBins" value="Bit8"/>
-      <parameter id="slopeLimit" value="2.0"/>
-      <parameter id="amount" value="1.000"/>
-      <parameter id="circularKernel" value="true"/>
-   </instance>
-   <instance class="HDRMultiscaleTransform" version="256" id="HDR_MultiscaleXform_MAYBE_instance">
-      <parameter id="numberOfLayers" value="6"/>
-      <parameter id="numberOfIterations" value="1"/>
-      <parameter id="invertedIterations" value="true"/>
-      <parameter id="overdrive" value="0.000"/>
-      <parameter id="medianTransform" value="false"/>
-      <parameter id="scalingFunctionData">0.003906,0.015625,0.023438,0.015625,0.003906,0.015625,0.0625,0.09375,0.0625,0.015625,0.023438,0.09375,0.140625,0.09375,0.023438,0.015625,0.0625,0.09375,0.0625,0.015625,0.003906,0.015625,0.023438,0.015625,0.003906</parameter>
-      <parameter id="scalingFunctionRowFilter">0.0625,0.25,0.375,0.25,0.0625</parameter>
-      <parameter id="scalingFunctionColFilter">0.0625,0.25,0.375,0.25,0.0625</parameter>
-      <parameter id="scalingFunctionName">B3 Spline (5)</parameter>
-      <parameter id="deringing" value="false"/>
-      <parameter id="smallScaleDeringing" value="0.000"/>
-      <parameter id="largeScaleDeringing" value="0.250"/>
-      <parameter id="outputDeringingMaps" value="false"/>
-      <parameter id="midtonesBalanceMode" value="Automatic"/>
-      <parameter id="midtonesBalance" value="0.500000"/>
-      <parameter id="toIntensity" value="false"/>
-      <parameter id="toLightness" value="false"/>
-      <parameter id="preserveHue" value="false"/>
-      <parameter id="lightnessMask" value="false"/>
-   </instance>
-   <instance class="CurvesTransformation" version="256" id="Curves_Tweak_ColorsAndSaturation_instance">
-      <table id="R" rows="2">
-         <tr>
-            <td id="x" value="0.00000"/>
-            <td id="y" value="0.00000"/>
-         </tr>
-         <tr>
-            <td id="x" value="1.00000"/>
-            <td id="y" value="1.00000"/>
-         </tr>
-      </table>
-      <parameter id="Rt" value="AkimaSubsplines"/>
-      <table id="G" rows="2">
-         <tr>
-            <td id="x" value="0.00000"/>
-            <td id="y" value="0.00000"/>
-         </tr>
-         <tr>
-            <td id="x" value="1.00000"/>
-            <td id="y" value="1.00000"/>
-         </tr>
-      </table>
-      <parameter id="Gt" value="AkimaSubsplines"/>
-      <table id="B" rows="2">
-         <tr>
-            <td id="x" value="0.00000"/>
-            <td id="y" value="0.00000"/>
-         </tr>
-         <tr>
-            <td id="x" value="1.00000"/>
-            <td id="y" value="1.00000"/>
-         </tr>
-      </table>
-      <parameter id="Bt" value="AkimaSubsplines"/>
-      <table id="K" rows="2">
-         <tr>
-            <td id="x" value="0.00000"/>
-            <td id="y" value="0.00000"/>
-         </tr>
-         <tr>
-            <td id="x" value="1.00000"/>
-            <td id="y" value="1.00000"/>
-         </tr>
-      </table>
-      <parameter id="Kt" value="AkimaSubsplines"/>
-      <table id="A" rows="2">
-         <tr>
-            <td id="x" value="0.00000"/>
-            <td id="y" value="0.00000"/>
-         </tr>
-         <tr>
-            <td id="x" value="1.00000"/>
-            <td id="y" value="1.00000"/>
-         </tr>
-      </table>
-      <parameter id="At" value="AkimaSubsplines"/>
-      <table id="L" rows="2">
-         <tr>
-            <td id="x" value="0.00000"/>
-            <td id="y" value="0.00000"/>
-         </tr>
-         <tr>
-            <td id="x" value="1.00000"/>
-            <td id="y" value="1.00000"/>
-         </tr>
-      </table>
-      <parameter id="Lt" value="AkimaSubsplines"/>
-      <table id="a" rows="2">
-         <tr>
-            <td id="x" value="0.00000"/>
-            <td id="y" value="0.00000"/>
-         </tr>
-         <tr>
-            <td id="x" value="1.00000"/>
-            <td id="y" value="1.00000"/>
-         </tr>
-      </table>
-      <parameter id="at" value="AkimaSubsplines"/>
-      <table id="b" rows="2">
-         <tr>
-            <td id="x" value="0.00000"/>
-            <td id="y" value="0.00000"/>
-         </tr>
-         <tr>
-            <td id="x" value="1.00000"/>
-            <td id="y" value="1.00000"/>
-         </tr>
-      </table>
-      <parameter id="bt" value="AkimaSubsplines"/>
-      <table id="c" rows="2">
-         <tr>
-            <td id="x" value="0.00000"/>
-            <td id="y" value="0.00000"/>
-         </tr>
-         <tr>
-            <td id="x" value="1.00000"/>
-            <td id="y" value="1.00000"/>
-         </tr>
-      </table>
-      <parameter id="ct" value="AkimaSubsplines"/>
-      <table id="H" rows="2">
-         <tr>
-            <td id="x" value="0.00000"/>
-            <td id="y" value="0.00000"/>
-         </tr>
-         <tr>
-            <td id="x" value="1.00000"/>
-            <td id="y" value="1.00000"/>
-         </tr>
-      </table>
-      <parameter id="Ht" value="AkimaSubsplines"/>
-      <table id="S" rows="2">
-         <tr>
-            <td id="x" value="0.00000"/>
-            <td id="y" value="0.00000"/>
-         </tr>
-         <tr>
-            <td id="x" value="1.00000"/>
-            <td id="y" value="1.00000"/>
-         </tr>
-      </table>
-      <parameter id="St" value="AkimaSubsplines"/>
-   </instance>
-   <instance class="PixelMath" version="256" id="GenAndApplyLumMaskToStarless_CmdK_to_hide_instance">
-      <parameter id="expression">CIEL($T)</parameter>
-      <parameter id="expression1"></parameter>
-      <parameter id="expression2"></parameter>
+   <instance class="PixelMath" version="256" id="ConvertTheGreen_instance">
+      <parameter id="expression">h0=pixel($T,x(),y(),0)*.2126 + pixel($T,x(),y(),1)*.7152 + pixel($T,x(),y(),2)*0.0722;
+rb=(pixel($T,x(),y(),0)+pixel($T,x(),y(),2))/2;
+g=min(rb,pixel($T,x(),y(),1));
+h1=pixel($T,x(),y(),0)*.2126 + g*.7152 + pixel($T,x(),y(),2)*0.0722;
+iif(h0 &lt; f,$T,pixel($T,x(),y(),0)*h0/h1*bias)</parameter>
+      <parameter id="expression1">h0=pixel($T,x(),y(),0)*.2126 + pixel($T,x(),y(),1)*.7152 + pixel($T,x(),y(),2)*0.0722;
+rb=(pixel($T,x(),y(),0)+pixel($T,x(),y(),2))/2;
+g=min(rb,pixel($T,x(),y(),1));
+h1=pixel($T,x(),y(),0)*.2126 + g*.7152 + pixel($T,x(),y(),2)*0.0722;
+iif(h0 &lt; f,$T,g*h0/h1*bias)</parameter>
+      <parameter id="expression2">h0=pixel($T,x(),y(),0)*.2126 + pixel($T,x(),y(),1)*.7152 + pixel($T,x(),y(),2)*0.0722;
+rb=(pixel($T,x(),y(),0)+pixel($T,x(),y(),2))/2;
+g=min(rb,pixel($T,x(),y(),1));
+h1=pixel($T,x(),y(),0)*.2126 + g*.7152 + pixel($T,x(),y(),2)*0.0722;
+iif(h0 &lt; f,$T,pixel($T,x(),y(),2)*h0/h1*bias)</parameter>
       <parameter id="expression3"></parameter>
-      <parameter id="useSingleExpression" value="true"/>
-      <parameter id="symbols"></parameter>
+      <parameter id="useSingleExpression" value="false"/>
+      <parameter id="symbols">f=0.1;
+bias=1.0;
+
+h0;
+h1;
+rb;
+g;</parameter>
       <parameter id="clearImageCacheAndExit" value="false"/>
       <parameter id="cacheGeneratedImages" value="false"/>
       <parameter id="generateOutput" value="true"/>
@@ -1523,7 +1884,7 @@ Copyright (c) 2003-2024 Pleiades Astrophoto
       <parameter id="truncateUpper" value="1"/>
       <parameter id="createNewImage" value="true"/>
       <parameter id="showNewImage" value="true"/>
-      <parameter id="newImageId">Use for mask</parameter>
+      <parameter id="newImageId"></parameter>
       <parameter id="newImageWidth" value="0"/>
       <parameter id="newImageHeight" value="0"/>
       <parameter id="newImageAlpha" value="false"/>
@@ -1531,209 +1892,45 @@ Copyright (c) 2003-2024 Pleiades Astrophoto
       <parameter id="newImageSampleFormat" value="SameAsTarget"/>
       <table id="outputData" rows="0"/>
    </instance>
-   <instance class="BackgroundNeutralization" version="256" id="BackgroundNeutralization_MAYBE_instance">
-      <parameter id="backgroundReferenceViewId"></parameter>
-      <parameter id="backgroundLow" value="0.0000000"/>
-      <parameter id="backgroundHigh" value="0.1000000"/>
-      <parameter id="useROI" value="false"/>
-      <parameter id="roiX0" value="0"/>
-      <parameter id="roiY0" value="0"/>
-      <parameter id="roiX1" value="0"/>
-      <parameter id="roiY1" value="0"/>
-      <parameter id="mode" value="RescaleAsNeeded"/>
-      <parameter id="targetBackground" value="0.0010000"/>
-   </instance>
-   <instance class="GeneralizedHyperbolicStretch" version="256" id="GHS_for_stars_instance">
-      <parameter id="stretchType" value="ST_GeneralisedHyperbolic"/>
-      <parameter id="stretchChannel" value="SC_RGB"/>
-      <parameter id="inverse" value="false"/>
-      <parameter id="stretchFactor" value="0.000"/>
-      <parameter id="localIntensity" value="0.000"/>
-      <parameter id="symmetryPoint" value="0.000000"/>
-      <parameter id="highlightProtection" value="1.000000"/>
-      <parameter id="shadowProtection" value="0.000000"/>
-      <parameter id="blackPoint" value="0.000000"/>
-      <parameter id="whitePoint" value="1.000000"/>
-      <parameter id="colourBlend" value="1.000"/>
-      <parameter id="clipType" value="CT_RGBBlend"/>
-      <parameter id="useRGBWorkingSpace" value="false"/>
-   </instance>
-   <instance class="CurvesTransformation" version="256" id="CurvesForStars_instance">
-      <table id="R" rows="2">
-         <tr>
-            <td id="x" value="0.00000"/>
-            <td id="y" value="0.00000"/>
-         </tr>
-         <tr>
-            <td id="x" value="1.00000"/>
-            <td id="y" value="1.00000"/>
-         </tr>
-      </table>
-      <parameter id="Rt" value="AkimaSubsplines"/>
-      <table id="G" rows="2">
-         <tr>
-            <td id="x" value="0.00000"/>
-            <td id="y" value="0.00000"/>
-         </tr>
-         <tr>
-            <td id="x" value="1.00000"/>
-            <td id="y" value="1.00000"/>
-         </tr>
-      </table>
-      <parameter id="Gt" value="AkimaSubsplines"/>
-      <table id="B" rows="2">
-         <tr>
-            <td id="x" value="0.00000"/>
-            <td id="y" value="0.00000"/>
-         </tr>
-         <tr>
-            <td id="x" value="1.00000"/>
-            <td id="y" value="1.00000"/>
-         </tr>
-      </table>
-      <parameter id="Bt" value="AkimaSubsplines"/>
-      <table id="K" rows="3">
-         <tr>
-            <td id="x" value="0.00000"/>
-            <td id="y" value="0.00000"/>
-         </tr>
-         <tr>
-            <td id="x" value="0.34517"/>
-            <td id="y" value="0.16512"/>
-         </tr>
-         <tr>
-            <td id="x" value="1.00000"/>
-            <td id="y" value="1.00000"/>
-         </tr>
-      </table>
-      <parameter id="Kt" value="AkimaSubsplines"/>
-      <table id="A" rows="2">
-         <tr>
-            <td id="x" value="0.00000"/>
-            <td id="y" value="0.00000"/>
-         </tr>
-         <tr>
-            <td id="x" value="1.00000"/>
-            <td id="y" value="1.00000"/>
-         </tr>
-      </table>
-      <parameter id="At" value="AkimaSubsplines"/>
-      <table id="L" rows="2">
-         <tr>
-            <td id="x" value="0.00000"/>
-            <td id="y" value="0.00000"/>
-         </tr>
-         <tr>
-            <td id="x" value="1.00000"/>
-            <td id="y" value="1.00000"/>
-         </tr>
-      </table>
-      <parameter id="Lt" value="AkimaSubsplines"/>
-      <table id="a" rows="2">
-         <tr>
-            <td id="x" value="0.00000"/>
-            <td id="y" value="0.00000"/>
-         </tr>
-         <tr>
-            <td id="x" value="1.00000"/>
-            <td id="y" value="1.00000"/>
-         </tr>
-      </table>
-      <parameter id="at" value="AkimaSubsplines"/>
-      <table id="b" rows="2">
-         <tr>
-            <td id="x" value="0.00000"/>
-            <td id="y" value="0.00000"/>
-         </tr>
-         <tr>
-            <td id="x" value="1.00000"/>
-            <td id="y" value="1.00000"/>
-         </tr>
-      </table>
-      <parameter id="bt" value="AkimaSubsplines"/>
-      <table id="c" rows="2">
-         <tr>
-            <td id="x" value="0.00000"/>
-            <td id="y" value="0.00000"/>
-         </tr>
-         <tr>
-            <td id="x" value="1.00000"/>
-            <td id="y" value="1.00000"/>
-         </tr>
-      </table>
-      <parameter id="ct" value="AkimaSubsplines"/>
-      <table id="H" rows="2">
-         <tr>
-            <td id="x" value="0.00000"/>
-            <td id="y" value="0.00000"/>
-         </tr>
-         <tr>
-            <td id="x" value="1.00000"/>
-            <td id="y" value="1.00000"/>
-         </tr>
-      </table>
-      <parameter id="Ht" value="AkimaSubsplines"/>
-      <table id="S" rows="2">
-         <tr>
-            <td id="x" value="0.00000"/>
-            <td id="y" value="0.00000"/>
-         </tr>
-         <tr>
-            <td id="x" value="1.00000"/>
-            <td id="y" value="1.00000"/>
-         </tr>
-      </table>
-      <parameter id="St" value="AkimaSubsplines"/>
-   </instance>
-   <instance class="ColorSaturation" version="256" id="OptionallySaturateStars_instance">
-      <time start="2024-06-19T17:50:42.814Z" span="0.32506084"/>
-      <table id="HS" rows="2">
-         <tr>
-            <td id="x" value="0.00000"/>
-            <td id="y" value="2.00000"/>
-         </tr>
-         <tr>
-            <td id="x" value="1.00000"/>
-            <td id="y" value="0.00000"/>
-         </tr>
-      </table>
-      <parameter id="HSt" value="AkimaSubsplines"/>
-      <parameter id="hueShift" value="0.000"/>
-   </instance>
-   <icon id="Crop" instance="Crop_instance" xpos="2656" ypos="328" workspace="Workspace01"/>
-   <icon id="STF" instance="STF_instance" xpos="2656" ypos="8" workspace="Workspace01"/>
-   <icon id="Scripts_utilities_dark_structure_enhance" instance="Scripts_utilities_dark_structure_enhance_instance" xpos="2656" ypos="936" workspace="Workspace01"/>
-   <icon id="WBPP" instance="WBPP_instance" xpos="2656" ypos="72" workspace="Workspace01"/>
-   <icon id="CosmeticCorrection_Auto_3" instance="CosmeticCorrection_Auto_3_instance" xpos="2656" ypos="40" workspace="Workspace01"/>
-   <icon id="LRGB_combo_HSHO" instance="LRGB_combo_HSHO_instance" xpos="2656" ypos="264" workspace="Workspace01"/>
-   <icon id="SCNR_if_too_green" instance="SCNR_if_too_green_instance" xpos="2656" ypos="744" workspace="Workspace01"/>
-   <icon id="CorrectMagentaStars_script" instance="CorrectMagentaStars_script_instance" xpos="2656" ypos="552" workspace="Workspace01"/>
-   <icon id="StarXTerminator" instance="StarXTerminator_instance" xpos="2656" ypos="680" workspace="Workspace01"/>
-   <icon id="RGB_Combo" instance="RGB_Combo_instance" xpos="2656" ypos="200" workspace="Workspace01"/>
-   <icon id="NarrowbandNormalization" instance="NarrowbandNormalization_instance" xpos="2656" ypos="1128" workspace="Workspace01"/>
-   <icon id="GeneralHyperbolicStretch" instance="GeneralHyperbolicStretch_instance" xpos="2656" ypos="712" workspace="Workspace01"/>
-   <icon id="SpectroColorCalibration_RGB" instance="SpectroColorCalibration_RGB_instance" xpos="2656" ypos="488" workspace="Workspace01"/>
-   <icon id="SpectroColorCalibration_SHO" instance="SpectroColorCalibration_SHO_instance" xpos="2656" ypos="520" workspace="Workspace01"/>
-   <icon id="NoiseXTerminator_TWEAK" instance="NoiseXTerminator_TWEAK_instance" xpos="2656" ypos="616" workspace="Workspace01"/>
-   <icon id="LinearFit" instance="LinearFit_instance" xpos="2656" ypos="168" workspace="Workspace01"/>
-   <icon id="GradientCorrection" instance="GradientCorrection_instance" xpos="2656" ypos="392" workspace="Workspace01"/>
-   <icon id="BlurXTerminator_Full" instance="BlurXTerminator_Full_instance" xpos="2656" ypos="584" workspace="Workspace01"/>
-   <icon id="RenameViewToStarless" instance="RenameViewToStarless_instance" xpos="2656" ypos="648" workspace="Workspace01"/>
-   <icon id="ScreenStars_BLEND_OR" instance="ScreenStars_BLEND_OR_instance" xpos="2656" ypos="1064" workspace="Workspace01"/>
-   <icon id="BlurXTerminator_CorrectOnly" instance="BlurXTerminator_CorrectOnly_instance" xpos="2656" ypos="424" workspace="Workspace01"/>
-   <icon id="ScreenStars_PixelMath" instance="ScreenStars_PixelMath_instance" xpos="2656" ypos="1096" workspace="Workspace01"/>
-   <icon id="AutomaticDBE_SetiAstro" instance="AutomaticDBE_SetiAstro_instance" xpos="2656" ypos="360" workspace="Workspace01"/>
-   <icon id="PlateSolveForSCC" instance="PlateSolveForSCC_instance" xpos="2656" ypos="456" workspace="Workspace01"/>
-   <icon id="SmartRenameGlobalOrSingle_DND" instance="SmartRenameGlobalOrSingle_DND_instance" xpos="2656" ypos="104" workspace="Workspace01"/>
-   <icon id="ResizeAndStretchAfterTile_DND" instance="ResizeAndStretchAfterTile_DND_instance" xpos="2656" ypos="136" workspace="Workspace01"/>
-   <icon id="RenameViewTo_RGB" instance="RenameViewTo_RGB_instance" xpos="2656" ypos="232" workspace="Workspace01"/>
-   <icon id="RenameViewTo_SHO" instance="RenameViewTo_SHO_instance" xpos="2656" ypos="296" workspace="Workspace01"/>
-   <icon id="LocalHistogramEqualization_TWEAK" instance="LocalHistogramEqualization_TWEAK_instance" xpos="2656" ypos="840" workspace="Workspace01"/>
-   <icon id="HDR_MultiscaleXform_MAYBE" instance="HDR_MultiscaleXform_MAYBE_instance" xpos="2656" ypos="808" workspace="Workspace01"/>
-   <icon id="Curves_Tweak_ColorsAndSaturation" instance="Curves_Tweak_ColorsAndSaturation_instance" xpos="2656" ypos="872" workspace="Workspace01"/>
-   <icon id="GenAndApplyLumMaskToStarless_CmdK_to_hide" instance="GenAndApplyLumMaskToStarless_CmdK_to_hide_instance" xpos="2656" ypos="776" workspace="Workspace01"/>
-   <icon id="BackgroundNeutralization_MAYBE" instance="BackgroundNeutralization_MAYBE_instance" xpos="2656" ypos="904" workspace="Workspace01"/>
-   <icon id="GHS_for_stars" instance="GHS_for_stars_instance" xpos="2656" ypos="968" workspace="Workspace01"/>
-   <icon id="CurvesForStars" instance="CurvesForStars_instance" xpos="2656" ypos="1000" workspace="Workspace01"/>
-   <icon id="OptionallySaturateStars" instance="OptionallySaturateStars_instance" xpos="2656" ypos="1032" workspace="Workspace01"/>
+   <icon id="CC_Auto_3" instance="CC_Auto_3_instance" xpos="2739" ypos="30" workspace="Workspace01"/>
+   <icon id="WBPP" instance="WBPP_instance" xpos="2739" ypos="57" workspace="Workspace01"/>
+   <icon id="Crop" instance="Crop_instance" xpos="2739" ypos="273" workspace="Workspace01"/>
+   <icon id="BlurX_CorrectOnly" instance="BlurX_CorrectOnly_instance" xpos="2739" ypos="408" workspace="Workspace01"/>
+   <icon id="SPCC_RGB_ASG" instance="SPCC_RGB_ASG_instance" xpos="2739" ypos="489" workspace="Workspace01"/>
+   <icon id="FixMagentaStars" instance="FixMagentaStars_instance" xpos="2739" ypos="570" workspace="Workspace01"/>
+   <icon id="RenameViewToStarless" instance="RenameViewToStarless_instance" xpos="2739" ypos="651" workspace="Workspace01"/>
+   <icon id="StarX" instance="StarX_instance" xpos="2739" ypos="678" workspace="Workspace01"/>
+   <icon id="GeneralHyperbolicStretch" instance="GeneralHyperbolicStretch_instance" xpos="2739" ypos="705" workspace="Workspace01"/>
+   <icon id="SCNR_if_too_green" instance="SCNR_if_too_green_instance" xpos="2739" ypos="732" workspace="Workspace01"/>
+   <icon id="LumMaskForStarless" instance="LumMaskForStarless_instance" xpos="2739" ypos="759" workspace="Workspace01"/>
+   <icon id="HDR_MX_MAYBE" instance="HDR_MX_MAYBE_instance" xpos="2739" ypos="786" workspace="Workspace01"/>
+   <icon id="LocalHistEQ_TWEAK" instance="LocalHistEQ_TWEAK_instance" xpos="2739" ypos="813" workspace="Workspace01"/>
+   <icon id="CurvesForColorAndSat" instance="CurvesForColorAndSat_instance" xpos="2739" ypos="840" workspace="Workspace01"/>
+   <icon id="BackgroundNeutralization_MAYBE" instance="BackgroundNeutralization_MAYBE_instance" xpos="2739" ypos="867" workspace="Workspace01"/>
+   <icon id="Scripts_utilities_DSE" instance="Scripts_utilities_DSE_instance" xpos="2739" ypos="894" workspace="Workspace01"/>
+   <icon id="GHS_for_stars" instance="GHS_for_stars_instance" xpos="2739" ypos="921" workspace="Workspace01"/>
+   <icon id="CurvesForStars" instance="CurvesForStars_instance" xpos="2739" ypos="948" workspace="Workspace01"/>
+   <icon id="OptionallySaturateStars" instance="OptionallySaturateStars_instance" xpos="2739" ypos="975" workspace="Workspace01"/>
+   <icon id="ScreenStars_BLEND_OR" instance="ScreenStars_BLEND_OR_instance" xpos="2739" ypos="1002" workspace="Workspace01"/>
+   <icon id="ScreenStars_PixelMath" instance="ScreenStars_PixelMath_instance" xpos="2739" ypos="1029" workspace="Workspace01"/>
+   <icon id="NarrowbandNormalization" instance="NarrowbandNormalization_instance" xpos="2739" ypos="1056" workspace="Workspace01"/>
+   <icon id="SmartRenameViews" instance="SmartRenameViews_instance" xpos="2739" ypos="84" workspace="Workspace01"/>
+   <icon id="LinearFit" instance="LinearFit_instance" xpos="2739" ypos="138" workspace="Workspace01"/>
+   <icon id="RGB_Combo" instance="RGB_Combo_instance" xpos="2739" ypos="165" workspace="Workspace01"/>
+   <icon id="Rename_RGB" instance="Rename_RGB_instance" xpos="2739" ypos="219" workspace="Workspace01"/>
+   <icon id="SHO_combo" instance="SHO_combo_instance" xpos="2739" ypos="192" workspace="Workspace01"/>
+   <icon id="Rename_SHO" instance="Rename_SHO_instance" xpos="2739" ypos="246" workspace="Workspace01"/>
+   <icon id="STF" instance="STF_instance" xpos="2739" ypos="3" workspace="Workspace01"/>
+   <icon id="GradientCorrection" instance="GradientCorrection_instance" xpos="2739" ypos="381" workspace="Workspace01"/>
+   <icon id="AutomaticDBE_SetiAstro" instance="AutomaticDBE_SetiAstro_instance" xpos="2739" ypos="300" workspace="Workspace01"/>
+   <icon id="ResizeAndStretch" instance="ResizeAndStretch_instance" xpos="2739" ypos="111" workspace="Workspace01"/>
+   <icon id="PlateSolveForSCC" instance="PlateSolveForSCC_instance" xpos="2739" ypos="435" workspace="Workspace01"/>
+   <icon id="SPCC_RGB_PF" instance="SPCC_RGB_PF_instance" xpos="2739" ypos="462" workspace="Workspace01"/>
+   <icon id="BlurX_Full" instance="BlurX_Full_instance" xpos="2739" ypos="597" workspace="Workspace01"/>
+   <icon id="NoiseX_TWEAK" instance="NoiseX_TWEAK_instance" xpos="2739" ypos="624" workspace="Workspace01"/>
+   <icon id="Gradient_Removal_Instructions" instance="Gradient_Removal_Instructions_instance" xpos="2739" ypos="327" workspace="Workspace01"/>
+   <icon id="GraXpert" instance="GraXpert_instance" xpos="2739" ypos="354" workspace="Workspace01"/>
+   <icon id="SPCC_SHO_PF" instance="SPCC_SHO_PF_instance" xpos="2739" ypos="516" workspace="Workspace01"/>
+   <icon id="SPCC_SHO_ASG" instance="SPCC_SHO_ASG_instance" xpos="2739" ypos="543" workspace="Workspace01"/>
+   <icon id="ConvertTheGreen" instance="ConvertTheGreen_instance" xpos="2739" ypos="1084" workspace="Workspace01"/>
 </xpsm>

@@ -60,7 +60,7 @@ sessionDateDir=""
 # │   │   ├── LIGHTS
 # │   │   │   └── < LIGHTS GO HERE >
 # │   │   └── WBPP
-# │   └── M42-Project
+# │   └── _M42-Project
 # │       ├── CALIBRATED
 # │       │   ├── 2023-11-18
 # │       │   │   └── < CALIBRATED LIGHTS GO HERE >
@@ -72,7 +72,7 @@ sessionDateDir=""
 # │   │   ├── LIGHTS
 # │   │   │   └── < LIGHTS GO HERE >
 # │   │   └── WBPP
-# │   └── M45-Project
+# │   └── _M45-Project
 # │       ├── CALIBRATED
 # │       │   ├── 2023-11-18
 # │       │   │   └── < CALIBRATED LIGHTS GO HERE >
@@ -106,7 +106,7 @@ do
         target="$(echo ${target} | sed "s| ||g;s|'||g")"
 
         destDir="${baseDestDir}/${target}/${sessionDateDir}"
-        projectDir="${baseDestDir}/${target}/${target}-${projectDirPrefix}/"        
+        projectDir="${baseDestDir}/_${target}/${target}-${projectDirPrefix}/"        
 
 
         mkdir -p "${destDir}/LIGHTS"
