@@ -7,7 +7,7 @@ shopt -s globstar
 baseDestDir="/Volumes/Astrophotography/AstroImages"
 
 sourceDir=""
-projectDirPrefix="Project"
+projectDirSuffix="Project"
 ECHO=""
 ECHO="/bin/echo"
 treeOnly=""
@@ -103,11 +103,10 @@ do
         
         # newName="$(echo ${file} | sed 's| ||g;s|\x27||g;s|_NoTarget||g;s|${target}_${target}|${target}|g;s|${target}_FlatField|FlatField|g')"
         newName="$(echo ${file} | sed 's| ||g;s|\x27||g;s|${target}_FlatField|FlatField|g')"
-        target="$(echo ${target} | sed "s| ||g;s|'||g")"
+        target="$(echo ${target} | cut -d "(" -f 1 | sed "s| ||g;s|'||g")"
 
         destDir="${baseDestDir}/${target}/${sessionDateDir}"
-        projectDir="${baseDestDir}/_${target}/${target}-${projectDirPrefix}/"        
-
+        projectDir="${baseDestDir}/${target}/_${target}-${projectDirSuffix}"   # The `_` keeps it first when sorted by name
 
         mkdir -p "${destDir}/LIGHTS"
         mkdir -p "${destDir}/WBPP"
@@ -119,8 +118,8 @@ do
         
         if [ -n "$treeOnly" ]
         then
-            touch "${destDir}/LIGHTS/< LIGHTS GO HERE >"
-            touch "${projectDir}/CALIBRATED/${sessionDateDir}/< CALIBRATED LIGHTS GO HERE >"
+            echo touch "${destDir}/LIGHTS/< LIGHTS GO HERE >"
+            echo touch "${projectDir}/CALIBRATED/${sessionDateDir}/< CALIBRATED LIGHTS GO HERE >"
         else
             echo "Copying ${newName} to ${target}/${sessionDateDir}"
             cp -p "${file}" "${destDir}/LIGHTS/${newName}"
@@ -129,7 +128,7 @@ do
 
     # Then the flats (this will need to change with NINA)
     #     
-    find . -type f \( -iname "FLAT_*.fits" ! -iname ".*" \) -print0 | while IFS= read -r -d '' file    
+    find . -type f \( -iname "FLAT_*.fits" ! -iname ".*" \) -print0 | while IFS= read -r -d '' file
     do
         oldName="${file}"
         newName="FLAT_${file##*FLAT_}"
@@ -144,11 +143,10 @@ do
             echo "Copying ${newName} to ${dateDir}"
             cp -p "${file}" "${destDir}/${newName}"
         fi
-        
+
     done
 
-    echo DARK COPY IS NOT IMPLEMENTED
-    
+    # echo DARK COPY IS NOT IMPLEMENTED
     # find . -type f \( -iname "DARK_*.fits" ! -iname ".*" \) -print0 | while IFS= read -r -d '' file
     # do
     #     oldName="${file}"

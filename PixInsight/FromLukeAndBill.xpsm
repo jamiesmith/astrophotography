@@ -1,0 +1,1557 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+********************************************************************
+PixInsight XML Process Serialization Module - XPSM 1.0
+********************************************************************
+Generated on 2024-10-22T13:01:56.720Z
+PixInsight Core 1.8.9-3 (x64)
+Copyright (c) 2003-2024 Pleiades Astrophoto
+********************************************************************
+-->
+<xpsm version="1.0" xmlns="http://www.pixinsight.com/xpsm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pixinsight.com/xpsm http://pixinsight.com/xpsm/xpsm-1.0.xsd">
+   <instance class="PixelMath" version="256" id="GH_Stretch_instance">
+      <time start="2023-01-29T09:52:17.123Z" span="2.2104115"/>
+      <parameter id="expression">/* Generalized Hyperbolic Stretching in Pixelmath - V1 
+                by Bill Blanshan                         
+                    
+Drag the bottom left arrow over into the image you want stretched */
+
+D = 800; //Controls the amount of stretch
+b = 1;  // &gt;0&lt;1= Hyperbolic, 1=Harmonic,&gt;1= Super-hyperbolic stretch
+HP= 1; //Highlight point 
+
+
+//Equations by David Payne  (Thanks Dave!!!)
+
+
+
+
+
+
+
+
+
+SP= med($T)*.5;  //Symmetry point, typically left of hystogram peak
+q0=  (1+(D*b)*SP)^(-1/b);
+qWP= 2-(1+(D*b)*(HP-SP))^(-1/b);
+q1=  2-2*(1+(D*b)*(HP-SP))^(-1/b)+(1+(D*b)*(2*HP-SP-1))^(-1/b);
+iif($T&lt;SP,0*exp(-(D*b)*(SP-$T))+1*(1+(D*b)*(SP-$T))^(-1/b)-q0,
+    2-0*exp(-(D*b)*($T-SP))-(1-0)*(1+(D*b)*($T-SP))^(-1/b)-q0 )
+    /(q1-q0);
+
+
+//Equation by David Payne</parameter>
+      <parameter id="expression1"></parameter>
+      <parameter id="expression2"></parameter>
+      <parameter id="expression3"></parameter>
+      <parameter id="useSingleExpression" value="true"/>
+      <parameter id="symbols">D,b,SP,HP,q0,qWP,q1</parameter>
+      <parameter id="clearImageCacheAndExit" value="false"/>
+      <parameter id="cacheGeneratedImages" value="false"/>
+      <parameter id="generateOutput" value="true"/>
+      <parameter id="singleThreaded" value="false"/>
+      <parameter id="optimization" value="true"/>
+      <parameter id="use64BitWorkingImage" value="false"/>
+      <parameter id="rescale" value="false"/>
+      <parameter id="rescaleLower" value="0"/>
+      <parameter id="rescaleUpper" value="1"/>
+      <parameter id="truncate" value="true"/>
+      <parameter id="truncateLower" value="0"/>
+      <parameter id="truncateUpper" value="1"/>
+      <parameter id="createNewImage" value="true"/>
+      <parameter id="showNewImage" value="true"/>
+      <parameter id="newImageId"></parameter>
+      <parameter id="newImageWidth" value="0"/>
+      <parameter id="newImageHeight" value="0"/>
+      <parameter id="newImageAlpha" value="false"/>
+      <parameter id="newImageColorSpace" value="SameAsTarget"/>
+      <parameter id="newImageSampleFormat" value="SameAsTarget"/>
+      <table id="outputData" rows="0"/>
+   </instance>
+   <instance class="PixelMath" version="256" id="HT_Stretch_Unlinked_instance">
+      <time start="2023-03-16T01:52:06.125Z" span="0.2267802"/>
+      <parameter id="expression">/*      Unlinked Stretch in Pixelmath - V1 
+                by Bill Blanshan                         
+                    
+Drag the bottom left arrow over into the image you want stretched */
+
+C = -2.8  ;  //Shadow Clipping (Defualt value -2.8)
+B = 0.20  ;  //Background value (Higher the value, more stretched)
+
+
+
+//Equations by Juan Conejero  (Thanks Juan!!!)
+
+
+
+
+
+c = min(max(0,med($T)+C*1.4826*mdev($T)),1);
+mtf(mtf(B,med($T)-c),max(0,($T-c)/~c))</parameter>
+      <parameter id="expression1"></parameter>
+      <parameter id="expression2"></parameter>
+      <parameter id="expression3"></parameter>
+      <parameter id="useSingleExpression" value="true"/>
+      <parameter id="symbols">C,B,c</parameter>
+      <parameter id="clearImageCacheAndExit" value="false"/>
+      <parameter id="cacheGeneratedImages" value="false"/>
+      <parameter id="generateOutput" value="true"/>
+      <parameter id="singleThreaded" value="false"/>
+      <parameter id="optimization" value="true"/>
+      <parameter id="use64BitWorkingImage" value="false"/>
+      <parameter id="rescale" value="false"/>
+      <parameter id="rescaleLower" value="0"/>
+      <parameter id="rescaleUpper" value="1"/>
+      <parameter id="truncate" value="true"/>
+      <parameter id="truncateLower" value="0"/>
+      <parameter id="truncateUpper" value="1"/>
+      <parameter id="createNewImage" value="false"/>
+      <parameter id="showNewImage" value="true"/>
+      <parameter id="newImageId"></parameter>
+      <parameter id="newImageWidth" value="0"/>
+      <parameter id="newImageHeight" value="0"/>
+      <parameter id="newImageAlpha" value="false"/>
+      <parameter id="newImageColorSpace" value="SameAsTarget"/>
+      <parameter id="newImageSampleFormat" value="SameAsTarget"/>
+      <table id="outputData" rows="0"/>
+   </instance>
+   <instance class="PixelMath" version="256" id="HT_Stretch_Linked_RGB_instance">
+      <time start="2023-01-29T09:49:40.707Z" span="1.2371985"/>
+      <parameter id="expression">/*      Linked Stretch in Pixelmath - V1 
+                by Bill Blanshan                         
+                    
+Drag the bottom left arrow over into the image you want stretched */
+
+C = -2.8  ;  //Shadow Clipping (Defualt value -2.8)
+B = 0.20  ;  //Background value (Higher the value, more stretched)
+
+
+
+//Equations by Juan Conejero  (Thanks Juan!!!)
+
+
+
+
+m = (med($T[0])+med($T[1])+med($T[2]))/3;
+d = (mdev($T[0])+mdev($T[1])+mdev($T[2]))/3;
+c = min( max(0,m+C*1.4826*d),1);
+mtf(mtf(B,m-c),max(0,($T-c)/~c))</parameter>
+      <parameter id="expression1"></parameter>
+      <parameter id="expression2"></parameter>
+      <parameter id="expression3"></parameter>
+      <parameter id="useSingleExpression" value="true"/>
+      <parameter id="symbols">C,B,c,m,d,</parameter>
+      <parameter id="clearImageCacheAndExit" value="false"/>
+      <parameter id="cacheGeneratedImages" value="false"/>
+      <parameter id="generateOutput" value="true"/>
+      <parameter id="singleThreaded" value="false"/>
+      <parameter id="optimization" value="true"/>
+      <parameter id="use64BitWorkingImage" value="false"/>
+      <parameter id="rescale" value="false"/>
+      <parameter id="rescaleLower" value="0"/>
+      <parameter id="rescaleUpper" value="1"/>
+      <parameter id="truncate" value="true"/>
+      <parameter id="truncateLower" value="0"/>
+      <parameter id="truncateUpper" value="1"/>
+      <parameter id="createNewImage" value="false"/>
+      <parameter id="showNewImage" value="true"/>
+      <parameter id="newImageId"></parameter>
+      <parameter id="newImageWidth" value="0"/>
+      <parameter id="newImageHeight" value="0"/>
+      <parameter id="newImageAlpha" value="false"/>
+      <parameter id="newImageColorSpace" value="SameAsTarget"/>
+      <parameter id="newImageSampleFormat" value="SameAsTarget"/>
+      <table id="outputData" rows="0"/>
+   </instance>
+   <instance class="PixelMath" version="256" id="StarReductionM3_V3_instance">
+      <parameter id="expression">/*      Star Reduction using PixelMath, by Bill Blanshan -
+                      Star Method - V3                            */
+
+Img1= starless  ;// &lt;--Starless Image name
+
+I=   1  ;// &lt;--number of iterations, between 1-3
+M=   3  ;// &lt;--Method mode; 1=Strong; 2=Moderate; 3=Soft reductions
+
+/*  Drag bottom left arrow over to the image you require star reduction
+
+Note:
+   Strong mode produces smaller sharp stars while removing small stars
+   Moderate mode still has sharp stars and some smaller stars
+   Soft mode is a simple star reduction of the original image       */
+
+
+
+
+
+
+
+
+
+
+
+//equations:
+E1= $T*~(~(max(0,min(1,Img1/$T)))*~$T);  //iteration-1
+E2= max(E1,($T*E1)+(E1*~E1));
+
+E3= E1*~(~(max(0,min(1,Img1/E1)))*~E1);  //iteration-2
+E4= max(E3,($T*E3)+(E3*~E3));
+
+E5= E3*~(~(max(0,min(1,Img1/E3)))*~E3);  //iteration-3
+E6= max(E5,($T*E5)+(E5*~E5));
+
+E7= iif(I==1,E1,iif(I==2,E3,E5)); // Strong reduction mode
+E8= iif(I==1,E2,iif(I==2,E4,E6)); // Moderate reduction mode
+
+E9= mean(
+$T-($T-iif(I==1,E2,iif(I==2,E4,E6))), 
+$T*~($T-iif(I==1,E2,iif(I==2,E4,E6)))); //soft reduction mode
+
+iif(M==1,E7,iif(M==2,E8,E9))</parameter>
+      <parameter id="expression1"></parameter>
+      <parameter id="expression2"></parameter>
+      <parameter id="expression3"></parameter>
+      <parameter id="useSingleExpression" value="true"/>
+      <parameter id="symbols">I,M,Img1,E1,E2,E3,E4,E5,E6,E7,E8,E9,E10,</parameter>
+      <parameter id="clearImageCacheAndExit" value="false"/>
+      <parameter id="cacheGeneratedImages" value="false"/>
+      <parameter id="generateOutput" value="true"/>
+      <parameter id="singleThreaded" value="false"/>
+      <parameter id="optimization" value="true"/>
+      <parameter id="use64BitWorkingImage" value="false"/>
+      <parameter id="rescale" value="false"/>
+      <parameter id="rescaleLower" value="0"/>
+      <parameter id="rescaleUpper" value="1"/>
+      <parameter id="truncate" value="true"/>
+      <parameter id="truncateLower" value="0"/>
+      <parameter id="truncateUpper" value="1"/>
+      <parameter id="createNewImage" value="false"/>
+      <parameter id="showNewImage" value="true"/>
+      <parameter id="newImageId">StarReduction</parameter>
+      <parameter id="newImageWidth" value="0"/>
+      <parameter id="newImageHeight" value="0"/>
+      <parameter id="newImageAlpha" value="false"/>
+      <parameter id="newImageColorSpace" value="SameAsTarget"/>
+      <parameter id="newImageSampleFormat" value="i8"/>
+      <table id="outputData" rows="0"/>
+   </instance>
+   <instance class="PixelMath" version="256" id="StarReductionM2_V3_instance">
+      <parameter id="expression">/*      Star Reduction using PixelMath, by Bill Blanshan -
+                      Halo Method - V3                            */
+
+S=   0.20       ;// &lt;--To reduce stars size more, lower &quot;S&quot; value
+Img1= starless  ;// &lt;--Starless image name, yours must match
+
+
+/*
+
+Drag bottom left arrow over to the image you require star reduction
+
+
+Enjoy!!
+
+
+*/
+
+
+
+
+
+
+
+//equations
+
+f2= ((~(~$T/~Img1)-~(~mtf(~S,$T)/~mtf(~S,Img1)))*~Img1);
+f3= (~(~$T/~Img1)-~(~mtf(~S,$T)/~mtf(~S,Img1)));
+
+$T*~mean(f2,f3)</parameter>
+      <parameter id="expression1"></parameter>
+      <parameter id="expression2"></parameter>
+      <parameter id="expression3"></parameter>
+      <parameter id="useSingleExpression" value="true"/>
+      <parameter id="symbols">S,B,Img1,f2,f3,</parameter>
+      <parameter id="clearImageCacheAndExit" value="false"/>
+      <parameter id="cacheGeneratedImages" value="false"/>
+      <parameter id="generateOutput" value="true"/>
+      <parameter id="singleThreaded" value="false"/>
+      <parameter id="optimization" value="true"/>
+      <parameter id="use64BitWorkingImage" value="false"/>
+      <parameter id="rescale" value="false"/>
+      <parameter id="rescaleLower" value="0"/>
+      <parameter id="rescaleUpper" value="1"/>
+      <parameter id="truncate" value="true"/>
+      <parameter id="truncateLower" value="0"/>
+      <parameter id="truncateUpper" value="1"/>
+      <parameter id="createNewImage" value="false"/>
+      <parameter id="showNewImage" value="true"/>
+      <parameter id="newImageId">StarsReduced</parameter>
+      <parameter id="newImageWidth" value="0"/>
+      <parameter id="newImageHeight" value="0"/>
+      <parameter id="newImageAlpha" value="false"/>
+      <parameter id="newImageColorSpace" value="SameAsTarget"/>
+      <parameter id="newImageSampleFormat" value="SameAsTarget"/>
+      <table id="outputData" rows="0"/>
+   </instance>
+   <instance class="PixelMath" version="256" id="StarReductionM1_V3_instance">
+      <parameter id="expression">/*      Star Reduction using PixelMath, by Bill Blanshan -
+                      Transfer Method - V3                          */
+
+S=   0.20       ;// &lt;--To reduce stars size more, lower &quot;S&quot; value
+Img1= starless  ;// &lt;--Starless image name, yours must match
+
+/*
+
+Drag bottom left arrow over to the image you require star reduction
+
+Enjoy!!
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+//equations
+~((~mtf(~S,$T)/~mtf(~S,Img1))*~Img1); //Transfer method</parameter>
+      <parameter id="expression1"></parameter>
+      <parameter id="expression2"></parameter>
+      <parameter id="expression3"></parameter>
+      <parameter id="useSingleExpression" value="true"/>
+      <parameter id="symbols">S,B,Img1,Img2,f1</parameter>
+      <parameter id="clearImageCacheAndExit" value="false"/>
+      <parameter id="cacheGeneratedImages" value="false"/>
+      <parameter id="generateOutput" value="true"/>
+      <parameter id="singleThreaded" value="false"/>
+      <parameter id="optimization" value="true"/>
+      <parameter id="use64BitWorkingImage" value="false"/>
+      <parameter id="rescale" value="false"/>
+      <parameter id="rescaleLower" value="0"/>
+      <parameter id="rescaleUpper" value="1"/>
+      <parameter id="truncate" value="true"/>
+      <parameter id="truncateLower" value="0"/>
+      <parameter id="truncateUpper" value="1"/>
+      <parameter id="createNewImage" value="false"/>
+      <parameter id="showNewImage" value="true"/>
+      <parameter id="newImageId">StarsReduced</parameter>
+      <parameter id="newImageWidth" value="0"/>
+      <parameter id="newImageHeight" value="0"/>
+      <parameter id="newImageAlpha" value="false"/>
+      <parameter id="newImageColorSpace" value="SameAsTarget"/>
+      <parameter id="newImageSampleFormat" value="SameAsTarget"/>
+      <table id="outputData" rows="0"/>
+   </instance>
+   <instance class="PixelMath" version="256" id="CloneForStarless_instance">
+      <time start="2024-06-23T14:21:13.309Z" span="3.7986895"/>
+      <parameter id="expression">$T</parameter>
+      <parameter id="expression1"></parameter>
+      <parameter id="expression2"></parameter>
+      <parameter id="expression3"></parameter>
+      <parameter id="useSingleExpression" value="true"/>
+      <parameter id="symbols"></parameter>
+      <parameter id="clearImageCacheAndExit" value="false"/>
+      <parameter id="cacheGeneratedImages" value="false"/>
+      <parameter id="generateOutput" value="true"/>
+      <parameter id="singleThreaded" value="false"/>
+      <parameter id="optimization" value="true"/>
+      <parameter id="use64BitWorkingImage" value="false"/>
+      <parameter id="rescale" value="false"/>
+      <parameter id="rescaleLower" value="0"/>
+      <parameter id="rescaleUpper" value="1"/>
+      <parameter id="truncate" value="true"/>
+      <parameter id="truncateLower" value="0"/>
+      <parameter id="truncateUpper" value="1"/>
+      <parameter id="createNewImage" value="true"/>
+      <parameter id="showNewImage" value="true"/>
+      <parameter id="newImageId">Starless</parameter>
+      <parameter id="newImageWidth" value="0"/>
+      <parameter id="newImageHeight" value="0"/>
+      <parameter id="newImageAlpha" value="false"/>
+      <parameter id="newImageColorSpace" value="SameAsTarget"/>
+      <parameter id="newImageSampleFormat" value="SameAsTarget"/>
+      <table id="outputData" rows="0"/>
+   </instance>
+   <instance class="PixelMath" version="256" id="BLUR_MASK_instance">
+      <time start="2023-03-16T01:46:33.421Z" span="0.0658878"/>
+      <parameter id="expression">gconv($T,  //Image name
+
+7,         //sigma -  Increase to add more blur
+1,         //aspectRatio - Default: 1
+0 )        //rotationAngle - Default: 0</parameter>
+      <parameter id="expression1"></parameter>
+      <parameter id="expression2"></parameter>
+      <parameter id="expression3"></parameter>
+      <parameter id="useSingleExpression" value="true"/>
+      <parameter id="symbols"></parameter>
+      <parameter id="clearImageCacheAndExit" value="false"/>
+      <parameter id="cacheGeneratedImages" value="false"/>
+      <parameter id="generateOutput" value="true"/>
+      <parameter id="singleThreaded" value="false"/>
+      <parameter id="optimization" value="true"/>
+      <parameter id="use64BitWorkingImage" value="false"/>
+      <parameter id="rescale" value="false"/>
+      <parameter id="rescaleLower" value="0"/>
+      <parameter id="rescaleUpper" value="1"/>
+      <parameter id="truncate" value="true"/>
+      <parameter id="truncateLower" value="0"/>
+      <parameter id="truncateUpper" value="1"/>
+      <parameter id="createNewImage" value="false"/>
+      <parameter id="showNewImage" value="true"/>
+      <parameter id="newImageId"></parameter>
+      <parameter id="newImageWidth" value="0"/>
+      <parameter id="newImageHeight" value="0"/>
+      <parameter id="newImageAlpha" value="false"/>
+      <parameter id="newImageColorSpace" value="SameAsTarget"/>
+      <parameter id="newImageSampleFormat" value="SameAsTarget"/>
+      <table id="outputData" rows="0"/>
+   </instance>
+   <instance class="PixelMath" version="256" id="GreenMask_instance">
+      <time start="2022-09-23T02:01:02.355Z" span="2.3281662"/>
+      <parameter id="expression">//  Simple Green Color Mask
+
+S= 1.0 ;//  Mask Strength (Range= 0 to 1)
+
+
+
+
+ 
+
+
+
+
+
+
+//Equations:
+iif(H($T)&lt;(1/6),0,iif(H($T)&lt;=(1/3),
+~mtf((H($T)-(1/6))/(1/6),~S)*
+CIEc($T),iif(H($T)&lt;=(3/6),~mtf(((3/6)-H($T))/
+(1/6),~S)*CIEc($T),0)))</parameter>
+      <parameter id="expression1"></parameter>
+      <parameter id="expression2"></parameter>
+      <parameter id="expression3"></parameter>
+      <parameter id="useSingleExpression" value="true"/>
+      <parameter id="symbols">S,</parameter>
+      <parameter id="clearImageCacheAndExit" value="false"/>
+      <parameter id="cacheGeneratedImages" value="false"/>
+      <parameter id="generateOutput" value="true"/>
+      <parameter id="singleThreaded" value="false"/>
+      <parameter id="optimization" value="true"/>
+      <parameter id="use64BitWorkingImage" value="false"/>
+      <parameter id="rescale" value="true"/>
+      <parameter id="rescaleLower" value="0"/>
+      <parameter id="rescaleUpper" value="1"/>
+      <parameter id="truncate" value="true"/>
+      <parameter id="truncateLower" value="0"/>
+      <parameter id="truncateUpper" value="1"/>
+      <parameter id="createNewImage" value="true"/>
+      <parameter id="showNewImage" value="true"/>
+      <parameter id="newImageId">GreenMask</parameter>
+      <parameter id="newImageWidth" value="0"/>
+      <parameter id="newImageHeight" value="0"/>
+      <parameter id="newImageAlpha" value="false"/>
+      <parameter id="newImageColorSpace" value="Gray"/>
+      <parameter id="newImageSampleFormat" value="i8"/>
+      <table id="outputData" rows="0"/>
+   </instance>
+   <instance class="PixelMath" version="256" id="YellowMask_instance">
+      <time start="2023-03-16T01:46:27.324Z" span="0.9793304"/>
+      <parameter id="expression">//  Simple Yellow Color Mask
+
+S= 1.0 ;//  Mask Strength (Range= 0 to 1)
+
+
+
+
+
+
+
+
+
+
+
+//Equations:
+iif(H($T)&lt;0,0,iif(H($T)&lt;=(1/6),
+~mtf((H($T)-0)/(1/6),~S)*
+CIEc($T),iif(H($T)&lt;=(1/3),~mtf(((1/3)-
+H($T))/(1/6),~S)*CIEc($T),0)));</parameter>
+      <parameter id="expression1"></parameter>
+      <parameter id="expression2"></parameter>
+      <parameter id="expression3"></parameter>
+      <parameter id="useSingleExpression" value="true"/>
+      <parameter id="symbols">S</parameter>
+      <parameter id="clearImageCacheAndExit" value="false"/>
+      <parameter id="cacheGeneratedImages" value="false"/>
+      <parameter id="generateOutput" value="true"/>
+      <parameter id="singleThreaded" value="false"/>
+      <parameter id="optimization" value="true"/>
+      <parameter id="use64BitWorkingImage" value="false"/>
+      <parameter id="rescale" value="true"/>
+      <parameter id="rescaleLower" value="0"/>
+      <parameter id="rescaleUpper" value="1"/>
+      <parameter id="truncate" value="true"/>
+      <parameter id="truncateLower" value="0"/>
+      <parameter id="truncateUpper" value="1"/>
+      <parameter id="createNewImage" value="true"/>
+      <parameter id="showNewImage" value="true"/>
+      <parameter id="newImageId">YellowMask</parameter>
+      <parameter id="newImageWidth" value="0"/>
+      <parameter id="newImageHeight" value="0"/>
+      <parameter id="newImageAlpha" value="false"/>
+      <parameter id="newImageColorSpace" value="Gray"/>
+      <parameter id="newImageSampleFormat" value="i8"/>
+      <table id="outputData" rows="0"/>
+   </instance>
+   <instance class="PixelMath" version="256" id="CyanMask_instance">
+      <time start="2022-09-23T01:53:07.796Z" span="2.2211348"/>
+      <parameter id="expression">//  Simple Cyan Color Mask
+
+S= 1.0 ;//  Mask Strength (Range= 0 to 1)
+
+
+
+
+
+
+
+
+
+
+
+//Equations:
+iif(H($T)&lt;(1/3),0,iif(H($T)&lt;=(3/6),
+~mtf((H($T)-(1/3))/(1/6),~S)*
+CIEc($T),iif(H($T)&lt;=(2/3),~mtf(((2/3)-
+H($T))/(1/6),~S)*CIEc($T),0)))</parameter>
+      <parameter id="expression1"></parameter>
+      <parameter id="expression2"></parameter>
+      <parameter id="expression3"></parameter>
+      <parameter id="useSingleExpression" value="true"/>
+      <parameter id="symbols">S,</parameter>
+      <parameter id="clearImageCacheAndExit" value="false"/>
+      <parameter id="cacheGeneratedImages" value="false"/>
+      <parameter id="generateOutput" value="true"/>
+      <parameter id="singleThreaded" value="false"/>
+      <parameter id="optimization" value="true"/>
+      <parameter id="use64BitWorkingImage" value="false"/>
+      <parameter id="rescale" value="true"/>
+      <parameter id="rescaleLower" value="0"/>
+      <parameter id="rescaleUpper" value="1"/>
+      <parameter id="truncate" value="true"/>
+      <parameter id="truncateLower" value="0"/>
+      <parameter id="truncateUpper" value="1"/>
+      <parameter id="createNewImage" value="true"/>
+      <parameter id="showNewImage" value="true"/>
+      <parameter id="newImageId">CyanMask</parameter>
+      <parameter id="newImageWidth" value="0"/>
+      <parameter id="newImageHeight" value="0"/>
+      <parameter id="newImageAlpha" value="false"/>
+      <parameter id="newImageColorSpace" value="Gray"/>
+      <parameter id="newImageSampleFormat" value="i8"/>
+      <table id="outputData" rows="0"/>
+   </instance>
+   <instance class="PixelMath" version="256" id="BlueMask_instance">
+      <time start="2023-03-16T00:43:04.971Z" span="0.9747232"/>
+      <parameter id="expression">//  Simple Blue Color Mask
+
+S= 1.0 ;//  Mask Strength (Range= 0 to 1)
+
+
+
+
+
+
+
+
+
+
+
+//Equations:
+S= iif(H($T)&lt;(3/6),0,iif(H($T)&lt;=(4/6),~mtf((H($T)-(3/6))/(1/6),
+0)*CIEc($T),iif(H($T)&lt;=(5/6),~mtf(((5/6)-H($T))/(1/6),0)*
+CIEc($T),0)))</parameter>
+      <parameter id="expression1"></parameter>
+      <parameter id="expression2"></parameter>
+      <parameter id="expression3"></parameter>
+      <parameter id="useSingleExpression" value="true"/>
+      <parameter id="symbols">S,</parameter>
+      <parameter id="clearImageCacheAndExit" value="false"/>
+      <parameter id="cacheGeneratedImages" value="false"/>
+      <parameter id="generateOutput" value="true"/>
+      <parameter id="singleThreaded" value="false"/>
+      <parameter id="optimization" value="true"/>
+      <parameter id="use64BitWorkingImage" value="false"/>
+      <parameter id="rescale" value="true"/>
+      <parameter id="rescaleLower" value="0"/>
+      <parameter id="rescaleUpper" value="1"/>
+      <parameter id="truncate" value="true"/>
+      <parameter id="truncateLower" value="0"/>
+      <parameter id="truncateUpper" value="1"/>
+      <parameter id="createNewImage" value="true"/>
+      <parameter id="showNewImage" value="true"/>
+      <parameter id="newImageId">BlueMask</parameter>
+      <parameter id="newImageWidth" value="0"/>
+      <parameter id="newImageHeight" value="0"/>
+      <parameter id="newImageAlpha" value="false"/>
+      <parameter id="newImageColorSpace" value="Gray"/>
+      <parameter id="newImageSampleFormat" value="i8"/>
+      <table id="outputData" rows="0"/>
+   </instance>
+   <instance class="PixelMath" version="256" id="MagentaMask_instance">
+      <time start="2022-11-03T01:49:00.307Z" span="3.6740115"/>
+      <parameter id="expression">//  Simple Magenta Color Mask
+
+S= 1.0 ;//  Mask Strength (Range= 0 to 1)
+
+
+
+
+
+
+
+
+
+
+
+//Equations:
+iif(H($T)&lt;=0,~mtf((0-H($T))/(1/6),~S)*CIEc($T),
+iif(H($T)&lt;(2/3),0,iif(H($T)&lt;=(5/6),
+~mtf((H($T)-(2/3))/(1/6),~S)*CIEc($T),
+~mtf((1+0-H($T))/(1/6),~S)*CIEc($T))))</parameter>
+      <parameter id="expression1"></parameter>
+      <parameter id="expression2"></parameter>
+      <parameter id="expression3"></parameter>
+      <parameter id="useSingleExpression" value="true"/>
+      <parameter id="symbols">S,</parameter>
+      <parameter id="clearImageCacheAndExit" value="false"/>
+      <parameter id="cacheGeneratedImages" value="false"/>
+      <parameter id="generateOutput" value="true"/>
+      <parameter id="singleThreaded" value="false"/>
+      <parameter id="optimization" value="true"/>
+      <parameter id="use64BitWorkingImage" value="false"/>
+      <parameter id="rescale" value="true"/>
+      <parameter id="rescaleLower" value="0"/>
+      <parameter id="rescaleUpper" value="1"/>
+      <parameter id="truncate" value="true"/>
+      <parameter id="truncateLower" value="0"/>
+      <parameter id="truncateUpper" value="1"/>
+      <parameter id="createNewImage" value="true"/>
+      <parameter id="showNewImage" value="true"/>
+      <parameter id="newImageId">MagentaMask</parameter>
+      <parameter id="newImageWidth" value="0"/>
+      <parameter id="newImageHeight" value="0"/>
+      <parameter id="newImageAlpha" value="false"/>
+      <parameter id="newImageColorSpace" value="Gray"/>
+      <parameter id="newImageSampleFormat" value="i8"/>
+      <table id="outputData" rows="0"/>
+   </instance>
+   <instance class="PixelMath" version="256" id="RedMask_instance">
+      <time start="2022-09-20T00:30:34.869Z" span="0.6630898"/>
+      <parameter id="expression">//  Simple Red Color Mask
+
+S= 1.0 ;//  Mask Strength (Range= 0 to 1)
+
+
+
+
+
+
+
+
+
+
+
+//Equations:
+iif(H($T)&lt;=0,~mtf((H($T)+1-(5/6))/(1/6),~S)*
+CIEc($T),iif(H($T)&lt;=(1/6),~mtf(((1/6)-H($T))/(1/6),~S)*
+CIEc($T),iif(H($T)&lt;(5/6),0,~mtf((H($T)-(5/6))/(1/6),~S)*
+CIEc($T))))</parameter>
+      <parameter id="expression1"></parameter>
+      <parameter id="expression2"></parameter>
+      <parameter id="expression3"></parameter>
+      <parameter id="useSingleExpression" value="true"/>
+      <parameter id="symbols">S,</parameter>
+      <parameter id="clearImageCacheAndExit" value="false"/>
+      <parameter id="cacheGeneratedImages" value="false"/>
+      <parameter id="generateOutput" value="true"/>
+      <parameter id="singleThreaded" value="false"/>
+      <parameter id="optimization" value="true"/>
+      <parameter id="use64BitWorkingImage" value="false"/>
+      <parameter id="rescale" value="true"/>
+      <parameter id="rescaleLower" value="0"/>
+      <parameter id="rescaleUpper" value="1"/>
+      <parameter id="truncate" value="true"/>
+      <parameter id="truncateLower" value="0"/>
+      <parameter id="truncateUpper" value="1"/>
+      <parameter id="createNewImage" value="true"/>
+      <parameter id="showNewImage" value="true"/>
+      <parameter id="newImageId">RedMask</parameter>
+      <parameter id="newImageWidth" value="0"/>
+      <parameter id="newImageHeight" value="0"/>
+      <parameter id="newImageAlpha" value="false"/>
+      <parameter id="newImageColorSpace" value="Gray"/>
+      <parameter id="newImageSampleFormat" value="i8"/>
+      <table id="outputData" rows="0"/>
+   </instance>
+   <instance class="PixelMath" version="256" id="starless_for_RESCREENING_instance">
+      <time start="2023-03-16T01:56:04.618Z" span="0.5418845"/>
+      <parameter id="expression">$T</parameter>
+      <parameter id="expression1"></parameter>
+      <parameter id="expression2"></parameter>
+      <parameter id="expression3"></parameter>
+      <parameter id="useSingleExpression" value="true"/>
+      <parameter id="symbols"></parameter>
+      <parameter id="clearImageCacheAndExit" value="false"/>
+      <parameter id="cacheGeneratedImages" value="false"/>
+      <parameter id="generateOutput" value="true"/>
+      <parameter id="singleThreaded" value="false"/>
+      <parameter id="optimization" value="true"/>
+      <parameter id="use64BitWorkingImage" value="false"/>
+      <parameter id="rescale" value="false"/>
+      <parameter id="rescaleLower" value="0"/>
+      <parameter id="rescaleUpper" value="1"/>
+      <parameter id="truncate" value="true"/>
+      <parameter id="truncateLower" value="0"/>
+      <parameter id="truncateUpper" value="1"/>
+      <parameter id="createNewImage" value="true"/>
+      <parameter id="showNewImage" value="true"/>
+      <parameter id="newImageId">starless_1</parameter>
+      <parameter id="newImageWidth" value="0"/>
+      <parameter id="newImageHeight" value="0"/>
+      <parameter id="newImageAlpha" value="false"/>
+      <parameter id="newImageColorSpace" value="SameAsTarget"/>
+      <parameter id="newImageSampleFormat" value="SameAsTarget"/>
+      <table id="outputData" rows="0"/>
+   </instance>
+   <instance class="PixelMath" version="256" id="stars_for_RESCREENING_instance">
+      <time start="2023-03-16T01:56:08.770Z" span="0.5551713"/>
+      <parameter id="expression">$T</parameter>
+      <parameter id="expression1"></parameter>
+      <parameter id="expression2"></parameter>
+      <parameter id="expression3"></parameter>
+      <parameter id="useSingleExpression" value="true"/>
+      <parameter id="symbols"></parameter>
+      <parameter id="clearImageCacheAndExit" value="false"/>
+      <parameter id="cacheGeneratedImages" value="false"/>
+      <parameter id="generateOutput" value="true"/>
+      <parameter id="singleThreaded" value="false"/>
+      <parameter id="optimization" value="true"/>
+      <parameter id="use64BitWorkingImage" value="false"/>
+      <parameter id="rescale" value="false"/>
+      <parameter id="rescaleLower" value="0"/>
+      <parameter id="rescaleUpper" value="1"/>
+      <parameter id="truncate" value="true"/>
+      <parameter id="truncateLower" value="0"/>
+      <parameter id="truncateUpper" value="1"/>
+      <parameter id="createNewImage" value="true"/>
+      <parameter id="showNewImage" value="true"/>
+      <parameter id="newImageId">stars_1</parameter>
+      <parameter id="newImageWidth" value="0"/>
+      <parameter id="newImageHeight" value="0"/>
+      <parameter id="newImageAlpha" value="false"/>
+      <parameter id="newImageColorSpace" value="SameAsTarget"/>
+      <parameter id="newImageSampleFormat" value="SameAsTarget"/>
+      <table id="outputData" rows="0"/>
+   </instance>
+   <instance class="PixelMath" version="256" id="RESCREEN_starless_stars_V1_instance">
+      <time start="2023-03-16T01:56:11.688Z" span="0.5652553"/>
+      <parameter id="expression">~((~starless_1)*(~stars_1))</parameter>
+      <parameter id="expression1"></parameter>
+      <parameter id="expression2"></parameter>
+      <parameter id="expression3"></parameter>
+      <parameter id="useSingleExpression" value="true"/>
+      <parameter id="symbols"></parameter>
+      <parameter id="clearImageCacheAndExit" value="false"/>
+      <parameter id="cacheGeneratedImages" value="false"/>
+      <parameter id="generateOutput" value="true"/>
+      <parameter id="singleThreaded" value="false"/>
+      <parameter id="optimization" value="true"/>
+      <parameter id="use64BitWorkingImage" value="false"/>
+      <parameter id="rescale" value="false"/>
+      <parameter id="rescaleLower" value="0"/>
+      <parameter id="rescaleUpper" value="1"/>
+      <parameter id="truncate" value="true"/>
+      <parameter id="truncateLower" value="0"/>
+      <parameter id="truncateUpper" value="1"/>
+      <parameter id="createNewImage" value="true"/>
+      <parameter id="showNewImage" value="true"/>
+      <parameter id="newImageId">RescreenedResult</parameter>
+      <parameter id="newImageWidth" value="0"/>
+      <parameter id="newImageHeight" value="0"/>
+      <parameter id="newImageAlpha" value="false"/>
+      <parameter id="newImageColorSpace" value="SameAsTarget"/>
+      <parameter id="newImageSampleFormat" value="SameAsTarget"/>
+      <table id="outputData" rows="0"/>
+   </instance>
+   <instance class="PixelMath" version="256" id="HOONormalizationV5_instance">
+      <time start="2023-03-16T01:46:10.271Z" span="1.7625581"/>
+      <parameter id="expression">/*       Normalize HOO data with Pixelmath - V5
+                 by Bill Blanshan                 */
+                    
+NormMode=       0 ; //&lt;-- 0= L-Normalization,1= C-Normalization
+BlendMode=      0 ; //&lt;-- 0= Lukomatico, 1= AAC 
+Luminance=      0 ; //&lt;-- 0=OFF, 1=Original, 2=Ha
+Mask=           1 ; //&lt;-- Nebulosity Mask, 0-OFF, 1=On
+HaBlend=      0.6 ; //&lt;-- Higher the value, more &quot;SHO&quot; like image
+OIIIBoost=    1.0 ; //&lt;-- Increase to boost OIII
+HLRecover=    1.0 ; //&lt;-- If highlights are clipped, increase &gt;1
+HLReduction=  1.0 ; //&lt;-- If highlights are too bright, increase &gt;1
+Brightness=   1.0 ; //&lt;-- Increase to stretch image
+
+/* Drag the bottom left arrow over to your HOO image
+
+ Hope you enjoy!!!
+
+1) NormMode: I developed 2 different normalization methods;
+   L-Normalization and C-Normalization.  &quot;L&quot; stands for Linear
+   Stretch normalization and &quot;C&quot; stands for Curve Stretch
+   normalization.
+
+   &quot;L&quot; mode is a linear stretch of the image to normalize
+   OIII to that of Ha.
+
+   Advanage: OIII can dominate Ha signals to show off more
+   &quot;Hubble Pallet&quot; like blue colors in OIII areas. If no
+   clipping occurs, the image can result in good natural
+   contrast without the need for luminance control.
+   
+   Disadvantage: Ha signal within stronger OIII areas can
+   be reduced.  Also, depending on the OIII signal strength,
+   this normalization process can blow out &quot;clip&quot; the
+   highlights. An example of this would be the Rosette
+   nebula which has a strong OIII core.  To help with this,
+   You can choose to use the &quot;Luminance&quot; feature (read below)
+   to help recover the highlights. You can also use the
+   &quot;HLRecovery&quot; feature which will rescale the image back
+   into normal unclipped range.
+
+   &quot;C&quot; mode is a curve stretch of the image to normalize
+   OIII to that of Ha.
+
+   Advanage: Because this is a curve stretch, this
+   significantly reduces highlight clipping while increasing
+   the intensity of the OIII signal. Ha and OIII signals
+   are more even in the highlight zone while the shadow
+   and midtones are stretched vs one signal over coming the
+   other which is what happens with linear normalization.
+   
+   Disadvantage:  If the OIII signal is weak, a heavy
+   normalization curve stretch could wash out some
+   contrast.  The contrast can be regained using the
+   &quot;Luminance&quot; feature but may not be as detailed as the
+   L-Normalization process; it all depends on the target.
+  
+
+2) BlendMode:  Here we have two options to help create
+   the synthetic green channel using the Ha and OIII
+   data. Mode:0 and Mode:1
+
+   Mode: 0 is the Luke Newbould &quot;Lukomatico&quot; approach,
+   where we blend in the Ha to that of the normalized OIII
+   to create the green channel. Here, Ha is red, OIII
+   is blue, and green is the blend. Depending on the
+   HaBlend value used, the results can produce images
+   that have &quot;SHO&quot; like appearance.
+
+   Mode: 1 is my ACC method of creating a synthetic
+   green, but unlike Mode: 0, here we blend the Ha data to
+   that of original OIII data to create the Green. We
+   then use Ha for Red and normalized OIII for blue.  
+   The advantage of this method is to help showcase the
+   &quot;HOO&quot; pallet more by showing off the Reds and Blues.
+   The Ha blend is controlled by the &quot;HaBlend&quot; feature
+
+3) Luminance:  The advantage of luminance control is to
+   help control the image from being clipped, especially
+   when L-Normalization is used, but is also good for showing
+   more detail i.e. if Ha &quot;2&quot; mode is used. When luminance
+   feature is set to Off &quot;0&quot;, the produced image has no
+   luminance correction. When set to &quot;1&quot;, the produced image
+   brightness is being controlled by using the luminance
+   from the original image.  When set to &quot;2&quot; or Ha,
+   the produced image is using the luminance from
+   the Ha data.  Using Ha as luminance can really help
+   produce a very detailed final image.
+
+4) Mask:  This feature helps us mask out background noise
+   that can result during the normalization process. It
+   is recommended to leave this mask ON &quot;1&quot; but you have
+   the option to turn is off &quot;0&quot;.
+
+5) HaBlend:  This feature allows you to control the blend
+   amount of the Ha signal to that of the OIII signal
+   to help create the synthetic green channel i.e. 0.60
+   is a 60% blend of Ha and 40% of OIII.  Example: When
+   using the L-normalization mode and a BlendMode of 0
+   &quot;Lukomatico&quot; method, the higher this HaBlend value is,
+   the more &quot;SHO&quot; like image is produced.
+
+6) OIIIBoost:  This feauture allows you to boost or
+   reduce more OIII signal into your image. a value greater
+   than 1 will boost and a value less than 1 will reduce.
+   It is unlikely you will need to use this but I gave you
+   the option just in case.
+
+7) HLRecover:   This feature is a linear rescaling method
+   to help recover highlights in case they have been clipped.
+   The default value is 1, so if you run this normalization
+   process and your image is clipped, you can increase this
+   value to unclip the image e.g. a value of 1.1 or 1.2 might
+   be ok. Always leave at value 1 unless you need to recover
+   clipped data.
+
+8) HLReduction:  This feature is a reversed curve stretch
+   on the highlights alone. example, the Rosette nebula has
+   a bright core.  You can use this method by increasing the
+   value to greater than 1 to help reduce the highlights while
+   keeping your shadows the same.  This method can also work
+   in reverse, meaning, you can reduce this value to increase
+   highlights ;-)
+
+9) Brightness:  This is the final step within this
+   pixelmath script.  This feature will perform a curve
+   stretch to increase overall brightness of the image with
+   a value greater than 1. A value less than 1 will reduce
+   brightness but should not be used to regain clipping, that
+   should be done using the HLRecover feature.
+
+
+Notes:
+   
+1) It is suggested the image used should be a non-linear
+   starless image. An image with stars will result in
+   an image with severly discolored stars. IF you want to
+   try this script on linear data, make sure that Luminance
+   is off &quot;0&quot;, but the star color will not be great 
+   
+2) Preferred stretching method for any narrowband data
+   is the &quot;unlinked stretch&quot;.  This method helps with
+   equalization of the narrowband data and helps 
+   normalization work better.  Stretching methods like
+   EZ Soft Stretch and GHS are &quot;linked&quot; stretches so the
+   results can vary using these methods. Unlinked is perfered.     
+
+   Also, dont over stretch your image!  This can happen
+   when using stretching scipts/maths if the image has
+   been denoised in the linear stage. So please control
+   your stretching :-)
+
+3) Make sure your starless image is background neutralized.
+   When performing  this on a non-linear image, and using
+   the BackgroundNeutralization process, it is best to set
+   the BackgroundNeutralization Upper limit value to a
+   value higher than your backround reading.  Then set the
+   working mode to &quot;Target Background&quot; and use a value
+   to your liking e.g. 0.150.  This helps give good results
+   for normalization. 
+
+4) Preferred method for adding the stars back is using
+   the &quot;unscreen/screen&quot; method, or my RGB to Narrowband
+   pixelmath so that star color is preserved.   
+
+
+
+
+
+
+
+
+
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+E1= adev($T[0])/adev($T[1]);
+E2= iif(NormMode==0,((E1*OIIIBoost)*($T[1]-med($T[1]))+med($T[0])),
+    mtf(0.5/(E1*OIIIBoost),$T[1]-med($T[1]))+med($T[0]) );
+E3= iif(BlendMode==0,(($T[0]*HaBlend)+(E2*~HaBlend)),
+                     (($T[0]*HaBlend)+($T[1]*~HaBlend)));
+
+E5= iif($T==$T[0],$T[0],iif($T==$T[1],E3,E2));
+E6= rescale(CIEL($T),min(med($T[0]),med($T[1]),med($T[2])),0.20);
+
+E7= iif(Mask==0,E5,(E5*E6)+($T*~E6));
+E8= ($T[0]^2+$T[1]^2+$T[2]^2)/($T[0]+$T[1]+$T[2]);
+E9= (E7[0]^2+E7[1]^2+E7[2]^2)/(E7[0]+E7[1]+E7[2]);
+E10= rescale(iif(Luminance==0,E7,iif(Luminance==1,E7*(E8/E9),
+     E7*($T[0])/E9)),0,HLRecover);
+E11= ((mtf(~(1/HLReduction*.5),E10-min($T))+min($T))*
+     E10)+(E10*~E10);
+E12= mtf((1/Brightness*.5),E11-min($T))+min($T);
+E12</parameter>
+      <parameter id="expression1"></parameter>
+      <parameter id="expression2"></parameter>
+      <parameter id="expression3"></parameter>
+      <parameter id="useSingleExpression" value="true"/>
+      <parameter id="symbols">Symbols,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+NormMode,BlendMode,OIIIBoost,Brightness,HaBlend,
+Luminance,HLReduction,HLRecover,Mask,
+C1,C2,C3,
+E1,E2,E3,E4,E5,E6,E7,E8,E9,E10,
+E11,E12,E13,E14,E15,E16,E17,
+R1,G1,B1,R2,G2,B2,R3,G3,B3,L,a,b,
+X,Y,Z,X1,Y1,Z1,X2,Y2,Z2,X3,Y3,Z3,</parameter>
+      <parameter id="clearImageCacheAndExit" value="false"/>
+      <parameter id="cacheGeneratedImages" value="false"/>
+      <parameter id="generateOutput" value="true"/>
+      <parameter id="singleThreaded" value="false"/>
+      <parameter id="optimization" value="true"/>
+      <parameter id="use64BitWorkingImage" value="false"/>
+      <parameter id="rescale" value="false"/>
+      <parameter id="rescaleLower" value="0"/>
+      <parameter id="rescaleUpper" value="1"/>
+      <parameter id="truncate" value="true"/>
+      <parameter id="truncateLower" value="0"/>
+      <parameter id="truncateUpper" value="1"/>
+      <parameter id="createNewImage" value="false"/>
+      <parameter id="showNewImage" value="true"/>
+      <parameter id="newImageId"></parameter>
+      <parameter id="newImageWidth" value="0"/>
+      <parameter id="newImageHeight" value="0"/>
+      <parameter id="newImageAlpha" value="false"/>
+      <parameter id="newImageColorSpace" value="SameAsTarget"/>
+      <parameter id="newImageSampleFormat" value="SameAsTarget"/>
+      <table id="outputData" rows="0"/>
+   </instance>
+   <instance class="PixelMath" version="256" id="SHONormalizationV5_instance">
+      <time start="2023-03-16T01:55:25.658Z" span="1.7934906"/>
+      <parameter id="expression">/*       Normalize SHO data with Pixelmath - V5
+                 by Bill Blanshan                 */
+                    
+NormMode=       0 ; //&lt;-- 0= L-Normalization,1= C-Normalization
+Luminance=      0 ; //&lt;-- 0=OFF, 1=Original, 2=Ha
+SCNR=           0 ; //&lt;-- 0=OFF, 1=On
+Mask=           1 ; //&lt;-- Nebulosity Mask, 0-OFF, 1=On
+SIIBoost=     1.0 ; //&lt;-- Increase to boost SII
+OIIIBoost=    1.0 ; //&lt;-- Increase to boost OIII
+HLRecover=    1.0 ; //&lt;-- If highlights are clipped, increase &gt;1
+HLReduction=  1.0 ; //&lt;-- If highlights are too bright, increase &gt;1
+Brightness=   1.0 ; //&lt;-- Increase to stretch image
+
+/* Drag the bottom left arrow over to your SHO image
+
+ Hope you enjoy!!!
+
+1) NormMode: I developed 2 different normalization methods;
+   L-Normalization and C-Normalization.  &quot;L&quot; stands for Linear
+   Stretch Normalization and &quot;C&quot; stands for Curve Stretch
+   Normalization.
+
+   &quot;L&quot; mode is a linear stretch of the image to normalize
+   OIII &amp; SII to that of Ha.
+
+   Advantage: In OIII &amp; SII areas, these signals when
+   normalized can dominate the Ha signals to show off
+   more Blue and Red colors. If no clipping occurs, the
+   image can result in good natural contrast without the
+   need for luminance control.
+   
+   Disadvantage: Ha signal within stronger OIII &amp; SII areas
+   can be reduced, thus so does the Ha color.  Also,
+   depending on the OIII &amp; SII signal strength, this
+   normalization process can blow out &quot;clip&quot; the highlights.
+   An example of this would be the Rosette nebula which
+   has a strong OIII core.  To help with this, You can choose
+   to use the &quot;Luminance&quot; feature (read below) to help recover
+   the highlights. You can also use the &quot;HLRecovery&quot; feature
+   which will rescale the image back into normal unclipped
+   range.
+
+   &quot;C&quot; mode is a curve stretch of the image to normalize
+   OIII to that of Ha.
+
+   Advantage: Because this is a curve stretch, this
+   significantly reduces highlight clipping while increasing
+   the intensity of the OIII &amp; SII signals. Ha and OIII/SII
+   signals are more even in the highlight zone while the shadow
+   and midtones are stretched vs one signal overcoming the
+   other which is what happens with linear normalization.
+      
+   Disadvantage:  If the OIII/SII signal is weak, a heavy
+   normalization curve stretch could wash out some contrast.
+   The contrast can be regained using the &quot;Luminance&quot; feature
+   but may not be as detailed as the L-Normalization process;
+   it all depends on the target so please try both methods
+   when processing and pick the best result.
+      
+2) Luminance:  The advantage of luminance control is to
+   help control the image from being clipped, especially
+   when L-Normalization is used, but is also good for showing
+   more detail i.e. if Ha &quot;2&quot; mode is used. When luminance
+   feature is set to Off &quot;0&quot;, the produced image has no
+   luminance correction. When set to &quot;1&quot;, the produced image
+   brightness is being controlled by using the luminance
+   from the original image.  When set to &quot;2&quot; or Ha,
+   the produced image is using the luminance from
+   the Ha data.  Using Ha as luminance can really help
+   produce a very detailed final image.
+
+3) SCNR:  When On, any green cast will be removed while
+   retaining its luminance 
+
+4) Mask:  This feature helps us mask out background noise
+   that can result during the normalization process. It
+   is recommended to leave this mask ON &quot;1&quot; but you have
+   the option to turn is off &quot;0&quot;.
+
+5) OIII &amp; SIIBoost:  These feature allows you to boost or
+   reduce more OIII/SII signal into your image. a value
+   greater than 1 will boost and a value less than 1 will
+   reduce. It is unlikely you will need to use this but
+   I gave you the option just in case.
+
+6) HLRecover:   This feature is a linear rescaling method
+   to help recover highlights incase they have been clipped.
+   The default value is 1, so if you run this normalization
+   process and your image is clipped, you can increase this
+   value to unclip the image e.g. a value of 1.1 or 1.2 might
+   be ok. Always leave at value 1 unless you need to recover
+   clipped data.
+
+8) HLReduction:  This feature is a reversed curve stretch
+   on the highlights alone. example, the Rosette nebula has
+   a bright core.  You can use this method by increasing the
+   value to greater than 1 to help reduce the highlights while
+   keeping your shadows the same.  This method can also work
+   in reverse, meaning, you can reduce this value to increase
+   highlights ;-)
+
+9) Brightness:  This is the final step within this
+   pixelmath script.  This feature will perform a curve
+   stretch to increase overall brightness of the image with
+   a value greater than 1. A value less than 1 will reduce
+   brightness but should not be used to regain clipping, that
+   should be done using the HLRecover feature.
+
+
+Notes:
+   
+1) It is suggested the image used should be a non-linear
+   starless image. An image with stars will result in
+   an image with severly discolored stars. IF you want to
+   try this script on linear data, make sure that Luminance
+   is off &quot;0&quot;, but the star color will not be great 
+   
+2) Preferred stretching method for any narrowband data
+   is the &quot;unlinked stretch&quot;.  This method helps with
+   equalization of the narrowband data and helps 
+   normalization work better.  Stretching methods like
+   EZ Soft Stretch and GHS are &quot;linked&quot; stretches so the
+   results can vary using these methods. Unlinked is
+   perferred.
+
+   Also, dont over stretch your image!  This can happen
+   when using automatic stretching scipts/maths if the
+   image has been denoised in the linear stage. So please
+   control your initial stretching, you can also stretch
+   further after this process :-)
+
+3) Make sure your starless image is background neutralized.
+   When performing this on a non-linear image, and using
+   the BackgroundNeutralization process, it is best to set
+   the BackgroundNeutralization Upper limit value to a
+   value higher than your backround reading.  Then set the
+   working mode to &quot;Target Background&quot; and use a value
+   to your liking e.g. 0.150.  This helps give good results
+   for normalization. 
+
+4) Preferred method for adding the stars back is using
+   the &quot;unscreen/screen&quot; method, or my RGB to Narrowband
+   pixelmath so that star color is preserved.   
+
+
+
+
+*/
+
+
+
+
+
+
+
+
+
+
+E1= adev($T[1])/adev($T[0]);
+E2= iif(NormMode==0,((E1*SIIBoost)*($T[0]-med($T[0]))+med($T[0])),
+    mtf(0.5/(E1*SIIBoost),$T[0]-med($T[0]))+med($T[0]) );
+
+E3= adev($T[1])/adev($T[2]);
+E4= iif(NormMode==0,((E3*OIIIBoost)*($T[2]-med($T[2]))+med($T[2])),
+    mtf(0.5/(E1*OIIIBoost),$T[2]-med($T[2]))+med($T[2]) );
+
+E5= iif($T==$T[0],E2,iif($T==$T[1],$T[1],E4));
+
+E6= rescale(CIEL($T),min(med($T[0]),med($T[1]),med($T[2])),0.20);
+
+E7= iif(Mask==0,E5,(E5*E6)+($T*~E6));
+E8= max(0.0000001,($T[0]^2+$T[1]^2+$T[2]^2))/
+    max(0.0000001,($T[0]+$T[1]+$T[2]));
+E9= max(0.0000001,(E7[0]^2+E7[1]^2+E7[2]^2))/
+    max(0.0000001,(E7[0]+E7[1]+E7[2]));
+E10= rescale(iif(Luminance==0,E7,iif(Luminance==1,E7*(E8/E9),
+     E7*(max(0.0000001,$T[1])/E9))),0,HLRecover);
+E11= ((mtf(~(1/HLReduction*.5),E10-min($T))+min($T))*
+     E10)+(E10*~E10);
+E12= mtf((1/Brightness*.5),E11-min($T))+min($T);
+
+E13= E12[0]*.2126 + E12[1]*.7152 + E12[2]*0.0722; 
+E14= min(mean(E12[0],E12[2]),E12[1]);
+E15= E12[0]*.2126 + E14*.7152 + E12[2]*0.0722;
+E16= iif($T==$T[0],E12[0],iif($T==$T[1],E14,E12[2])); 
+E17= iif(SCNR==0,E12,E16*max(0.0000001,E13)/max(0.0000001,E15));
+E17</parameter>
+      <parameter id="expression1"></parameter>
+      <parameter id="expression2"></parameter>
+      <parameter id="expression3"></parameter>
+      <parameter id="useSingleExpression" value="true"/>
+      <parameter id="symbols">Symbols,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+NormMode,SCNR,OIIIBoost,SIIBoost,Brightness,
+Luminance,HLReduction,HLRecover,Mask,
+C1,C2,C3,
+E1,E2,E3,E4,E5,E6,E7,E8,E9,E10,
+E11,E12,E13,E14,E15,E16,E17,
+R1,G1,B1,R2,G2,B2,R3,G3,B3,L,a,b,
+X,Y,Z,X1,Y1,Z1,X2,Y2,Z2,X3,Y3,Z3,</parameter>
+      <parameter id="clearImageCacheAndExit" value="false"/>
+      <parameter id="cacheGeneratedImages" value="false"/>
+      <parameter id="generateOutput" value="true"/>
+      <parameter id="singleThreaded" value="false"/>
+      <parameter id="optimization" value="true"/>
+      <parameter id="use64BitWorkingImage" value="false"/>
+      <parameter id="rescale" value="false"/>
+      <parameter id="rescaleLower" value="0"/>
+      <parameter id="rescaleUpper" value="1"/>
+      <parameter id="truncate" value="true"/>
+      <parameter id="truncateLower" value="0"/>
+      <parameter id="truncateUpper" value="1"/>
+      <parameter id="createNewImage" value="false"/>
+      <parameter id="showNewImage" value="true"/>
+      <parameter id="newImageId"></parameter>
+      <parameter id="newImageWidth" value="0"/>
+      <parameter id="newImageHeight" value="0"/>
+      <parameter id="newImageAlpha" value="false"/>
+      <parameter id="newImageColorSpace" value="SameAsTarget"/>
+      <parameter id="newImageSampleFormat" value="SameAsTarget"/>
+      <table id="outputData" rows="0"/>
+   </instance>
+   <instance class="PixelMath" version="256" id="HSONormalizationV5_instance">
+      <time start="2023-03-16T00:55:04.098Z" span="1.7934596"/>
+      <parameter id="expression">/*       Normalize HSO data with Pixelmath - V5
+                 by Bill Blanshan                 */
+                    
+NormMode=       0 ; //&lt;-- 0= L-Normalization,1= C-Normalization
+Luminance=      0 ; //&lt;-- 0=OFF, 1=Original, 2=Ha
+SCNR=           0 ; //&lt;-- 0=OFF, 1=On
+Mask=           1 ; //&lt;-- Nebulosity Mask, 0-OFF, 1=On
+SIIBoost=     1.0 ; //&lt;-- Increase to boost SII
+OIIIBoost=    1.0 ; //&lt;-- Increase to boost OIII
+HLRecover=    1.0 ; //&lt;-- If highlights are clipped, increase &gt;1
+HLReduction=  1.0 ; //&lt;-- If highlights are too bright, increase &gt;1
+Brightness=   1.0 ; //&lt;-- Increase to stretch image
+
+/* Drag the bottom left arrow over to your SHO image
+
+ Hope you enjoy!!!
+
+1) NormMode: I developed 2 different normalization methods;
+   L-Normalization and C-Normalization.  &quot;L&quot; stands for Linear
+   Stretch Normalization and &quot;C&quot; stands for Curve Stretch
+   Normalization.
+
+   &quot;L&quot; mode is a linear stretch of the image to normalize
+   OIII &amp; SII to that of Ha.
+
+   Advantage: In OIII &amp; SII areas, these signals when
+   normalized can dominate the Ha signals to show off
+   more Blue and Red colors. If no clipping occurs, the
+   image can result in good natural contrast without the
+   need for luminance control.
+   
+   Disadvantage: Ha signal within stronger OIII &amp; SII areas
+   can be reduced, thus so does the Ha color.  Also,
+   depending on the OIII &amp; SII signal strength, this
+   normalization process can blow out &quot;clip&quot; the highlights.
+   An example of this would be the Rosette nebula which
+   has a strong OIII core.  To help with this, You can choose
+   to use the &quot;Luminance&quot; feature (read below) to help recover
+   the highlights. You can also use the &quot;HLRecovery&quot; feature
+   which will rescale the image back into normal unclipped
+   range.
+
+   &quot;C&quot; mode is a curve stretch of the image to normalize
+   OIII to that of Ha.
+
+   Advantage: Because this is a curve stretch, this
+   significantly reduces highlight clipping while increasing
+   the intensity of the OIII &amp; SII signals. Ha and OIII/SII
+   signals are more even in the highlight zone while the shadow
+   and midtones are stretched vs one signal overcoming the
+   other which is what happens with linear normalization.
+      
+   Disadvantage:  If the OIII/SII signal is weak, a heavy
+   normalization curve stretch could wash out some contrast.
+   The contrast can be regained using the &quot;Luminance&quot; feature
+   but may not be as detailed as the L-Normalization process;
+   it all depends on the target so please try both methods
+   when processing and pick the best result.
+      
+2) Luminance:  The advantage of luminance control is to
+   help control the image from being clipped, especially
+   when L-Normalization is used, but is also good for showing
+   more detail i.e. if Ha &quot;2&quot; mode is used. When luminance
+   feature is set to Off &quot;0&quot;, the produced image has no
+   luminance correction. When set to &quot;1&quot;, the produced image
+   brightness is being controlled by using the luminance
+   from the original image.  When set to &quot;2&quot; or Ha,
+   the produced image is using the luminance from
+   the Ha data.  Using Ha as luminance can really help
+   produce a very detailed final image.
+
+3) SCNR:  When On, any green cast will be removed while
+   retaining its luminance 
+
+4) Mask:  This feature helps us mask out background noise
+   that can result during the normalization process. It
+   is recommended to leave this mask ON &quot;1&quot; but you have
+   the option to turn is off &quot;0&quot;.
+
+5) OIII &amp; SIIBoost:  These feature allows you to boost or
+   reduce more OIII/SII signal into your image. a value
+   greater than 1 will boost and a value less than 1 will
+   reduce. It is unlikely you will need to use this but
+   I gave you the option just in case.
+
+6) HLRecover:   This feature is a linear rescaling method
+   to help recover highlights incase they have been clipped.
+   The default value is 1, so if you run this normalization
+   process and your image is clipped, you can increase this
+   value to unclip the image e.g. a value of 1.1 or 1.2 might
+   be ok. Always leave at value 1 unless you need to recover
+   clipped data.
+
+8) HLReduction:  This feature is a reversed curve stretch
+   on the highlights alone. example, the Rosette nebula has
+   a bright core.  You can use this method by increasing the
+   value to greater than 1 to help reduce the highlights while
+   keeping your shadows the same.  This method can also work
+   in reverse, meaning, you can reduce this value to increase
+   highlights ;-)
+
+9) Brightness:  This is the final step within this
+   pixelmath script.  This feature will perform a curve
+   stretch to increase overall brightness of the image with
+   a value greater than 1. A value less than 1 will reduce
+   brightness but should not be used to regain clipping, that
+   should be done using the HLRecover feature.
+
+
+Notes:
+   
+1) It is suggested the image used should be a non-linear
+   starless image. An image with stars will result in
+   an image with severly discolored stars. IF you want to
+   try this script on linear data, make sure that Luminance
+   is off &quot;0&quot;, but the star color will not be great 
+   
+2) Preferred stretching method for any narrowband data
+   is the &quot;unlinked stretch&quot;.  This method helps with
+   equalization of the narrowband data and helps 
+   normalization work better.  Stretching methods like
+   EZ Soft Stretch and GHS are &quot;linked&quot; stretches so the
+   results can vary using these methods. Unlinked is
+   perferred.
+
+   Also, dont over stretch your image!  This can happen
+   when using automatic stretching scipts/maths if the
+   image has been denoised in the linear stage. So please
+   control your initial stretching, you can also stretch
+   further after this process :-)
+
+3) Make sure your starless image is background neutralized.
+   When performing this on a non-linear image, and using
+   the BackgroundNeutralization process, it is best to set
+   the BackgroundNeutralization Upper limit value to a
+   value higher than your backround reading.  Then set the
+   working mode to &quot;Target Background&quot; and use a value
+   to your liking e.g. 0.150.  This helps give good results
+   for normalization. 
+
+4) Preferred method for adding the stars back is using
+   the &quot;unscreen/screen&quot; method, or my RGB to Narrowband
+   pixelmath so that star color is preserved.   
+
+
+
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+E1= adev($T[0])/adev($T[1]);
+E2= iif(NormMode==0,((E1*SIIBoost)*($T[1]-med($T[1]))+med($T[1])),
+    mtf(0.5/(E1*SIIBoost),$T[1]-med($T[1]))+med($T[1]) );
+
+E3= adev($T[0])/adev($T[2]);
+E4= iif(NormMode==0,((E3*OIIIBoost)*($T[2]-med($T[2]))+med($T[2])),
+    mtf(0.5/(E1*OIIIBoost),$T[2]-med($T[2]))+med($T[2]) );
+
+E5= iif($T==$T[0],$T[0],iif($T==$T[1],E2,E4));
+
+E6= rescale(CIEL($T),min(med($T[0]),med($T[1]),med($T[2])),0.20);
+
+E7= iif(Mask==0,E5,(E5*E6)+($T*~E6));
+E8= max(0.0000001,($T[0]^2+$T[1]^2+$T[2]^2))/
+    max(0.0000001,($T[0]+$T[1]+$T[2]));
+E9= max(0.0000001,(E7[0]^2+E7[1]^2+E7[2]^2))/
+    max(0.0000001,(E7[0]+E7[1]+E7[2]));
+E10= rescale(iif(Luminance==0,E7,iif(Luminance==1,E7*(E8/E9),
+     E7*(max(0.0000001,$T[0])/E9))),0,HLRecover);
+E11= ((mtf(~(1/HLReduction*.5),E10-min($T))+min($T))*
+     E10)+(E10*~E10);
+E12= mtf((1/Brightness*.5),E11-min($T))+min($T);
+
+E13= E12[0]*.2126 + E12[1]*.7152 + E12[2]*0.0722; 
+E14= min(mean(E12[0],E12[2]),E12[1]);
+E15= E12[0]*.2126 + E14*.7152 + E12[2]*0.0722;
+E16= iif($T==$T[0],E12[0],iif($T==$T[1],E14,E12[2])); 
+E17= iif(SCNR==0,E12,E16*max(0.0000001,E13)/max(0.0000001,E15));
+E17</parameter>
+      <parameter id="expression1"></parameter>
+      <parameter id="expression2"></parameter>
+      <parameter id="expression3"></parameter>
+      <parameter id="useSingleExpression" value="true"/>
+      <parameter id="symbols">Symbols,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+NormMode,SCNR,OIIIBoost,SIIBoost,Brightness,
+Luminance,HLReduction,HLRecover,Mask,
+C1,C2,C3,
+E1,E2,E3,E4,E5,E6,E7,E8,E9,E10,
+E11,E12,E13,E14,E15,E16,E17,
+R1,G1,B1,R2,G2,B2,R3,G3,B3,L,a,b,
+X,Y,Z,X1,Y1,Z1,X2,Y2,Z2,X3,Y3,Z3,</parameter>
+      <parameter id="clearImageCacheAndExit" value="false"/>
+      <parameter id="cacheGeneratedImages" value="false"/>
+      <parameter id="generateOutput" value="true"/>
+      <parameter id="singleThreaded" value="false"/>
+      <parameter id="optimization" value="true"/>
+      <parameter id="use64BitWorkingImage" value="false"/>
+      <parameter id="rescale" value="false"/>
+      <parameter id="rescaleLower" value="0"/>
+      <parameter id="rescaleUpper" value="1"/>
+      <parameter id="truncate" value="true"/>
+      <parameter id="truncateLower" value="0"/>
+      <parameter id="truncateUpper" value="1"/>
+      <parameter id="createNewImage" value="false"/>
+      <parameter id="showNewImage" value="true"/>
+      <parameter id="newImageId"></parameter>
+      <parameter id="newImageWidth" value="0"/>
+      <parameter id="newImageHeight" value="0"/>
+      <parameter id="newImageAlpha" value="false"/>
+      <parameter id="newImageColorSpace" value="SameAsTarget"/>
+      <parameter id="newImageSampleFormat" value="SameAsTarget"/>
+      <table id="outputData" rows="0"/>
+   </instance>
+   <icon id="GH_Stretch" instance="GH_Stretch_instance" xpos="2601" ypos="1346" workspace="Workspace01"/>
+   <icon id="HT_Stretch_Unlinked" instance="HT_Stretch_Unlinked_instance" xpos="2601" ypos="1292" workspace="Workspace01"/>
+   <icon id="HT_Stretch_Linked_RGB" instance="HT_Stretch_Linked_RGB_instance" xpos="2601" ypos="1319" workspace="Workspace01"/>
+   <icon id="StarReductionM3_V3" instance="StarReductionM3_V3_instance" xpos="2809" ypos="1528" workspace="Workspace01"/>
+   <icon id="StarReductionM2_V3" instance="StarReductionM2_V3_instance" xpos="2809" ypos="1504" workspace="Workspace01"/>
+   <icon id="StarReductionM1_V3" instance="StarReductionM1_V3_instance" xpos="2809" ypos="1480" workspace="Workspace01"/>
+   <icon id="CloneForStarless" instance="CloneForStarless_instance" xpos="2809" ypos="1456" workspace="Workspace01"/>
+   <icon id="BLUR_MASK" instance="BLUR_MASK_instance" xpos="2809" ypos="1262" workspace="Workspace01"/>
+   <icon id="GreenMask" instance="GreenMask_instance" xpos="2809" ypos="1343" workspace="Workspace01"/>
+   <icon id="YellowMask" instance="YellowMask_instance" xpos="2809" ypos="1316" workspace="Workspace01"/>
+   <icon id="CyanMask" instance="CyanMask_instance" xpos="2809" ypos="1370" workspace="Workspace01"/>
+   <icon id="BlueMask" instance="BlueMask_instance" xpos="2809" ypos="1397" workspace="Workspace01"/>
+   <icon id="MagentaMask" instance="MagentaMask_instance" xpos="2809" ypos="1424" workspace="Workspace01"/>
+   <icon id="RedMask" instance="RedMask_instance" xpos="2809" ypos="1289" workspace="Workspace01"/>
+   <icon id="starless_for_RESCREENING" instance="starless_for_RESCREENING_instance" xpos="2599" ypos="1474" workspace="Workspace01"/>
+   <icon id="stars_for_RESCREENING" instance="stars_for_RESCREENING_instance" xpos="2599" ypos="1501" workspace="Workspace01"/>
+   <icon id="RESCREEN_starless_stars_V1" instance="RESCREEN_starless_stars_V1_instance" xpos="2599" ypos="1528" workspace="Workspace01"/>
+   <icon id="HOONormalizationV5" instance="HOONormalizationV5_instance" xpos="2600" ypos="1384" workspace="Workspace01"/>
+   <icon id="SHONormalizationV5" instance="SHONormalizationV5_instance" xpos="2600" ypos="1411" workspace="Workspace01"/>
+   <icon id="HSONormalizationV5" instance="HSONormalizationV5_instance" xpos="2600" ypos="1438" workspace="Workspace01"/>
+</xpsm>
